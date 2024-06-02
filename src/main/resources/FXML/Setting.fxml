@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="642.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SettingController">
+    <center>
+        <VBox alignment="CENTER" maxWidth="500.0" prefHeight="400.0" prefWidth="500.0" spacing="10.0">
+         <Label alignment="CENTER" prefHeight="18.0" prefWidth="321.0" text="Difficulty" textFill="#250ee3">
+            <font>
+               <Font name="Euclid" size="20.0" />
+            </font></Label>
+         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="300.0" spacing="20">
+            <children>
+               <CheckBox fx:id="easy" mnemonicParsing="false" onMouseClicked="#changeLevel" style="-fx-background-color: Green;" text="Easy" textFill="#0d00ff" />
+               <CheckBox fx:id="medium" mnemonicParsing="false" onMouseClicked="#changeLevel" style="-fx-background-color: Yellow;" text="Medium" />
+               <CheckBox fx:id="hard" mnemonicParsing="false" onMouseClicked="#changeLevel" style="-fx-background-color: RED;" text="Hard" textFill="#f71d1d" />
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="155.0" prefWidth="500.0">
+            <children>
+               <VBox alignment="CENTER" prefHeight="155.0" prefWidth="160.0" spacing="20">
+                  <children>
+                     <StackPane fx:id="mute" prefHeight="150.0" prefWidth="150.0" onMouseClicked="#muteAndUnMute">
+                        <children>
+                           <ImageView fx:id="muteControl" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        </children>
+                     </StackPane>
+                     <Label text="Mute" />
+                  </children>
+               </VBox>
+               <Label prefHeight="26.0" prefWidth="121.0" />
+               <VBox alignment="CENTER" layoutX="140.0" layoutY="10.0" prefHeight="155.0" prefWidth="160.0" spacing="20">
+                  <children>
+                     <StackPane fx:id="control" prefHeight="150.0" prefWidth="150.0" onMouseClicked="#changeControlKeys">
+                        <children>
+                           <ImageView fx:id="controlImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        </children>
+                     </StackPane>
+                     <Label text="Control Buttons" />
+                  </children>
+               </VBox>
+            </children>
+         </HBox>
+         <Label />
+         <Button mnemonicParsing="false" text="Back" onMouseClicked="#back" />
+        </VBox>
+    </center>
+</BorderPane>

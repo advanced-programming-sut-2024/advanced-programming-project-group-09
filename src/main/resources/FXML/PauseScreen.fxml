@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css"
+            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.PauseMenuController">
+    <center>
+        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="600.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" styleClass="titleLabel" text="Pause Menu">
+                </Label>
+                <Button mnemonicParsing="false" onMouseClicked="#muteOrUnMute" prefHeight="0.0" prefWidth="155.0"
+                        text="Mute/UnMute"/>
+                <Button mnemonicParsing="false" onMouseClicked="#saveAndQuit" prefHeight="0.0" prefWidth="155.0"
+                        text="Save And Quit"/>
+                <Button mnemonicParsing="false" onMouseClicked="#quitGame" prefHeight="0.0" prefWidth="155.0"
+                        text="Quit"/>
+                <Button mnemonicParsing="false" onMouseClicked="#backToGame" prefHeight="0.0" prefWidth="155.0" text="BackToGame"/>
+            </children>
+        </VBox>
+    </center>
+    <right>
+        <AnchorPane prefHeight="600.0" prefWidth="8.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" layoutX="124.0" layoutY="180.0" text="Up"/>
+                <Label fx:id="up" alignment="CENTER" layoutX="1.0" layoutY="210.0" prefHeight="26.0" prefWidth="267.0"
+                       text="W"/>
+                <Label layoutX="114.0" layoutY="270.0" text="Down"/>
+                <Label fx:id="down" alignment="CENTER" layoutX="88.0" layoutY="300.0" prefHeight="26.0" prefWidth="95.0"
+                       text="S"/>
+                <Label layoutX="43.0" layoutY="270.0" text="Left"/>
+                <Label layoutX="195.0" layoutY="270.0" text="Right"/>
+                <Label fx:id="left" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="300.0"
+                       prefHeight="26.0" prefWidth="82.0" text="A"/>
+                <Label fx:id="right" alignment="CENTER" layoutX="168.0" layoutY="300.0" prefHeight="26.0"
+                       prefWidth="97.0" text="D"/>
+                <Label layoutX="67.0" layoutY="360.0" text="Atomic"/>
+                <Label layoutX="156.0" layoutY="360.0" text="Rocket"/>
+                <Label alignment="CENTER" layoutX="91.0" layoutY="390.0" text="R"/>
+                <Label alignment="CENTER" layoutX="160.0" layoutY="390.0" text="Space"/>
+            </children>
+        </AnchorPane>
+    </right>
+</BorderPane>

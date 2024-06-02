@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameEndController">
+    <center>
+        <VBox alignment="CENTER" maxWidth="300" spacing="10.0">
+         <Label alignment="CENTER" prefHeight="18.0" prefWidth="300.0" text="GameOver" textFill="#101ae3">
+            <font>
+               <Font name="Euclid" size="20.0" />
+            </font></Label>
+         <Label />
+            <Label alignment="CENTER" fx:id="lastWave" contentDisplay="CENTER" prefHeight="26.0" prefWidth="343.0" text="Last Wave: " textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font></Label>
+         <Label layoutX="160.0" layoutY="133.0" prefHeight="0.0" prefWidth="300.0" />
+            <Label alignment="CENTER" fx:id="kills" prefHeight="26.0" prefWidth="378.0" text="Kills: " textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font></Label>
+         <Label layoutX="121.0" layoutY="246.0" textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font>
+         </Label>
+         <Label alignment="CENTER" fx:id="accuracy" layoutX="121.0" layoutY="228.0" prefHeight="26.0" prefWidth="350.0" text="Accuracy: " textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font>
+         </Label>
+         <Label layoutX="160.0" layoutY="246.0" textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font>
+         </Label>
+         <Button mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="36.0" prefWidth="212.0" style="-fx-background-color: white;" text="Back to MainMenu" />
+        </VBox>
+    </center>
+</BorderPane>
