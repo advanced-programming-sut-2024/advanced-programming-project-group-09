@@ -53,19 +53,19 @@ public class LoginMenu extends Application {
 //            MainMenu.getMediaPlayer().stop();
 //            MainMenu.setMediaPlayer(null);
 //        }
-        if (LoginMenu.getMediaPlayer() == null) {
-            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("/Media/LoginMenuMedia.mp3")).toExternalForm());
-            mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setOnEndOfMedia(() -> {
-                mediaPlayer.seek(Duration.ZERO);
-                mediaPlayer.play();
-            });
-            mediaPlayer.play();
-        }
+//        if (LoginMenu.getMediaPlayer() == null) {
+//            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("/Media/LoginMenuMedia.mp3")).toExternalForm());
+//            mediaPlayer = new MediaPlayer(media);
+//            mediaPlayer.setOnEndOfMedia(() -> {
+//                mediaPlayer.seek(Duration.ZERO);
+//                mediaPlayer.play();
+//            });
+//            mediaPlayer.play();
+//        }
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("/Images/Icon.jpg")));
-        stage.getIcons().add(icon);
+//        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("/Images/Icon.jpg")));
+//        stage.getIcons().add(icon);
         stage.show();
     }
 
