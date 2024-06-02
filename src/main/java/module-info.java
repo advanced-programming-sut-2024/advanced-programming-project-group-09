@@ -12,4 +12,6 @@ module approj1 {
     exports Sample.Controller;
     opens Sample.Controller to javafx.fxml;
     opens Sample.Model to javafx.base;
+
+    exports Sample.Model;
 }

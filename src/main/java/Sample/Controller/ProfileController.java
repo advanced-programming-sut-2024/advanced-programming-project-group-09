@@ -1,5 +1,8 @@
 package Sample.Controller;
 
+import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
+
 import java.util.regex.Matcher;
 
 public class ProfileController {
@@ -12,41 +15,80 @@ public class ProfileController {
         return controller;
     }
 
-    public String enterMenu() {
-        return null;
+    public void enterMenu(MouseEvent mouseEvent) {
+
     }
 
-    public String exitMenu() {
-        return null;
+    public void exitMenu(MouseEvent mouseEvent) {
+
     }
 
-    public String showCurrentMenu() {
-        return "ProfileMenu";
+    public void showCurrentMenu(MouseEvent mouseEvent) {
     }
 
-    public String changeUsername(Matcher matcher) {
-        return null;
+    public void changeUsername(MouseEvent mouseEvent) {
+
     }
 
-    public String changeNickName(Matcher matcher) {
-        return null;
+    public void changeNickName(MouseEvent mouseEvent) {
+
     }
 
-    public String changeEmail(Matcher matcher) {
-        return null;
+    public void changeEmail(MouseEvent mouseEvent) {
+
     }
 
-    public String changePassword(Matcher matcher) {
-        return null;
+    public void changePassword(MouseEvent mouseEvent) {
+
     }
 
-    public String displayUserInfo() {
+    public void displayUserInfo() {
         // Display user's current information
-        return null;
+
     }
 
-    public String displayGameHistory(Matcher matcher) {
+    public void displayGameHistory(MouseEvent mouseEvent) {
         // Validate number and display last n games
-        return null;
+
+    }
+
+    public void goToMainMenu(MouseEvent mouseEvent) {
+    }
+
+    public void showData(MouseEvent mouseEvent) {
+    }
+
+    public void goToAvatarMenu(MouseEvent mouseEvent) {
+    }
+
+    public void deleteAccount(MouseEvent mouseEvent) {
+    }
+
+    public void goToHelloMenu(MouseEvent mouseEvent) {
+    }
+
+    public void changeUserPass(MouseEvent mouseEvent) {
+    }
+
+    public void applyForChangingData(MouseEvent mouseEvent) {
+    }
+
+    public void showGameHistory(ActionEvent event) {
+
+    }
+
+    public void showGameHistory1(ActionEvent event) {
+    }
+
+    public void showGameHistory2(ActionEvent event) {
+    }
+
+    public void showGameHistory3(ActionEvent event) {
+    }
+
+    public void showGameHistory4(ActionEvent event) {
+    }
+
+    public void showGameHistory5(ActionEvent event) {
     }
 }
