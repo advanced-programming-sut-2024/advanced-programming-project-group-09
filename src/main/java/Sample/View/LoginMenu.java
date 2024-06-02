@@ -30,13 +30,13 @@ public class LoginMenu extends Application {
     public void start(Stage stage) throws Exception {
         ApplicationController.setStage(stage);
         stage.centerOnScreen();
-        URL url = LoginMenu.class.getResource("/FXMl/Login.fxml");
+        URL url = LoginMenu.class.getResource("FXMl/Login.fxml");
         assert url != null;
         FXMLLoader fxmlLoader = new FXMLLoader(url);
         BorderPane root = fxmlLoader.load();
         loginController = fxmlLoader.getController();
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image(String.valueOf(LoginMenu.class.getResource("/Images/Login.jpg")), 0, 0, false, true),
+                new Image(String.valueOf(LoginMenu.class.getResource("Images/Login.jpg")), 0, 0, false, true),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -45,10 +45,10 @@ public class LoginMenu extends Application {
         Background background = new Background(backgroundImage);
         new BackgroundSize(1.0, 1.0, true, true, false, false);
         root.setBackground(background);
-//        if (RegisterMenu.getMediaPlayer() != null) {
-//            RegisterMenu.getMediaPlayer().stop();
-//            RegisterMenu.setMediaPlayer(null);
-//        }
+        if (RegisterMenu.getMediaPlayer() != null) {
+            RegisterMenu.getMediaPlayer().stop();
+            RegisterMenu.setMediaPlayer(null);
+        }
 //        if (MainMenu.getMediaPlayer() != null) {
 //            MainMenu.getMediaPlayer().stop();
 //            MainMenu.setMediaPlayer(null);

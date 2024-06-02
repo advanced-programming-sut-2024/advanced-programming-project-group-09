@@ -57,7 +57,7 @@ public class LoginController {
         }
         User.setUserLoginIn(userWhoLogin);
         MainMenu mainMenu = new MainMenu();
-//        mainMenu.start(ApplicationController.getStage());
+        mainMenu.start(ApplicationController.getStage());
     }
 
     public void reset() {
@@ -71,15 +71,9 @@ public class LoginController {
 
     public void goToRegisterMenu() throws Exception {
         RegisterMenu registerMenu = new RegisterMenu();
-//        registerMenu.start(ApplicationController.getStage());
+        registerMenu.start(ApplicationController.getStage());
     }
 
-    public void LoginAsGuest() throws Exception {
-        User newUser = new User("Guest", "", "", "");
-        User.setUserLoginIn(newUser);
-        MainMenu mainMenu = new MainMenu();
-//        mainMenu.start(ApplicationController.getStage());
-    }
 }
 
 

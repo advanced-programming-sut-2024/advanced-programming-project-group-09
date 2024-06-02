@@ -33,7 +33,6 @@
                 <Button alignment="CENTER" onMouseClicked="#reset" style="-fx-background-color: red;" text="Reset" />
             </HBox>
          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#goToRegisterMenu" style="-fx-background-color: yellow;" text="Don't have an account" />
-         <Button mnemonicParsing="false" onMouseClicked="#LoginAsGuest" prefHeight="36.0" prefWidth="161.0" style="-fx-background-color: white;" text="Login as a guest" />
         </VBox>
     </center>
 </BorderPane>
