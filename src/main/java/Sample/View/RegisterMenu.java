@@ -21,11 +21,11 @@ public class RegisterMenu extends Application {
     public void start(Stage stage) throws Exception {
         ApplicationController.setStage(stage);
         stage.centerOnScreen();
-        URL url = LoginMenu.class.getResource("/FXMl/Register.fxml");
+        URL url = LoginMenu.class.getResource("FXMl/Register.fxml");
         assert url != null;
         BorderPane root = FXMLLoader.load(url);
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image(String.valueOf(LoginMenu.class.getResource("/Images/Register.jpg")), 0, 0, false, true),
+                new Image(String.valueOf(LoginMenu.class.getResource("Images/Register.jpg")), 0, 0, false, true),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -39,7 +39,7 @@ public class RegisterMenu extends Application {
             LoginMenu.setMediaPlayer(null);
         }
         if (RegisterMenu.getMediaPlayer() == null) {
-            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("/Media/RegisterMenuMedia.mp3")).toExternalForm());
+            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("Media/LoginAndRegisterMenuMedia.mp3")).toExternalForm());
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setOnEndOfMedia(() -> {
                 mediaPlayer.seek(Duration.ZERO);
@@ -49,7 +49,7 @@ public class RegisterMenu extends Application {
         }
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("/Images/Icon.jpg")));
+        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icon.jpg")));
         stage.getIcons().add(icon);
         stage.show();
     }

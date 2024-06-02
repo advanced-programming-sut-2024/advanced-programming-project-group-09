@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.RegisterController">
     <center>
-        <VBox alignment="CENTER" maxWidth="300" spacing="10.0">
-         <Label alignment="CENTER" prefHeight="18.0" prefWidth="321.0" fx:id="helloText" text="Hello" textFill="#250ee3">
+        <VBox alignment="CENTER" maxWidth="300" spacing="5.0">
+         <Label fx:id="helloText" alignment="CENTER" prefHeight="18.0" prefWidth="321.0" text="Hello" textFill="#250ee3">
             <font>
                <Font name="Euclid" size="20.0" />
             </font></Label>
-         <Label />
+         <Label prefHeight="7.0" prefWidth="0.0" />
             <Label text="Username" textFill="#ea0000">
             <font>
                <Font name="Imprint MT Shadow" size="14.0" />
@@ -20,14 +20,44 @@
             <font>
                <Font name="Harrington" size="12.0" />
             </font></TextField>
-            <Label text="Password" textFill="#ea0000">
+         <Label layoutX="121.0" layoutY="152.0" prefWidth="78.0" text="Password" textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font>
+         </Label>
+         <PasswordField fx:id="password" alignment="CENTER" layoutX="10.0" layoutY="183.0" promptText="Your password here">
+            <font>
+               <Font name="Harrington" size="12.0" />
+            </font>
+         </PasswordField>
+            <Label alignment="CENTER" prefHeight="26.0" prefWidth="178.0" text="Confirm Password" textFill="#ea0000">
             <font>
                <Font name="Imprint MT Shadow" size="14.0" />
             </font></Label>
-            <PasswordField fx:id="password" alignment="CENTER" promptText="Your password here">
+            <PasswordField fx:id="passwordConfirmation" alignment="CENTER" promptText="Your confirmation password here">
             <font>
                <Font name="Harrington" size="12.0" />
             </font></PasswordField>
+         <Label layoutX="121.0" layoutY="228.0" text="Nickname" textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font>
+         </Label>
+         <TextField fx:id="nickname" alignment="CENTER" layoutX="10.0" layoutY="264.0" promptText="Your nickname here">
+            <font>
+               <Font name="Harrington" size="12.0" />
+            </font>
+         </TextField>
+         <Label layoutX="121.0" layoutY="188.0" text="Email" textFill="#ea0000">
+            <font>
+               <Font name="Imprint MT Shadow" size="14.0" />
+            </font>
+         </Label>
+         <TextField fx:id="email" alignment="CENTER" layoutX="10.0" layoutY="224.0" promptText="Your email here">
+            <font>
+               <Font name="Harrington" size="12.0" />
+            </font>
+         </TextField>
             <HBox alignment="CENTER" prefWidth="320.0" spacing="10.0">
                 <Button alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#register" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: pink;" text="Register" textFill="#262845" />
             <Button alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="10.0" onMouseClicked="#backToLoginMenu" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: pink;" text="Back" textFill="#262845" />

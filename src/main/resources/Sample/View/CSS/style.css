@@ -3,7 +3,7 @@ TextField {
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-prompt-text-fill: rgba(0, 255, 255, 0.5);
-    -fx-text-fill: olive;
+    -fx-text-fill: gold;
     -fx-background-radius: 15 15 0 0;
     -fx-alignment: center;
     -fx-font-family: "Comic Sans MS";
@@ -20,7 +20,7 @@ PasswordField {
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
     -fx-prompt-text-fill: rgba(0, 255, 255, 0.5);
-    -fx-text-fill: olive;
+    -fx-text-fill: gold;
     -fx-background-radius: 15 15 0 0;
     -fx-alignment: center;
     -fx-font-family: "Comic Sans MS";
