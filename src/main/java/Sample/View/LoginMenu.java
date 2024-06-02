@@ -45,10 +45,6 @@ public class LoginMenu extends Application {
         Background background = new Background(backgroundImage);
         new BackgroundSize(1.0, 1.0, true, true, false, false);
         root.setBackground(background);
-        if (RegisterMenu.getMediaPlayer() != null) {
-            RegisterMenu.getMediaPlayer().stop();
-            RegisterMenu.setMediaPlayer(null);
-        }
         if (MainMenu.getMediaPlayer() != null) {
             MainMenu.getMediaPlayer().stop();
             MainMenu.setMediaPlayer(null);

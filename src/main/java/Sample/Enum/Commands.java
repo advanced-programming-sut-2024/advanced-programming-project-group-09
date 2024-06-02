@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum Commands {
     UserName("[a-zA-Z0-9-]{3,20}"),
-    Password("(?=.*[A-Z])(?=.*[a-z])(?=.*\\d).{6,}"),
+    Password("(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&])(?=.*\\d).{8,}"),
     Nickname("[a-zA-Z0-9-]{3,20}"),
     EMAIL("^[^\\.\\s][\\w\\-]+(\\.[\\w\\-]+)*@([\\w-]+\\.)+[\\w-]{2,}$"),
     ;

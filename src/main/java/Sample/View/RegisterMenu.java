@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Objects;
 
 public class RegisterMenu extends Application {
-    private static MediaPlayer mediaPlayer = null;
+    private static MediaPlayer mediaPlayer = LoginMenu.getMediaPlayer();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -34,10 +34,6 @@ public class RegisterMenu extends Application {
         Background background = new Background(backgroundImage);
         new BackgroundSize(1.0, 1.0, true, true, false, false);
         root.setBackground(background);
-        if (LoginMenu.getMediaPlayer() != null) {
-            LoginMenu.getMediaPlayer().stop();
-            LoginMenu.setMediaPlayer(null);
-        }
         if (RegisterMenu.getMediaPlayer() == null) {
             Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("Media/LoginAndRegisterMenuMedia.mp3")).toExternalForm());
             mediaPlayer = new MediaPlayer(media);
