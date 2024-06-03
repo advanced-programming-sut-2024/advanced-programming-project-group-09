@@ -11,10 +11,12 @@
             fx:controller="Sample.Controller.ProfileController">
     <center>
         <VBox fx:id="vbox" alignment="CENTER" spacing="10">
-            <Button onMouseClicked="#goToMainMenu" text="Go To Main Menu"/>
-            <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" text="show my data"/>
-            <Button mnemonicParsing="false" text="game history"/>
-            <MenuButton prefHeight="26.0" prefWidth="178.0" text="show last nth game history">
+            <Button onMouseClicked="#goToMainMenu" text="Go To Main Menu" style="-fx-background-color: Gold"/>
+            <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" text="show my data"
+                    style="-fx-background-color: Purple"/>
+            <Button mnemonicParsing="false" text="game history" style="-fx-background-color: Blue"/>
+            <MenuButton prefHeight="26.0" prefWidth="178.0" text="show last nth game history"
+                        style="-fx-background-color: Red">
                 <items>
                     <MenuItem onAction="#showGameHistory1" text="1"/>
                     <MenuItem onAction="#showGameHistory2" text="2"/>
@@ -24,7 +26,7 @@
                 </items>
             </MenuButton>
             <Button onMouseClicked="#changeUserPass" text="change data"/>
-            <TextField fx:id="newUsernameTextField" promptText="new Username"/>
+            <TextField fx:id="newUsernameTextField" promptText="new Username" visible="false"/>
             <TextField fx:id="newPasswordTextField" promptText="new password" visible="false"/>
             <TextField fx:id="newPasswordConfirmationTextField" promptText="confirmation new password" visible="false"/>
             <TextField fx:id="newNicknameTextField" promptText="new nickname" visible="false"/>

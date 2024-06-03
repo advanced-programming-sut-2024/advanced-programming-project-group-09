@@ -97,6 +97,10 @@ public class ProfileController {
 
     public void changeUserPass(MouseEvent mouseEvent) {
         emptyChangerFields();
+        if (doneButton.isVisible()) {
+            hideChangerFields();
+            return;
+        }
 
         doneButton.setVisible(true);
         newEmailTextField.setVisible(true);
@@ -104,6 +108,7 @@ public class ProfileController {
         newUsernameTextField.setVisible(true);
         newPasswordTextField.setVisible(true);
         newPasswordConfirmationTextField.setVisible(true);
+
         doneButton.setOnMouseClicked(mouseEvent1 -> {
             if (checkNewDataInValidation()) return;
             User.getUserLoginIn().setPassword(newPasswordTextField.getText());

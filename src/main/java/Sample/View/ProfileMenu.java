@@ -23,7 +23,7 @@ public class ProfileMenu extends Application {
         ApplicationController.getStage().setTitle("Profile Menu");
         ApplicationController.getStage().setScene(scene);
 
-        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(LoginMenu.class.getResource("Images/Profile.png")), 0, 0, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false));
+        BackgroundImage backgroundImage = new BackgroundImage(new Image(String.valueOf(ProfileMenu.class.getResource("Images/Profile.jpg")), 0, 0, false, true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(1.0, 1.0, true, true, false, false));
         Background background = new Background(backgroundImage);
         root.setBackground(background);
         new BackgroundSize(1.0, 1.0, true, true, false, false);

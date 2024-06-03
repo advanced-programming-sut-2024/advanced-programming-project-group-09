@@ -2,7 +2,7 @@ TextField {
     -fx-border-color: transparent transparent lightgray transparent;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
-    -fx-prompt-text-fill: rgba(46, 94, 217, 0.5);
+    -fx-prompt-text-fill: rgb(61, 206, 21);
     -fx-text-fill: gold;
     -fx-background-radius: 15 15 0 0;
     -fx-alignment: center;
@@ -19,7 +19,7 @@ PasswordField {
     -fx-border-color: transparent transparent lightgray transparent;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
-    -fx-prompt-text-fill: rgba(35, 74, 159, 0.5);
+    -fx-prompt-text-fill: rgb(57, 245, 35);
     -fx-text-fill: gold;
     -fx-background-radius: 15 15 0 0;
     -fx-alignment: center;
