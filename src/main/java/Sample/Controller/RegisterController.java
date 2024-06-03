@@ -1,6 +1,7 @@
 package Sample.Controller;
 
 import Sample.Enum.Commands;
+import java.security.SecureRandom;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
 import javafx.fxml.FXML;
@@ -8,10 +9,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegisterController {
+    @FXML
+    private ImageView hideOrRevealPasswordImage;
     @FXML
     private Label helloText;
     @FXML
@@ -26,6 +34,9 @@ public class RegisterController {
     private TextField email;
 
     public void initialize() {
+        Image image = new Image(String.valueOf(LoginMenu.class.getResource("Images/HidePassword.png")));
+        hideOrRevealPasswordImage.setImage(image);
+        hideOrRevealPasswordImage.setClip(new Circle(15, 15, 15));
         username.textProperty().addListener(((observableValue, s, t1) -> {
             helloText.setText("Hello " + username.getText());
         }));
@@ -48,11 +59,7 @@ public class RegisterController {
             return;
         }
         if (Commands.Password.getMatcher(password.getText()) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable password");
-            alert.setHeaderText("Check Your password");
-            alert.setContentText("Please enter a strong password");
-            alert.show();
+            showPasswordErrors(password.getText());
             return;
         }
         if (Commands.Nickname.getMatcher(nickname.getText()) == null) {
@@ -109,6 +116,72 @@ public class RegisterController {
         if (alert.getResult().getButtonData().isCancelButton()) return;
         username.setText(newUsername);
         helloText.setText("Hello " + username.getText());
+    }
+
+    private void showPasswordErrors(String password) {
+        if (Commands.PasswordLength.getMatcher(password) == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable password");
+            alert.setHeaderText("Your password is too short and must contain at least 8 characters");
+            alert.setContentText("Please enter a strong password");
+            alert.showAndWait();
+            return;
+        }
+        if (Commands.PasswordLowerCaseUsed.getMatcher(password) == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable password");
+            alert.setHeaderText("Your password must contain lowercase characters");
+            alert.setContentText("Please enter a strong password");
+            alert.showAndWait();
+            return;
+        }
+        if (Commands.PasswordUpperCaseUsed.getMatcher(password) == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable password");
+            alert.setHeaderText("Your password must contain Uppercase characters");
+            alert.setContentText("Please enter a strong password");
+            alert.showAndWait();
+            return;
+        }
+        if (Commands.PasswordNumberUsed.getMatcher(password) == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable password");
+            alert.setHeaderText("Your password must contain numbers");
+            alert.setContentText("Please enter a strong password");
+            alert.showAndWait();
+            return;
+        }
+        if (Commands.PasswordSpecialCharacterUsed.getMatcher(password) == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable password");
+            alert.setHeaderText("Your password must contain special characters");
+            alert.setContentText("Please enter a strong password");
+            alert.showAndWait();
+        }
+    }
+
+    public void generateRandomPassword() {
+        String allowedCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&";
+        int passwordLength = 10;
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder newPassword = new StringBuilder(passwordLength);
+        for (int i = 0; i < passwordLength; i++) {
+            int randomIndex = random.nextInt(allowedCharacters.length());
+            newPassword.append(allowedCharacters.charAt(randomIndex));
+        }
+
+        if (Commands.Password.getMatcher(newPassword.toString()) != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Random password");
+            alert.setHeaderText("Your password is " + newPassword);
+            alert.setContentText("Do you want to choose this password?");
+            alert.showAndWait();
+            if (alert.getResult().getButtonData().isCancelButton()) return;
+            password.setText(newPassword.toString());
+        } else {
+            generateRandomPassword();
+        }
     }
 
     public void backToLoginMenu() throws Exception {

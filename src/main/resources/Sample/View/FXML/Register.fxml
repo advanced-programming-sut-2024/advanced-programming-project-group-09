@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.RegisterController">
     <center>
-        <VBox alignment="CENTER" maxWidth="300" spacing="5.0">
+        <VBox alignment="CENTER" maxWidth="356.0" prefHeight="450.0" prefWidth="356.0" spacing="5.0">
          <Label fx:id="helloText" alignment="CENTER" prefHeight="18.0" prefWidth="321.0" text="Hello" textFill="#250ee3">
             <font>
                <Font name="Euclid" size="20.0" />
@@ -25,11 +27,18 @@
                <Font name="Imprint MT Shadow" size="14.0" />
             </font>
          </Label>
-         <PasswordField fx:id="password" alignment="CENTER" layoutX="10.0" layoutY="183.0" promptText="Your password here">
-            <font>
-               <Font name="Harrington" size="12.0" />
-            </font>
-         </PasswordField>
+            <HBox prefHeight="30.0" prefWidth=".0" spacing="2">
+                <PasswordField fx:id="password" alignment="CENTER" prefHeight="35.0" prefWidth="234.0" promptText="Your password here">
+                    <font>
+                        <Font name="Harrington" size="12.0" />
+                    </font>
+                </PasswordField>
+                <StackPane prefHeight="30.0" prefWidth="30.0">
+                    <Circle radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+                    <ImageView fx:id="hideOrRevealPasswordImage" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                </StackPane>
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#generateRandomPassword" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: Gold;" text="Random" />
+            </HBox>
             <Label alignment="CENTER" prefHeight="26.0" prefWidth="178.0" text="Confirm Password" textFill="#ea0000">
             <font>
                <Font name="Imprint MT Shadow" size="14.0" />
