@@ -1,7 +1,6 @@
 package Sample.Controller;
 
 import Sample.Enum.Commands;
-import java.security.SecureRandom;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
 import javafx.fxml.FXML;
@@ -13,9 +12,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
+import java.security.SecureRandom;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegisterController {
     @FXML

@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="salam">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Profile.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ProfileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ProfileMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Profile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +40,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2fp0UpCpuUPBjSKWE5XQd1o111e" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,7 +54,7 @@
     "Application.ProfileMenu.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "test",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/mohamadreza/java/proj/graphic111/atomic bomber",
@@ -77,21 +71,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Sample.Enum" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="approj1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="approj1" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -140,7 +119,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="test" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
