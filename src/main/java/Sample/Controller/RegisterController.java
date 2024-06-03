@@ -8,11 +8,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
-import java.util.List;
 import java.util.Random;
-import java.util.regex.Matcher;
 
 public class RegisterController {
     @FXML
@@ -32,6 +29,13 @@ public class RegisterController {
         username.textProperty().addListener(((observableValue, s, t1) -> {
             helloText.setText("Hello " + username.getText());
         }));
+    }
+
+    private int createRandomNumber() {
+        int min = 0;
+        int max = 10000;
+        Random random = new Random();
+        return random.nextInt(max - min + 1) + min;
     }
 
     public void register() throws Exception {
@@ -67,20 +71,23 @@ public class RegisterController {
             alert.show();
             return;
         }
-        if (User.getUserByUsername(username.getText()) != null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Duplicate username");
-            alert.setHeaderText("This username is already registered");
-            alert.setContentText("Please enter another username or back to login Menu");
-            alert.show();
-            return;
-        }
         if (!password.getText().equals(passwordConfirmation.getText())) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error password");
             alert.setHeaderText("Check Your confirmation password");
             alert.setContentText("Your password does not match with confirmation password");
-            alert.show();
+            alert.showAndWait();
+            password.setText("");
+            passwordConfirmation.setText("");
+            return;
+        }
+        if (User.getUserByUsername(username.getText()) != null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Duplicate username");
+            alert.setHeaderText("This username is already registered");
+            alert.setContentText("Back to login Menu or set new username");
+            alert.showAndWait();
+            changeUsername(username.getText());
             return;
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -92,7 +99,19 @@ public class RegisterController {
         loginMenu.start(ApplicationController.getStage());
     }
 
-    public void backToLoginMenu(MouseEvent mouseEvent) throws Exception {
+    private void changeUsername(String oldUsername) {
+        String newUsername = oldUsername + createRandomNumber();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Change username");
+        alert.setHeaderText("Your new Username is " + newUsername);
+        alert.setContentText("Are you willing to do this?");
+        alert.showAndWait();
+        if (alert.getResult().getButtonData().isCancelButton()) return;
+        username.setText(newUsername);
+        helloText.setText("Hello " + username.getText());
+    }
+
+    public void backToLoginMenu() throws Exception {
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.start(ApplicationController.getStage());
     }

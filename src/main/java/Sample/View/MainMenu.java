@@ -20,11 +20,11 @@ public class MainMenu extends Application {
         ApplicationController.setStage(stage);
         stage.setResizable(false);
         stage.centerOnScreen();
-        URL url = LoginMenu.class.getResource("/FXMl/Main.fxml");
+        URL url = LoginMenu.class.getResource("FXMl/Main.fxml");
         assert url != null;
         BorderPane root = FXMLLoader.load(url);
         BackgroundImage backgroundImage = new BackgroundImage(
-                new Image(String.valueOf(LoginMenu.class.getResource("/Images/Main.jpg")), 0, 0, false, true),
+                new Image(String.valueOf(LoginMenu.class.getResource("Images/Main.jpg")), 0, 0, false, true),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
@@ -49,7 +49,7 @@ public class MainMenu extends Application {
 
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
-        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("/Images/Icon.jpg")));
+        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icon.jpg")));
         stage.getIcons().add(icon);
         stage.show();
     }

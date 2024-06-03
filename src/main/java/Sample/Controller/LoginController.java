@@ -6,12 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import Sample.Model.User;
-import Sample.View.LoginMenu;
 import Sample.View.MainMenu;
 import Sample.View.RegisterMenu;
-
-import java.util.List;
-import java.util.Random;
 
 public class LoginController {
     @FXML
@@ -20,17 +16,6 @@ public class LoginController {
     private TextField username;
     @FXML
     private PasswordField password;
-    private static final List<String> PICTURE_PATHS = List.of(
-            "/Images/Avatar1.png",
-            "/Images/Avatar2.png",
-            "/Images/Avatar3.png"
-    );
-
-    private String getRandomPicturePath() {
-        Random random = new Random();
-        int index = random.nextInt(PICTURE_PATHS.size());
-        return PICTURE_PATHS.get(index);
-    }
 
     @FXML
     public void initialize() {

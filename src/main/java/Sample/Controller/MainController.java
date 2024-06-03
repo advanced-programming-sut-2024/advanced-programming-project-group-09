@@ -1,45 +1,57 @@
 package Sample.Controller;
 
-import java.util.regex.Matcher;
+import Sample.Model.User;
+import Sample.View.LoginMenu;
+import Sample.View.ProfileMenu;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 
 public class MainController {
-    private static MainController controller;
 
-    public static MainController getInstance() {
-        if (controller == null) {
-            controller = new MainController();
+    @FXML
+    private Label username;
+
+    public void initialize() {
+        username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!");
+    }
+
+    public void startNewGame() throws Exception {
+
+    }
+
+    public void continueGame() throws Exception {
+
+    }
+
+    public void goToScoreBoard() throws Exception {
+
+    }
+
+    public void goToSettingMenu() throws Exception {
+
+    }
+
+    public void backToLoginMenu() throws Exception {
+        if (User.getUserLoginIn().getUsername().equals("Guest")) {
+            User.getUsers().remove(User.getUserLoginIn());
         }
-        return controller;
+        User.setUserLoginIn(null);
+        LoginMenu loginMenu = new LoginMenu();
+        loginMenu.start(ApplicationController.getStage());
     }
 
-    public String enterMenu() {
-        return null;
+    public void goToProfileMenu() throws Exception {
+        if (User.getUserLoginIn().getUsername().equals("Guest")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Impossible action");
+            alert.setHeaderText("You do not have an account");
+            alert.setContentText("Your entry to the profile menu is not possible");
+            alert.show();
+            return;
+        }
+        ProfileMenu profileMenu = new ProfileMenu();
+        profileMenu.start(ApplicationController.getStage());
     }
-
-    public String exitMenu() {
-        return null;
-    }
-
-    public String showCurrentMenu() {
-        return "MainMenu";
-    }
-
-    public String logout() {
-        return null;
-    }
-
-    public String goToProfileMenu() {
-        return null;
-    }
-
-    public String goToGameMenu() {
-        return null;
-    }
-
-    public String createGame(Matcher matcher) {
-
-        return  null;
-    }
-
-
 }
+

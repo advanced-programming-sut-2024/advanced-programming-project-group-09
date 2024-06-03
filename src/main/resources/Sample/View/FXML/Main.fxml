@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.MainController">
     <center>
         <VBox alignment="CENTER" maxWidth="300" prefHeight="283.0" prefWidth="300.0" spacing="5.0">
-            <Button mnemonicParsing="false" onMouseClicked="#startNewGame" prefHeight="36.0" prefWidth="145.0" text="New Game" />
-            <Button mnemonicParsing="false" onMouseClicked="#continueGame" prefHeight="36.0" prefWidth="145.0" text="Continue Game" />
-         <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="145.0" onMouseClicked="#goToProfileMenu" text="Profile Menu" />
-            <Button mnemonicParsing="false" onMouseClicked="#goToScoreBoard" prefHeight="36.0" prefWidth="145.0" text="Score Board" />
-            <Button mnemonicParsing="false" onMouseClicked="#goToSettingMenu" prefHeight="36.0" prefWidth="145.0" text="Settings" />
-            <Button layoutX="116.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#backToLoginMenu" prefHeight="36.0" prefWidth="145.0" text="Exit" />
+            <Button mnemonicParsing="false" onMouseClicked="#startNewGame" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: Gold;" text="New Game" />
+            <Button mnemonicParsing="false" onMouseClicked="#continueGame" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: Maroon;" text="Continue Game" />
+         <Button mnemonicParsing="false" onMouseClicked="#goToProfileMenu" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: blue;" text="Profile Menu" />
+            <Button mnemonicParsing="false" onMouseClicked="#goToScoreBoard" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: Red;" text="Score Board" />
+            <Button mnemonicParsing="false" onMouseClicked="#goToSettingMenu" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: Turquoise;" text="Settings" />
+            <Button layoutX="116.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#backToLoginMenu" prefHeight="36.0" prefWidth="145.0" style="-fx-background-color: Violet;" text="Exit" />
         </VBox>
     </center>
    <top>
-      <AnchorPane prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label fx:id="username" layoutX="468.0" layoutY="62.0" text="Hi," />
-            <StackPane layoutY="-1.0" onMouseClicked="#goToAvatarMenu" prefHeight="150.0" prefWidth="182.0">
-               <children>
-                  <Circle fill="#0d0d0d" layoutX="80" layoutY="60" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
-                  <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="120.0" layoutX="80" layoutY="60" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </StackPane>
-         </children>
-      </AnchorPane>
+       <AnchorPane prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <Label fx:id="username" layoutX="468.0" layoutY="62.0" text="Hi," />
+       </AnchorPane>
    </top>
 </BorderPane>
