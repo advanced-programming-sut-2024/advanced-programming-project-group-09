@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<BorderPane fx:id="profile" prefHeight="700.0" prefWidth="700.0" stylesheets="@../CSS/style.css"
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.lang.String?>
+<?import javafx.scene.text.TextFlow?>
+<BorderPane fx:id="profile" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css"
             xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Sample.Controller.ProfileController">
     <center>
         <VBox fx:id="vbox" alignment="CENTER" spacing="10">
             <Button onMouseClicked="#goToMainMenu" text="Go To Main Menu"/>
             <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" text="show my data"/>
-            <Button onMouseClicked="#goToAvatarMenu" text="avatar"/>
-            <Button onMouseClicked="#deleteAccount" text="delete account"/>
-            <Button onMouseClicked="#changeUserPass" text="change data"/>
             <Button mnemonicParsing="false" text="game history"/>
-            <Button onMouseClicked="#goToHelloMenu" text="back"/>
             <MenuButton prefHeight="26.0" prefWidth="178.0" text="show last nth game history">
                 <items>
-                    <MenuItem text="1" onAction="#showGameHistory1"/>
-                    <MenuItem text="2" onAction="#showGameHistory2"/>
-                    <MenuItem text="3" onAction="#showGameHistory3"/>
-                    <MenuItem text="4" onAction="#showGameHistory4"/>
-                    <MenuItem text="5" onAction="#showGameHistory5"/>
+                    <MenuItem onAction="#showGameHistory1" text="1"/>
+                    <MenuItem onAction="#showGameHistory2" text="2"/>
+                    <MenuItem onAction="#showGameHistory3" text="3"/>
+                    <MenuItem onAction="#showGameHistory4" text="4"/>
+                    <MenuItem onAction="#showGameHistory5" text="5"/>
                 </items>
             </MenuButton>
-            <TextField fx:id="newUsernameTextField" promptText="new Username" visible="false"/>
+            <Button onMouseClicked="#changeUserPass" text="change data"/>
+            <TextField fx:id="newUsernameTextField" promptText="new Username"/>
             <TextField fx:id="newPasswordTextField" promptText="new password" visible="false"/>
-            <Button fx:id="newUserPassSelected" onMouseClicked="#applyForChangingData" text="Done!" visible="false"/>
+            <TextField fx:id="newPasswordConfirmationTextField" promptText="confirmation new password" visible="false"/>
+            <TextField fx:id="newNicknameTextField" promptText="new nickname" visible="false"/>
+            <TextField fx:id="newEmailTextField" promptText="new gmail" visible="false"/>
+            <Button fx:id="doneButton" onMouseClicked="#confirmChangingData" text="Done!" visible="false"/>
         </VBox>
     </center>
 </BorderPane>

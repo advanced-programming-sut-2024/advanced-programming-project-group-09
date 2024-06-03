@@ -4,9 +4,9 @@ import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.Faction;
 import Sample.CardEnums.Leader;
 import Sample.CardEnums.SpecialCard;
-import Sample.Controller.Ability.CommonCardAbility;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 
@@ -15,6 +15,11 @@ public class User {
     private String password;
     private String email;
     private String nickname;
+    private int gamesPlayed;
+    private int wins;
+    private int draws;
+    private int loses;
+    private double maxScore;
     private static final ArrayList<User> allUsers = new ArrayList<>();
     private static User userLoginIn;
     private HashMap<String, String> securityQuestionsAndAnswers = new HashMap<>();
@@ -256,5 +261,55 @@ public class User {
 
     public void removeCardToCommonCardsInRanged(CommonCard commonCard) {
 
+    }
+
+    public double getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(double maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public int getLoses() {
+        return loses;
+    }
+
+    public void setLoses(int loses) {
+        this.loses = loses;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public void setDraws(int draws) {
+        this.draws = draws;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(int gamesPlayed) {
+        this.gamesPlayed = gamesPlayed;
+    }
+
+    public int getRank() {
+        allUsers.sort(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return o2.getRank() - o1.getRank();
+            }
+        });
+        return allUsers.indexOf(this);
     }
 }
