@@ -25,6 +25,8 @@ public class RegisterController {
     @FXML
     private PasswordField password;
     @FXML
+    private TextField showPassword;
+    @FXML
     private PasswordField passwordConfirmation;
     @FXML
     private TextField nickname;
@@ -32,12 +34,16 @@ public class RegisterController {
     private TextField email;
 
     public void initialize() {
-        Image image = new Image(String.valueOf(LoginMenu.class.getResource("Images/HidePassword.png")));
-        hideOrRevealPasswordImage.setImage(image);
-        hideOrRevealPasswordImage.setClip(new Circle(15, 15, 15));
+        setPasswordShowImage("Images/HidePassword.png");
         username.textProperty().addListener(((observableValue, s, t1) -> {
             helloText.setText("Hello " + username.getText());
         }));
+    }
+
+    private void setPasswordShowImage(String name) {
+        Image image = new Image(String.valueOf(LoginMenu.class.getResource(name)));
+        hideOrRevealPasswordImage.setImage(image);
+        hideOrRevealPasswordImage.setClip(new Circle(15, 15, 15));
     }
 
     private int createRandomNumber() {
@@ -83,6 +89,7 @@ public class RegisterController {
             alert.setContentText("Your password does not match with confirmation password");
             alert.showAndWait();
             password.setText("");
+            showPassword.setText("");
             passwordConfirmation.setText("");
             return;
         }
@@ -177,8 +184,24 @@ public class RegisterController {
             alert.showAndWait();
             if (alert.getResult().getButtonData().isCancelButton()) return;
             password.setText(newPassword.toString());
+            showPassword.setText(newPassword.toString());
         } else {
             generateRandomPassword();
+        }
+    }
+
+    public void setPasswordImage() {
+        String url = hideOrRevealPasswordImage.getImage().getUrl();
+        if (url.contains("Hide")) {
+            setPasswordShowImage("Images/RevealPassword.png");
+            showPassword.setText(password.getText());
+            showPassword.setVisible(true);
+            password.setVisible(false);
+        } else if (url.contains("Reveal")) {
+            setPasswordShowImage("Images/HidePassword.png");
+            password.setText(showPassword.getText());
+            password.setVisible(true);
+            showPassword.setVisible(false);
         }
     }
 

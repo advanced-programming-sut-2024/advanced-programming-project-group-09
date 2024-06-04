@@ -27,13 +27,22 @@
                <Font name="Imprint MT Shadow" size="14.0" />
             </font>
          </Label>
-            <HBox prefHeight="30.0" prefWidth=".0" spacing="2">
-                <PasswordField fx:id="password" alignment="CENTER" prefHeight="35.0" prefWidth="234.0" promptText="Your password here">
-                    <font>
-                        <Font name="Harrington" size="12.0" />
-                    </font>
-                </PasswordField>
-                <StackPane prefHeight="30.0" prefWidth="30.0">
+            <HBox prefHeight="30.0" prefWidth="356.0" spacing="2">
+                <AnchorPane prefHeight="40.0" prefWidth="235.0">
+                    <PasswordField fx:id="password" alignment="CENTER" prefHeight="35.0" prefWidth="235.0"
+                                   promptText="Your password here">
+                        <font>
+                            <Font name="Harrington" size="12.0"/>
+                        </font>
+                    </PasswordField>
+                    <TextField fx:id="showPassword" alignment="CENTER" prefHeight="35.0" prefWidth="235.0"
+                               promptText="Your password here" visible="false">
+                        <font>
+                            <Font name="Harrington" size="12.0"/>
+                        </font>
+                    </TextField>
+                </AnchorPane>
+                <StackPane onMouseClicked="#setPasswordImage" prefHeight="30.0" prefWidth="30.0">
                     <Circle radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                     <ImageView fx:id="hideOrRevealPasswordImage" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                 </StackPane>
