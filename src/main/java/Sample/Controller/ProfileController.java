@@ -115,7 +115,7 @@ public class ProfileController {
             User.getUserLoginIn().setEmail(newEmailTextField.getText());
             User.getUserLoginIn().setNickname(newNicknameTextField.getText());
             User.getUserLoginIn().setUsername(newUsernameTextField.getText());
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("change data");
             alert.setHeaderText("change account's info successfully!");
             alert.show();
@@ -159,6 +159,16 @@ public class ProfileController {
             alert.show();
             return true;
         }
+        if (!newPasswordTextField.getText().equals(newPasswordConfirmationTextField.getText())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error password");
+            alert.setHeaderText("Check Your confirmation password");
+            alert.setContentText("Your password does not match with confirmation password");
+            alert.showAndWait();
+            newPasswordTextField.setText("");
+            newPasswordConfirmationTextField.setText("");
+            return true;
+        }
         if (Commands.Nickname.getMatcher(newNicknameTextField.getText()) == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Unacceptable nickname");
@@ -175,23 +185,39 @@ public class ProfileController {
             alert.show();
             return true;
         }
-        if (!newPasswordTextField.getText().equals(newPasswordConfirmationTextField.getText())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+        if (newPasswordTextField.getText().equals(User.getUserLoginIn().getPassword())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error password");
-            alert.setHeaderText("Check Your confirmation password");
-            alert.setContentText("Your password does not match with confirmation password");
-            alert.showAndWait();
+            alert.setContentText("You've already used this password use new pass!");
+            alert.show();
             newPasswordTextField.setText("");
             newPasswordConfirmationTextField.setText("");
             return true;
         }
+        if (newEmailTextField.getText().equals(User.getUserLoginIn().getEmail())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error Email");
+            alert.setContentText("You've already used this Email use new Email!");
+            alert.show();
+            newEmailTextField.setText("");
+            return true;
+        }
+        if (newNicknameTextField.getText().equals(User.getUserLoginIn().getNickname())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error Nickname");
+            alert.setContentText("You've already used this Nickname use new Nickname!");
+            alert.show();
+            newNicknameTextField.setText("");
+            return true;
+        }
+
         if (User.getUserByUsername(newUsernameTextField.getText()) != null) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Duplicate username");
             alert.setHeaderText("This username is already registered");
             alert.setContentText("Back to login Menu or set new username");
             alert.showAndWait();
-            changeUsername(newUsernameTextField.getText());
+            changeUsername(newUsernameTextField.getText()); // Suggest new username
             return true;
         }
         return false;
@@ -209,7 +235,7 @@ public class ProfileController {
         String newUsername = oldUsername + createRandomNumber();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Change username");
-        alert.setHeaderText("Your new Username is " + newUsername);
+        alert.setHeaderText("I suggest new username for you: " + newUsername);
         alert.setContentText("Are you willing to do this?");
         alert.showAndWait();
         if (alert.getResult().getButtonData().isCancelButton()) return;
