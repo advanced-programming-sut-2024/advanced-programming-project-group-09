@@ -11,7 +11,7 @@
          <font>
             <Font name="Impact" size="35.0" />
          </font></Label>
-      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="293.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="factionImage" fitHeight="50.0" fitWidth="40.0" layoutX="293.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
       <Label alignment="CENTER" layoutX="180.0" layoutY="54.0" prefHeight="28.0" prefWidth="440.0" text="Keeps a random Unit Card out after each round" textFill="#ff00e2">
          <font>
             <Font name="Bell MT Italic" size="18.0" />

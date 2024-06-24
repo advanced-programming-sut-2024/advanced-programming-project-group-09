@@ -1,0 +1,476 @@
+Index: src/main/java/Sample/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Sample;\r\n\r\nimport Sample.View.LoginMenu;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        LoginMenu.main(args);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Sample/Main.java b/src/main/java/Sample/Main.java
+--- a/src/main/java/Sample/Main.java	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
++++ b/src/main/java/Sample/Main.java	(date 1718527203461)
+@@ -1,11 +1,11 @@
+ package Sample;
+ 
++import Sample.Model.User;
+ import Sample.View.LoginMenu;
+ 
+-import java.util.Scanner;
+-
+ public class Main {
+     public static void main(String[] args) {
++        User user = new User("tom", "123", "", "");
+         LoginMenu.main(args);
+     }
+ }
+\ No newline at end of file
+Index: src/main/java/Sample/Controller/RegisterController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Sample.Controller;\r\n\r\nimport Sample.Enum.Commands;\r\nimport Sample.Model.User;\r\nimport Sample.View.LoginMenu;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Alert;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.shape.Circle;\r\n\r\nimport java.security.SecureRandom;\r\nimport java.util.Random;\r\n\r\npublic class RegisterController {\r\n    @FXML\r\n    private ImageView hideOrRevealPasswordImage;\r\n    @FXML\r\n    private Label helloText;\r\n    @FXML\r\n    private TextField username;\r\n    @FXML\r\n    private PasswordField password;\r\n    @FXML\r\n    private TextField showPassword;\r\n    @FXML\r\n    private PasswordField passwordConfirmation;\r\n    @FXML\r\n    private TextField nickname;\r\n    @FXML\r\n    private TextField email;\r\n\r\n    public void initialize() {\r\n        setPasswordShowImage(\"Images/HidePassword.png\");\r\n        username.textProperty().addListener(((observableValue, s, t1) -> {\r\n            helloText.setText(\"Hello \" + username.getText());\r\n        }));\r\n    }\r\n\r\n    private void setPasswordShowImage(String name) {\r\n        Image image = new Image(String.valueOf(LoginMenu.class.getResource(name)));\r\n        hideOrRevealPasswordImage.setImage(image);\r\n        hideOrRevealPasswordImage.setClip(new Circle(15, 15, 15));\r\n    }\r\n\r\n    private int createRandomNumber() {\r\n        int min = 0;\r\n        int max = 10000;\r\n        Random random = new Random();\r\n        return random.nextInt(max - min + 1) + min;\r\n    }\r\n\r\n    public void register() throws Exception {\r\n        if (Commands.UserName.getMatcher(username.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Invalid username\");\r\n            alert.setHeaderText(\"Check Your username\");\r\n            alert.setContentText(\"Please enter a valid username\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (Commands.Password.getMatcher(password.getText()) == null) {\r\n            showPasswordErrors(password.getText());\r\n            return;\r\n        }\r\n        if (Commands.Nickname.getMatcher(nickname.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable nickname\");\r\n            alert.setHeaderText(\"Check Your nickname\");\r\n            alert.setContentText(\"Please enter a valid nickname\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (Commands.EMAIL.getMatcher(email.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable email\");\r\n            alert.setHeaderText(\"Check Your email\");\r\n            alert.setContentText(\"Please enter a valid email\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (!password.getText().equals(passwordConfirmation.getText())) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Error password\");\r\n            alert.setHeaderText(\"Check Your confirmation password\");\r\n            alert.setContentText(\"Your password does not match with confirmation password\");\r\n            alert.showAndWait();\r\n            password.setText(\"\");\r\n            showPassword.setText(\"\");\r\n            passwordConfirmation.setText(\"\");\r\n            return;\r\n        }\r\n        if (User.getUserByUsername(username.getText()) != null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Duplicate username\");\r\n            alert.setHeaderText(\"This username is already registered\");\r\n            alert.setContentText(\"Back to login Menu or set new username\");\r\n            alert.showAndWait();\r\n            changeUsername(username.getText());\r\n            return;\r\n        }\r\n        Alert alert = new Alert(Alert.AlertType.INFORMATION);\r\n        alert.setTitle(\"Create account\");\r\n        alert.setHeaderText(\"Account successfully created\");\r\n        alert.show();\r\n        User newUser = new User(username.getText(), password.getText(), email.getText(), nickname.getText());\r\n        LoginMenu loginMenu = new LoginMenu();\r\n        loginMenu.start(ApplicationController.getStage());\r\n    }\r\n\r\n    private void changeUsername(String oldUsername) {\r\n        String newUsername = oldUsername + createRandomNumber();\r\n        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);\r\n        alert.setTitle(\"Change username\");\r\n        alert.setHeaderText(\"Your new Username is \" + newUsername);\r\n        alert.setContentText(\"Are you willing to do this?\");\r\n        alert.showAndWait();\r\n        if (alert.getResult().getButtonData().isCancelButton()) return;\r\n        username.setText(newUsername);\r\n        helloText.setText(\"Hello \" + username.getText());\r\n    }\r\n\r\n    private void showPasswordErrors(String password) {\r\n        if (Commands.PasswordLength.getMatcher(password) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable password\");\r\n            alert.setHeaderText(\"Your password is too short and must contain at least 8 characters\");\r\n            alert.setContentText(\"Please enter a strong password\");\r\n            alert.showAndWait();\r\n            return;\r\n        }\r\n        if (Commands.PasswordLowerCaseUsed.getMatcher(password) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable password\");\r\n            alert.setHeaderText(\"Your password must contain lowercase characters\");\r\n            alert.setContentText(\"Please enter a strong password\");\r\n            alert.showAndWait();\r\n            return;\r\n        }\r\n        if (Commands.PasswordUpperCaseUsed.getMatcher(password) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable password\");\r\n            alert.setHeaderText(\"Your password must contain Uppercase characters\");\r\n            alert.setContentText(\"Please enter a strong password\");\r\n            alert.showAndWait();\r\n            return;\r\n        }\r\n        if (Commands.PasswordNumberUsed.getMatcher(password) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable password\");\r\n            alert.setHeaderText(\"Your password must contain numbers\");\r\n            alert.setContentText(\"Please enter a strong password\");\r\n            alert.showAndWait();\r\n            return;\r\n        }\r\n        if (Commands.PasswordSpecialCharacterUsed.getMatcher(password) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable password\");\r\n            alert.setHeaderText(\"Your password must contain special characters\");\r\n            alert.setContentText(\"Please enter a strong password\");\r\n            alert.showAndWait();\r\n        }\r\n    }\r\n\r\n    public void generateRandomPassword() {\r\n        String allowedCharacters = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&\";\r\n        int passwordLength = 10;\r\n\r\n        SecureRandom random = new SecureRandom();\r\n        StringBuilder newPassword = new StringBuilder(passwordLength);\r\n        for (int i = 0; i < passwordLength; i++) {\r\n            int randomIndex = random.nextInt(allowedCharacters.length());\r\n            newPassword.append(allowedCharacters.charAt(randomIndex));\r\n        }\r\n\r\n        if (Commands.Password.getMatcher(newPassword.toString()) != null) {\r\n            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);\r\n            alert.setTitle(\"Random password\");\r\n            alert.setHeaderText(\"Your password is \" + newPassword);\r\n            alert.setContentText(\"Do you want to choose this password?\");\r\n            alert.showAndWait();\r\n            if (alert.getResult().getButtonData().isCancelButton()) return;\r\n            password.setText(newPassword.toString());\r\n            showPassword.setText(newPassword.toString());\r\n        } else {\r\n            generateRandomPassword();\r\n        }\r\n    }\r\n\r\n    public void setPasswordImage() {\r\n        String url = hideOrRevealPasswordImage.getImage().getUrl();\r\n        if (url.contains(\"Hide\")) {\r\n            setPasswordShowImage(\"Images/RevealPassword.png\");\r\n            showPassword.setText(password.getText());\r\n            showPassword.setVisible(true);\r\n            password.setVisible(false);\r\n        } else if (url.contains(\"Reveal\")) {\r\n            setPasswordShowImage(\"Images/HidePassword.png\");\r\n            password.setText(showPassword.getText());\r\n            password.setVisible(true);\r\n            showPassword.setVisible(false);\r\n        }\r\n    }\r\n\r\n    public void backToLoginMenu() throws Exception {\r\n        LoginMenu loginMenu = new LoginMenu();\r\n        loginMenu.start(ApplicationController.getStage());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Sample/Controller/RegisterController.java b/src/main/java/Sample/Controller/RegisterController.java
+--- a/src/main/java/Sample/Controller/RegisterController.java	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
++++ b/src/main/java/Sample/Controller/RegisterController.java	(date 1717568071817)
+@@ -1,5 +1,6 @@
+ package Sample.Controller;
+ 
++import Sample.CardEnums.CommonCard;
+ import Sample.Enum.Commands;
+ import Sample.Model.User;
+ import Sample.View.LoginMenu;
+@@ -62,6 +63,7 @@
+             alert.show();
+             return;
+         }
++        if (!showPassword.getText().isEmpty()) password.setText(showPassword.getText());
+         if (Commands.Password.getMatcher(password.getText()) == null) {
+             showPasswordErrors(password.getText());
+             return;
+@@ -121,6 +123,7 @@
+         if (alert.getResult().getButtonData().isCancelButton()) return;
+         username.setText(newUsername);
+         helloText.setText("Hello " + username.getText());
++        CommonCard.Berserker.decreaseOneCount();
+     }
+ 
+     private void showPasswordErrors(String password) {
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
++++ /dev/null	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
+@@ -1,291 +0,0 @@
+-Index: .idea/uiDesigner.xml
+-===================================================================
+-diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+-deleted file mode 100644
+---- a/.idea/uiDesigner.xml	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-+++ /dev/null	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-@@ -1,124 +0,0 @@
+--<?xml version="1.0" encoding="UTF-8"?>
+--<project version="4">
+--  <component name="Palette2">
+--    <group name="Swing">
+--      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+--      </item>
+--      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+--      </item>
+--      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+--      </item>
+--      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
+--        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+--      </item>
+--      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+--        <initial-values>
+--          <property name="text" value="Button" />
+--        </initial-values>
+--      </item>
+--      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+--        <initial-values>
+--          <property name="text" value="RadioButton" />
+--        </initial-values>
+--      </item>
+--      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+--        <initial-values>
+--          <property name="text" value="CheckBox" />
+--        </initial-values>
+--      </item>
+--      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+--        <initial-values>
+--          <property name="text" value="Label" />
+--        </initial-values>
+--      </item>
+--      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+--          <preferred-size width="150" height="-1" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+--          <preferred-size width="150" height="-1" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+--          <preferred-size width="150" height="-1" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+--          <preferred-size width="150" height="50" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+--          <preferred-size width="150" height="50" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+--          <preferred-size width="150" height="50" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+--      </item>
+--      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+--          <preferred-size width="150" height="50" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+--          <preferred-size width="150" height="50" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+--          <preferred-size width="150" height="50" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+--          <preferred-size width="200" height="200" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+--          <preferred-size width="200" height="200" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+--      </item>
+--      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+--      </item>
+--      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+--      </item>
+--      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+--      </item>
+--      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+--          <preferred-size width="-1" height="20" />
+--        </default-constraints>
+--      </item>
+--      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+--        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+--      </item>
+--      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+--        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+--      </item>
+--    </group>
+--  </component>
+--</project>
+-\ No newline at end of file
+-Index: .idea/encodings.xml
+-===================================================================
+-diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+-deleted file mode 100644
+---- a/.idea/encodings.xml	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-+++ /dev/null	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-@@ -1,7 +0,0 @@
+--<?xml version="1.0" encoding="UTF-8"?>
+--<project version="4">
+--  <component name="Encoding">
+--    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+--    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+--  </component>
+--</project>
+-\ No newline at end of file
+-Index: .idea/.gitignore
+-===================================================================
+-diff --git a/.idea/.gitignore b/.idea/.gitignore
+-deleted file mode 100644
+---- a/.idea/.gitignore	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-+++ /dev/null	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-@@ -1,8 +0,0 @@
+--# Default ignored files
+--/shelf/
+--/workspace.xml
+--# Editor-based HTTP Client requests
+--/httpRequests/
+--# Datasource local storage ignored files
+--/dataSources/
+--/dataSources.local.xml
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_21\" default=\"true\" project-jdk-name=\"21\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/misc.xml b/.idea/misc.xml
+---- a/.idea/misc.xml	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-+++ b/.idea/misc.xml	(date 1717440920584)
+-@@ -8,7 +8,5 @@
+-       </list>
+-     </option>
+-   </component>
+--  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+--    <output url="file://$PROJECT_DIR$/out" />
+--  </component>
+-+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK" />
+- </project>
+-\ No newline at end of file
+-Index: .idea/vcs.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+---- a/.idea/vcs.xml	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-+++ b/.idea/vcs.xml	(date 1717440920614)
+-@@ -1,6 +1,6 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="VcsDirectoryMappings">
+--    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-+    <mapping directory="" vcs="Git" />
+-   </component>
+- </project>
+-\ No newline at end of file
+-Index: src/main/java/Sample/Controller/RegisterController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package Sample.Controller;\r\n\r\nimport Sample.Enum.Commands;\r\nimport Sample.Model.User;\r\nimport Sample.View.LoginMenu;\r\nimport javafx.fxml.FXML;\r\nimport javafx.scene.control.Alert;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.PasswordField;\r\nimport javafx.scene.control.TextField;\r\nimport javafx.scene.input.MouseEvent;\r\n\r\nimport java.util.List;\r\nimport java.util.Random;\r\nimport java.util.regex.Matcher;\r\n\r\npublic class RegisterController {\r\n    @FXML\r\n    private Label helloText;\r\n    @FXML\r\n    private TextField username;\r\n    @FXML\r\n    private PasswordField password;\r\n    @FXML\r\n    private PasswordField passwordConfirmation;\r\n    @FXML\r\n    private TextField nickname;\r\n    @FXML\r\n    private TextField email;\r\n\r\n    public void initialize() {\r\n        username.textProperty().addListener(((observableValue, s, t1) -> {\r\n            helloText.setText(\"Hello \" + username.getText());\r\n        }));\r\n    }\r\n\r\n    public void register() throws Exception {\r\n        if (Commands.UserName.getMatcher(username.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Invalid username\");\r\n            alert.setHeaderText(\"Check Your username\");\r\n            alert.setContentText(\"Please enter a valid username\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (Commands.Password.getMatcher(password.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable password\");\r\n            alert.setHeaderText(\"Check Your password\");\r\n            alert.setContentText(\"Please enter a strong password\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (Commands.Nickname.getMatcher(nickname.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable nickname\");\r\n            alert.setHeaderText(\"Check Your nickname\");\r\n            alert.setContentText(\"Please enter a valid nickname\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (Commands.EMAIL.getMatcher(email.getText()) == null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Unacceptable email\");\r\n            alert.setHeaderText(\"Check Your email\");\r\n            alert.setContentText(\"Please enter a valid email\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (User.getUserByUsername(username.getText()) != null) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Duplicate username\");\r\n            alert.setHeaderText(\"This username is already registered\");\r\n            alert.setContentText(\"Please enter another username or back to login Menu\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        if (!password.getText().equals(passwordConfirmation.getText())) {\r\n            Alert alert = new Alert(Alert.AlertType.WARNING);\r\n            alert.setTitle(\"Error password\");\r\n            alert.setHeaderText(\"Check Your confirmation password\");\r\n            alert.setContentText(\"Your password does not match with confirmation password\");\r\n            alert.show();\r\n            return;\r\n        }\r\n        Alert alert = new Alert(Alert.AlertType.INFORMATION);\r\n        alert.setTitle(\"Create account\");\r\n        alert.setHeaderText(\"Account successfully created\");\r\n        alert.show();\r\n        User newUser = new User(username.getText(), password.getText(), email.getText(), nickname.getText());\r\n        LoginMenu loginMenu = new LoginMenu();\r\n        loginMenu.start(ApplicationController.getStage());\r\n    }\r\n\r\n    public void backToLoginMenu(MouseEvent mouseEvent) throws Exception {\r\n        LoginMenu loginMenu = new LoginMenu();\r\n        loginMenu.start(ApplicationController.getStage());\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/src/main/java/Sample/Controller/RegisterController.java b/src/main/java/Sample/Controller/RegisterController.java
+---- a/src/main/java/Sample/Controller/RegisterController.java	(revision bc0c388edd98bf0e0a7dfe01d37930eb776fd07c)
+-+++ b/src/main/java/Sample/Controller/RegisterController.java	(date 1717429554000)
+-@@ -8,11 +8,8 @@
+- import javafx.scene.control.Label;
+- import javafx.scene.control.PasswordField;
+- import javafx.scene.control.TextField;
+--import javafx.scene.input.MouseEvent;
+- 
+--import java.util.List;
+- import java.util.Random;
+--import java.util.regex.Matcher;
+- 
+- public class RegisterController {
+-     @FXML
+-@@ -34,6 +31,13 @@
+-         }));
+-     }
+- 
+-+    private int createRandomNumber() {
+-+        int min = 0;
+-+        int max = 10000;
+-+        Random random = new Random();
+-+        return random.nextInt(max - min + 1) + min;
+-+    }
+-+
+-     public void register() throws Exception {
+-         if (Commands.UserName.getMatcher(username.getText()) == null) {
+-             Alert alert = new Alert(Alert.AlertType.WARNING);
+-@@ -67,20 +71,23 @@
+-             alert.show();
+-             return;
+-         }
+--        if (User.getUserByUsername(username.getText()) != null) {
+--            Alert alert = new Alert(Alert.AlertType.WARNING);
+--            alert.setTitle("Duplicate username");
+--            alert.setHeaderText("This username is already registered");
+--            alert.setContentText("Please enter another username or back to login Menu");
+--            alert.show();
+--            return;
+--        }
+-         if (!password.getText().equals(passwordConfirmation.getText())) {
+-             Alert alert = new Alert(Alert.AlertType.WARNING);
+-             alert.setTitle("Error password");
+-             alert.setHeaderText("Check Your confirmation password");
+-             alert.setContentText("Your password does not match with confirmation password");
+--            alert.show();
+-+            alert.showAndWait();
+-+            password.setText("");
+-+            passwordConfirmation.setText("");
+-+            return;
+-+        }
+-+        if (User.getUserByUsername(username.getText()) != null) {
+-+            Alert alert = new Alert(Alert.AlertType.WARNING);
+-+            alert.setTitle("Duplicate username");
+-+            alert.setHeaderText("This username is already registered");
+-+            alert.setContentText("Back to login Menu or set new username");
+-+            alert.showAndWait();
+-+            changeUsername(username.getText());
+-             return;
+-         }
+-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+-@@ -92,7 +99,19 @@
+-         loginMenu.start(ApplicationController.getStage());
+-     }
+- 
+--    public void backToLoginMenu(MouseEvent mouseEvent) throws Exception {
+-+    private void changeUsername(String oldUsername) {
+-+        String newUsername = oldUsername + createRandomNumber();
+-+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+-+        alert.setTitle("Change username");
+-+        alert.setHeaderText("Your new Username is " + newUsername);
+-+        alert.setContentText("Are you willing to do this?");
+-+        alert.showAndWait();
+-+        if (alert.getResult().getButtonData().isCancelButton()) return;
+-+        username.setText(newUsername);
+-+        helloText.setText("Hello " + username.getText());
+-+    }
+-+
+-+    public void backToLoginMenu() throws Exception {
+-         LoginMenu loginMenu = new LoginMenu();
+-         loginMenu.start(ApplicationController.getStage());
+-     }
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
++++ /dev/null	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]" date="1717442025814" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 6/3/2024 10:43 PM [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: src/main/java/Sample/View/MainMenu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Sample.View;\r\n\r\nimport Sample.Controller.ApplicationController;\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.layout.*;\r\nimport javafx.scene.media.Media;\r\nimport javafx.scene.media.MediaPlayer;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.net.URL;\r\nimport java.util.Objects;\r\n\r\npublic class MainMenu extends Application {\r\n    private static MediaPlayer mediaPlayer = null;\r\n    @Override\r\n    public void start(Stage stage) throws Exception {\r\n        ApplicationController.setStage(stage);\r\n        stage.setResizable(false);\r\n        stage.centerOnScreen();\r\n        URL url = LoginMenu.class.getResource(\"FXMl/Main.fxml\");\r\n        assert url != null;\r\n        BorderPane root = FXMLLoader.load(url);\r\n        BackgroundImage backgroundImage = new BackgroundImage(\r\n                new Image(String.valueOf(LoginMenu.class.getResource(\"Images/Main.jpg\")), 0, 0, false, true),\r\n                BackgroundRepeat.NO_REPEAT,\r\n                BackgroundRepeat.NO_REPEAT,\r\n                BackgroundPosition.DEFAULT,\r\n                new BackgroundSize(1.0, 1.0, true, true, false, false)\r\n        );\r\n        Background background = new Background(backgroundImage);\r\n        new BackgroundSize(1.0, 1.0, true, true, false, false);\r\n        root.setBackground(background);\r\n        if (LoginMenu.getMediaPlayer() != null) {\r\n            LoginMenu.getMediaPlayer().stop();\r\n            LoginMenu.setMediaPlayer(null);\r\n        }\r\n//        if (MainMenu.getMediaPlayer() == null) {\r\n//            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource(\"/Media/MainMenuMedia.mp3\")).toExternalForm());\r\n//            mediaPlayer = new MediaPlayer(media);\r\n//            mediaPlayer.setOnEndOfMedia(() -> {\r\n//                mediaPlayer.seek(Duration.ZERO);\r\n//                mediaPlayer.play();\r\n//            });\r\n//            mediaPlayer.play();\r\n//        }\r\n\r\n        Scene scene = new Scene(root, 800, 600);\r\n        stage.setScene(scene);\r\n        Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream(\"Images/Icon.jpg\")));\r\n        stage.getIcons().add(icon);\r\n        stage.show();\r\n    }\r\n\r\n    public static MediaPlayer getMediaPlayer() {\r\n        return mediaPlayer;\r\n    }\r\n\r\n    public static void setMediaPlayer(MediaPlayer mediaPlayer) {\r\n        MainMenu.mediaPlayer = mediaPlayer;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Sample/View/MainMenu.java b/src/main/java/Sample/View/MainMenu.java
+--- a/src/main/java/Sample/View/MainMenu.java	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
++++ b/src/main/java/Sample/View/MainMenu.java	(date 1718530058617)
+@@ -6,7 +6,6 @@
+ import javafx.scene.Scene;
+ import javafx.scene.image.Image;
+ import javafx.scene.layout.*;
+-import javafx.scene.media.Media;
+ import javafx.scene.media.MediaPlayer;
+ import javafx.stage.Stage;
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"94cb00db-8d7b-4a58-8c7f-3ac0670b057e\" name=\"Changes\" comment=\"LoginAndRegisterMenuCompletedVersion3WithPasswordErrors\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Register.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Register.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"FxmlFile\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\"><![CDATA[{\r\n  \"lastFilter\": {\r\n    \"state\": \"OPEN\",\r\n    \"assignee\": \"erfanteymoyri\"\r\n  }\r\n}]]></component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"a0c8032c-7c48-44d9-890a-9dd926f32669\" />\r\n        <option name=\"url\" value=\"https://github.com/advanced-programming-sut-2024/advanced-programming-project-group-09.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/Sample/View/MainMenu.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2fp0UpCpuUPBjSKWE5XQd1o111e\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.LoginMenu.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.Main.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.ProfileMenu.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/mohamadreza/java/proj/graphic111/atomic bomber&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"Sample.Enum\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Sample.Main\" />\r\n      <module name=\"approj1\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"94cb00db-8d7b-4a58-8c7f-3ac0670b057e\" name=\"Changes\" comment=\"\" />\r\n      <created>1714482732287</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1714482732287</updated>\r\n      <workItem from=\"1714482733471\" duration=\"5909000\" />\r\n      <workItem from=\"1714851976636\" duration=\"68000\" />\r\n      <workItem from=\"1714852048869\" duration=\"105000\" />\r\n      <workItem from=\"1714852172936\" duration=\"104000\" />\r\n      <workItem from=\"1717268800291\" duration=\"112000\" />\r\n      <workItem from=\"1717268936730\" duration=\"648000\" />\r\n      <workItem from=\"1717270004549\" duration=\"81000\" />\r\n      <workItem from=\"1717270116986\" duration=\"81000\" />\r\n      <workItem from=\"1717273345520\" duration=\"2221000\" />\r\n      <workItem from=\"1717326416134\" duration=\"4260000\" />\r\n      <workItem from=\"1717345252750\" duration=\"26000\" />\r\n      <workItem from=\"1717345304137\" duration=\"23000\" />\r\n      <workItem from=\"1717441241566\" duration=\"6935000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"salam\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717326509483</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717326509483</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"LoginAndRegisterMenuCompletedVersion3WithPasswordErrors\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717449322080</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717449322080</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial commit\" />\r\n    <MESSAGE value=\"salam\" />\r\n    <MESSAGE value=\"LoginAndRegisterMenuCompletedVersion3WithPasswordErrors\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"LoginAndRegisterMenuCompletedVersion3WithPasswordErrors\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 062e604e5838dc1e6c5f78b4b556cb87404bae10)
++++ b/.idea/workspace.xml	(date 1718691506237)
+@@ -4,10 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="LoginAndRegisterMenuCompletedVersion3WithPasswordErrors">
++    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="RegisterMenuWithOutSecurityQuestionsCompleted">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Register.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/MainMenu.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/RegisterMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/RegisterMenu.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -34,12 +38,12 @@
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+-  "lastFilter": {
+-    "state": "OPEN",
+-    "assignee": "erfanteymoyri"
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;erfanteymoyri&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="GithubPullRequestsUISettings">
+     <option name="selectedUrlAndAccountId">
+       <UrlAndAccount>
+@@ -72,7 +76,7 @@
+     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mohamadreza/java/proj/graphic111/atomic bomber&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/erfan/OneDrive/Desktop/Server&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+@@ -141,7 +145,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1717449322080</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="RegisterMenuWithOutSecurityQuestionsCompleted">
++      <option name="closed" value="true" />
++      <created>1717489284486</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1717489284486</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -158,7 +170,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="master" />
++                        <option value="origin/master" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -174,6 +186,7 @@
+     <MESSAGE value="Initial commit" />
+     <MESSAGE value="salam" />
+     <MESSAGE value="LoginAndRegisterMenuCompletedVersion3WithPasswordErrors" />
+-    <option name="LAST_COMMIT_MESSAGE" value="LoginAndRegisterMenuCompletedVersion3WithPasswordErrors" />
++    <MESSAGE value="RegisterMenuWithOutSecurityQuestionsCompleted" />
++    <option name="LAST_COMMIT_MESSAGE" value="RegisterMenuWithOutSecurityQuestionsCompleted" />
+   </component>
+ </project>
+\ No newline at end of file

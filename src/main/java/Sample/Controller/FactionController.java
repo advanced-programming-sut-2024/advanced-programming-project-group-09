@@ -20,6 +20,8 @@ import java.util.Objects;
 
 public class FactionController {
     @FXML
+    private ImageView factionImage;
+    @FXML
     private StackPane border1;
     @FXML
     private ImageView image1;
@@ -53,12 +55,20 @@ public class FactionController {
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        Image factionMonster = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_monsters.jpg")));
+        Image factionNilfgaardian = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_nilfgaard.jpg")));
+        Image factionNorthern = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_realms.jpg")));
+        Image factionScoiatael = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_scoiatael.jpg")));
+        Image factionSkellige = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_skellige.jpg")));
+
         Image monsterLeader1 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_bronze.jpg")));
         Image monsterLeader2 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_copper.jpg")));
         Image monsterLeader3 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_gold.jpg")));
         Image monsterLeader4 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_silver.jpg")));
         Image monsterLeader5 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_the_treacherous.jpg")));
         if (user.getFactionSelected().equals(Faction.Monsters)) {
+            factionImage.setImage(factionMonster);
             image1.setImage(monsterLeader1);
             image2.setImage(monsterLeader2);
             image3.setImage(monsterLeader3);

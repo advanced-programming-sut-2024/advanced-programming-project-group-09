@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="RegisterMenuWithOutSecurityQuestionsCompleted">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Sample/View/FactionMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/CSS/Button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Faction.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/cursor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/CSS/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Main.fxml" afterDir="false" />
+    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="firstCommitForChangeFactionAndAddImages">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717489284486</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="firstCommitForChangeFactionAndAddImages">
+      <option name="closed" value="true" />
+      <created>1719250845172</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719250845172</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +200,7 @@
     <MESSAGE value="salam" />
     <MESSAGE value="LoginAndRegisterMenuCompletedVersion3WithPasswordErrors" />
     <MESSAGE value="RegisterMenuWithOutSecurityQuestionsCompleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="RegisterMenuWithOutSecurityQuestionsCompleted" />
+    <MESSAGE value="firstCommitForChangeFactionAndAddImages" />
+    <option name="LAST_COMMIT_MESSAGE" value="firstCommitForChangeFactionAndAddImages" />
   </component>
 </project>
