@@ -23,9 +23,9 @@ public class User {
     private static final ArrayList<User> allUsers = new ArrayList<>();
     private static User userLoginIn;
     private HashMap<String, String> securityQuestionsAndAnswers = new HashMap<>();
-    private Faction factionSelected = Faction.Monsters;
+    private Faction factionSelected = Faction.NorthernRealms;
 
-    private Leader factionLeader = Leader.TheTreacherous;
+    private Leader factionLeader = Leader.KingOfTemeria;
 
     private final ArrayList<CommonCard> commonCardsInDeck = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsInDeck = new ArrayList<>();

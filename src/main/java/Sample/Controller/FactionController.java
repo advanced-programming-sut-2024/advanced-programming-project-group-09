@@ -4,11 +4,13 @@ import Sample.CardEnums.Faction;
 import Sample.CardEnums.Leader;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
+import Sample.View.MainMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,6 +21,10 @@ import javafx.util.Duration;
 import java.util.Objects;
 
 public class FactionController {
+    @FXML
+    private Label faction;
+    @FXML
+    private Label sentence;
     @FXML
     private ImageView factionImage;
     @FXML
@@ -56,24 +62,81 @@ public class FactionController {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
 
-        Image factionMonster = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_monsters.jpg")));
-        Image factionNilfgaardian = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_nilfgaard.jpg")));
-        Image factionNorthern = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_realms.jpg")));
-        Image factionScoiatael = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_scoiatael.jpg")));
-        Image factionSkellige = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/faction_skellige.jpg")));
+        Image factionMonster = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_monsters.png")));
+        Image factionNilfgaardian = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_nilfgaard.png")));
+        Image factionNorthern = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_realms.png")));
+        Image factionScoiatael = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_scoiatael.png")));
+        Image factionSkellige = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_skellige.png")));
 
         Image monsterLeader1 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_bronze.jpg")));
         Image monsterLeader2 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_copper.jpg")));
         Image monsterLeader3 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_gold.jpg")));
         Image monsterLeader4 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_silver.jpg")));
         Image monsterLeader5 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_eredin_the_treacherous.jpg")));
+
+        Image nilfLeader1 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/nilfgaard_emhyr_bronze.jpg")));
+        Image nilfLeader2 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/nilfgaard_emhyr_copper.jpg")));
+        Image nilfLeader3 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/nilfgaard_emhyr_gold.jpg")));
+        Image nilfLeader4 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/nilfgaard_emhyr_silver.jpg")));
+        Image nilfLeader5 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/nilfgaard_emhyr_invader_of_the_north.jpg")));
+
+        Image northernLeader1 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_foltest_bronze.jpg")));
+        Image northernLeader2 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_foltest_copper.jpg")));
+        Image northernLeader3 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_foltest_gold.jpg")));
+        Image northernLeader4 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_foltest_silver.jpg")));
+        Image northernLeader5 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_foltest_son_of_medell.jpg")));
+
+        Image scoiataelLeader1 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_francesca_bronze.jpg")));
+        Image scoiataelLeader2 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_francesca_copper.jpg")));
+        Image scoiataelLeader3 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_francesca_gold.jpg")));
+        Image scoiataelLeader4 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_francesca_silver.jpg")));
+        Image scoiataelLeader5 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_francesca_hope_of_the_aen_seidhe.jpg")));
+
+        Image skelligeLeader2 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_crach_an_craite.jpg")));
+        Image skelligeLeader4 = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_king_bran.jpg")));
+
         if (user.getFactionSelected().equals(Faction.Monsters)) {
+            sentence.setText("Keeps a random Unit Card out after each round");
+            faction.setText("Monsters");
             factionImage.setImage(factionMonster);
             image1.setImage(monsterLeader1);
             image2.setImage(monsterLeader2);
             image3.setImage(monsterLeader3);
             image4.setImage(monsterLeader4);
             image5.setImage(monsterLeader5);
+        } else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
+            sentence.setText("Wins any round that ends in a draw");
+            faction.setText("Nilfgaard");
+            factionImage.setImage(factionNilfgaardian);
+            image1.setImage(nilfLeader1);
+            image2.setImage(nilfLeader2);
+            image3.setImage(nilfLeader3);
+            image4.setImage(nilfLeader4);
+            image5.setImage(nilfLeader5);
+        } else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
+            sentence.setText("Draw a card from your deck whenever you win a round.");
+            faction.setText("NorthernRealms");
+            factionImage.setImage(factionNorthern);
+            image1.setImage(northernLeader1);
+            image2.setImage(northernLeader2);
+            image3.setImage(northernLeader3);
+            image4.setImage(northernLeader4);
+            image5.setImage(northernLeader5);
+        } else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
+            sentence.setText("Decides who takes first turn");
+            faction.setText("Scoiatael");
+            factionImage.setImage(factionScoiatael);
+            image1.setImage(scoiataelLeader1);
+            image2.setImage(scoiataelLeader2);
+            image3.setImage(scoiataelLeader3);
+            image4.setImage(scoiataelLeader4);
+            image5.setImage(scoiataelLeader5);
+        } else if (user.getFactionSelected().equals(Faction.Skellige)) {
+            sentence.setText("2 random cards from the graveyard are placed on the battlefield at the start of the third round");
+            faction.setText("Skellige");
+            factionImage.setImage(factionSkellige);
+            image2.setImage(skelligeLeader2);
+            image4.setImage(skelligeLeader4);
         }
     }
 
@@ -90,6 +153,48 @@ public class FactionController {
                 addBorder(4);
             } else if (user.getFactionLeader().equals(Leader.TheTreacherous)) {
                 addBorder(5);
+            }
+        } else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
+            if (user.getFactionLeader().equals(Leader.EmperorOfNilfgaard)) {
+                addBorder(1);
+            } else if (user.getFactionLeader().equals(Leader.HisImperialMajesty)) {
+                addBorder(2);
+            } else if (user.getFactionLeader().equals(Leader.TheRelentless)) {
+                addBorder(3);
+            } else if (user.getFactionLeader().equals(Leader.WhiteFlame)) {
+                addBorder(4);
+            } else if (user.getFactionLeader().equals(Leader.InvaderOfTheNorth)) {
+                addBorder(5);
+            }
+        } else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
+            if (user.getFactionLeader().equals(Leader.LordCommanderOfTheNorth)) {
+                addBorder(1);
+            } else if (user.getFactionLeader().equals(Leader.KingOfTemeria)) {
+                addBorder(2);
+            } else if (user.getFactionLeader().equals(Leader.SteelForged)) {
+                addBorder(3);
+            } else if (user.getFactionLeader().equals(Leader.SiegeMaster)) {
+                addBorder(4);
+            } else if (user.getFactionLeader().equals(Leader.SonOfMedell)) {
+                addBorder(5);
+            }
+        } else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
+            if (user.getFactionLeader().equals(Leader.PurebloodElf)) {
+                addBorder(1);
+            } else if (user.getFactionLeader().equals(Leader.DaisyOfTheValley)) {
+                addBorder(2);
+            } else if (user.getFactionLeader().equals(Leader.TheBeautiful)) {
+                addBorder(3);
+            } else if (user.getFactionLeader().equals(Leader.QueenOfDolBlathanna)) {
+                addBorder(4);
+            } else if (user.getFactionLeader().equals(Leader.HopeOfTheAenSeidhe)) {
+                addBorder(5);
+            }
+        } else if (user.getFactionSelected().equals(Faction.Skellige)) {
+            if (user.getFactionLeader().equals(Leader.CrachAnCraite)) {
+                addBorder(2);
+            } else if (user.getFactionLeader().equals(Leader.KingBran)) {
+                addBorder(4);
             }
         }
     }
@@ -182,6 +287,7 @@ public class FactionController {
         translateTransition.setToY(0);
         translateTransition.play();
     }
+
     public void unFocusAfterChooseLeader(ImageView imageView) {
         scaleTransition = new ScaleTransition(Duration.millis(500), imageView);
         scaleTransition.setToX(1);
@@ -197,8 +303,6 @@ public class FactionController {
     }
 
 
-
-
     public void changeLeader(MouseEvent mouseEvent) {
         User user = User.getUserLoginIn();
         ImageView source = (ImageView) mouseEvent.getSource();
@@ -207,29 +311,64 @@ public class FactionController {
         switch (id) {
             case "image1" -> {
                 if (user.getFactionSelected().equals(Faction.Monsters)) user.setFactionLeader(Leader.KingOfTheWildHunt);
-
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    user.setFactionLeader(Leader.EmperorOfNilfgaard);
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    user.setFactionLeader(Leader.LordCommanderOfTheNorth);
+                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    user.setFactionLeader(Leader.PurebloodElf);
                 unFocusAfterChooseLeader(image1);
             }
             case "image2" -> {
                 if (user.getFactionSelected().equals(Faction.Monsters))
                     user.setFactionLeader(Leader.CommanderOfTheRedRiders);
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    user.setFactionLeader(Leader.HisImperialMajesty);
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    user.setFactionLeader(Leader.KingOfTemeria);
+                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    user.setFactionLeader(Leader.DaisyOfTheValley);
+                else if (user.getFactionSelected().equals(Faction.Skellige))
+                    user.setFactionLeader(Leader.CrachAnCraite);
                 unFocusAfterChooseLeader(image2);
             }
             case "image3" -> {
                 if (user.getFactionSelected().equals(Faction.Monsters)) user.setFactionLeader(Leader.DestroyerOfWorlds);
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    user.setFactionLeader(Leader.TheRelentless);
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    user.setFactionLeader(Leader.SteelForged);
+                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    user.setFactionLeader(Leader.TheBeautiful);
                 unFocusAfterChooseLeader(image3);
             }
             case "image4" -> {
                 if (user.getFactionSelected().equals(Faction.Monsters)) user.setFactionLeader(Leader.BringerOfDeath);
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard)) user.setFactionLeader(Leader.WhiteFlame);
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    user.setFactionLeader(Leader.SiegeMaster);
+                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    user.setFactionLeader(Leader.QueenOfDolBlathanna);
+                else if (user.getFactionSelected().equals(Faction.Skellige)) user.setFactionLeader(Leader.KingBran);
                 unFocusAfterChooseLeader(image4);
             }
             case "image5" -> {
                 if (user.getFactionSelected().equals(Faction.Monsters)) user.setFactionLeader(Leader.TheTreacherous);
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    user.setFactionLeader(Leader.InvaderOfTheNorth);
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    user.setFactionLeader(Leader.SonOfMedell);
+                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    user.setFactionLeader(Leader.HopeOfTheAenSeidhe);
                 unFocusAfterChooseLeader(image5);
             }
         }
 
     }
 
+    public void backToMainMenu() throws Exception {
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.start(ApplicationController.getStage());
+    }
 }
 

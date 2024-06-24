@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="firstCommitForChangeFactionAndAddImages">
+    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="addImages">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -166,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719250845172</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="addImages">
+      <option name="closed" value="true" />
+      <created>1719253423122</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719253423122</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +193,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -201,6 +211,7 @@
     <MESSAGE value="LoginAndRegisterMenuCompletedVersion3WithPasswordErrors" />
     <MESSAGE value="RegisterMenuWithOutSecurityQuestionsCompleted" />
     <MESSAGE value="firstCommitForChangeFactionAndAddImages" />
-    <option name="LAST_COMMIT_MESSAGE" value="firstCommitForChangeFactionAndAddImages" />
+    <MESSAGE value="addImages" />
+    <option name="LAST_COMMIT_MESSAGE" value="addImages" />
   </component>
 </project>
