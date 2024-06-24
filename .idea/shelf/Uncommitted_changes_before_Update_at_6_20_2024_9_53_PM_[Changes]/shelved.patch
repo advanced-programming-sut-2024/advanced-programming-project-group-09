@@ -1,0 +1,110 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"94cb00db-8d7b-4a58-8c7f-3ac0670b057e\" name=\"Changes\" comment=\"salam\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/Sample/View/ProfileMenu.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/Sample/View/ProfileMenu.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/Sample/View/CSS/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/Sample/View/CSS/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Profile.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Profile.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"FxmlFile\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"test\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/Sample/View/MainMenu.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2fp0UpCpuUPBjSKWE5XQd1o111e\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.LoginMenu.executor\": \"Run\",\r\n    \"Application.Main.executor\": \"Run\",\r\n    \"Application.ProfileMenu.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"last_opened_file_path\": \"C:/Users/mohamadreza/java/proj/approj1\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"reference.settings.project.maven.repository.indices\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"Sample.Enum\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"94cb00db-8d7b-4a58-8c7f-3ac0670b057e\" name=\"Changes\" comment=\"\" />\r\n      <created>1714482732287</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1714482732287</updated>\r\n      <workItem from=\"1714482733471\" duration=\"5909000\" />\r\n      <workItem from=\"1714851976636\" duration=\"68000\" />\r\n      <workItem from=\"1714852048869\" duration=\"105000\" />\r\n      <workItem from=\"1714852172936\" duration=\"104000\" />\r\n      <workItem from=\"1717268800291\" duration=\"112000\" />\r\n      <workItem from=\"1717268936730\" duration=\"648000\" />\r\n      <workItem from=\"1717270004549\" duration=\"81000\" />\r\n      <workItem from=\"1717270116986\" duration=\"81000\" />\r\n      <workItem from=\"1717273345520\" duration=\"2221000\" />\r\n      <workItem from=\"1717326416134\" duration=\"4260000\" />\r\n      <workItem from=\"1717345252750\" duration=\"26000\" />\r\n      <workItem from=\"1717345304137\" duration=\"23000\" />\r\n      <workItem from=\"1717441241566\" duration=\"6935000\" />\r\n      <workItem from=\"1717449583412\" duration=\"1592000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"salam\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1717326509483</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1717326509483</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"master\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial commit\" />\r\n    <MESSAGE value=\"salam\" />\r\n    <MESSAGE value=\"profiemenu\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"profiemenu\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,13 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="salam">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml" afterDir="false" />
++    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="fix text field prompt text colors">
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM_[Changes]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_6_3_2024_10_43_PM__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ProfileMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ProfileMenu.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/CSS/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/CSS/style.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Profile.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -51,26 +48,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.LoginMenu.executor": "Run",
+-    "Application.Main.executor": "Run",
+-    "Application.ProfileMenu.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "master",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "last_opened_file_path": "C:/Users/mohamadreza/java/proj/approj1",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.LoginMenu.executor&quot;: &quot;Run&quot;,
++    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
++    &quot;Application.ProfileMenu.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/mohamadreza/java/proj/approj1&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyClassDialog.RECENTS_KEY">
+       <recent name="Sample.Enum" />
+@@ -97,7 +94,8 @@
+       <workItem from="1717345252750" duration="26000" />
+       <workItem from="1717345304137" duration="23000" />
+       <workItem from="1717441241566" duration="6935000" />
+-      <workItem from="1717449583412" duration="1592000" />
++      <workItem from="1717449583412" duration="5007000" />
++      <workItem from="1718907280230" duration="507000" />
+     </task>
+     <task id="LOCAL-00001" summary="salam">
+       <option name="closed" value="true" />
+@@ -107,7 +105,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1717326509483</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="fix text field prompt text colors">
++      <option name="closed" value="true" />
++      <created>1717451406613</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1717451406613</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -140,6 +146,7 @@
+     <MESSAGE value="Initial commit" />
+     <MESSAGE value="salam" />
+     <MESSAGE value="profiemenu" />
+-    <option name="LAST_COMMIT_MESSAGE" value="profiemenu" />
++    <MESSAGE value="fix text field prompt text colors" />
++    <option name="LAST_COMMIT_MESSAGE" value="fix text field prompt text colors" />
+   </component>
+ </project>
+\ No newline at end of file
