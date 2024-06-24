@@ -245,3 +245,8 @@ ImageView {
 #red-text {
     -fx-text-fill: red;
 }
+
+.bordered-image {
+    -fx-border-color: yellow;
+    -fx-border-width: 5;
+}

@@ -1,11 +1,11 @@
 package Sample;
 
+import Sample.Model.User;
 import Sample.View.LoginMenu;
-
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        User user = new User("tom", "123", "", "");
         LoginMenu.main(args);
     }
 }

@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
@@ -46,10 +45,11 @@ public class MainMenu extends Application {
 //            });
 //            mediaPlayer.play();
 //        }
-
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
         Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icon.jpg")));
+//        Image cursor = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/cursor.png")));
+//        scene.setCursor(new ImageCursor(cursor));
         stage.getIcons().add(icon);
         stage.show();
     }

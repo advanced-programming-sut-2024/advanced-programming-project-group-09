@@ -1,11 +1,17 @@
 package Sample.Controller;
 
 import Sample.Model.User;
+import Sample.View.FactionMenu;
 import Sample.View.LoginMenu;
 import Sample.View.ProfileMenu;
 import javafx.fxml.FXML;
+import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+
+import java.util.Objects;
 
 public class MainController {
 
@@ -17,18 +23,6 @@ public class MainController {
     }
 
     public void startNewGame() throws Exception {
-
-    }
-
-    public void continueGame() throws Exception {
-
-    }
-
-    public void goToScoreBoard() throws Exception {
-
-    }
-
-    public void goToSettingMenu() throws Exception {
 
     }
 
@@ -52,6 +46,20 @@ public class MainController {
         }
         ProfileMenu profileMenu = new ProfileMenu();
         profileMenu.start(ApplicationController.getStage());
+    }
+
+    public void setMouseImage(MouseEvent mouseEvent) {
+        Image cursor = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/cursor.png")));
+        username.getScene().setCursor(new ImageCursor(cursor));
+    }
+
+    public void goToFactionMenu(MouseEvent mouseEvent) throws Exception {
+        FactionMenu factionMenu = new FactionMenu();
+        factionMenu.start(ApplicationController.getStage());
+    }
+
+    public void goToDeckMenu(MouseEvent mouseEvent) {
+
     }
 }
 

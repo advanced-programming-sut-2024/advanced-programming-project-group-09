@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.FactionController">
+   <children>
+      <Label alignment="CENTER" layoutX="270.0" layoutY="4.0" prefHeight="50.0" prefWidth="260.0" text="Monster" textFill="RED">
+         <font>
+            <Font name="Impact" size="35.0" />
+         </font></Label>
+      <ImageView fitHeight="50.0" fitWidth="40.0" layoutX="293.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+      <Label alignment="CENTER" layoutX="180.0" layoutY="54.0" prefHeight="28.0" prefWidth="440.0" text="Keeps a random Unit Card out after each round" textFill="#ff00e2">
+         <font>
+            <Font name="Bell MT Italic" size="18.0" />
+         </font></Label>
+      <Button layoutX="326.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#changeFaction" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: YELLOW;" text="Change Faction" />
+      <HBox layoutX="35.0" layoutY="112.0" prefHeight="260.0" prefWidth="732.0" spacing="20">
+         <children>
+            <StackPane fx:id="border1" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="image1" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border2" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="image2" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border3" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="image3" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border4" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="image4" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border5" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="image5" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
