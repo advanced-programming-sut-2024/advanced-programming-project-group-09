@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="addImages">
+    <list default="true" id="94cb00db-8d7b-4a58-8c7f-3ac0670b057e" name="Changes" comment="ChooseLeaderWithoutFinishFactionSelect">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/LeaderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Sample/View/LeaderMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseLeader.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Faction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Faction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/FactionMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/FactionMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseFaction.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Main.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +31,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -63,27 +73,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.LoginMenu.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ProfileMenu.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/erfan/OneDrive/Desktop/AtomicBomberWithOutJar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;two.files.diff.last.used.file&quot;: &quot;C:/Users/erfan/OneDrive/Desktop/approj1/src/main/resources/Sample/View/FXML/Main.fxml&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.LoginMenu.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.ProfileMenu.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/erfan/OneDrive/Desktop/AtomicBomberWithOutJar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "two.files.diff.last.used.file": "C:/Users/erfan/OneDrive/Desktop/approj1/src/main/resources/Sample/View/FXML/Main.fxml",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\FXML" />
@@ -176,7 +187,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719253423122</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ChooseLeaderWithoutFinishFactionSelect">
+      <option name="closed" value="true" />
+      <created>1719263111696</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719263111696</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,7 +212,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -212,6 +231,7 @@
     <MESSAGE value="RegisterMenuWithOutSecurityQuestionsCompleted" />
     <MESSAGE value="firstCommitForChangeFactionAndAddImages" />
     <MESSAGE value="addImages" />
-    <option name="LAST_COMMIT_MESSAGE" value="addImages" />
+    <MESSAGE value="ChooseLeaderWithoutFinishFactionSelect" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChooseLeaderWithoutFinishFactionSelect" />
   </component>
 </project>

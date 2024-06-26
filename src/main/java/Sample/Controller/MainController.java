@@ -1,7 +1,7 @@
 package Sample.Controller;
 
 import Sample.Model.User;
-import Sample.View.FactionMenu;
+import Sample.View.LeaderMenu;
 import Sample.View.LoginMenu;
 import Sample.View.ProfileMenu;
 import javafx.fxml.FXML;
@@ -53,9 +53,9 @@ public class MainController {
         username.getScene().setCursor(new ImageCursor(cursor));
     }
 
-    public void goToFactionMenu(MouseEvent mouseEvent) throws Exception {
-        FactionMenu factionMenu = new FactionMenu();
-        factionMenu.start(ApplicationController.getStage());
+    public void goToLeaderMenu(MouseEvent mouseEvent) throws Exception {
+        LeaderMenu leaderMenu = new LeaderMenu();
+        leaderMenu.start(ApplicationController.getStage());
     }
 
     public void goToDeckMenu(MouseEvent mouseEvent) {

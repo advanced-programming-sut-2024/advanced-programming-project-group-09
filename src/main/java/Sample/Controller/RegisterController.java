@@ -1,6 +1,5 @@
 package Sample.Controller;
 
-import Sample.CardEnums.CommonCard;
 import Sample.Enum.Commands;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
@@ -123,7 +122,6 @@ public class RegisterController {
         if (alert.getResult().getButtonData().isCancelButton()) return;
         username.setText(newUsername);
         helloText.setText("Hello " + username.getText());
-        CommonCard.Berserker.decreaseOneCount();
     }
 
     private void showPasswordErrors(String password) {

@@ -12,14 +12,14 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.Objects;
 
-public class FactionMenu extends Application {
+public class LeaderMenu extends Application {
     private static MediaPlayer mediaPlayer = LoginMenu.getMediaPlayer();
 
     @Override
     public void start(Stage stage) throws Exception {
         ApplicationController.setStage(stage);
         stage.centerOnScreen();
-        URL url = LoginMenu.class.getResource("FXMl/ChooseFaction.fxml");
+        URL url = LoginMenu.class.getResource("FXMl/ChooseLeader.fxml");
         assert url != null;
         AnchorPane root = FXMLLoader.load(url);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -53,7 +53,7 @@ public class FactionMenu extends Application {
     }
 
     public static void setMediaPlayer(MediaPlayer mediaPlayer) {
-        FactionMenu.mediaPlayer = mediaPlayer;
+        LeaderMenu.mediaPlayer = mediaPlayer;
     }
 }
 
