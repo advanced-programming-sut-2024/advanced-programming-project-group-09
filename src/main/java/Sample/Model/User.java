@@ -4,7 +4,11 @@ import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.Faction;
 import Sample.CardEnums.Leader;
 import Sample.CardEnums.SpecialCard;
+import com.google.gson.Gson;
 
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -311,5 +315,24 @@ public class User {
             }
         });
         return allUsers.indexOf(this);
+    }
+
+    public void saveUserData(String filePath) {
+        Gson gson = new Gson();
+        try (FileWriter writer = new FileWriter(filePath)) {
+            gson.toJson(this, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static User loadUserData(String filePath) {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(filePath)) {
+            return gson.fromJson(reader, User.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

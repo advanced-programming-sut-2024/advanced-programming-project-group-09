@@ -1,9 +1,13 @@
 package Sample.Controller;
 
+import Sample.Model.GameBattleField;
+import Sample.Model.User;
 
 import java.util.regex.Matcher;
 
 public class GameController {
+    private GameBattleField gameBattleField;
+    private User user;
     private static GameController controller;
 
     public static GameController getInstance() {
@@ -93,5 +97,16 @@ public class GameController {
     public String startGame() {
         return null;
 
+    }
+    public void endGame() {
+        // Save game state and user data when the game ends
+        gameBattleField.saveGameState("src/main/resources/gameState.json");
+        user.saveUserData("src/main/resources/userData.json");
+    }
+
+    public void loadGame() {
+        // Load game state and user data when starting the game
+        gameBattleField = GameBattleField.loadGameState("src/main/resources/gameState.json");
+        user = User.loadUserData("src/main/resources/userData.json");
     }
 }

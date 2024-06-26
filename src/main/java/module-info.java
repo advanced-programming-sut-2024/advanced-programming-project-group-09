@@ -3,6 +3,8 @@ module approj1 {
     requires javafx.fxml;
     requires javafx.media;
     requires javafx.controls;
+    requires com.google.gson;
+    requires java.base;
 //    requires javafx.Controls;
 //    requires javafx.fxml;
 //    requires javafx.media;
