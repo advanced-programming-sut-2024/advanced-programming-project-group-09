@@ -33,6 +33,7 @@ public class RegisterController {
     @FXML
     private TextField email;
 
+    private GameController gameController = new GameController();
     public void initialize() {
         setPasswordShowImage("Images/HidePassword.png");
         username.textProperty().addListener(((observableValue, s, t1) -> {
@@ -108,6 +109,8 @@ public class RegisterController {
         alert.setHeaderText("Account successfully created");
         alert.show();
         User newUser = new User(username.getText(), password.getText(), email.getText(), nickname.getText());
+        // Save user data after registration
+        gameController.endGame();
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.start(ApplicationController.getStage());
     }
