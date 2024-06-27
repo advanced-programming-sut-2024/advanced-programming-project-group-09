@@ -45,11 +45,16 @@
             </StackPane>
          </children>
       </HBox>
-      <Button layoutX="239.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#changeFaction" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: PINK;" text="Change Faction" />
-      <Label fx:id="cardName" alignment="CENTER" layoutX="132.0" layoutY="472.0" prefHeight="18.0" prefWidth="537.0" text="cardName" textFill="#eaff00">
+      <Button layoutX="196.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#changeFaction" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: PINK;" text="Change Faction" />
+      <Label fx:id="cardName" alignment="CENTER" layoutX="132.0" layoutY="458.0" prefHeight="18.0" prefWidth="537.0" text="cardName" textFill="#eaff00">
          <font>
             <Font name="Ravie" size="18.0" />
          </font></Label>
-      <Button layoutX="456.0" layoutY="516.0" mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: PURPLE;" text="Back" />
+      <Button layoutX="456.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="42.0" prefWidth="148.0" style="-fx-background-color: PURPLE;" text="Back" />
+      <Label fx:id="ability" alignment="CENTER" contentDisplay="CENTER" layoutX="99.0" layoutY="487.0" prefHeight="58.0" prefWidth="600.0" text="Ability" textAlignment="CENTER" textFill="#00fffc" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

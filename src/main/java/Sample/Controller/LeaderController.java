@@ -23,6 +23,8 @@ import java.util.Objects;
 
 public class LeaderController {
     @FXML
+    private Label ability;
+    @FXML
     private Label cardName;
     @FXML
     private Label faction;
@@ -59,6 +61,7 @@ public class LeaderController {
         User user = User.getUserLoginIn();
 
         cardName.setText(user.getFactionLeader().getName());
+        ability.setText(user.getFactionLeader().getAbility());
 
         Image factionMonster = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_monsters.png")));
         Image factionNilfgaardian = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_nilfgaard.png")));
@@ -273,58 +276,95 @@ public class LeaderController {
         String id = imageView.getId();
         switch (id) {
             case "image1" -> {
-                if (user.getFactionSelected().equals(Faction.Monsters))
+                if (user.getFactionSelected().equals(Faction.Monsters)) {
                     cardName.setText(Leader.KingOfTheWildHunt.getName());
-                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    ability.setText(Leader.KingOfTheWildHunt.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
                     cardName.setText(Leader.EmperorOfNilfgaard.getName());
-                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    ability.setText(Leader.EmperorOfNilfgaard.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
                     cardName.setText(Leader.LordCommanderOfTheNorth.getName());
-                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    ability.setText(Leader.LordCommanderOfTheNorth.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
                     cardName.setText(Leader.PurebloodElf.getName());
+                    ability.setText(Leader.PurebloodElf.getAbility());
+                }
             }
             case "image2" -> {
-                if (user.getFactionSelected().equals(Faction.Monsters))
+                if (user.getFactionSelected().equals(Faction.Monsters)) {
                     cardName.setText(Leader.CommanderOfTheRedRiders.getName());
-                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    ability.setText(Leader.CommanderOfTheRedRiders.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
                     cardName.setText(Leader.HisImperialMajesty.getName());
-                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    ability.setText(Leader.HisImperialMajesty.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
                     cardName.setText(Leader.KingOfTemeria.getName());
-                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    ability.setText(Leader.KingOfTemeria.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
                     cardName.setText(Leader.DaisyOfTheValley.getName());
-                else if (user.getFactionSelected().equals(Faction.Skellige))
+                    ability.setText(Leader.DaisyOfTheValley.getAbility());
+                } else if (user.getFactionSelected().equals(Faction.Skellige)) {
                     cardName.setText(Leader.CrachAnCraite.getName());
+                    ability.setText(Leader.CrachAnCraite.getAbility());
+                }
             }
             case "image3" -> {
-                if (user.getFactionSelected().equals(Faction.Monsters))
+                if (user.getFactionSelected().equals(Faction.Monsters)) {
                     cardName.setText(Leader.DestroyerOfWorlds.getName());
-                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    ability.setText(Leader.DestroyerOfWorlds.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
                     cardName.setText(Leader.TheRelentless.getName());
-                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    ability.setText(Leader.TheRelentless.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
                     cardName.setText(Leader.SteelForged.getName());
-                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    ability.setText(Leader.SteelForged.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
                     cardName.setText(Leader.TheBeautiful.getName());
+                    ability.setText(Leader.TheBeautiful.getAbility());
+                }
             }
             case "image4" -> {
-                if (user.getFactionSelected().equals(Faction.Monsters))
+                if (user.getFactionSelected().equals(Faction.Monsters)) {
                     cardName.setText(Leader.BringerOfDeath.getName());
-                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    ability.setText(Leader.BringerOfDeath.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
                     cardName.setText(Leader.WhiteFlame.getName());
-                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    ability.setText(Leader.WhiteFlame.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
                     cardName.setText(Leader.SiegeMaster.getName());
-                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    ability.setText(Leader.SiegeMaster.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
                     cardName.setText(Leader.QueenOfDolBlathanna.getName());
-                else if (user.getFactionSelected().equals(Faction.Skellige))
+                    ability.setText(Leader.QueenOfDolBlathanna.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Skellige)) {
                     cardName.setText(Leader.KingBran.getName());
+                    ability.setText(Leader.KingBran.getAbility());
+                }
             }
             case "image5" -> {
-                if (user.getFactionSelected().equals(Faction.Monsters))
+                if (user.getFactionSelected().equals(Faction.Monsters)) {
                     cardName.setText(Leader.TheTreacherous.getName());
-                else if (user.getFactionSelected().equals(Faction.Nilfgaard))
+                    ability.setText(Leader.TheTreacherous.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
                     cardName.setText(Leader.InvaderOfTheNorth.getName());
-                else if (user.getFactionSelected().equals(Faction.NorthernRealms))
+                    ability.setText(Leader.InvaderOfTheNorth.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.NorthernRealms)) {
                     cardName.setText(Leader.SonOfMedell.getName());
-                else if (user.getFactionSelected().equals(Faction.Scoiatael))
+                    ability.setText(Leader.SonOfMedell.getAbility());
+                }
+                else if (user.getFactionSelected().equals(Faction.Scoiatael)) {
                     cardName.setText(Leader.HopeOfTheAenSeidhe.getName());
+                    ability.setText(Leader.HopeOfTheAenSeidhe.getAbility());
+                }
             }
         }
 
@@ -345,6 +385,7 @@ public class LeaderController {
         ImageView imageView = (ImageView) mouseEvent.getSource();
 
         cardName.setText(User.getUserLoginIn().getFactionLeader().getName());
+        ability.setText(User.getUserLoginIn().getFactionLeader().getAbility());
 
         scaleTransition = new ScaleTransition(Duration.millis(500), imageView);
         scaleTransition.setToX(1);
@@ -361,6 +402,7 @@ public class LeaderController {
 
     public void unFocusAfterChooseLeader(ImageView imageView) {
         cardName.setText(User.getUserLoginIn().getFactionLeader().getName());
+        ability.setText(User.getUserLoginIn().getFactionLeader().getAbility());
 
         scaleTransition = new ScaleTransition(Duration.millis(500), imageView);
         scaleTransition.setToX(1);

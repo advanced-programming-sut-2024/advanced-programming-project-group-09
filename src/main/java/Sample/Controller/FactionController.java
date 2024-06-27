@@ -283,7 +283,6 @@ public class FactionController {
     public void doNotSelectNewFaction(MouseEvent mouseEvent) throws Exception {
         if (currentAlert == null || !currentAlert.isShowing()) {
             if (!allImages.contains(mouseEvent.getX(), mouseEvent.getY())) {
-                System.out.println(2);
                 backToLeaderMenu();
             }
         }

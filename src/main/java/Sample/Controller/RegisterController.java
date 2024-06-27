@@ -60,7 +60,7 @@ public class RegisterController {
             alert.setTitle("Invalid username");
             alert.setHeaderText("Check Your username");
             alert.setContentText("Please enter a valid username");
-            alert.show();
+            alert.showAndWait();
             return;
         }
         if (!showPassword.getText().isEmpty()) password.setText(showPassword.getText());
@@ -73,7 +73,7 @@ public class RegisterController {
             alert.setTitle("Unacceptable nickname");
             alert.setHeaderText("Check Your nickname");
             alert.setContentText("Please enter a valid nickname");
-            alert.show();
+            alert.showAndWait();
             return;
         }
         if (Commands.EMAIL.getMatcher(email.getText()) == null) {
@@ -81,7 +81,7 @@ public class RegisterController {
             alert.setTitle("Unacceptable email");
             alert.setHeaderText("Check Your email");
             alert.setContentText("Please enter a valid email");
-            alert.show();
+            alert.showAndWait();
             return;
         }
         if (!password.getText().equals(passwordConfirmation.getText())) {

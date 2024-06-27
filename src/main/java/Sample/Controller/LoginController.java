@@ -29,7 +29,7 @@ public class LoginController {
             alert.setTitle("Invalid username");
             alert.setHeaderText("Check Your username");
             alert.setContentText("You have not registered yet");
-            alert.show();
+            alert.showAndWait();
             return;
         }
         if (!userWhoLogin.getPassword().equals(password.getText())) {
@@ -37,7 +37,7 @@ public class LoginController {
             alert.setTitle("Invalid password");
             alert.setHeaderText("Check Your password");
             alert.setContentText("Your password is incorrect");
-            alert.show();
+            alert.showAndWait();
             return;
         }
         User.setUserLoginIn(userWhoLogin);

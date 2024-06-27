@@ -4,6 +4,7 @@ import Sample.Model.User;
 import Sample.View.LeaderMenu;
 import Sample.View.LoginMenu;
 import Sample.View.ProfileMenu;
+import Sample.View.StartNewGameMenu;
 import javafx.fxml.FXML;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
@@ -24,7 +25,8 @@ public class MainController {
     }
 
     public void startNewGame() throws Exception {
-
+        StartNewGameMenu startNewGameMenu = new StartNewGameMenu();
+        startNewGameMenu.start(ApplicationController.getStage());
     }
 
     public void backToLoginMenu() throws Exception {
