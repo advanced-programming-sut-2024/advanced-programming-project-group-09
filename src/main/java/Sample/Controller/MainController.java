@@ -21,7 +21,7 @@ public class MainController {
 
     public void initialize() {
         username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!");
-        gameController.loadGame();
+//        gameController.loadGame();
     }
 
     public void startNewGame() throws Exception {

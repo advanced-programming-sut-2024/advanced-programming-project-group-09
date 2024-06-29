@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.LeaderController">
+   <children>
+      <Label fx:id="faction" alignment="CENTER" layoutX="270.0" layoutY="4.0" prefHeight="50.0" prefWidth="260.0" text="northen" textFill="#00ff0e">
+         <font>
+            <Font name="Bodoni MT Condensed" size="35.0" />
+         </font></Label>
+      <ImageView fx:id="factionImage" fitHeight="50.0" fitWidth="40.0" layoutX="278.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="sentence" alignment="CENTER" layoutY="54.0" prefHeight="28.0" prefWidth="800.0" text="Keeps a random Unit Card out after each round" textFill="RED">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font></Label>
+      <HBox layoutX="35.0" layoutY="112.0" prefHeight="260.0" prefWidth="732.0" spacing="20">
+         <children>
+            <StackPane fx:id="border1" prefHeight="260.0" prefWidth="130.0">
+               <children>
+                  <ImageView fx:id="image1" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border2" prefHeight="260.0" prefWidth="130.0">
+               <children>
+                  <ImageView fx:id="image2" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border3" prefHeight="260.0" prefWidth="130.0">
+               <children>
+                  <ImageView fx:id="image3" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border4" prefHeight="260.0" prefWidth="130.0">
+               <children>
+                  <ImageView fx:id="image4" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="border5" prefHeight="260.0" prefWidth="130.0">
+               <children>
+                  <ImageView fx:id="image5" fitHeight="260.0" fitWidth="130.0" onMouseClicked="#changeLeader" onMouseEntered="#focusOnImage" onMouseExited="#unFocus" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+      <Button layoutX="99.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#changeFaction" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: PINK;" text="Change Faction" />
+      <Label fx:id="cardName" alignment="CENTER" layoutX="132.0" layoutY="458.0" prefHeight="18.0" prefWidth="537.0" text="cardName" textFill="#eaff00">
+         <font>
+            <Font name="Ravie" size="18.0" />
+         </font></Label>
+      <Button layoutX="315.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#goToDeckMenu" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: PURPLE;" text="Go to Deck menu" />
+      <Label fx:id="ability" alignment="CENTER" contentDisplay="CENTER" layoutX="99.0" layoutY="487.0" prefHeight="58.0" prefWidth="600.0" text="Ability" textAlignment="CENTER" textFill="#00fffc" wrapText="true">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="528.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#goToGame" prefHeight="42.0" prefWidth="170.0" style="-fx-background-color: BROWN;" text="Ready to play" />
+   </children>
+</AnchorPane>
