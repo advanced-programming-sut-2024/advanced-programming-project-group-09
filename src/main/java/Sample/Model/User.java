@@ -24,6 +24,9 @@ public class User {
     private int draws;
     private int loses;
     private double maxScore;
+    private User competitor;
+    private GameBattleField lastGameBattleField;
+    private final ArrayList<GameBattleField> allGameBattleField = new ArrayList<>();
     private static final ArrayList<User> allUsers = new ArrayList<>();
     private static User userLoginIn;
     private HashMap<String, String> securityQuestionsAndAnswers = new HashMap<>();
@@ -33,16 +36,6 @@ public class User {
 
     private final ArrayList<CommonCard> commonCardsInDeck = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsInDeck = new ArrayList<>();
-    private final ArrayList<CommonCard> commonCardInBattleField = new ArrayList<>();
-    private final ArrayList<SpecialCard> specialCardsBattleField = new ArrayList<>();
-    private final ArrayList<CommonCard> closeCombatBattleField = new ArrayList<>();
-    private final ArrayList<CommonCard> commonCardsInDiscard = new ArrayList<>();
-    private final ArrayList<SpecialCard> specialCardsDiscard = new ArrayList<>();
-    private final ArrayList<CommonCard> siegeIsPlayed = new ArrayList<>();
-    private final ArrayList<CommonCard> rangedIsPlayed = new ArrayList<>();
-    private SpecialCard specialFieldInCloseCombat = null;
-    private SpecialCard specialFieldInSiege = null;
-    private SpecialCard specialFieldInRanged = null;
 
     public User(String username, String password, String email, String nickname) {
         this.username = username;
@@ -80,10 +73,6 @@ public class User {
 
     public Leader getFactionLeader() {
         return factionLeader;
-    }
-
-    public ArrayList<SpecialCard> getSpecialCardsBattleField() {
-        return specialCardsBattleField;
     }
 
     public void setUsername(String username) {
@@ -131,18 +120,6 @@ public class User {
         this.factionSelected = factionSelected;
     }
 
-    public void setSpecialFieldInCloseCombat(SpecialCard specialFieldInCloseCombat) {
-        this.specialFieldInCloseCombat = specialFieldInCloseCombat;
-    }
-
-    public void setSpecialFieldInSiege(SpecialCard specialFieldInSiege) {
-        this.specialFieldInSiege = specialFieldInSiege;
-    }
-
-    public void setSpecialFieldInRanged(SpecialCard specialFieldInRanged) {
-        this.specialFieldInRanged = specialFieldInRanged;
-    }
-
     public Faction getFactionSelected() {
         return factionSelected;
     }
@@ -155,115 +132,19 @@ public class User {
         return specialCardsInDeck;
     }
 
-    public ArrayList<CommonCard> getCommonCardInBattleField() {
-        return commonCardInBattleField;
-    }
-
-    public ArrayList<SpecialCard> getSpecialCardsCanPlay() {
-        return specialCardsBattleField;
-    }
-
-    public ArrayList<CommonCard> getCommonCardsInDiscard() {
-        return commonCardsInDiscard;
-    }
-
-    public ArrayList<SpecialCard> getSpecialCardsDiscard() {
-        return specialCardsDiscard;
-    }
-
-    public ArrayList<CommonCard> getCloseCombatBattleField() {
-        return closeCombatBattleField;
-    }
-
-    public ArrayList<CommonCard> getSiegeIsPlayed() {
-        return siegeIsPlayed;
-    }
-
-    public ArrayList<CommonCard> getRangedIsPlayed() {
-        return rangedIsPlayed;
-    }
-
-    public SpecialCard getSpecialFieldInCloseCombat() {
-        return specialFieldInCloseCombat;
-    }
-
-    public SpecialCard getSpecialFieldInSiege() {
-        return specialFieldInSiege;
-    }
-
-    public SpecialCard getSpecialFieldInRanged() {
-        return specialFieldInRanged;
-    }
-
     public void addCardToCommonCardsInDeck(CommonCard commonCard) {
         commonCardsInDeck.add(commonCard);
-    }
-
-    public void addCardToCommonCardsInDiscard(CommonCard commonCard) {
-        commonCardsInDiscard.add(commonCard);
-    }
-
-    public void addCardToCommonCardsInBattleField(CommonCard commonCard) {
-        commonCardInBattleField.add(commonCard);
     }
 
     public void addCardToSpecialCardsInDeck(SpecialCard specialCard) {
         specialCardsInDeck.add(specialCard);
     }
 
-    public void addCardToSpecialCardsInDiscard(SpecialCard specialCard) {
-        specialCardsDiscard.add(specialCard);
-    }
-
-    public void addCardToSpecialCardsInBattleField(SpecialCard specialCard) {
-        specialCardsBattleField.add(specialCard);
-    }
-
-    public void addCardToCommonCardsInCloseCombat(CommonCard commonCard) {
-        closeCombatBattleField.add(commonCard);
-    }
-
-    public void addCardToCommonCardsInSiege(CommonCard commonCard) {
-        siegeIsPlayed.add(commonCard);
-    }
-
-    public void addCardToCommonCardsInRanged(CommonCard commonCard) {
-        closeCombatBattleField.add(commonCard);
-    }
-
     public void removeCardToCommonCardsInDeck(CommonCard commonCard) {
 
     }
 
-    public void removeCardToCommonCardsInDiscard(CommonCard commonCard) {
-
-    }
-
-    public void removeCardToCommonCardsInBattleField(CommonCard commonCard) {
-
-    }
-
     public void removeCardToSpecialCardsInDeck(SpecialCard specialCard) {
-
-    }
-
-    public void removeCardToSpecialCardsInDiscard(SpecialCard specialCard) {
-
-    }
-
-    public void removeCardToSpecialCardsInBattleField(SpecialCard specialCard) {
-
-    }
-
-    public void removeCardToCommonCardsInCloseCombat(CommonCard commonCard) {
-
-    }
-
-    public void removeCardToCommonCardsInSiege(CommonCard commonCard) {
-
-    }
-
-    public void removeCardToCommonCardsInRanged(CommonCard commonCard) {
 
     }
 
@@ -315,6 +196,30 @@ public class User {
             }
         });
         return allUsers.indexOf(this);
+    }
+
+    public User getCompetitor() {
+        return competitor;
+    }
+
+    public void setCompetitor(User competitor) {
+        this.competitor = competitor;
+    }
+
+    public GameBattleField getLastGameBattleField() {
+        return lastGameBattleField;
+    }
+
+    public void setLastGameBattleField(GameBattleField lastGameBattleField) {
+        this.lastGameBattleField = lastGameBattleField;
+    }
+
+    public ArrayList<GameBattleField> getAllGameBattleField() {
+        return allGameBattleField;
+    }
+
+    public void addToAllGameBattleField(GameBattleField gameBattleField) {
+        allGameBattleField.add(gameBattleField);
     }
 
     public void saveUserData(String filePath) {

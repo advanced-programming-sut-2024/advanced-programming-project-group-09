@@ -220,15 +220,6 @@ ImageView {
     -fx-font-weight: bold;
     -fx-text-fill: black;
 }
-.counter {
-    -fx-background-color: white;
-    -fx-font-family: "Comic Sans MS";
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: black;
-    -fx-alignment: Bottom_Right;
-    -fx-text-alignment: Bottom_Right;
-}
 
 .player2 {
     -fx-text-fill: darkorchid;
