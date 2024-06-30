@@ -54,14 +54,12 @@ public class User {
 
     static {
         loadUsers();
-    }
-
-    static {
         File dir = new File(DECKS_DIR);
         if (!dir.exists()) {
             dir.mkdirs();
         }
     }
+  
     public User(String username, String password, String email, String nickname) {
         this.username = username;
         this.password = password;
@@ -391,7 +389,6 @@ public class User {
             e.printStackTrace();
         }
     }
-
 
     public void saveDeckToFile(String filePath) {
         File file = new File(filePath);

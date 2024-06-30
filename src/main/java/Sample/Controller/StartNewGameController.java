@@ -31,7 +31,13 @@ public class StartNewGameController {
             alert.showAndWait();
             return;
         }
-        User.setUserLoginIn(User.getUserByUsername(competitorUsername));
+        User competitor = User.getUserByUsername(competitorUsername);
+        User.getUserLoginIn().setCompetitor(competitor);
+        assert competitor != null;
+        competitor.setCompetitor(User.getUserLoginIn());
+        User.setUserLoginIn(competitor);
+//        GameMenu gameMenu = new GameMenu();
+//        gameMenu.start(ApplicationController.getStage());
         LeaderMenu leaderMenu = new LeaderMenu();
         leaderMenu.start(ApplicationController.getStage());
     }

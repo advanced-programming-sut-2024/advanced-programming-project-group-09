@@ -17,4 +17,8 @@ module approj1 {
     opens Sample.CardEnums to com.google.gson;
 
     exports Sample.Model;
+    exports Sample.Controller.ChooseCard;
+    opens Sample.Controller.ChooseCard to javafx.fxml;
+    exports Sample.View.ChooseCard;
+    opens Sample.View.ChooseCard to javafx.fxml;
 }

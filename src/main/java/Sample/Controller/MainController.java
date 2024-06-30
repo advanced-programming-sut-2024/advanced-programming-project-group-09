@@ -60,7 +60,5 @@ public class MainController {
     }
 
     public void goToDeckMenu(MouseEvent mouseEvent) {
-
     }
 }
-
