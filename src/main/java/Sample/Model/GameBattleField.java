@@ -18,22 +18,4 @@ public class GameBattleField {
         this.user2 = user2;
     }
 
-    public void saveGameState(String filePath) {
-        Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter(filePath)) {
-            gson.toJson(this, writer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static GameBattleField loadGameState(String filePath) {
-        Gson gson = new Gson();
-        try (FileReader reader = new FileReader(filePath)) {
-            return gson.fromJson(reader, GameBattleField.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

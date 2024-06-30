@@ -13,7 +13,8 @@ module approj1 {
     opens Sample.View to javafx.fxml;
     exports Sample.Controller;
     opens Sample.Controller to javafx.fxml;
-    opens Sample.Model to javafx.base;
+    opens Sample.Model to com.google.gson, javafx.base;
+    opens Sample.CardEnums to com.google.gson;
 
     exports Sample.Model;
 }

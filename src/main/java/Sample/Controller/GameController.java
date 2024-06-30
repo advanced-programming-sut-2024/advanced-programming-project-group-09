@@ -99,15 +99,4 @@ public class GameController {
 
     }
 
-    public void endGame() {
-        // Save game state and user data when the game ends
-        gameBattleField.saveGameState("src/main/resources/gameState.json");
-        user.saveUserData("src/main/resources/userData.json");
-    }
-
-    public void loadGame() {
-        // Load game state and user data when starting the game
-        gameBattleField = GameBattleField.loadGameState("src/main/resources/gameState.json");
-        user = User.loadUserData("src/main/resources/userData.json");
-    }
 }

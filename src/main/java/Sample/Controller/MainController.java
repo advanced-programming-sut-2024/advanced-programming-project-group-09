@@ -15,13 +15,11 @@ import javafx.scene.input.MouseEvent;
 import java.util.Objects;
 
 public class MainController {
-    private GameController gameController = new GameController();
     @FXML
     private Label username;
 
     public void initialize() {
         username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!");
-        gameController.loadGame();
     }
 
     public void startNewGame() throws Exception {
