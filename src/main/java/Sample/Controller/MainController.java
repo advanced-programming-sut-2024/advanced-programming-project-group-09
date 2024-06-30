@@ -18,11 +18,8 @@ public class MainController {
     @FXML
     private Label username;
 
-    private GameController gameController = new GameController();
-
     public void initialize() {
         username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!");
-        gameController.loadGame(); // Ensure game state is loaded
     }
 
     public void startNewGame() throws Exception {

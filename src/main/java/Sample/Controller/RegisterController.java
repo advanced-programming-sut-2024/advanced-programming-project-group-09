@@ -33,7 +33,6 @@ public class RegisterController {
     @FXML
     private TextField email;
 
-    private GameController gameController = new GameController();
     public void initialize() {
         setPasswordShowImage("Images/HidePassword.png");
         username.textProperty().addListener(((observableValue, s, t1) -> {
@@ -56,11 +55,7 @@ public class RegisterController {
 
     public void register() throws Exception {
         if (Commands.UserName.getMatcher(username.getText()) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Invalid username");
-            alert.setHeaderText("Check Your username");
-            alert.setContentText("Please enter a valid username");
-            alert.showAndWait();
+            showAlert("Invalid username", "Check Your username", "Please enter a valid username");
             return;
         }
         if (!showPassword.getText().isEmpty()) password.setText(showPassword.getText());
@@ -69,50 +64,41 @@ public class RegisterController {
             return;
         }
         if (Commands.Nickname.getMatcher(nickname.getText()) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable nickname");
-            alert.setHeaderText("Check Your nickname");
-            alert.setContentText("Please enter a valid nickname");
-            alert.showAndWait();
+            showAlert("Unacceptable nickname", "Check Your nickname", "Please enter a valid nickname");
             return;
         }
         if (Commands.EMAIL.getMatcher(email.getText()) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable email");
-            alert.setHeaderText("Check Your email");
-            alert.setContentText("Please enter a valid email");
-            alert.showAndWait();
+            showAlert("Unacceptable email", "Check Your email", "Please enter a valid email");
             return;
         }
         if (!password.getText().equals(passwordConfirmation.getText())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Error password");
-            alert.setHeaderText("Check Your confirmation password");
-            alert.setContentText("Your password does not match with confirmation password");
-            alert.showAndWait();
+            showAlert("Error password", "Check Your confirmation password", "Your password does not match with confirmation password");
             password.setText("");
             showPassword.setText("");
             passwordConfirmation.setText("");
             return;
         }
         if (User.getUserByUsername(username.getText()) != null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Duplicate username");
-            alert.setHeaderText("This username is already registered");
-            alert.setContentText("Back to login Menu or set new username");
-            alert.showAndWait();
+            showAlert("Duplicate username", "This username is already registered", "Back to login Menu or set new username");
             changeUsername(username.getText());
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Create account");
-        alert.setHeaderText("Account successfully created");
-        alert.show();
+
         User newUser = new User(username.getText(), password.getText(), email.getText(), nickname.getText());
-        // Save user data after registration
-        gameController.endGame();
+        User.saveUsers(); // Save all users
+
+        showAlert("Create account", "Account successfully created", "");
+
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.start(ApplicationController.getStage());
+    }
+
+    private void showAlert(String title, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
     }
 
     private void changeUsername(String oldUsername) {
@@ -129,43 +115,23 @@ public class RegisterController {
 
     private void showPasswordErrors(String password) {
         if (Commands.PasswordLength.getMatcher(password) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable password");
-            alert.setHeaderText("Your password is too short and must contain at least 8 characters");
-            alert.setContentText("Please enter a strong password");
-            alert.showAndWait();
+            showAlert("Unacceptable password", "Your password is too short and must contain at least 8 characters", "Please enter a strong password");
             return;
         }
         if (Commands.PasswordLowerCaseUsed.getMatcher(password) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable password");
-            alert.setHeaderText("Your password must contain lowercase characters");
-            alert.setContentText("Please enter a strong password");
-            alert.showAndWait();
+            showAlert("Unacceptable password", "Your password must contain lowercase characters", "Please enter a strong password");
             return;
         }
         if (Commands.PasswordUpperCaseUsed.getMatcher(password) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable password");
-            alert.setHeaderText("Your password must contain Uppercase characters");
-            alert.setContentText("Please enter a strong password");
-            alert.showAndWait();
+            showAlert("Unacceptable password", "Your password must contain Uppercase characters", "Please enter a strong password");
             return;
         }
         if (Commands.PasswordNumberUsed.getMatcher(password) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable password");
-            alert.setHeaderText("Your password must contain numbers");
-            alert.setContentText("Please enter a strong password");
-            alert.showAndWait();
+            showAlert("Unacceptable password", "Your password must contain numbers", "Please enter a strong password");
             return;
         }
         if (Commands.PasswordSpecialCharacterUsed.getMatcher(password) == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable password");
-            alert.setHeaderText("Your password must contain special characters");
-            alert.setContentText("Please enter a strong password");
-            alert.showAndWait();
+            showAlert("Unacceptable password", "Your password must contain special characters", "Please enter a strong password");
         }
     }
 

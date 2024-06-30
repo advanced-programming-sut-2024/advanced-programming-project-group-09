@@ -52,7 +52,6 @@ public class User {
     private static final String FILE_PATH = "users.json";
     private static final Gson gson = new Gson();
 
-    // Ensure the decks directory exists
     static {
         loadUsers();
         File dir = new File(DECKS_DIR);
@@ -60,7 +59,7 @@ public class User {
             dir.mkdirs();
         }
     }
-
+  
     public User(String username, String password, String email, String nickname) {
         this.username = username;
         this.password = password;

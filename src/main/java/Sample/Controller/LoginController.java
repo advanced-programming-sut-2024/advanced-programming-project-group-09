@@ -20,29 +20,32 @@ public class LoginController {
     @FXML
     public void initialize() {
         username.textProperty().addListener(((observableValue, s, t1) -> welcomeText.setText("Welcome " + username.getText())));
+        User.loadUsers(); // Ensure users are loaded at initialization
     }
 
     public void signIn() throws Exception {
         User userWhoLogin = User.getUserByUsername(username.getText());
         if (userWhoLogin == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Invalid username");
-            alert.setHeaderText("Check Your username");
-            alert.setContentText("You have not registered yet");
-            alert.showAndWait();
+            showAlert("Invalid username", "Check Your username", "You have not registered yet");
             return;
         }
+
         if (!userWhoLogin.getPassword().equals(password.getText())) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Invalid password");
-            alert.setHeaderText("Check Your password");
-            alert.setContentText("Your password is incorrect");
-            alert.showAndWait();
+            showAlert("Invalid password", "Check Your password", "Your password is incorrect");
             return;
         }
+
         User.setUserLoginIn(userWhoLogin);
         MainMenu mainMenu = new MainMenu();
         mainMenu.start(ApplicationController.getStage());
+    }
+
+    private void showAlert(String title, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
     }
 
     public void reset() {
@@ -58,7 +61,4 @@ public class LoginController {
         RegisterMenu registerMenu = new RegisterMenu();
         registerMenu.start(ApplicationController.getStage());
     }
-
 }
-
-
