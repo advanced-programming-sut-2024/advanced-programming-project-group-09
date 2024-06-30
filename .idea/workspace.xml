@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="StartNewGameControllerAndChangeInUserFields">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/ChooseCard/ChooseCardMonsterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/ChooseCard/ChooseCardMonsterController.java" afterDir="false" />
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="ChangeInDeck1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseCard/ChooseCardMonster.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseCard/ChooseCardMonster.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719524132253</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ChangeInDeck1">
+      <option name="closed" value="true" />
+      <created>1719737397715</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719737397715</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +139,7 @@
     <MESSAGE value="FactionAndLeaderChooseCompleted" />
     <MESSAGE value="StartNewGameWithALittleChangeInFactionAndLeader" />
     <MESSAGE value="StartNewGameControllerAndChangeInUserFields" />
-    <option name="LAST_COMMIT_MESSAGE" value="StartNewGameControllerAndChangeInUserFields" />
+    <MESSAGE value="ChangeInDeck1" />
+    <option name="LAST_COMMIT_MESSAGE" value="ChangeInDeck1" />
   </component>
 </project>

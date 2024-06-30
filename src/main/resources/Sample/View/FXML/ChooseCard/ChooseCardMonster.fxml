@@ -19,7 +19,7 @@
                             <ImageView fx:id="commanderHorn" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornSelected" />
                             <Label fx:id="commandersHornRemainderInCardCollection" alignment="TOP_LEFT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
                                 <StackPane.margin>
-                                    <Insets bottom="15" left="10" />
+                                    <Insets bottom="15"/>
                                 </StackPane.margin>
                             </Label>
                         </StackPane>
@@ -30,38 +30,80 @@
                             <ImageView fx:id="decoy" fitHeight="180" fitWidth="100" onMouseClicked="#decoySelected" />
                             <Label fx:id="decoyRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
                                 <StackPane.margin>
-                                    <Insets bottom="15" left="10" />
+                                    <Insets bottom="15"/>
                                 </StackPane.margin>
                             </Label>
                         </StackPane>
                     </VBox>
                     <VBox fx:id="mardroemVboxInCardCollection">
-                        <ImageView fx:id="mardroem" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemSelected" />
-                        <Label fx:id="mardroemRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="mardroem" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemSelected" />
+                            <Label fx:id="mardroemRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="schorchVboxInCardCollection">
-                        <ImageView fx:id="scorchImage" fitHeight="180" fitWidth="100" onMouseClicked="#schorchSelected" />
-                        <Label fx:id="schorchRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="scorchImage" fitHeight="180" fitWidth="100" onMouseClicked="#schorchSelected" />
+                            <Label fx:id="schorchRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="bitingFrostVboxInCardCollection">
-                        <ImageView fx:id="bitingFrostImage" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostSelected" />
-                        <Label fx:id="bitingFrostRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="bitingFrostImage" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostSelected" />
+                            <Label fx:id="bitingFrostRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="clearWeatherVboxInCardCollection">
-                        <ImageView fx:id="clearWeatherImage" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherSelected" />
-                        <Label fx:id="clearWeatherRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="clearWeatherImage" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherSelected" />
+                            <Label fx:id="clearWeatherRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="impenetrableFrogVboxInCardCollection">
-                        <ImageView fx:id="impenetrableFog" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogSelected" />
-                        <Label fx:id="impenetrableFrogRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="impenetrableFog" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogSelected" />
+                            <Label fx:id="impenetrableFrogRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="skelligeStormVboxInCardCollection">
-                        <ImageView fx:id="skelligeStorm" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStormSelected" />
-                        <Label fx:id="skelligeStormRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="skelligeStorm" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStormSelected" />
+                            <Label fx:id="skelligeStormRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="torrentialRainVboxInCardCollection">
-                        <ImageView fx:id="torrentialRain" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainSelected" />
-                        <Label fx:id="torrentialRainRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
+                        <StackPane>
+                            <ImageView fx:id="torrentialRain" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainSelected" />
+                            <Label fx:id="torrentialRainRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="neutral_ciriVboxInCardCollection">
                         <ImageView fx:id="neutral_ciri" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriSelected" />
@@ -96,9 +138,14 @@
                         <ImageView fx:id="neutral_emiel" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielSelected" />
                     </VBox>
                     <VBox fx:id="neutral_gaunter_odimm_darknessVboxInCardCollection">
-                        <ImageView fx:id="neutral_gaunter_odimm_darkness" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessSelected" />
-                        <Label fx:id="neutral_gaunter_odimm_darknessRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
-
+                        <StackPane>
+                            <ImageView fx:id="neutral_gaunter_odimm_darkness" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessSelected" />
+                            <Label fx:id="neutral_gaunter_odimm_darknessRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="neutral_gaunter_odimmVboxInCardCollection">
                         <ImageView fx:id="neutral_gaunter_odimm" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmSelected" />
@@ -263,40 +310,94 @@
             <Pane fx:id="inDeckCardPane">
                 <!--TODO                copy for all decks-->
                 <VBox fx:id="commandersHornVboxInDeck">
-                    <ImageView fx:id="commanderHornImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornUnselected" />
-                    <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="commanderHornImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornUnselected" />
+                        <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="decoyVboxInDeck">
-                    <ImageView fx:id="decoyImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#decoyUnselected" />
-                    <Label fx:id="decoyRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="decoyImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#decoyUnselected" />
+                        <Label fx:id="decoyRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="mardroemVboxInDeck">
-                    <ImageView fx:id="mardroemImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemUnselected" />
-                    <Label fx:id="mardroemRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="mardroemImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemUnselected" />
+                        <Label fx:id="mardroemRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="schorchVboxInDeck">
-                    <ImageView fx:id="scorchImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#schorchUnselected" />
-                    <Label fx:id="schorchRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="scorchImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#schorchUnselected" />
+                        <Label fx:id="schorchRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                            </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="bitingFrostVboxInDeck">
-                    <ImageView fx:id="bitingFrostImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostUnselected" />
-                    <Label fx:id="bitingFrostRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="bitingFrostImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostUnselected" />
+                        <Label fx:id="bitingFrostRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="clearWeatherVboxInDeck">
-                    <ImageView fx:id="clearWeatherImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherUnselected" />
-                    <Label fx:id="clearWeatherRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="clearWeatherImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherUnselected" />
+                        <Label fx:id="clearWeatherRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="impenetrableFrogVboxInDeck">
-                    <ImageView fx:id="impenetrableFogInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogUnselected" />
-                    <Label fx:id="impenetrableFrogRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="impenetrableFogInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogUnselected" />
+                        <Label fx:id="impenetrableFrogRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="skelligeStormVboxInDeck">
-                    <ImageView fx:id="skelligeStormInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStromUnselected" />
-                    <Label fx:id="skelligeStormRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="skelligeStormInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStromUnselected" />
+                        <Label fx:id="skelligeStormRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
                 <VBox fx:id="torrentialRainVboxInDeck">
-                    <ImageView fx:id="torrentialRainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainUnselected" />
-                    <Label fx:id="torrentialRainRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
+                    <StackPane>
+                        <ImageView fx:id="torrentialRainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainUnselected" />
+                        <Label fx:id="torrentialRainRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
 
                 <!--            TODO     neutral-->
@@ -336,9 +437,14 @@
                     <ImageView fx:id="neutral_emielInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_gaunter_odimm_darknessVboxInDeck">
-                    <ImageView fx:id="neutral_gaunter_odimm_darknessInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessUnselected" />
-                    <Label fx:id="neutral_gaunter_odimm_darknessRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
-
+                    <StackPane>
+                        <ImageView fx:id="neutral_gaunter_odimm_darknessInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessUnselected" />
+                        <Label fx:id="neutral_gaunter_odimm_darknessRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
                 </VBox>
 
                 <VBox fx:id="neutral_gaunter_odimmVboxInDeck">
