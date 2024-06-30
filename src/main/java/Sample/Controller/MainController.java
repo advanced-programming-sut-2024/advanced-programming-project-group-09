@@ -15,24 +15,17 @@ import javafx.scene.input.MouseEvent;
 import java.util.Objects;
 
 public class MainController {
-    private GameController gameController = new GameController();
     @FXML
     private Label username;
 
+    private GameController gameController = new GameController();
+
     public void initialize() {
         username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!");
-//        gameController.loadGame();
+        gameController.loadGame(); // Ensure game state is loaded
     }
 
     public void startNewGame() throws Exception {
-        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Unacceptable deck");
-            alert.setHeaderText("Change your deck via the deck menu");
-            alert.setContentText("This deck is unacceptable for entry into the game");
-            alert.showAndWait();
-            return;
-        }
         StartNewGameMenu startNewGameMenu = new StartNewGameMenu();
         startNewGameMenu.start(ApplicationController.getStage());
     }
@@ -52,7 +45,7 @@ public class MainController {
             alert.setTitle("Impossible action");
             alert.setHeaderText("You do not have an account");
             alert.setContentText("Your entry to the profile menu is not possible");
-            alert.showAndWait();
+            alert.show();
             return;
         }
         ProfileMenu profileMenu = new ProfileMenu();
@@ -70,7 +63,5 @@ public class MainController {
     }
 
     public void goToDeckMenu(MouseEvent mouseEvent) {
-
     }
 }
-
