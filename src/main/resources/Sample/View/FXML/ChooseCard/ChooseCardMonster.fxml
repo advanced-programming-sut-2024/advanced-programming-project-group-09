@@ -1,224 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Sample.Controller.ChooseCard.ChooseCardMonsterController">
+<VBox prefHeight="700.0" prefWidth="950.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.ChooseCardController">
     <HBox spacing="10">
         <VBox>
-            <Label styleClass="headers" text="Card Collection"/>
+            <Label styleClass="headers" text="Card Collection" />
 
             <ScrollPane minWidth="320" prefWidth="320">
                 <Pane fx:id="cardCollectionPane">
                     <!--TODO      :Neutral should be          copy for all decks-->
                     <VBox fx:id="commandersHornVboxInCardCollection">
-                        <ImageView fx:id="commanderHorn" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornSelected"/>
-                        <Label fx:id="commandersHornRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <StackPane>
+                            <ImageView fx:id="commanderHorn" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornSelected" />
+                            <Label fx:id="commandersHornRemainderInCardCollection" alignment="TOP_LEFT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15" left="10" />
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+
                     </VBox>
                     <VBox fx:id="decoyVboxInCardCollection">
-                        <ImageView fx:id="decoy" fitHeight="180" fitWidth="100" onMouseClicked="#decoySelected"/>
-                        <Label fx:id="decoyRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <StackPane>
+                            <ImageView fx:id="decoy" fitHeight="180" fitWidth="100" onMouseClicked="#decoySelected" />
+                            <Label fx:id="decoyRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15" left="10" />
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
                     </VBox>
                     <VBox fx:id="mardroemVboxInCardCollection">
-                        <ImageView fx:id="mardroem" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemSelected"/>
-                        <Label fx:id="mardroemRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="mardroem" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemSelected" />
+                        <Label fx:id="mardroemRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="schorchVboxInCardCollection">
-                        <ImageView fx:id="scorchImage" fitHeight="180" fitWidth="100" onMouseClicked="#schorchSelected"/>
-                        <Label fx:id="schorchRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="scorchImage" fitHeight="180" fitWidth="100" onMouseClicked="#schorchSelected" />
+                        <Label fx:id="schorchRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="bitingFrostVboxInCardCollection">
-                        <ImageView fx:id="bitingFrostImage" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostSelected"/>
-                        <Label fx:id="bitingFrostRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="bitingFrostImage" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostSelected" />
+                        <Label fx:id="bitingFrostRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="clearWeatherVboxInCardCollection">
-                        <ImageView fx:id="clearWeatherImage" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherSelected"/>
-                        <Label fx:id="clearWeatherRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="clearWeatherImage" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherSelected" />
+                        <Label fx:id="clearWeatherRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="impenetrableFrogVboxInCardCollection">
-                        <ImageView fx:id="impenetrableFog" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogSelected"/>
-                        <Label fx:id="impenetrableFrogRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="impenetrableFog" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogSelected" />
+                        <Label fx:id="impenetrableFrogRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="skelligeStormVboxInCardCollection">
-                        <ImageView fx:id="skelligeStorm" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStormSelected"/>
-                        <Label fx:id="skelligeStormRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="skelligeStorm" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStormSelected" />
+                        <Label fx:id="skelligeStormRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="torrentialRainVboxInCardCollection">
-                        <ImageView fx:id="torrentialRain" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainSelected"/>
-                        <Label fx:id="torrentialRainRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="torrentialRain" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainSelected" />
+                        <Label fx:id="torrentialRainRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
                     </VBox>
                     <VBox fx:id="neutral_ciriVboxInCardCollection">
-                        <ImageView fx:id="neutral_ciri" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriSelected"/>
+                        <ImageView fx:id="neutral_ciri" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriSelected" />
                     </VBox>
                     <VBox fx:id="neutral_geraltVboxInCardCollection">
-                        <ImageView fx:id="neutral_geralt" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltSelected"/>
+                        <ImageView fx:id="neutral_geralt" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltSelected" />
                     </VBox>
 
                     <VBox fx:id="neutral_chortVboxInCardCollection">
-                        <ImageView fx:id="neutral_chort" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortSelected"/>
+                        <ImageView fx:id="neutral_chort" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortSelected" />
                     </VBox>
 
                     <VBox fx:id="neutral_yenneferVboxInCardCollection">
-                        <ImageView fx:id="neutral_yennefer" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferSelected"/>
+                        <ImageView fx:id="neutral_yennefer" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferSelected" />
                     </VBox>
                     <VBox fx:id="neutral_villenVboxInCardCollection">
-                        <ImageView fx:id="neutral_villen" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_villenSelected"/>
+                        <ImageView fx:id="neutral_villen" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_villenSelected" />
                     </VBox>
                     <VBox fx:id="neutral_trissVboxInCardCollection">
-                        <ImageView fx:id="neutral_triss" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_trissSelected"/>
+                        <ImageView fx:id="neutral_triss" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_trissSelected" />
                     </VBox>
                     <VBox fx:id="neutral_vesemirVboxInCardCollection">
-                        <ImageView fx:id="neutral_vesemir" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_vesemirSelected"/>
+                        <ImageView fx:id="neutral_vesemir" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_vesemirSelected" />
                     </VBox>
                     <VBox fx:id="neutral_olgierdVboxInCardCollection">
-                        <ImageView fx:id="neutral_olgierd" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_olgierdSelected"/>
+                        <ImageView fx:id="neutral_olgierd" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_olgierdSelected" />
                     </VBox>
                     <VBox fx:id="neutral_zoltanVboxInCardCollection">
-                        <ImageView fx:id="neutral_zoltan" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_zoltanSelected"/>
+                        <ImageView fx:id="neutral_zoltan" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_zoltanSelected" />
                     </VBox>
                     <VBox fx:id="neutral_emielVboxInCardCollection">
-                        <ImageView fx:id="neutral_emiel" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielSelected"/>
+                        <ImageView fx:id="neutral_emiel" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielSelected" />
                     </VBox>
                     <VBox fx:id="neutral_gaunter_odimm_darknessVboxInCardCollection">
-                        <ImageView fx:id="neutral_gaunter_odimm_darkness" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessSelected"/>
-                        <Label fx:id="neutral_gaunter_odimm_darknessRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X"/>
+                        <ImageView fx:id="neutral_gaunter_odimm_darkness" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessSelected" />
+                        <Label fx:id="neutral_gaunter_odimm_darknessRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" />
 
                     </VBox>
                     <VBox fx:id="neutral_gaunter_odimmVboxInCardCollection">
-                        <ImageView fx:id="neutral_gaunter_odimm" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmSelected"/>
+                        <ImageView fx:id="neutral_gaunter_odimm" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmSelected" />
                     </VBox>
 
 
                     <VBox fx:id="neutral_dandelionVboxInCardCollection">
-                        <ImageView fx:id="neutral_dandelion" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionSelected"/>
+                        <ImageView fx:id="neutral_dandelion" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionSelected" />
                     </VBox>
                     <VBox fx:id="neutral_cowVboxInCardCollection">
-                        <ImageView fx:id="neutral_cow" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_cowSelected"/>
+                        <ImageView fx:id="neutral_cow" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_cowSelected" />
                     </VBox>
                     <VBox fx:id="neutral_mysterious_elfVboxInCardCollection">
-                        <ImageView fx:id="neutral_mysterious_elfInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfSelected"/>
+                        <ImageView fx:id="neutral_mysterious_elfInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfSelected" />
                     </VBox>
                     <!--                    TODO   Neutral should be          copy for all decks-->
 
                     <!-- TODO: MONSTER-->
 
                     <VBox fx:id="monsters_leshenVboxInCardCollection">
-                        <ImageView fx:id="monsters_leshen" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_leshenSelected"/>
+                        <ImageView fx:id="monsters_leshen" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_leshenSelected" />
                     </VBox>
                     <VBox fx:id="monsters_draugVboxInCardCollection">
-                        <ImageView fx:id="monsters_draug" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_draugSelected"/>
+                        <ImageView fx:id="monsters_draug" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_draugSelected" />
                     </VBox>
                     <VBox fx:id="monsters_imlerithVboxInCardCollection">
-                        <ImageView fx:id="monsters_imlerith" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_imlerithSelected"/>
+                        <ImageView fx:id="monsters_imlerith" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_imlerithSelected" />
                     </VBox>
                     <VBox fx:id="monsters_kayranVboxInCardCollection">
-                        <ImageView fx:id="monsters_kayran" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_kayranSelected"/>
+                        <ImageView fx:id="monsters_kayran" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_kayranSelected" />
                     </VBox>
 
                     <VBox fx:id="monsters_toadVboxInCardCollection">
-                        <ImageView fx:id="monsters_toad" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_toadSelected"/>
-                    </VBox>
-                    <VBox fx:id="monsters_arachas_behemothVboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas_behemoth" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_behemothSelected"/>
+                        <ImageView fx:id="monsters_toad" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_toadSelected" />
                     </VBox>
                     <VBox fx:id="monsters_poroniecVboxInCardCollection">
-                        <ImageView fx:id="monsters_poroniec" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecSelected"/>
+                        <ImageView fx:id="monsters_poroniec" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecSelected" />
+                    </VBox>
+                    <VBox fx:id="monsters_arachas_behemothVboxInCardCollection">
+                        <ImageView fx:id="monsters_arachas_behemoth" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_behemothSelected" />
                     </VBox>
                     <VBox fx:id="monsters_arachasVboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasSelected"/>
+                        <ImageView fx:id="monsters_arachas" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasSelected" />
                     </VBox>
                     <VBox fx:id="monsters_arachas_1VboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Selected"/>
+                        <ImageView fx:id="monsters_arachas_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Selected" />
                     </VBox>
                     <VBox fx:id="monsters_arachas_2VboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Selected"/>
+                        <ImageView fx:id="monsters_arachas_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Selected" />
                     </VBox>
                     <VBox fx:id="monsters_earth_elementalVboxInCardCollection">
-                        <ImageView fx:id="monsters_earth_elemental" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_earth_elementalSelected"/>
+                        <ImageView fx:id="monsters_earth_elemental" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_earth_elementalSelected" />
                     </VBox>
                     <VBox fx:id="monsters_fiendVboxInCardCollection">
-                        <ImageView fx:id="monsters_fiend" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fiendSelected"/>
+                        <ImageView fx:id="monsters_fiend" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fiendSelected" />
                     </VBox>
                     <VBox fx:id="monsters_fire_elementalVboxInCardCollection">
-                        <ImageView fx:id="monsters_fire_elemental" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fire_elementalSelected"/>
+                        <ImageView fx:id="monsters_fire_elemental" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fire_elementalSelected" />
                     </VBox>
                     <VBox fx:id="monsters_forktailVboxInCardCollection">
-                        <ImageView fx:id="monsters_forktail" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_forktailSelected"/>
+                        <ImageView fx:id="monsters_forktail" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_forktailSelected" />
                     </VBox>
                     <VBox fx:id="monsters_frightenerVboxInCardCollection">
-                        <ImageView fx:id="monsters_frightener" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frightenerSelected"/>
+                        <ImageView fx:id="monsters_frightener" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frightenerSelected" />
                     </VBox>
                     <VBox fx:id="monsters_gravehagVboxInCardCollection">
-                        <ImageView fx:id="monsters_gravehag" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gravehagSelected"/>
+                        <ImageView fx:id="monsters_gravehag" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gravehagSelected" />
                     </VBox>
                     <VBox fx:id="monsters_frost_giantVboxInCardCollection">
-                        <ImageView fx:id="monsters_frost_giant" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frost_giantSelected"/>
+                        <ImageView fx:id="monsters_frost_giant" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frost_giantSelected" />
                     </VBox>
                     <VBox fx:id="monsters_mighty_maidenVboxInCardCollection">
-                        <ImageView fx:id="monsters_mighty_maiden" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_mighty_maidenSelected"/>
+                        <ImageView fx:id="monsters_mighty_maiden" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_mighty_maidenSelected" />
                     </VBox>
                     <VBox fx:id="monsters_katakanVboxInCardCollection">
-                        <ImageView fx:id="monsters_katakan" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_katakanSelected"/>
+                        <ImageView fx:id="monsters_katakan" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_katakanSelected" />
                     </VBox>
                     <VBox fx:id="monsters_werewolfVboxInCardCollection">
-                        <ImageView fx:id="monsters_werewolf" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_werewolfSelected"/>
+                        <ImageView fx:id="monsters_werewolf" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_werewolfSelected" />
                     </VBox>
                     <VBox fx:id="monsters_bruxaVboxInCardCollection">
-                        <ImageView fx:id="monsters_bruxa" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_bruxaSelected"/>
+                        <ImageView fx:id="monsters_bruxa" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_bruxaSelected" />
                     </VBox>
                     <VBox fx:id="monsters_ekkimaVboxInCardCollection">
-                        <ImageView fx:id="monsters_ekkima" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ekkimaSelected"/>
+                        <ImageView fx:id="monsters_ekkima" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ekkimaSelected" />
                     </VBox>
                     <VBox fx:id="monsters_flederVboxInCardCollection">
-                        <ImageView fx:id="monsters_fleder" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_flederSelected"/>
+                        <ImageView fx:id="monsters_fleder" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_flederSelected" />
                     </VBox>
                     <VBox fx:id="monsters_garkainVboxInCardCollection">
-                        <ImageView fx:id="monsters_garkain" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_garkainSelected"/>
+                        <ImageView fx:id="monsters_garkain" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_garkainSelected" />
                     </VBox>
                     <VBox fx:id="monsters_celaeno_harpyVboxInCardCollection">
-                        <ImageView fx:id="monsters_celaeno_harpy" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_celaeno_harpySelected"/>
+                        <ImageView fx:id="monsters_celaeno_harpy" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_celaeno_harpySelected" />
                     </VBox>
                     <VBox fx:id="monsters_cockatriceVboxInCardCollection">
-                        <ImageView fx:id="monsters_cockatrice" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_cockatriceSelected"/>
+                        <ImageView fx:id="monsters_cockatrice" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_cockatriceSelected" />
                     </VBox>
 
                     <VBox fx:id="monsters_endregaVboxInCardCollection">
-                        <ImageView fx:id="monsters_endrega" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_endregaSelected"/>
+                        <ImageView fx:id="monsters_endrega" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_endregaSelected" />
                     </VBox>
                     <VBox fx:id="monsters_foglingVboxInCardCollection">
-                        <ImageView fx:id="monsters_fogling" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_foglingSelected"/>
+                        <ImageView fx:id="monsters_fogling" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_foglingSelected" />
                     </VBox>
                     <VBox fx:id="monsters_wyvernVboxInCardCollection">
-                        <ImageView fx:id="monsters_wyvern" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_wyvernSelected"/>
+                        <ImageView fx:id="monsters_wyvern" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_wyvernSelected" />
                     </VBox>
                     <VBox fx:id="monsters_gargoyleVboxInCardCollection">
-                        <ImageView fx:id="monsters_gargoyle" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gargoyleSelected"/>
+                        <ImageView fx:id="monsters_gargoyle" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gargoyleSelected" />
                     </VBox>
                     <VBox fx:id="monsters_harpyVboxInCardCollection">
-                        <ImageView fx:id="monsters_harpy" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_harpySelected"/>
+                        <ImageView fx:id="monsters_harpy" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_harpySelected" />
                     </VBox>
                     <VBox fx:id="monsters_nekker_1VboxInCardCollection">
-                        <ImageView fx:id="monsters_nekker_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_1Selected"/>
+                        <ImageView fx:id="monsters_nekker_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_1Selected" />
                     </VBox>
                     <!--                  -->
 
                     <VBox fx:id="monsters_nekkerVboxInCardCollection">
-                        <ImageView fx:id="monsters_nekker" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekkerSelected"/>
+                        <ImageView fx:id="monsters_nekker" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekkerSelected" />
                     </VBox>
                     <VBox fx:id="monsters_nekker_2VboxInCardCollection">
-                        <ImageView fx:id="monsters_nekker_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_2Selected"/>
+                        <ImageView fx:id="monsters_nekker_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_2Selected" />
                     </VBox>
                     <VBox fx:id="monsters_ghoul_1VboxInCardCollection">
-                        <ImageView fx:id="monsters_ghoul_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_1Selected"/>
+                        <ImageView fx:id="monsters_ghoul_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_1Selected" />
                     </VBox>
                     <VBox fx:id="monsters_ghoul_2VboxInCardCollection">
-                        <ImageView fx:id="monsters_ghoul_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_2Selected"/>
+                        <ImageView fx:id="monsters_ghoul_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_2Selected" />
                     </VBox>
                     <VBox fx:id="monsters_ghoulVboxInCardCollection">
-                        <ImageView fx:id="monsters_ghoul" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoulSelected"/>
+                        <ImageView fx:id="monsters_ghoul" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoulSelected" />
                     </VBox>
                     <!--monster TODO: MONSTER-->
 
@@ -228,20 +241,20 @@
                 </Pane>
             </ScrollPane>
         </VBox>
-        <VBox>
-            <Text fx:id="leaderName" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Monster"/>
-            <Text style="-fx-font-size: 16px;" text="Wins any round that ends in a draw." styleClass="label"/>
-            <Button fx:id="uploadDeckButton" text="Upload Deck"/>
-            <Button fx:id="changeFactionButton" text="Change Faction"/>
-            <Button fx:id="downloadDeckButton" text="Download Deck"/>
-            <Button fx:id="startGameButton" text="Start game"/>
-            <Button onMouseClicked="#backToLeaderMenu" fx:id="backToLeaderMenu" text="Back"/>
-            <Text fx:id="numberOfAllCards" text="Number of Unit Cards: 0/22" styleClass="label"/>
-            <Text fx:id="specialCards" text="Special Cards: 0/10" styleClass="label"/>
-            <Text fx:id="heroCards" text="Hero Cards: 0" styleClass="label"/>
+        <VBox alignment="TOP_CENTER">
+            <Text fx:id="leaderName" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Monster" />
+            <Text style="-fx-font-size: 16px;" styleClass="label" text="Wins any round that ends in a draw." />
+            <Button fx:id="uploadDeckButton" text="Upload Deck" />
+            <Button fx:id="changeFactionButton" text="Change Faction" />
+            <Button fx:id="downloadDeckButton" text="Download Deck" />
+            <Button fx:id="startGameButton" text="Start game" />
+            <Button fx:id="backToLeaderMenu" text="Back" />
+            <Text fx:id="numberOfAllCards" styleClass="label" text="Number of Unit Cards: 0/22" />
+            <Text fx:id="specialCards" styleClass="label" text="Special Cards: 0/10" />
+            <Text fx:id="heroCards" styleClass="label" text="Hero Cards: 0" />
         </VBox>
         <VBox alignment="TOP_RIGHT">
-            <Label styleClass="headers" text="Deck"/>
+            <Label styleClass="headers" text="Deck" />
             <ScrollPane minWidth="320" prefWidth="320">
                 <GridPane fx:id="gridPaneInDeck" hgap="2" vgap="2">
 
@@ -250,95 +263,95 @@
             <Pane fx:id="inDeckCardPane">
                 <!--TODO                copy for all decks-->
                 <VBox fx:id="commandersHornVboxInDeck">
-                    <ImageView fx:id="commanderHornImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornUnselected"/>
-                    <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="commanderHornImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornUnselected" />
+                    <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="decoyVboxInDeck">
-                    <ImageView fx:id="decoyImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#decoyUnselected"/>
-                    <Label fx:id="decoyRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="decoyImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#decoyUnselected" />
+                    <Label fx:id="decoyRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="mardroemVboxInDeck">
-                    <ImageView fx:id="mardroemImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemUnselected"/>
-                    <Label fx:id="mardroemRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="mardroemImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemUnselected" />
+                    <Label fx:id="mardroemRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="schorchVboxInDeck">
-                    <ImageView fx:id="scorchImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#schorchUnselected"/>
-                    <Label fx:id="schorchRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="scorchImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#schorchUnselected" />
+                    <Label fx:id="schorchRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="bitingFrostVboxInDeck">
-                    <ImageView fx:id="bitingFrostImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostUnselected"/>
-                    <Label fx:id="bitingFrostRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="bitingFrostImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostUnselected" />
+                    <Label fx:id="bitingFrostRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="clearWeatherVboxInDeck">
-                    <ImageView fx:id="clearWeatherImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherUnselected"/>
-                    <Label fx:id="clearWeatherRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="clearWeatherImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherUnselected" />
+                    <Label fx:id="clearWeatherRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="impenetrableFrogVboxInDeck">
-                    <ImageView fx:id="impenetrableFogInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogUnselected"/>
-                    <Label fx:id="impenetrableFrogRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="impenetrableFogInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogUnselected" />
+                    <Label fx:id="impenetrableFrogRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="skelligeStormVboxInDeck">
-                    <ImageView fx:id="skelligeStormInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStromUnselected"/>
-                    <Label fx:id="skelligeStormRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="skelligeStormInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStromUnselected" />
+                    <Label fx:id="skelligeStormRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
                 <VBox fx:id="torrentialRainVboxInDeck">
-                    <ImageView fx:id="torrentialRainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainUnselected"/>
-                    <Label fx:id="torrentialRainRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="torrentialRainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainUnselected" />
+                    <Label fx:id="torrentialRainRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
                 </VBox>
 
                 <!--            TODO     neutral-->
 
 
                 <VBox fx:id="neutral_ciriVboxInDeck">
-                    <ImageView fx:id="neutral_ciriInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriUnselected"/>
+                    <ImageView fx:id="neutral_ciriInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_geraltVboxInDeck">
-                    <ImageView fx:id="neutral_geraltInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltUnselected"/>
+                    <ImageView fx:id="neutral_geraltInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_chortVboxInDeck">
-                    <ImageView fx:id="neutral_chortInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortUnselected"/>
+                    <ImageView fx:id="neutral_chortInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_yenneferVboxInDeck">
-                    <ImageView fx:id="neutral_yenneferInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferUnselected"/>
+                    <ImageView fx:id="neutral_yenneferInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_villenVboxInDeck">
-                    <ImageView fx:id="neutral_villenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_villenUnselected"/>
+                    <ImageView fx:id="neutral_villenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_villenUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_trissVboxInDeck">
-                    <ImageView fx:id="neutral_trissInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_trissUnselected"/>
+                    <ImageView fx:id="neutral_trissInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_trissUnselected" />
                 </VBox>
 
                 <VBox fx:id="neutral_vesemirVboxInDeck">
-                    <ImageView fx:id="neutral_vesemirInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_vesemirUnselected"/>
+                    <ImageView fx:id="neutral_vesemirInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_vesemirUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_olgierdVboxInDeck">
-                    <ImageView fx:id="neutral_olgierdInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_olgierdUnselected"/>
+                    <ImageView fx:id="neutral_olgierdInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_olgierdUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_zoltanVboxInDeck">
-                    <ImageView fx:id="neutral_zoltanInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_zoltanUnselected"/>
+                    <ImageView fx:id="neutral_zoltanInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_zoltanUnselected" />
                 </VBox>
 
 
                 <VBox fx:id="neutral_emielVboxInDeck">
-                    <ImageView fx:id="neutral_emielInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielUnselected"/>
+                    <ImageView fx:id="neutral_emielInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_gaunter_odimm_darknessVboxInDeck">
-                    <ImageView fx:id="neutral_gaunter_odimm_darknessInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessUnselected"/>
-                    <Label fx:id="neutral_gaunter_odimm_darknessRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X"/>
+                    <ImageView fx:id="neutral_gaunter_odimm_darknessInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessUnselected" />
+                    <Label fx:id="neutral_gaunter_odimm_darknessRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" />
 
                 </VBox>
 
                 <VBox fx:id="neutral_gaunter_odimmVboxInDeck">
-                    <ImageView fx:id="neutral_gaunter_odimmInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmUnselected"/>
+                    <ImageView fx:id="neutral_gaunter_odimmInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_dandelionVboxInDeck">
-                    <ImageView fx:id="neutral_dandelionInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionUnselected"/>
+                    <ImageView fx:id="neutral_dandelionInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_cowVboxInDeck">
-                    <ImageView fx:id="neutral_cowInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_cowUnselected"/>
+                    <ImageView fx:id="neutral_cowInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_cowUnselected" />
                 </VBox>
                 <VBox fx:id="neutral_mysterious_elfVboxInDeck">
-                    <ImageView fx:id="neutral_mysterious_elfInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfUnselected"/>
+                    <ImageView fx:id="neutral_mysterious_elfInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfUnselected" />
                 </VBox>
                 <!--            TODO     neutral-->
 
@@ -346,122 +359,122 @@
 
 
                 <VBox fx:id="monsters_leshenVboxInDeck">
-                    <ImageView fx:id="monsters_leshenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_leshenUnselected"/>
+                    <ImageView fx:id="monsters_leshenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_leshenUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_draugVboxInDeck">
-                    <ImageView fx:id="monsters_draugInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_draugUnselected"/>
+                    <ImageView fx:id="monsters_draugInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_draugUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_imlerithVboxInDeck">
-                    <ImageView fx:id="monsters_inheritsInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_imlerithUnselected"/>
+                    <ImageView fx:id="monsters_inheritsInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_imlerithUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_kayranVboxInDeck">
-                    <ImageView fx:id="monsters_kayranInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_kayranUnselected"/>
+                    <ImageView fx:id="monsters_kayranInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_kayranUnselected" />
                 </VBox>
 
                 <VBox fx:id="monsters_toadVboxInDeck">
-                    <ImageView fx:id="monsters_toadInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_toadUnselected"/>
+                    <ImageView fx:id="monsters_toadInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_toadUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_arachas_behemothVboxInDeck">
-                    <ImageView fx:id="monsters_arachas_behemothInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_behemothUnselected"/>
+                    <ImageView fx:id="monsters_arachas_behemothInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_behemothUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_poroniecVboxInDeck">
-                    <ImageView fx:id="monsters_poroniecInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecUnselected"/>
+                    <ImageView fx:id="monsters_poroniecInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_arachasVboxInDeck">
-                    <ImageView fx:id="monsters_arachasInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasUnselected"/>
+                    <ImageView fx:id="monsters_arachasInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_arachas_1VboxInDeck">
-                    <ImageView fx:id="monsters_arachas_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Unselected"/>
+                    <ImageView fx:id="monsters_arachas_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Unselected" />
                 </VBox>
                 <VBox fx:id="monsters_arachas_2VboxInDeck">
-                    <ImageView fx:id="monsters_arachas_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Unselected"/>
+                    <ImageView fx:id="monsters_arachas_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Unselected" />
                 </VBox>
                 <VBox fx:id="monsters_earth_elementalVboxInDeck">
-                    <ImageView fx:id="monsters_earth_elementalInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_earth_elementalUnselected"/>
+                    <ImageView fx:id="monsters_earth_elementalInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_earth_elementalUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_fiendVboxInDeck">
-                    <ImageView fx:id="monsters_fiendInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fiendUnselected"/>
+                    <ImageView fx:id="monsters_fiendInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fiendUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_fire_elementalVboxInDeck">
-                    <ImageView fx:id="monsters_fire_elementalInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fire_elementalUnselected"/>
+                    <ImageView fx:id="monsters_fire_elementalInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_fire_elementalUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_forktailVboxInDeck">
-                    <ImageView fx:id="monsters_forktailInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_forktailUnselected"/>
+                    <ImageView fx:id="monsters_forktailInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_forktailUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_frightenerVboxInDeck">
-                    <ImageView fx:id="monsters_frightenerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frightenerUnselected"/>
+                    <ImageView fx:id="monsters_frightenerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frightenerUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_gravehagVboxInDeck">
-                    <ImageView fx:id="monsters_gravehagInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gravehagUnselected"/>
+                    <ImageView fx:id="monsters_gravehagInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gravehagUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_frost_giantVboxInDeck">
-                    <ImageView fx:id="monsters_frost_giantInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frost_giantUnselected"/>
+                    <ImageView fx:id="monsters_frost_giantInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_frost_giantUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_mighty_maidenVboxInDeck">
-                    <ImageView fx:id="monsters_mighty_maidenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_mighty_maidenUnselected"/>
+                    <ImageView fx:id="monsters_mighty_maidenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_mighty_maidenUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_wyvernVboxInDeck">
-                    <ImageView fx:id="monsters_wyvernInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_wyvernUnselected"/>
+                    <ImageView fx:id="monsters_wyvernInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_wyvernUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_katakanVboxInDeck">
-                    <ImageView fx:id="monsters_katakanInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_katakanUnselected"/>
+                    <ImageView fx:id="monsters_katakanInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_katakanUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_werewolfVboxInDeck">
-                    <ImageView fx:id="monsters_werewolfInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_werewolfUnselected"/>
+                    <ImageView fx:id="monsters_werewolfInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_werewolfUnselected" />
                 </VBox>
 
                 <VBox fx:id="monsters_bruxaVboxInDeck">
-                    <ImageView fx:id="monsters_bruxaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_bruxaUnselected"/>
+                    <ImageView fx:id="monsters_bruxaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_bruxaUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_ekkimaVboxInDeck">
-                    <ImageView fx:id="monsters_ekkimaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ekkimaUnselected"/>
+                    <ImageView fx:id="monsters_ekkimaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ekkimaUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_flederVboxInDeck">
-                    <ImageView fx:id="monsters_flederInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_flederUnselected"/>
+                    <ImageView fx:id="monsters_flederInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_flederUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_garkainVboxInDeck">
-                    <ImageView fx:id="monsters_garkainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_garkainUnselected"/>
+                    <ImageView fx:id="monsters_garkainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_garkainUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_celaeno_harpyVboxInDeck">
-                    <ImageView fx:id="monsters_celaeno_harpyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_celaeno_harpyUnselected"/>
+                    <ImageView fx:id="monsters_celaeno_harpyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_celaeno_harpyUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_cockatriceVboxInDeck">
-                    <ImageView fx:id="monsters_cockatriceInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_cockatriceUnselected"/>
+                    <ImageView fx:id="monsters_cockatriceInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_cockatriceUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_endregaVboxInDeck">
-                    <ImageView fx:id="monsters_endregaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_endregaUnselected"/>
+                    <ImageView fx:id="monsters_endregaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_endregaUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_foglingVboxInDeck">
-                    <ImageView fx:id="monsters_foglingInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_foglingUnselected"/>
+                    <ImageView fx:id="monsters_foglingInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_foglingUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_gargoyleVboxInDeck">
-                    <ImageView fx:id="monsters_gargoyleInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gargoyleUnselected"/>
+                    <ImageView fx:id="monsters_gargoyleInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_gargoyleUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_harpyVboxInDeck">
-                    <ImageView fx:id="monsters_harpyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_harpyUnselected"/>
+                    <ImageView fx:id="monsters_harpyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_harpyUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_nekker_1VboxInDeck">
-                    <ImageView fx:id="monsters_nekker_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_1Unselected"/>
+                    <ImageView fx:id="monsters_nekker_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_1Unselected" />
                 </VBox>
                 <VBox fx:id="monsters_nekkerVboxInDeck">
-                    <ImageView fx:id="monsters_nekkerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekkerUnselected"/>
+                    <ImageView fx:id="monsters_nekkerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekkerUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_nekker_2VboxInDeck">
-                    <ImageView fx:id="monsters_nekker_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_2Unselected"/>
+                    <ImageView fx:id="monsters_nekker_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_nekker_2Unselected" />
                 </VBox>
                 <VBox fx:id="monsters_ghoul_1VboxInDeck">
-                    <ImageView fx:id="monsters_ghoul_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_1Unselected"/>
+                    <ImageView fx:id="monsters_ghoul_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_1Unselected" />
                 </VBox>
                 <VBox fx:id="monsters_ghoul_2VboxInDeck">
-                    <ImageView fx:id="monsters_ghoul_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_2Unselected"/>
+                    <ImageView fx:id="monsters_ghoul_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoul_2Unselected" />
                 </VBox>
                 <VBox fx:id="monsters_ghoulVboxInDeck">
-                    <ImageView fx:id="monsters_ghoulInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoulUnselected"/>
+                    <ImageView fx:id="monsters_ghoulInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_ghoulUnselected" />
                 </VBox>
 
             </Pane>
 
         </VBox>
     </HBox>
-    <Pane prefHeight="200.0" prefWidth="200.0"/>
+    <Pane prefHeight="200.0" prefWidth="200.0" />
 </VBox>

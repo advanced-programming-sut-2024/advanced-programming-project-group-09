@@ -15,7 +15,7 @@ public class ChooseCardMonsterTest extends Application {
     public void start(Stage primaryStage) throws Exception {
         Pane root = FXMLLoader.load(Objects.requireNonNull(LoginMenu.class.getResource("FXMl/ChooseCard/ChooseCardMonster.fxml")));
         primaryStage.setTitle("Card Selection");
-        primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.setScene(new Scene(root, 950, 700));
         primaryStage.show();
 
     }
