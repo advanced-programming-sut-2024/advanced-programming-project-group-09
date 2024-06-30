@@ -20,7 +20,7 @@ public class LoginController {
     @FXML
     public void initialize() {
         username.textProperty().addListener(((observableValue, s, t1) -> welcomeText.setText("Welcome " + username.getText())));
-//        User.loadUsers(); // Ensure users are loaded at initialization
+        User.loadUsers();
     }
 
     public void signIn() throws Exception {
