@@ -1,7 +1,6 @@
 package Sample.Controller;
 
 import Sample.Model.User;
-import Sample.View.GameMenu;
 import Sample.View.LeaderMenu;
 import Sample.View.MainMenu;
 import javafx.fxml.FXML;

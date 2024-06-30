@@ -85,7 +85,7 @@ public class RegisterController {
         }
 
         User newUser = new User(username.getText(), password.getText(), email.getText(), nickname.getText());
-        User.saveUsers(); // Save all users
+//        User.saveUsers(); // Save all users
 
         showAlert("Create account", "Account successfully created", "");
 

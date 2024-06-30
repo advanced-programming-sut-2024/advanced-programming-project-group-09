@@ -1,11 +1,11 @@
 package Sample.Controller;
 
+import Sample.Model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import Sample.Model.User;
 import Sample.View.MainMenu;
 import Sample.View.RegisterMenu;
 
@@ -20,7 +20,7 @@ public class LoginController {
     @FXML
     public void initialize() {
         username.textProperty().addListener(((observableValue, s, t1) -> welcomeText.setText("Welcome " + username.getText())));
-        User.loadUsers(); // Ensure users are loaded at initialization
+//        User.loadUsers(); // Ensure users are loaded at initialization
     }
 
     public void signIn() throws Exception {

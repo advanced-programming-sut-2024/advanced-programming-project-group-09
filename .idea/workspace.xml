@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="ChangeInDeck1" />
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="BackToChangeInDeck2_2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/FactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/LeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/LeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/ProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -115,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719772354945</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="BackToChangeInDeck2_2">
+      <option name="closed" value="true" />
+      <created>1719773015556</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719773015556</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +167,7 @@
     <MESSAGE value="StartNewGameWithALittleChangeInFactionAndLeader" />
     <MESSAGE value="StartNewGameControllerAndChangeInUserFields" />
     <MESSAGE value="ChangeInDeck1" />
-    <option name="LAST_COMMIT_MESSAGE" value="ChangeInDeck1" />
+    <MESSAGE value="BackToChangeInDeck2_2" />
+    <option name="LAST_COMMIT_MESSAGE" value="BackToChangeInDeck2_2" />
   </component>
 </project>
