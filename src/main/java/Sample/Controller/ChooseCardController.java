@@ -297,14 +297,17 @@ public class ChooseCardController {
     public Button uploadDeckButton;
     public Button changeFactionButton;
     public Button downloadDeckButton;
-    public Text totalCardsInDeck;
     public Text numberOfAllCards;
     public Text specialCards;
-    public Text totalUnitCardStrength;
     public Text heroCards;
     public Button startGameButton;
+    public Button backToLeaderMenu;
     ArrayList<VBox> imageViewsVboxesCardCollection = new ArrayList<>();
     ArrayList<VBox> imageViewsVboxesCardInDeck = new ArrayList<>();
+
+    ArrayList<VBox> specialCardVboxesInDeck = new ArrayList<>();
+    ArrayList<VBox> heroCardsVboxes = new ArrayList<>();
+
     public static ChooseCardController instance;
 
     public static ChooseCardController getInstance() {
@@ -317,12 +320,19 @@ public class ChooseCardController {
 
     public void initialize() {
 
-
+        createHeroCardList();
         createSpecialCardList();
         setImagesForCardCollection();
         setImagesForCardsInDeck();
         imageViewsVboxesCardCollection = createListOfVBoxesForCardCollection();
         imageViewsVboxesCardInDeck = createListOfVBoxesForCardInDeck();
+        setAllCardImages();
+
+
+        createTimelineForUpdating();
+    }
+
+    private void setAllCardImages() {
         outer:
         for (int row = 0; row < (imageViewsVboxesCardCollection.size() / 3) + 1; row++) {
             for (int column = 0; column < 3; column++) {
@@ -336,20 +346,18 @@ public class ChooseCardController {
                 gridPaneInDeck.add(imageViewsVboxesCardInDeck.get(3 * row + column), column, row);
             }
         }
+    }
 
-
-//        Timeline timeline = new Timeline(new KeyFrame(Duration.INDEFINITE, event -> {
-//            System.out.println("ali");
-//        }));
-//        timeline.setCycleCount(100);
-//        timeline.play();
+    private void createTimelineForUpdating() {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), event -> {
             updateNumberOfSpecialCards();
             updateNumberOfAllCards();
+            updateNumberOfHeroes();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
 
     private ArrayList<VBox> createListOfVBoxesForCardInDeck() {
         ArrayList<VBox> imageViews = new ArrayList<>();
@@ -396,10 +404,11 @@ public class ChooseCardController {
 
 
         monsters_arachas_behemoth.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
-        monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
         monsters_arachas_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
         monsters_arachas_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
         monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
+        monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
+        monsters_poroniec.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_poroniec.jpg"))));
         monsters_celaeno_harpy.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
         monsters_cockatrice.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_cockatrice.jpg"))));
         monsters_draug.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_draug.jpg"))));
@@ -428,7 +437,6 @@ public class ChooseCardController {
         monsters_nekker.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker.jpg"))));
         monsters_nekker_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker_1.jpg"))));
         monsters_nekker_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker_2.jpg"))));
-        monsters_poroniec.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_poroniec.jpg"))));
         monsters_toad.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_toad.jpg"))));
         monsters_werewolf.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_werewolf.jpg"))));
         monsters_wyvern.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_wyvern.jpg"))));
@@ -505,7 +513,6 @@ public class ChooseCardController {
 
     }
 
-    ArrayList<VBox> specialCardVboxesInDeck = new ArrayList<>();
 
     public void createSpecialCardList() {
         specialCardVboxesInDeck.add(decoyVboxInDeck);
@@ -520,6 +527,35 @@ public class ChooseCardController {
 
     }
 
+    public void createHeroCardList() {
+        heroCardsVboxes.add(neutral_ciriVboxInDeck);
+        heroCardsVboxes.add(neutral_geraltVboxInDeck);
+        heroCardsVboxes.add(monsters_draugVboxInDeck);
+        heroCardsVboxes.add(monsters_imlerithVboxInDeck);
+        heroCardsVboxes.add(monsters_leshenVboxInDeck);
+        heroCardsVboxes.add(monsters_kayranVboxInDeck);
+        heroCardsVboxes.add(neutral_trissVboxInDeck);
+        heroCardsVboxes.add(neutral_yenneferVboxInDeck);
+        heroCardsVboxes.add(neutral_mysterious_elfVboxInDeck);
+
+    }
+
+    private void updateNumberOfHeroes() {
+        int heroCard = 0;
+        for (VBox child : imageViewsVboxesCardInDeck) {
+            if (child.isVisible() && heroCardsVboxes.contains(child)) {
+                if (child.getChildren().size() == 1) heroCard++;
+                else {
+                    for (Node node : child.getChildren()) {
+                        if (node instanceof Label) {
+                            heroCard += Integer.parseInt(((Label) node).getText().substring(0, 1));
+                        }
+                    }
+                }
+            }
+        }
+        heroCards.setText("Hero Cards:  " + heroCard);
+    }
 
     public void updateNumberOfSpecialCards() {
         int specialCard = 0;

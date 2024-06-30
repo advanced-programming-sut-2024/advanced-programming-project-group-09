@@ -262,3 +262,10 @@ ImageView {
     -fx-font-weight: bolder;
     -fx-text-fill: red;
 }
+
+.counter {
+    -fx-text-fill: olive;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 18px;
+    -fx-text-fill: #1659a4;
+}
