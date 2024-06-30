@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="700.0" prefWidth="950.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.ChooseCardController">
+<VBox prefHeight="700.0" prefWidth="950.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.ChooseCard.ChooseCardMonsterController">
     <HBox spacing="10">
         <VBox>
             <Label styleClass="headers" text="Card Collection" />

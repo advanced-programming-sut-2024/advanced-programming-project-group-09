@@ -133,6 +133,7 @@ public enum CommonCard {
     Villentretenmerth("Villentretenmerth", null, "Scorch Close Combat", 7, "Close Combat", false, 1),
     YenneferOfVengerberg("Yennefer of Vengerberg", null, "Medic Hero", 7, "Ranged", true, 1),
     ZoltanChivay("Zoltan Chivay", null, "", 5, "Close Combat", false, 1),
+    ;
 
     private final String cardName;
     private final Faction faction;
