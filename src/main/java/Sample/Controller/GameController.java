@@ -2,100 +2,38 @@ package Sample.Controller;
 
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
+import Sample.View.LoginMenu;
+import javafx.animation.TranslateTransition;
+import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.util.Duration;
 
-import java.util.regex.Matcher;
+import java.util.Objects;
 
 public class GameController {
+    @FXML
+    private AnchorPane pane;
+    @FXML
+    private GridPane myHandCards;
+    @FXML
+    private GridPane myCloseCombatCardsPlayed;
+    @FXML
+    private GridPane myRangedCombatCardsPlayed;
+    @FXML
+    private GridPane mySiegeCardsPlayed;
+    @FXML
+    private GridPane competitorCloseCombatCardsPlayed;
+    @FXML
+    private GridPane competitorRangedCombatCardsPlayed;
+    @FXML
+    private GridPane competitorSiegeCardsPlayed;
     private GameBattleField gameBattleField;
     private User user;
-    private static GameController controller;
 
-    public static GameController getInstance() {
-        if (controller == null) {
-            controller = new GameController();
-        }
-        return controller;
-    }
-
-    public String enterMenu() {
-        return null;
-    }
-
-    public String exitMenu() {
-        return null;
-    }
-
-    public String showCurrentMenu() {
-        return "GameMenu";
-    }
-
-    public String showFactions() {
-        return null;
-    }
-
-    public String createGame() {
-        return null;
-    }
-
-
-    public String selectFaction(Matcher matcher) {
-        return null;
-    }
-
-    public String showCards() {
-        return null;
-
-    }
-
-    public String showDeck() {
-        return null;
-
-    }
-
-    public String showCurrentUserInfo() {
-        return null;
-    }
-
-    public String saveDeckByFile(Matcher matcher) {
-        return null;
-    }
-    public String saveDeckByName(Matcher matcher) {
-        return null;
-    }
-
-    public String loadDeckByFile(Matcher matcher) {
-        return null;
-
-    }
-    public String loadDeckByName(Matcher matcher) {
-        return null;
-
-    }
-
-    public String showLeaders() {
-        return null;
-
-    }
-
-    public String selectLeader(Matcher matcher) {
-        return null;
-
-    }
-
-
-    public void addToDeck(Matcher matcher) {
-
-    }
-
-    public void deleteFromDeck(Matcher matcher) {
-    }
-
-    public String changeTurn() {
-        return null;
-    }
-
-    public String startGame() {
-        return null;
+    public void initialize() {
 
     }
 

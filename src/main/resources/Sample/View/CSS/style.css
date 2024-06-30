@@ -262,9 +262,3 @@ ImageView {
     -fx-font-weight: bolder;
     -fx-text-fill: red;
 }
-.button{
-    -fx-text-fill: olive;
-    -fx-font-family: "Castellar";
-    -fx-font-size: 20px;
-    -fx-text-fill: #bbd31e;
-}

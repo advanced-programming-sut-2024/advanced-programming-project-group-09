@@ -2,8 +2,10 @@ package Sample.Controller;
 
 import Sample.CardEnums.Faction;
 import Sample.CardEnums.Leader;
+import Sample.Model.GameBattleField;
 import Sample.Model.User;
 import Sample.View.FactionMenu;
+import Sample.View.GameMenu;
 import Sample.View.LoginMenu;
 import Sample.View.MainMenu;
 import javafx.animation.KeyFrame;
@@ -11,6 +13,7 @@ import javafx.animation.ScaleTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -485,6 +488,30 @@ public class LeaderController {
         timeline.stop();
         MainMenu mainMenu = new MainMenu();
         mainMenu.start(ApplicationController.getStage());
+    }
+
+    public void goToDeckMenu(MouseEvent mouseEvent) {
+
+    }
+
+    public void goToGame(MouseEvent mouseEvent) throws Exception {
+        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable deck");
+            alert.setHeaderText("Change your deck via the deck menu");
+            alert.setContentText("This deck is unacceptable for entry into the game");
+            alert.showAndWait();
+            return;
+        }
+        User user1 = User.getUserLoginIn().getCompetitor();
+        User user2 = User.getUserLoginIn();
+        GameBattleField gameBattleField = new GameBattleField(user1, user2);
+        user1.addToAllGameBattleField(gameBattleField);
+        user2.addToAllGameBattleField(gameBattleField);
+        user1.setLastGameBattleField(gameBattleField);
+        user2.setLastGameBattleField(gameBattleField);
+        GameMenu gameMenu = new GameMenu();
+        gameMenu.start(ApplicationController.getStage());
     }
 }
 
