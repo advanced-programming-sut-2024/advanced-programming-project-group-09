@@ -109,6 +109,7 @@ public enum CommonCard {
     VampireKatakan("Vampire: Katakan", Faction.Monsters, "Muster", 5, "Close Combat", false, 1),
     Werewolf("Werewolf", Faction.Monsters, "", 5, "Close Combat", false, 1),
     Arachas("Arachas", Faction.Monsters, "Muster", 4, "Close Combat", false, 3),
+    Gargoyle("Gargoyle",Faction.Monsters ,"Muster" ,2 , "Ranged" ,false ,1 ),
     VampireBruxa("Vampire: Bruxa", Faction.Monsters, "Muster", 4, "Close Combat", false, 1),
     VampireEkimmara("Vampire: Ekimmara", Faction.Monsters, "Muster", 4, "Close Combat", false, 1),
     VampireFleder("Vampire: Fleder", Faction.Monsters, "Muster", 4, "Close Combat", false, 1),
@@ -132,7 +133,6 @@ public enum CommonCard {
     Villentretenmerth("Villentretenmerth", null, "Scorch Close Combat", 7, "Close Combat", false, 1),
     YenneferOfVengerberg("Yennefer of Vengerberg", null, "Medic Hero", 7, "Ranged", true, 1),
     ZoltanChivay("Zoltan Chivay", null, "", 5, "Close Combat", false, 1),
-    ;
 
     private final String cardName;
     private final Faction faction;

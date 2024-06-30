@@ -1,5 +1,7 @@
-package Sample.Controller;
+package Sample.Controller.ChooseCard;
 
+import Sample.CardEnums.CommonCard;
+import Sample.CardEnums.Faction;
 import Sample.View.LoginMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,7 +20,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ChooseCardController {
+public class ChooseCardMonsterController {
     public Pane cardCollectionPane;
     public ImageView commanderHorn;
     public ImageView decoy;
@@ -308,11 +310,11 @@ public class ChooseCardController {
     ArrayList<VBox> specialCardVboxesInDeck = new ArrayList<>();
     ArrayList<VBox> heroCardsVboxes = new ArrayList<>();
 
-    public static ChooseCardController instance;
+    public static ChooseCardMonsterController instance;
 
-    public static ChooseCardController getInstance() {
+    public static ChooseCardMonsterController getInstance() {
         if (instance == null) {
-            instance = new ChooseCardController();
+            instance = new ChooseCardMonsterController();
         }
         return instance;
     }
@@ -1693,6 +1695,121 @@ public class ChooseCardController {
         monsters_poroniecVboxInDeck.setVisible(false);
     }
 
+    public void backToLeaderMenu(MouseEvent mouseEvent) {
+        saveDeckForUser();
+    }
+
+    private void saveDeckForUser() {
+        for (VBox vBox : imageViewsVboxesCardInDeck) {
+            if (vBox.isVisible()) System.out.println(vBox.getId());
+        }
+    }
+
+    public CommonCard getCardByIdAddress(String address) {
+        switch (address) {
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas_1":
+                return CommonCard.Arachas;
+            case "monsters_arachas_2":
+                return CommonCard.Arachas;
+            case "monsters_arachas_behemoth":
+                return CommonCard.ArachasBehemoth;
+            case "monsters_bruxa":
+                return CommonCard.VampireBruxa;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_celaeno_harpy":
+                return CommonCard.Harpy;
+            case "monsters_cockatrice":
+                return CommonCard.Cockatrice;
+            case "monsters_draug":
+                return CommonCard.Draug;
+            case "monsters_earth_elemental":
+                return CommonCard.EarthElemental;
+            case "monsters_ekkima":
+                return CommonCard.VampireEkimmara;
+            case "monsters_endrega":
+                return CommonCard.Endrega;
+            case "monsters_fiend":
+                return CommonCard.Fiend;
+            case "monsters_fire_elemental":
+                return CommonCard.FireElemental;
+            case "monsters_fleder":
+                return CommonCard.VampireFleder;
+            case "monsters_fogling":
+                return CommonCard.Foglet;
+            case "monsters_forktail":
+                return CommonCard.Forktail;
+            case "monsters_frightener":
+                return CommonCard.Forktail; // Note : there is no card with name frightener !
+            case "monsters_frost_giant":
+                return CommonCard.IceGiant;
+            case "monsters_gargoyle":
+                return CommonCard.Gargoyle; // Note : there is no card with name gargoyle !
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+            case "monsters_arachas":
+                return CommonCard.Arachas;
+        }
+        return null;
+    }
 }
 
 

@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.ChooseCardController">
+<VBox prefHeight="600.0" prefWidth="800.0" stylesheets="@../../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Sample.Controller.ChooseCard.ChooseCardMonsterController">
     <HBox spacing="10">
         <VBox>
             <Label styleClass="headers" text="Card Collection"/>
@@ -120,11 +121,11 @@
                     <VBox fx:id="monsters_toadVboxInCardCollection">
                         <ImageView fx:id="monsters_toad" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_toadSelected"/>
                     </VBox>
-                    <VBox fx:id="monsters_poroniecVboxInCardCollection">
-                        <ImageView fx:id="monsters_poroniec" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecSelected"/>
-                    </VBox>
                     <VBox fx:id="monsters_arachas_behemothVboxInCardCollection">
                         <ImageView fx:id="monsters_arachas_behemoth" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_behemothSelected"/>
+                    </VBox>
+                    <VBox fx:id="monsters_poroniecVboxInCardCollection">
+                        <ImageView fx:id="monsters_poroniec" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecSelected"/>
                     </VBox>
                     <VBox fx:id="monsters_arachasVboxInCardCollection">
                         <ImageView fx:id="monsters_arachas" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasSelected"/>
@@ -234,7 +235,7 @@
             <Button fx:id="changeFactionButton" text="Change Faction"/>
             <Button fx:id="downloadDeckButton" text="Download Deck"/>
             <Button fx:id="startGameButton" text="Start game"/>
-            <Button fx:id="backToLeaderMenu" text="Back"/>
+            <Button onMouseClicked="#backToLeaderMenu" fx:id="backToLeaderMenu" text="Back"/>
             <Text fx:id="numberOfAllCards" text="Number of Unit Cards: 0/22" styleClass="label"/>
             <Text fx:id="specialCards" text="Special Cards: 0/10" styleClass="label"/>
             <Text fx:id="heroCards" text="Hero Cards: 0" styleClass="label"/>
