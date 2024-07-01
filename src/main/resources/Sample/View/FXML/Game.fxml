@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.GameController">
@@ -10,218 +12,386 @@
       <Image url="@../Images/Board.jpg">
       </Image>
    </ImageView>
-   <HBox layoutX="385.0" layoutY="561.0" prefHeight="85.0" prefWidth="624.0">
-      <GridPane fx:id="myHandCards" prefHeight="85.0" prefWidth="624.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+   <HBox fx:id="myHandCards" layoutX="385.0" layoutY="561.0" prefHeight="85.0" prefWidth="624.0">
+      <StackPane prefHeight="150.0" prefWidth="52.0">
          <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="10" />
-      </GridPane>
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="10">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="150.0" prefWidth="52.0" GridPane.columnIndex="11">
+         <ImageView fitHeight="85.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <HBox layoutX="482.0" layoutY="288.0" prefHeight="80.0" prefWidth="520.0">
-      <GridPane fx:id="myCloseCombatCardsPlayed" prefHeight="80.0" prefWidth="520.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-      </GridPane>
+   <HBox fx:id="myCloseCombatCardsPlayed" layoutX="482.0" layoutY="288.0" prefHeight="82.0" prefWidth="520.0">
+      <StackPane prefHeight="82.0" prefWidth="52.0">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <HBox layoutX="482.0" layoutY="378.0" prefHeight="80.0" prefWidth="520.0">
-      <GridPane fx:id="myRangedCombatCardsPlayed" prefHeight="80.0" prefWidth="520.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-      </GridPane>
+   <HBox fx:id="myRangedCombatCardsPlayed" layoutX="482.0" layoutY="378.0" prefHeight="80.0" prefWidth="520.0">
+      <StackPane prefHeight="82.0" prefWidth="52.0">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <HBox layoutX="482.0" layoutY="469.0" prefHeight="80.0" prefWidth="520.0">
-      <GridPane fx:id="mySiegeCardsPlayed" prefHeight="80.0" prefWidth="520.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-      </GridPane>
+   <HBox fx:id="mySiegeCardsPlayed" layoutX="482.0" layoutY="469.0" prefHeight="80.0" prefWidth="520.0">
+      <StackPane prefHeight="82.0" prefWidth="52.0">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <HBox layoutX="482.0" layoutY="10.0" prefHeight="80.0" prefWidth="520.0">
-      <GridPane fx:id="competitorSiegeCardsPlayed" prefHeight="80.0" prefWidth="520.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-      </GridPane>
+   <HBox fx:id="competitorSiegeCardsPlayed" layoutX="482.0" layoutY="10.0" prefHeight="80.0" prefWidth="520.0">
+      <StackPane prefHeight="82.0" prefWidth="52.0">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <HBox layoutX="482.0" layoutY="98.0" prefHeight="80.0" prefWidth="520.0">
-      <GridPane fx:id="competitorRangedCombatCardsPlayed" prefHeight="80.0" prefWidth="520.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-      </GridPane>
+   <HBox fx:id="competitorRangedCombatCardsPlayed" layoutX="482.0" layoutY="98.0" prefHeight="80.0" prefWidth="520.0">
+      <StackPane prefHeight="82.0" prefWidth="52.0">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <HBox layoutX="482.0" layoutY="189.0" prefHeight="80.0" prefWidth="520.0">
-      <GridPane fx:id="competitorCloseCombatCardsPlayed" prefHeight="80.0" prefWidth="520.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="52.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="1" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="2" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="3" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="4" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="5" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="6" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="7" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="8" />
-         <ImageView fitHeight="80.0" fitWidth="52.0" pickOnBounds="true" GridPane.columnIndex="9" />
-      </GridPane>
+   <HBox fx:id="competitorCloseCombatCardsPlayed" layoutX="482.0" layoutY="189.0" prefHeight="80.0" prefWidth="520.0">
+      <StackPane prefHeight="82.0" prefWidth="52.0">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="1">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="2">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="3">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="4">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="5">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="6">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="7">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="8">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
+      <StackPane prefHeight="82.0" prefWidth="52.0" GridPane.columnIndex="9">
+         <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
+         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="16.0" prefWidth="16.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+      </StackPane>
    </HBox>
-   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true" />
-   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true" />
-   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true" />
-   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true" />
-   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
-   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="469.0" pickOnBounds="true" />
+   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="377.0" pickOnBounds="true" />
+   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="288.0" pickOnBounds="true" />
+   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="189.0" pickOnBounds="true" />
+   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="98.0" pickOnBounds="true" />
+   <ImageView fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="10.0" pickOnBounds="true" />
    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="27.0" prefHeight="45.0" prefWidth="26.0" text="00">
       <font>
          <Font name="Bauhaus 93" size="24.0" />
@@ -252,15 +422,184 @@
          <Font name="Bauhaus 93" size="24.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" contentDisplay="CENTER" layoutX="288.5" layoutY="198.0" prefHeight="45.0" prefWidth="26.0" text="00">
-      <font>
-         <Font name="Bauhaus 93" size="24.0" />
-      </font>
-   </Label>
    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="467.0" prefHeight="45.0" prefWidth="26.0" text="00">
       <font>
          <Font name="Bauhaus 93" size="24.0" />
       </font>
    </Label>
-
+   <ImageView fitHeight="360.0" fitWidth="220.0" layoutX="1018.0" layoutY="166.0" pickOnBounds="true" />
+   <ImageView fitHeight="86.0" fitWidth="63.0" layoutX="1035.0" layoutY="563.0" pickOnBounds="true" />
+   <ImageView fitHeight="86.0" fitWidth="63.0" layoutX="1035.0" layoutY="55.0" pickOnBounds="true" />
+   <StackPane layoutX="1155.0" layoutY="561.0" prefHeight="86.0" prefWidth="63.0">
+      <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#564e4e" height="24.0" stroke="BLACK" strokeType="INSIDE" width="40.0" StackPane.alignment="BOTTOM_CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00" StackPane.alignment="BOTTOM_CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </StackPane>
+   <StackPane layoutX="1155.0" layoutY="55.0" prefHeight="86.0" prefWidth="63.0">
+      <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true"/>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#564e4e" height="24.0" stroke="BLACK" strokeType="INSIDE"
+                 width="40.0" StackPane.alignment="BOTTOM_CENTER"/>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00"
+             StackPane.alignment="BOTTOM_CENTER">
+         <font>
+            <Font size="14.0"/>
+         </font>
+      </Label>
+   </StackPane>
+   <ImageView fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="558.0" pickOnBounds="true" />
+   <ImageView fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="55.0" pickOnBounds="true" />
+   <StackPane alignment="CENTER_LEFT" layoutY="156.0" prefHeight="114.0" prefWidth="302.0"
+              style="-fx-background-color: black">
+      <StackPane alignment="BOTTOM_LEFT" maxWidth="200.0" prefHeight="111.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets left="5.0"/>
+         </StackPane.margin>
+         <ImageView fitHeight="80.0" fitWidth="84.0" pickOnBounds="true" StackPane.alignment="CENTER">
+            <Image url="@../Images/Icons/profile.png"/>
+         </ImageView>
+         <ImageView fitHeight="130.0" fitWidth="105.5" pickOnBounds="true" StackPane.alignment="CENTER">
+            <StackPane.margin>
+               <Insets/>
+            </StackPane.margin>
+            <Image url="@../Images/Icons/icon_player_border.png"/>
+         </ImageView>
+         <ImageView fx:id="secondPlayerShield" fitHeight="40.0" fitWidth="47.4" pickOnBounds="true"
+                    StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="30.0"/>
+            </StackPane.margin>
+         </ImageView>
+      </StackPane>
+      <VBox maxWidth="134.0" prefHeight="94.0" prefWidth="174.0" spacing="30.0" StackPane.alignment="TOP_RIGHT">
+         <VBox maxHeight="100.0" prefHeight="32.0" prefWidth="130.0" spacing="5.0">
+            <Label fx:id="secondPlayerUsername" text="Label" textFill="GOLD">
+               <font>
+                  <Font name="System Bold" size="17.0"/>
+               </font>
+            </Label>
+            <Label fx:id="secondPlayerFaction" text="Label" textFill="#ffe298"/>
+         </VBox>
+         <HBox prefHeight="35.0" prefWidth="120.0">
+            <HBox prefHeight="35.0" prefWidth="96.0">
+               <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true">
+                  <Image url="@../Images/Icons/icon_card_count.png"/>
+               </ImageView>
+               <Label fx:id="secondPlayerInHand" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0"
+                      prefWidth="22.0" text="0" textFill="#ffba00">
+                  <font>
+                     <Font name="System Bold" size="18.0"/>
+                  </font>
+               </Label>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="133.0" spacing="1.0" HBox.hgrow="NEVER">
+               <ImageView fx:id="secondPlayerFirstLifeImageView" fitHeight="26.0" fitWidth="28.0"
+                          pickOnBounds="true"/>
+               <ImageView fx:id="secondPlayerSecondLifeImageView" fitHeight="26.0" fitWidth="28.0"
+                          pickOnBounds="true"/>
+            </HBox>
+         </HBox>
+      </VBox>
+   </StackPane>
+   <StackPane layoutX="285.0" layoutY="202.0" prefHeight="39.0" prefWidth="34.0">
+      <ImageView fitHeight="39.0" fitWidth="37.0">
+         <Image url="@../Images/Icons/score_total_op.png"/>
+      </ImageView>
+      <Label fx:id="secondPlayerScore" alignment="CENTER" prefHeight="26.0" prefWidth="17.0" text="0">
+         <font>
+            <Font name="System Bold" size="12.0"/>
+         </font>
+      </Label>
+   </StackPane>
+   <StackPane alignment="CENTER_LEFT" layoutY="428.0" prefHeight="114.0" prefWidth="302.0"
+              style="-fx-background-color: black">
+      <StackPane alignment="BOTTOM_LEFT" maxWidth="200.0" prefHeight="111.0" prefWidth="200.0">
+         <StackPane.margin>
+            <Insets left="5.0"/>
+         </StackPane.margin>
+         <ImageView fitHeight="80.0" fitWidth="84.0" pickOnBounds="true" StackPane.alignment="CENTER">
+            <Image url="@../Images/Icons/profile.png"/>
+         </ImageView>
+         <ImageView fitHeight="130.0" fitWidth="105.5" pickOnBounds="true" StackPane.alignment="CENTER">
+            <StackPane.margin>
+               <Insets/>
+            </StackPane.margin>
+            <Image url="@../Images/Icons/icon_player_border.png"/>
+         </ImageView>
+         <ImageView fx:id="firstPlayerShield" fitHeight="40.0" fitWidth="47.4" pickOnBounds="true"
+                    StackPane.alignment="BOTTOM_LEFT">
+            <StackPane.margin>
+               <Insets left="30.0"/>
+            </StackPane.margin>
+         </ImageView>
+      </StackPane>
+      <VBox maxWidth="134.0" prefHeight="94.0" prefWidth="174.0" spacing="20.0" StackPane.alignment="TOP_RIGHT">
+         <HBox prefHeight="35.0" prefWidth="120.0">
+            <HBox prefHeight="34.0" prefWidth="106.0">
+               <HBox.margin>
+                  <Insets top="5.0"/>
+               </HBox.margin>
+               <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true">
+                  <Image url="@../Images/Icons/icon_card_count.png"/>
+               </ImageView>
+               <Label fx:id="firstPlayerInHand" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0"
+                      prefWidth="22.0" text="0" textFill="#ffba00">
+                  <font>
+                     <Font name="System Bold" size="18.0"/>
+                  </font>
+               </Label>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="131.0" spacing="1.0" HBox.hgrow="NEVER">
+               <ImageView fx:id="firstPlayerFirstLifeImageView" fitHeight="26.0" fitWidth="28.0"
+                          pickOnBounds="true"/>
+               <ImageView fx:id="firstPlayerSecondLifeImageView" fitHeight="26.0" fitWidth="28.0"
+                          pickOnBounds="true"/>
+            </HBox>
+         </HBox>
+         <VBox maxHeight="100.0" prefHeight="32.0" prefWidth="130.0" spacing="5.0">
+            <Label fx:id="firstPlayerUsername" text="Label" textFill="GOLD">
+               <font>
+                  <Font name="System Bold" size="17.0"/>
+               </font>
+            </Label>
+            <Label fx:id="firstPlayerFaction" text="Label" textFill="#ffe298"/>
+         </VBox>
+      </VBox>
+   </StackPane>
+   <StackPane layoutX="283.0" layoutY="469.0" prefHeight="40.0" prefWidth="40.0">
+      <ImageView fitHeight="39.0" fitWidth="37.0">
+         <Image url="@../Images/Icons/score_total_me.png"/>
+      </ImageView>
+      <Label fx:id="firstPlayerScore" alignment="CENTER" prefHeight="26.0" prefWidth="21.0" text="0">
+         <font>
+            <Font name="System Bold" size="12.0"/>
+         </font>
+      </Label>
+   </StackPane>
+   <ImageView fx:id="secondPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="224.0" layoutY="202.0"
+              pickOnBounds="true" visible="false">
+      <Image url="@../Images/Icons/icon_high_score.png"/>
+   </ImageView>
+   <ImageView fx:id="firstPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="224.0" layoutY="468.0"
+              pickOnBounds="true" visible="false">
+      <Image url="@../Images/Icons/icon_high_score.png"/>
+   </ImageView>
+   <Label fx:id="secondPlayerPassedLabel" alignment="CENTER" layoutX="261.0" layoutY="165.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed">
+      <font>
+         <Font size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="firstPlayerPassedLabel" alignment="CENTER" layoutX="263.0" layoutY="498.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed">
+      <font>
+         <Font size="12.0" />
+      </font>
+   </Label>
+   <HBox layoutX="95.0" layoutY="300.0" prefHeight="93.0" prefWidth="183.0">
+      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true"/>
+      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true"/>
+      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true"/>
+   </HBox>
 </AnchorPane>
