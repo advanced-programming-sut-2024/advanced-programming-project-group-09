@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
@@ -369,6 +370,7 @@ public class ChooseCardMonsterController {
                 System.out.println(child);
                 child.setVisible(false);
             }
+            if (child instanceof StackPane) child = ((StackPane) child).getChildren().getFirst();
         }
         return imageViews;
     }
@@ -561,14 +563,19 @@ public class ChooseCardMonsterController {
 
     public void updateNumberOfSpecialCards() {
         int specialCard = 0;
+        System.out.println(specialCardVboxesInDeck.getFirst().getChildren().getFirst().getId() + " sdjsgdksgd");
         for (VBox child : imageViewsVboxesCardInDeck) {
             if (child.isVisible() && specialCardVboxesInDeck.contains(child)) {
-                if (child.getChildren().size() == 1) specialCard++;
+                if (!(child.getChildren().getFirst() instanceof StackPane)) specialCard++;
                 else {
-                    for (Node node : child.getChildren()) {
-                        if (node instanceof Label) {
-                            specialCard += Integer.parseInt(((Label) node).getText().substring(0, 1));
+                    for (Node node2 : child.getChildren()) {
+                        StackPane stackPane = (StackPane) node2;
+                        for (Node node : stackPane.getChildren()) {
+                            if (node instanceof Label) {
+                                specialCard += Integer.parseInt(((Label) node).getText().substring(0, 1));
+                            }
                         }
+
                     }
                 }
             }
@@ -581,12 +588,16 @@ public class ChooseCardMonsterController {
         int allCards = 0;
         for (VBox child : imageViewsVboxesCardInDeck) {
             if (child.isVisible()) {
-                if (child.getChildren().size() == 1) allCards++;
+                if (!(child.getChildren().getFirst() instanceof StackPane)) allCards++;
                 else {
-                    for (Node node : child.getChildren()) {
-                        if (node instanceof Label) {
-                            allCards += Integer.parseInt(((Label) node).getText().substring(0, 1));
+                    for (Node node2 : child.getChildren()) {
+                        StackPane stackPane = (StackPane) node2;
+                        for (Node node : stackPane.getChildren()) {
+                            if (node instanceof Label) {
+                                allCards += Integer.parseInt(((Label) node).getText().substring(0, 1));
+                            }
                         }
+
                     }
                 }
             }
@@ -597,6 +608,8 @@ public class ChooseCardMonsterController {
 
     private ArrayList<VBox> createListOfVBoxesForCardCollection() {
         ArrayList<VBox> imageViews = new ArrayList<>();
+
+
         for (Node child : cardCollectionPane.getChildren()) {
             if (child instanceof VBox) {
                 imageViews.add((VBox) child);

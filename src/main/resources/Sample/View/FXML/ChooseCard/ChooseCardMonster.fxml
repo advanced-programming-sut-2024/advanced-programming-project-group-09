@@ -17,16 +17,12 @@
                     <VBox fx:id="commandersHornVboxInCardCollection">
                         <StackPane>
                             <ImageView fx:id="commanderHorn" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornSelected" />
-                            <Label fx:id="commandersHornRemainderInCardCollection" alignment="TOP_LEFT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
-                                <StackPane.margin>
-                                    <Insets bottom="15"/>
-                                </StackPane.margin>
-                            </Label>
+                            <Label fx:id="commandersHornRemainderInCardCollection" alignment="TOP_LEFT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT"/>
                         </StackPane>
 
                     </VBox>
                     <VBox fx:id="decoyVboxInCardCollection">
-                        <StackPane>
+                        <StackPane fx:id="sinus">
                             <ImageView fx:id="decoy" fitHeight="180" fitWidth="100" onMouseClicked="#decoySelected" />
                             <Label fx:id="decoyRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
                                 <StackPane.margin>
@@ -310,14 +306,9 @@
             <Pane fx:id="inDeckCardPane">
                 <!--TODO                copy for all decks-->
                 <VBox fx:id="commandersHornVboxInDeck">
-                    <StackPane>
                         <ImageView fx:id="commanderHornImageInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornUnselected" />
-                        <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
-                            <StackPane.margin>
-                                <Insets bottom="15"/>
-                            </StackPane.margin>
-                        </Label>
-                    </StackPane>
+                        <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT"/>
+
                 </VBox>
                 <VBox fx:id="decoyVboxInDeck">
                     <StackPane>
