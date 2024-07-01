@@ -6,6 +6,8 @@ import javafx.scene.image.Image;
 import java.util.Objects;
 
 public enum SpecialCard {
+    ClearWeather("Clear Weather", "Clear Weather", 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_clear.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/weather_clear.jpg")))),
+    SkelligeStorm("Skellige Storm", "Skellige Storm", 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_storm.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/weather_storm.jpg")))),
     Mardroeme("Mardroeme", "Mardroeme", 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_mardroeme.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/special_mardroeme.jpg")))),
     CommandersHorn("Commander's Horn", "Double power", 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_horn.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/special_horn.jpg")))),
     Scorch("Scorch", "Destroy highest value", 2, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_mardroeme.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/special_mardroeme.jpg")))),
