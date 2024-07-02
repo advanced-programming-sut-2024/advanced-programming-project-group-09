@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.GameController">
-   <ImageView fitHeight="720" fitWidth="1280">
+   <ImageView fitHeight="720" fitWidth="1280" layoutX="-1.0">
       <Image url="@../Images/Board.jpg">
       </Image>
    </ImageView>
@@ -440,37 +440,33 @@
       </Label>
    </StackPane>
    <StackPane layoutX="1155.0" layoutY="55.0" prefHeight="86.0" prefWidth="63.0">
-      <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true"/>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#564e4e" height="24.0" stroke="BLACK" strokeType="INSIDE"
-                 width="40.0" StackPane.alignment="BOTTOM_CENTER"/>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00"
-             StackPane.alignment="BOTTOM_CENTER">
+      <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#564e4e" height="24.0" stroke="BLACK" strokeType="INSIDE" width="40.0" StackPane.alignment="BOTTOM_CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00" StackPane.alignment="BOTTOM_CENTER">
          <font>
-            <Font size="14.0"/>
+            <Font size="14.0" />
          </font>
       </Label>
    </StackPane>
-   <ImageView fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="558.0" pickOnBounds="true" />
-   <ImageView fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="55.0" pickOnBounds="true" />
-   <StackPane alignment="CENTER_LEFT" layoutY="156.0" prefHeight="114.0" prefWidth="302.0"
-              style="-fx-background-color: black">
+   <ImageView fx:id="myLeader" fitHeight="86.0" fitWidth="60.0" layoutX="95.0" layoutY="558.0" pickOnBounds="true" />
+   <ImageView fx:id="competitorLeader" fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="55.0" pickOnBounds="true" />
+   <StackPane alignment="CENTER_LEFT" layoutY="156.0" prefHeight="114.0" prefWidth="302.0" style="-fx-background-color: black">
       <StackPane alignment="BOTTOM_LEFT" maxWidth="200.0" prefHeight="111.0" prefWidth="200.0">
          <StackPane.margin>
-            <Insets left="5.0"/>
+            <Insets left="5.0" />
          </StackPane.margin>
          <ImageView fitHeight="80.0" fitWidth="84.0" pickOnBounds="true" StackPane.alignment="CENTER">
-            <Image url="@../Images/Icons/profile.png"/>
+            <Image url="@../Images/Icons/profile.png" />
          </ImageView>
-         <ImageView fitHeight="130.0" fitWidth="105.5" pickOnBounds="true" StackPane.alignment="CENTER">
+         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="CENTER">
             <StackPane.margin>
-               <Insets/>
+               <Insets />
             </StackPane.margin>
-            <Image url="@../Images/Icons/icon_player_border.png"/>
+            <Image url="@../Images/Icons/icon_player_border.png" />
          </ImageView>
-         <ImageView fx:id="secondPlayerShield" fitHeight="40.0" fitWidth="47.4" pickOnBounds="true"
-                    StackPane.alignment="TOP_LEFT">
+         <ImageView fx:id="secondPlayerShield" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="30.0"/>
+               <Insets left="30.0" />
             </StackPane.margin>
          </ImageView>
       </StackPane>
@@ -478,61 +474,56 @@
          <VBox maxHeight="100.0" prefHeight="32.0" prefWidth="130.0" spacing="5.0">
             <Label fx:id="secondPlayerUsername" text="Label" textFill="GOLD">
                <font>
-                  <Font name="System Bold" size="17.0"/>
+                  <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="secondPlayerFaction" text="Label" textFill="#ffe298"/>
+            <Label fx:id="secondPlayerFaction" text="Label" textFill="#ffe298" />
          </VBox>
          <HBox prefHeight="35.0" prefWidth="120.0">
             <HBox prefHeight="35.0" prefWidth="96.0">
-               <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true">
-                  <Image url="@../Images/Icons/icon_card_count.png"/>
+               <ImageView fitHeight="33.0" fitWidth="25.0" pickOnBounds="true">
+                  <Image url="@../Images/Icons/icon_card_count.png" />
                </ImageView>
-               <Label fx:id="secondPlayerInHand" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0"
-                      prefWidth="22.0" text="0" textFill="#ffba00">
+               <Label fx:id="secondPlayerInHand" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="22.0" text="0" textFill="#ffba00">
                   <font>
-                     <Font name="System Bold" size="18.0"/>
+                     <Font name="System Bold" size="18.0" />
                   </font>
                </Label>
             </HBox>
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="133.0" spacing="1.0" HBox.hgrow="NEVER">
-               <ImageView fx:id="secondPlayerFirstLifeImageView" fitHeight="26.0" fitWidth="28.0"
-                          pickOnBounds="true"/>
-               <ImageView fx:id="secondPlayerSecondLifeImageView" fitHeight="26.0" fitWidth="28.0"
-                          pickOnBounds="true"/>
+               <ImageView fx:id="secondPlayerFirstLifeImageView" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" />
+               <ImageView fx:id="secondPlayerSecondLifeImageView" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" />
             </HBox>
          </HBox>
       </VBox>
    </StackPane>
    <StackPane layoutX="285.0" layoutY="202.0" prefHeight="39.0" prefWidth="34.0">
       <ImageView fitHeight="39.0" fitWidth="37.0">
-         <Image url="@../Images/Icons/score_total_op.png"/>
+         <Image url="@../Images/Icons/score_total_op.png" />
       </ImageView>
-      <Label fx:id="secondPlayerScore" alignment="CENTER" prefHeight="26.0" prefWidth="17.0" text="0">
+      <Label fx:id="secondPlayerScore" alignment="CENTER" prefHeight="26.0" prefWidth="51.0" text="0">
          <font>
-            <Font name="System Bold" size="12.0"/>
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
    </StackPane>
-   <StackPane alignment="CENTER_LEFT" layoutY="428.0" prefHeight="114.0" prefWidth="302.0"
-              style="-fx-background-color: black">
+   <StackPane alignment="CENTER_LEFT" layoutY="428.0" prefHeight="114.0" prefWidth="302.0" style="-fx-background-color: black">
       <StackPane alignment="BOTTOM_LEFT" maxWidth="200.0" prefHeight="111.0" prefWidth="200.0">
          <StackPane.margin>
-            <Insets left="5.0"/>
+            <Insets left="5.0" />
          </StackPane.margin>
          <ImageView fitHeight="80.0" fitWidth="84.0" pickOnBounds="true" StackPane.alignment="CENTER">
-            <Image url="@../Images/Icons/profile.png"/>
+            <Image url="@../Images/Icons/profile.png" />
          </ImageView>
-         <ImageView fitHeight="130.0" fitWidth="105.5" pickOnBounds="true" StackPane.alignment="CENTER">
+         <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" StackPane.alignment="CENTER">
             <StackPane.margin>
-               <Insets/>
+               <Insets />
             </StackPane.margin>
-            <Image url="@../Images/Icons/icon_player_border.png"/>
+            <Image url="@../Images/Icons/icon_player_border.png" />
          </ImageView>
-         <ImageView fx:id="firstPlayerShield" fitHeight="40.0" fitWidth="47.4" pickOnBounds="true"
-                    StackPane.alignment="BOTTOM_LEFT">
+         <ImageView fx:id="firstPlayerShield" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
             <StackPane.margin>
-               <Insets left="30.0"/>
+               <Insets left="30.0" />
             </StackPane.margin>
          </ImageView>
       </StackPane>
@@ -540,66 +531,63 @@
          <HBox prefHeight="35.0" prefWidth="120.0">
             <HBox prefHeight="34.0" prefWidth="106.0">
                <HBox.margin>
-                  <Insets top="5.0"/>
+                  <Insets top="5.0" />
                </HBox.margin>
-               <ImageView fitHeight="33.0" fitWidth="35.0" pickOnBounds="true">
-                  <Image url="@../Images/Icons/icon_card_count.png"/>
+               <ImageView fitHeight="33.0" fitWidth="25.0" pickOnBounds="true">
+                  <Image url="@../Images/Icons/icon_card_count.png" />
                </ImageView>
-               <Label fx:id="firstPlayerInHand" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0"
-                      prefWidth="22.0" text="0" textFill="#ffba00">
+               <Label fx:id="firstPlayerInHand" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="22.0" text="0" textFill="#ffba00">
                   <font>
-                     <Font name="System Bold" size="18.0"/>
+                     <Font name="System Bold" size="18.0" />
                   </font>
                </Label>
             </HBox>
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="131.0" spacing="1.0" HBox.hgrow="NEVER">
-               <ImageView fx:id="firstPlayerFirstLifeImageView" fitHeight="26.0" fitWidth="28.0"
-                          pickOnBounds="true"/>
-               <ImageView fx:id="firstPlayerSecondLifeImageView" fitHeight="26.0" fitWidth="28.0"
-                          pickOnBounds="true"/>
+               <ImageView fx:id="firstPlayerFirstLifeImageView" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" />
+               <ImageView fx:id="firstPlayerSecondLifeImageView" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" />
             </HBox>
          </HBox>
          <VBox maxHeight="100.0" prefHeight="32.0" prefWidth="130.0" spacing="5.0">
             <Label fx:id="firstPlayerUsername" text="Label" textFill="GOLD">
                <font>
-                  <Font name="System Bold" size="17.0"/>
+                  <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <Label fx:id="firstPlayerFaction" text="Label" textFill="#ffe298"/>
+            <Label fx:id="firstPlayerFaction" text="Label" textFill="#ffe298" />
          </VBox>
       </VBox>
    </StackPane>
    <StackPane layoutX="283.0" layoutY="469.0" prefHeight="40.0" prefWidth="40.0">
       <ImageView fitHeight="39.0" fitWidth="37.0">
-         <Image url="@../Images/Icons/score_total_me.png"/>
+         <Image url="@../Images/Icons/score_total_me.png" />
       </ImageView>
-      <Label fx:id="firstPlayerScore" alignment="CENTER" prefHeight="26.0" prefWidth="21.0" text="0">
+      <Label fx:id="firstPlayerScore" alignment="CENTER" prefHeight="26.0" prefWidth="37.0" text="0">
          <font>
-            <Font name="System Bold" size="12.0"/>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
    </StackPane>
-   <ImageView fx:id="secondPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="224.0" layoutY="202.0"
-              pickOnBounds="true" visible="false">
-      <Image url="@../Images/Icons/icon_high_score.png"/>
+   <ImageView fx:id="secondPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="269.5" layoutY="202.0" pickOnBounds="true" visible="false">
+      <Image url="@../Images/Icons/icon_high_score.png" />
    </ImageView>
-   <ImageView fx:id="firstPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="224.0" layoutY="468.0"
-              pickOnBounds="true" visible="false">
-      <Image url="@../Images/Icons/icon_high_score.png"/>
+   <ImageView fx:id="firstPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="269.0" layoutY="470.0" pickOnBounds="true" visible="false">
+      <Image url="@../Images/Icons/icon_high_score.png" />
    </ImageView>
-   <Label fx:id="secondPlayerPassedLabel" alignment="CENTER" layoutX="261.0" layoutY="165.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed">
+   <Label fx:id="secondPlayerPassedLabel" alignment="CENTER" layoutX="260.0" layoutY="151.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed" visible="false">
       <font>
          <Font size="12.0" />
       </font>
    </Label>
-   <Label fx:id="firstPlayerPassedLabel" alignment="CENTER" layoutX="263.0" layoutY="498.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed">
+   <Label fx:id="firstPlayerPassedLabel" alignment="CENTER" layoutX="260.0" layoutY="508.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed" visible="false">
       <font>
          <Font size="12.0" />
       </font>
    </Label>
    <HBox layoutX="95.0" layoutY="300.0" prefHeight="93.0" prefWidth="183.0">
-      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true"/>
-      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true"/>
-      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true"/>
+      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true" />
+      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true" />
+      <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true" />
    </HBox>
+   <Button layoutX="241.0" layoutY="80.0" mnemonicParsing="false" onMouseClicked="#changeTurn" style="-fx-background-color: Black; -fx-border-color: Yellow;" text="Change turn" />
+   <Button layoutX="223.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#pass" prefHeight="36.0" prefWidth="68.0" style="-fx-background-color: Black; -fx-border-color: Yellow;" text="Pass" />
 </AnchorPane>

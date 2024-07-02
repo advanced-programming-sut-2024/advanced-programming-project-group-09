@@ -19,6 +19,8 @@ public class GameBattleField {
     private SpecialCard specialFieldInCloseCombatUser1 = null;
     private SpecialCard specialFieldInSiegeUser1 = null;
     private SpecialCard specialFieldInRangedUser1 = null;
+    private boolean isPassedUser1 = false;
+    private int healthUser1 = 2;
 
     private final User user2;
     private final ArrayList<CommonCard> commonCardInBattleFieldUser2 = new ArrayList<>();
@@ -33,6 +35,9 @@ public class GameBattleField {
     private SpecialCard specialFieldInCloseCombatUser2 = null;
     private SpecialCard specialFieldInSiegeUser2 = null;
     private SpecialCard specialFieldInRangedUser2 = null;
+    private boolean isPassedUser2 = false;
+    private int healthUser2 = 2;
+
     private User whichUserTurn;
     private final ArrayList<SpecialCard> weatherCards = new ArrayList<>();
 
@@ -179,6 +184,38 @@ public class GameBattleField {
 
     public void setWhichUserTurn(User whichUserTurn) {
         this.whichUserTurn = whichUserTurn;
+    }
+
+    public boolean isPassedUser1() {
+        return isPassedUser1;
+    }
+
+    public void setPassedUser1(boolean passedUser1) {
+        isPassedUser1 = passedUser1;
+    }
+
+    public boolean isPassedUser2() {
+        return isPassedUser2;
+    }
+
+    public void setPassedUser2(boolean passedUser2) {
+        isPassedUser2 = passedUser2;
+    }
+
+    public int getHealthUser1() {
+        return healthUser1;
+    }
+
+    public void setHealthUser1(int healthUser1) {
+        this.healthUser1 = healthUser1;
+    }
+
+    public int getHealthUser2() {
+        return healthUser2;
+    }
+
+    public void setHealthUser2(int healthUser2) {
+        this.healthUser2 = healthUser2;
     }
 
     public ArrayList<SpecialCard> getWeatherCards() {

@@ -1,5 +1,6 @@
 package Sample.Controller;
 
+import Sample.Model.GameBattleField;
 import Sample.Model.User;
 import Sample.View.GameMenu;
 import Sample.View.LeaderMenu;
@@ -37,6 +38,10 @@ public class StartNewGameController {
 //        assert competitor != null;
 //        competitor.setCompetitor(User.getUserLoginIn());
 //        User.setUserLoginIn(competitor);
+        User user1 = User.getUserByUsername("tom");
+        User user2 = User.getUserByUsername("tom");
+        GameBattleField gameBattleField = new GameBattleField(user1, user2);
+        user1.setLastGameBattleField(gameBattleField);
         GameMenu gameMenu = new GameMenu();
         gameMenu.start(ApplicationController.getStage());
 //        LeaderMenu leaderMenu = new LeaderMenu();

@@ -214,4 +214,13 @@ public class GameBattleFieldController {
     public void putWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard) {
 
     }
+
+    public void passRound() {
+        User userToPlay = gameBattleField.getWhichUserTurn();
+        if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
+            gameBattleField.setPassedUser1(true);
+            return;
+        }
+        gameBattleField.setPassedUser2(true);
+    }
 }
