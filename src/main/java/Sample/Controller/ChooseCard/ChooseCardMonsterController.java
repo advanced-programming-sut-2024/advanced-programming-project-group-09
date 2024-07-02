@@ -1887,7 +1887,7 @@ public class ChooseCardMonsterController {
             case "realms_banner_nubrse":
                 return CommonCard.DunBannerMedic;
             case "realms_blue_stripes":
-                return CommonCard.Stripes;
+                return CommonCard.BlueStripesCommando;
 //            case "neutral_triss":
 //                return CommonCard.TrissMerigold;
 //            case "neutral_triss":

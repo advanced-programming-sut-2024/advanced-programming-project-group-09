@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="AddImagePathToFactionAndLeader">
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="Convert the address of the images to the image itself">
       <change afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_9_12_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_9_12_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/ChooseCard/ChooseCardMonsterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/ChooseCard/ChooseCardMonsterController.java" afterDir="false" />
@@ -148,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719850809817</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Convert the address of the images to the image itself">
+      <option name="closed" value="true" />
+      <created>1719907793581</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719907793581</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -183,6 +189,7 @@
     <MESSAGE value="BackToChangeInDeck2_2" />
     <MESSAGE value="BackToChooseDeck" />
     <MESSAGE value="AddImagePathToFactionAndLeader" />
-    <option name="LAST_COMMIT_MESSAGE" value="AddImagePathToFactionAndLeader" />
+    <MESSAGE value="Convert the address of the images to the image itself" />
+    <option name="LAST_COMMIT_MESSAGE" value="Convert the address of the images to the image itself" />
   </component>
 </project>
