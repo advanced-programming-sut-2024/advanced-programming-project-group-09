@@ -10,12 +10,16 @@ import java.util.Random;
 public class GameBattleFieldController {
     static GameBattleFieldController instance;
 
-    public GameBattleFieldController getInstance() {
+    public static GameBattleFieldController getInstance() {
         if (instance == null) instance = new GameBattleFieldController();
         return instance;
     }
 
     GameBattleField gameBattleField;
+
+    public GameBattleFieldController(GameBattleField gameBattleField) {
+        this.gameBattleField = gameBattleField;
+    }
 
     public void cloneChosenDeckForUsingInGame() {
 
