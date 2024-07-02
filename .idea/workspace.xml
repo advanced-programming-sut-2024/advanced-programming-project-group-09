@@ -4,21 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="CompleteGameFxml">
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="AddImagePathToFactionAndLeader">
       <change afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_1_15_PM_[Changes]/cursor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_1_15_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_1_15_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_9_21_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_9_21_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_9_12_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_24_2024_9_12_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Faction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Faction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/SpecialCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/SpecialCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/ChooseCard/ChooseCardMonsterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/ChooseCard/ChooseCardMonsterController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719774821359</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="AddImagePathToFactionAndLeader">
+      <option name="closed" value="true" />
+      <created>1719850809817</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719850809817</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,6 +182,7 @@
     <MESSAGE value="ChangeInDeck1" />
     <MESSAGE value="BackToChangeInDeck2_2" />
     <MESSAGE value="BackToChooseDeck" />
-    <option name="LAST_COMMIT_MESSAGE" value="BackToChooseDeck" />
+    <MESSAGE value="AddImagePathToFactionAndLeader" />
+    <option name="LAST_COMMIT_MESSAGE" value="AddImagePathToFactionAndLeader" />
   </component>
 </project>
