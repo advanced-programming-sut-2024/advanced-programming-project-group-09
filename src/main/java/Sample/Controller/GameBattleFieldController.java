@@ -82,6 +82,7 @@ public class GameBattleFieldController {
         gameBattleField.getCommonCardsInDiscardUser2().add(commonCard);
 
     }
+
     public void removeCommonCardCloseCombat(CommonCard commonCard) {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
@@ -95,9 +96,9 @@ public class GameBattleFieldController {
         gameBattleField.getCommonCardsInDiscardUser2().add(commonCard);
     }
 
-    public void putCommonCardRanged(CommonCard commonCard, boolean applyDecoyAbility) {
+    public void putCommonCardRanged(CommonCard commonCard, boolean applySpyAbility) {
         User userToPlay = gameBattleField.getWhichUserTurn();
-        if (applyDecoyAbility) {
+        if (applySpyAbility) {
 
             if (userToPlay.getUsername().equals(gameBattleField.getUser2().getUsername())) {
                 gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
@@ -124,9 +125,9 @@ public class GameBattleFieldController {
         return;
     }
 
-    public void putCommonCardCloseCombat(CommonCard commonCard, boolean applyDecoyAbility) {
+    public void putCommonCardCloseCombat(CommonCard commonCard, boolean applySpyAbility) {
         User userToPlay = gameBattleField.getWhichUserTurn();
-        if (applyDecoyAbility) {
+        if (applySpyAbility) {
 
             if (userToPlay.getUsername().equals(gameBattleField.getUser2().getUsername())) {
                 gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
@@ -151,9 +152,9 @@ public class GameBattleFieldController {
         gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
     }
 
-    public void putCommonCardSiege(CommonCard commonCard, boolean applyDecoyAbility) {
+    public void putCommonCardSiege(CommonCard commonCard, boolean applySpyAbility) {
         User userToPlay = gameBattleField.getWhichUserTurn();
-        if (applyDecoyAbility) {
+        if (applySpyAbility) {
             if (userToPlay.getUsername().equals(gameBattleField.getUser2().getUsername())) {
                 gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
                 gameBattleField.getSiegeIsPlayedUser1().add(commonCard);
@@ -209,7 +210,8 @@ public class GameBattleFieldController {
         gameBattleField.setSpecialFieldInCloseCombatUser2(specialCard);
         gameBattleField.getSpecialCardsDeckUser2().remove(specialCard);
     }
-    public void putWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard){
+
+    public void putWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard) {
 
     }
 }

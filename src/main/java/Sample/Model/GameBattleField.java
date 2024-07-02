@@ -45,6 +45,9 @@ public class GameBattleField {
     public User getUser1() {
         return user1;
     }
+    //add special cardd weather
+    // aval specila bar has esm
+    // bad common card ava score bad name
 
     public ArrayList<CommonCard> getCommonCardInBattleFieldUser1() {
         return commonCardInBattleFieldUser1;
