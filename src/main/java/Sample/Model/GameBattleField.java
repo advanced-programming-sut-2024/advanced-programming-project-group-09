@@ -2,20 +2,18 @@ package Sample.Model;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
-import com.google.gson.Gson;
 
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameBattleField {
     private final User user1;
     private final ArrayList<CommonCard> commonCardInBattleFieldUser1 = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsBattleFieldUser1 = new ArrayList<>();
-    private final ArrayList<CommonCard> closeCombatBattleFieldUser1 = new ArrayList<>();
+    private final ArrayList<CommonCard> commonCardInDeckUser1 = new ArrayList<>();
+    private final ArrayList<SpecialCard> specialCardsDeckUser1 = new ArrayList<>();
     private final ArrayList<CommonCard> commonCardsInDiscardUser1 = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsDiscardUser1 = new ArrayList<>();
+    private final ArrayList<CommonCard> closeCombatIsPlayedUser1 = new ArrayList<>();
     private final ArrayList<CommonCard> siegeIsPlayedUser1 = new ArrayList<>();
     private final ArrayList<CommonCard> rangedIsPlayedUser1 = new ArrayList<>();
     private SpecialCard specialFieldInCloseCombatUser1 = null;
@@ -25,15 +23,16 @@ public class GameBattleField {
     private final User user2;
     private final ArrayList<CommonCard> commonCardInBattleFieldUser2 = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsBattleFieldUser2 = new ArrayList<>();
-    private final ArrayList<CommonCard> closeCombatBattleFieldUser2 = new ArrayList<>();
+    private final ArrayList<CommonCard> commonCardInDeckUser2 = new ArrayList<>();
+    private final ArrayList<SpecialCard> specialCardsDeckUser2 = new ArrayList<>();
     private final ArrayList<CommonCard> commonCardsInDiscardUser2 = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsDiscardUser2 = new ArrayList<>();
+    private final ArrayList<CommonCard> closeCombatIsPlayedUser2 = new ArrayList<>();
     private final ArrayList<CommonCard> siegeIsPlayedUser2 = new ArrayList<>();
     private final ArrayList<CommonCard> rangedIsPlayedUser2 = new ArrayList<>();
     private SpecialCard specialFieldInCloseCombatUser2 = null;
     private SpecialCard specialFieldInSiegeUser2 = null;
     private SpecialCard specialFieldInRangedUser2 = null;
-
     private User whichUserTurn;
     private final ArrayList<SpecialCard> weatherCards = new ArrayList<>();
 
@@ -55,8 +54,24 @@ public class GameBattleField {
         return specialCardsBattleFieldUser1;
     }
 
-    public ArrayList<CommonCard> getCloseCombatBattleFieldUser1() {
-        return closeCombatBattleFieldUser1;
+    public ArrayList<CommonCard> getCommonCardInDeckUser1() {
+        return commonCardInDeckUser1;
+    }
+
+    public ArrayList<SpecialCard> getSpecialCardsDeckUser1() {
+        return specialCardsDeckUser1;
+    }
+
+    public ArrayList<CommonCard> getCommonCardInDeckUser2() {
+        return commonCardInDeckUser2;
+    }
+
+    public ArrayList<SpecialCard> getSpecialCardsDeckUser2() {
+        return specialCardsDeckUser2;
+    }
+
+    public ArrayList<CommonCard> getCloseCombatIsPlayedUser1() {
+        return closeCombatIsPlayedUser1;
     }
 
     public ArrayList<CommonCard> getCommonCardsInDiscardUser1() {
@@ -111,8 +126,8 @@ public class GameBattleField {
         return specialCardsBattleFieldUser2;
     }
 
-    public ArrayList<CommonCard> getCloseCombatBattleFieldUser2() {
-        return closeCombatBattleFieldUser2;
+    public ArrayList<CommonCard> getCloseCombatIsPlayedUser2() {
+        return closeCombatIsPlayedUser2;
     }
 
     public ArrayList<CommonCard> getCommonCardsInDiscardUser2() {

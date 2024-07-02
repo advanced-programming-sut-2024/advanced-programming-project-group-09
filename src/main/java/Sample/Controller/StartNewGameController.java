@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 
 public class StartNewGameController {
     @FXML
+
     private TextField usernameInput;
 
     public void startNewGameWithUsername(MouseEvent mouseEvent) throws Exception {
