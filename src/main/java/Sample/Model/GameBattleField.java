@@ -222,6 +222,7 @@ public class GameBattleField {
         return weatherCards;
     }
 
+
     public void ChangeTurn() {
         if (whichUserTurn.equals(user1)) whichUserTurn = user2;
         else whichUserTurn = user1;

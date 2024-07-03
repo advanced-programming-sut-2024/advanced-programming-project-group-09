@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="Modify the address of all images">
-      <change afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="create game battlfiled controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Faction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Faction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameBattleFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameBattleFieldController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/GameBattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/GameBattleField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,22 +43,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.ChooseCardMonsterTest.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ChooseCardTest.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainMenu.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Run.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/erfan/OneDrive/Desktop/approj1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.ChooseCardMonsterTest.executor": "Run",
+    "Application.ChooseCardTest.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainMenu.executor": "Run",
+    "Application.Run.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/erfan/OneDrive/Desktop/approj1",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\FXML" />
@@ -167,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719938300425</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix gameControllerbattleFiled using">
+      <option name="closed" value="true" />
+      <created>1719984610851</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1719984610851</updated>
+    </task>
+    <task id="LOCAL-00010" summary="create game battlfiled controller">
+      <option name="closed" value="true" />
+      <created>1719984740282</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719984740282</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -204,6 +215,8 @@
     <MESSAGE value="AddImagePathToFactionAndLeader" />
     <MESSAGE value="Convert the address of the images to the image itself" />
     <MESSAGE value="Modify the address of all images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify the address of all images" />
+    <MESSAGE value="fix gameControllerbattleFiled using" />
+    <MESSAGE value="create game battlfiled controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="create game battlfiled controller" />
   </component>
 </project>
