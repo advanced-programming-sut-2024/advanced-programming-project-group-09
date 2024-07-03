@@ -565,7 +565,6 @@ public class ChooseCardMonsterController {
 
     public void updateNumberOfSpecialCards() {
         int specialCard = 0;
-        System.out.println(specialCardVboxesInDeck.getFirst().getChildren().getFirst().getId() + " sdjsgdksgd");
         for (VBox child : imageViewsVboxesCardInDeck) {
             if (child.isVisible() && specialCardVboxesInDeck.contains(child)) {
                 if (!(child.getChildren().getFirst() instanceof StackPane)) specialCard++;
@@ -615,7 +614,6 @@ public class ChooseCardMonsterController {
         for (Node child : cardCollectionPane.getChildren()) {
             if (child instanceof VBox) {
                 imageViews.add((VBox) child);
-                System.out.println(child);
             }
         }
         return imageViews;
