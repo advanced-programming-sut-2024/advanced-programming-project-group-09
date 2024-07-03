@@ -21,6 +21,8 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ChooseCardMonsterController {
     public Pane cardCollectionPane;
@@ -2048,7 +2050,12 @@ public class ChooseCardMonsterController {
     }
 
     public void done(MouseEvent mouseEvent) {
-        User user = User.getUserForTest();
+        User user = User.getUserForTest();  // TODO : change this to current user
+        if (!checkEnoughSelection()) {
+            System.out.println("not enough selection");
+            return;
+        }
+
         for (VBox child : imageViewsVboxesCardInDeck) {
             if (child.isVisible()) {
                 if (!(child.getChildren().getFirst() instanceof StackPane)) {
@@ -2091,6 +2098,10 @@ public class ChooseCardMonsterController {
         printDeck(user);
     }
 
+    private boolean checkEnoughSelection() {
+        return check10SelectionOfSpecialCard() && check22SelectionOfCommonCard();
+    }
+
     private void printDeck(User user) {
         System.out.println("First common cards: siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu!!");
         for (CommonCard commonCard : user.getCommonCardsInDeck()) {
@@ -2102,10 +2113,33 @@ public class ChooseCardMonsterController {
         }
     }
 
+    // 22 ta bardashte check kon
+    // max 10 special
+    // choose card for other factions
+
     public void loadCurrentSelectedDeckForUser() {
     }
 
+    public boolean check22SelectionOfCommonCard() {
+        String regex = "Number of Unit Cards: (?<allCards>\\d+)/22";
+        Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
+        int allCards = Integer.parseInt(matcher.group("allCards"));
+        return allCards < 22;
+    }
 
+    public boolean check10SelectionOfSpecialCard() {
+        String regex = "Special Cards: (?<specialCards>\\d+)/10";
+        Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
+        int numOfSpecialCards = Integer.parseInt(matcher.group("specialCards"));
+        return numOfSpecialCards < 10;
+    }
+
+    private Matcher getCommandMatcher(String regex, Text text) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text.getText());
+        if (matcher.matches()) return matcher;
+        return null;
+    }
 }
 
 
