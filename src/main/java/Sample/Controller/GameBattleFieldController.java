@@ -10,16 +10,12 @@ import java.util.Random;
 public class GameBattleFieldController {
     static GameBattleFieldController instance;
 
-    public static GameBattleFieldController getInstance() {
+    public GameBattleFieldController getInstance() {
         if (instance == null) instance = new GameBattleFieldController();
         return instance;
     }
 
     GameBattleField gameBattleField;
-
-    public GameBattleFieldController(GameBattleField gameBattleField) {
-        this.gameBattleField = gameBattleField;
-    }
 
     public void cloneChosenDeckForUsingInGame() {
 
@@ -86,7 +82,6 @@ public class GameBattleFieldController {
         gameBattleField.getCommonCardsInDiscardUser2().add(commonCard);
 
     }
-
     public void removeCommonCardCloseCombat(CommonCard commonCard) {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
@@ -214,17 +209,7 @@ public class GameBattleFieldController {
         gameBattleField.setSpecialFieldInCloseCombatUser2(specialCard);
         gameBattleField.getSpecialCardsDeckUser2().remove(specialCard);
     }
+    public void putWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard){
 
-    public void putWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard) {
-
-    }
-
-    public void passRound() {
-        User userToPlay = gameBattleField.getWhichUserTurn();
-        if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.setPassedUser1(true);
-            return;
-        }
-        gameBattleField.setPassedUser2(true);
     }
 }

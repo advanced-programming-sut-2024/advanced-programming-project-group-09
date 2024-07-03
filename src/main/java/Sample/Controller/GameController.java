@@ -45,7 +45,6 @@ public class GameController {
     private Label secondPlayerInHand;
     @FXML
     private Label firstPlayerInHand;
-
     @FXML
     private Label secondPlayerFaction;
     @FXML
