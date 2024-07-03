@@ -2019,6 +2019,8 @@ public class ChooseCardMonsterController {
                 return CommonCard.Hjalmar;
             case "skellige_holger":
                 return CommonCard.HolgerBlackhand;
+            case "skellige_cerys":
+                return CommonCard.Cerys;
             case "skellige_kambi":
                 return CommonCard.Kambi;
             case "skellige_light_longship", "skellige_war_longship":
@@ -2100,7 +2102,7 @@ public class ChooseCardMonsterController {
         }
     }
 
-    public void loadCurrentSelectedDeckForUser(){
+    public void loadCurrentSelectedDeckForUser() {
     }
 
 
