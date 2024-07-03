@@ -74,9 +74,11 @@ public class GameController {
     @FXML
     private HBox competitorSiegeCardsPlayed;
     private final GameBattleField gameBattleField = User.getUserLoginIn().getLastGameBattleField();
+    GameBattleFieldController gameBattleFieldController;
 
     public void initialize() {
         updateBoard();
+        gameBattleFieldController = new GameBattleFieldController(gameBattleField);
     }
 
     private void updateBoard() {

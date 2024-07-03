@@ -8,11 +8,15 @@ import Sample.Model.User;
 import java.util.Random;
 
 public class GameBattleFieldController {
-    static GameBattleFieldController instance;
+//    static GameBattleFieldController instance;
+//
+//    public GameBattleFieldController getInstance() {
+//        if (instance == null) instance = new GameBattleFieldController();
+//        return instance;
+//    }
 
-    public GameBattleFieldController getInstance() {
-        if (instance == null) instance = new GameBattleFieldController();
-        return instance;
+    public GameBattleFieldController(GameBattleField gameBattleField) {
+        this.gameBattleField = gameBattleField;
     }
 
     GameBattleField gameBattleField;
