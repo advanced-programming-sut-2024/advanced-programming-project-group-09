@@ -305,6 +305,8 @@ public class ChooseCardMonsterController {
     public Text heroCards;
     public Button startGameButton;
     public Button backToLeaderMenu;
+    public Label monsters_arachasRemainderInDeck;
+    public Label monsters_arachasRemainderInCardCollection;
     ArrayList<VBox> imageViewsVboxesCardCollection = new ArrayList<>();
     ArrayList<VBox> imageViewsVboxesCardInDeck = new ArrayList<>();
 
@@ -400,7 +402,7 @@ public class ChooseCardMonsterController {
         neutral_emiel.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_emiel.jpg"))));
         neutral_dandelion.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_dandelion.jpg"))));
         neutral_cow.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_cow.jpg"))));
-        neutral_chort.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
+//        neutral_chort.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
 
 
@@ -408,9 +410,8 @@ public class ChooseCardMonsterController {
 
 
         monsters_arachas_behemoth.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
-        monsters_arachas_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
-        monsters_arachas_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
-        monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
+//        monsters_arachas_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
+//        monsters_arachas_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
         monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
         monsters_poroniec.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_poroniec.jpg"))));
         monsters_celaeno_harpy.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
@@ -471,7 +472,7 @@ public class ChooseCardMonsterController {
         neutral_emielInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_emiel.jpg"))));
         neutral_dandelionInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_dandelion.jpg"))));
         neutral_cowInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_cow.jpg"))));
-        neutral_chortInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
+//        neutral_chortInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
 
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
 
@@ -479,8 +480,8 @@ public class ChooseCardMonsterController {
         monsters_arachasInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas.jpg"))));
         monsters_arachas_behemothInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
         monsters_bruxaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
-        monsters_arachas_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
-        monsters_arachas_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
+//        monsters_arachas_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
+//        monsters_arachas_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
         monsters_bruxaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
         monsters_celaeno_harpyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
         monsters_cockatriceInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_cockatrice.jpg"))));
@@ -1353,16 +1354,16 @@ public class ChooseCardMonsterController {
         neutral_cowVboxInCardCollection.setVisible(true);
         neutral_cowVboxInDeck.setVisible(false);
     }
-
-    public void neutral_chortSelected(MouseEvent mouseEvent) {
-        neutral_chortVboxInCardCollection.setVisible(false);
-        neutral_chortVboxInDeck.setVisible(true);
-    }
-
-    public void neutral_chortUnselected(MouseEvent mouseEvent) {
-        neutral_chortVboxInCardCollection.setVisible(true);
-        neutral_chortVboxInDeck.setVisible(false);
-    }
+//
+//    public void neutral_chortSelected(MouseEvent mouseEvent) {
+//        neutral_chortVboxInCardCollection.setVisible(false);
+//        neutral_chortVboxInDeck.setVisible(true);
+//    }
+//
+//    public void neutral_chortUnselected(MouseEvent mouseEvent) {
+//        neutral_chortVboxInCardCollection.setVisible(true);
+//        neutral_chortVboxInDeck.setVisible(false);
+//    }
 
     public void neutral_zoltanSelected(MouseEvent mouseEvent) {
         neutral_zoltanVboxInCardCollection.setVisible(false);
@@ -1998,6 +1999,15 @@ public class ChooseCardMonsterController {
 //                return CommonCard.TrissMerigold;
         }
         return null;
+    }
+
+    public void done(MouseEvent mouseEvent) {
+        for (VBox box : imageViewsVboxesCardInDeck) {
+
+        }
+        for (VBox vBox : specialCardVboxesInDeck) {
+
+        }
     }
 }
 

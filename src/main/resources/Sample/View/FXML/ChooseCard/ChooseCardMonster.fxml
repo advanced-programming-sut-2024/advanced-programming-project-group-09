@@ -108,9 +108,9 @@
                         <ImageView fx:id="neutral_geralt" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltSelected" />
                     </VBox>
 
-                    <VBox fx:id="neutral_chortVboxInCardCollection">
-                        <ImageView fx:id="neutral_chort" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortSelected" />
-                    </VBox>
+<!--                    <VBox fx:id="neutral_chortVboxInCardCollection">-->
+<!--                        <ImageView fx:id="neutral_chort" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortSelected" />-->
+<!--                    </VBox>-->
 
                     <VBox fx:id="neutral_yenneferVboxInCardCollection">
                         <ImageView fx:id="neutral_yennefer" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferSelected" />
@@ -184,14 +184,23 @@
                         <ImageView fx:id="monsters_arachas_behemoth" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_behemothSelected" />
                     </VBox>
                     <VBox fx:id="monsters_arachasVboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasSelected" />
+
+                        <StackPane>
+                            <ImageView fx:id="monsters_arachas" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasSelected" />
+                            <Label fx:id="monsters_arachasRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT" >
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+<!--                        <ImageView fx:id="monsters_arachas" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasSelected" />-->
                     </VBox>
-                    <VBox fx:id="monsters_arachas_1VboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Selected" />
-                    </VBox>
-                    <VBox fx:id="monsters_arachas_2VboxInCardCollection">
-                        <ImageView fx:id="monsters_arachas_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Selected" />
-                    </VBox>
+<!--                    <VBox fx:id="monsters_arachas_1VboxInCardCollection">-->
+<!--                        <ImageView fx:id="monsters_arachas_1" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Selected" />-->
+<!--                    </VBox>-->
+<!--                    <VBox fx:id="monsters_arachas_2VboxInCardCollection">-->
+<!--                        <ImageView fx:id="monsters_arachas_2" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Selected" />-->
+<!--                    </VBox>-->
                     <VBox fx:id="monsters_earth_elementalVboxInCardCollection">
                         <ImageView fx:id="monsters_earth_elemental" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_earth_elementalSelected" />
                     </VBox>
@@ -291,7 +300,7 @@
             <Button fx:id="changeFactionButton" text="Change Faction" />
             <Button fx:id="downloadDeckButton" text="Download Deck" />
             <Button fx:id="startGameButton" text="Start game" />
-            <Button fx:id="backToLeaderMenu" text="Back" />
+            <Button fx:id="backToLeaderMenu" text="Done and back" onMouseClicked="#done"/>
             <Text fx:id="numberOfAllCards" styleClass="label" text="Number of Unit Cards: 0/22" />
             <Text fx:id="specialCards" styleClass="label" text="Special Cards: 0/10" />
             <Text fx:id="heroCards" styleClass="label" text="Hero Cards: 0" />
@@ -400,9 +409,9 @@
                 <VBox fx:id="neutral_geraltVboxInDeck">
                     <ImageView fx:id="neutral_geraltInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltUnselected" />
                 </VBox>
-                <VBox fx:id="neutral_chortVboxInDeck">
-                    <ImageView fx:id="neutral_chortInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortUnselected" />
-                </VBox>
+<!--                <VBox fx:id="neutral_chortVboxInDeck">-->
+<!--                    <ImageView fx:id="neutral_chortInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortUnselected" />-->
+<!--                </VBox>-->
                 <VBox fx:id="neutral_yenneferVboxInDeck">
                     <ImageView fx:id="neutral_yenneferInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferUnselected" />
                 </VBox>
@@ -478,14 +487,22 @@
                     <ImageView fx:id="monsters_poroniecInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_poroniecUnselected" />
                 </VBox>
                 <VBox fx:id="monsters_arachasVboxInDeck">
-                    <ImageView fx:id="monsters_arachasInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasUnselected" />
+                    <StackPane>
+                        <ImageView fx:id="monsters_arachasInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasUnselected" />
+                        <Label fx:id="monsters_arachasRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT" >
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+<!--                    <ImageView fx:id="monsters_arachasInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachasUnselected" />-->
                 </VBox>
-                <VBox fx:id="monsters_arachas_1VboxInDeck">
-                    <ImageView fx:id="monsters_arachas_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Unselected" />
-                </VBox>
-                <VBox fx:id="monsters_arachas_2VboxInDeck">
-                    <ImageView fx:id="monsters_arachas_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Unselected" />
-                </VBox>
+<!--                <VBox fx:id="monsters_arachas_1VboxInDeck">-->
+<!--                    <ImageView fx:id="monsters_arachas_1InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_1Unselected" />-->
+<!--                </VBox>-->
+<!--                <VBox fx:id="monsters_arachas_2VboxInDeck">-->
+<!--                    <ImageView fx:id="monsters_arachas_2InDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_arachas_2Unselected" />-->
+<!--                </VBox>-->
                 <VBox fx:id="monsters_earth_elementalVboxInDeck">
                     <ImageView fx:id="monsters_earth_elementalInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#monsters_earth_elementalUnselected" />
                 </VBox>
