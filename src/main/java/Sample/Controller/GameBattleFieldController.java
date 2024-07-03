@@ -96,12 +96,11 @@ public class GameBattleFieldController {
     public void removeCommonCardRanged(CommonCard commonCard) {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getRangedIsPlayedUser1().remove(commonCard);
             gameBattleField.getCommonCardsInDiscardUser1().add(commonCard);
+            sort();
             return;
         }
-        gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
         gameBattleField.getRangedIsPlayedUser2().remove(commonCard);
         gameBattleField.getCommonCardsInDiscardUser2().add(commonCard);
         sort();
@@ -112,12 +111,11 @@ public class GameBattleFieldController {
     public void removeCommonCardSiege(CommonCard commonCard) {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getSiegeIsPlayedUser1().remove(commonCard);
             gameBattleField.getCommonCardsInDiscardUser1().add(commonCard);
+            sort();
             return;
         }
-        gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
         gameBattleField.getSiegeIsPlayedUser2().remove(commonCard);
         gameBattleField.getCommonCardsInDiscardUser2().add(commonCard);
         sort();
@@ -127,12 +125,11 @@ public class GameBattleFieldController {
     public void removeCommonCardCloseCombat(CommonCard commonCard) {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getCloseCombatIsPlayedUser1().remove(commonCard);
             gameBattleField.getCommonCardsInDiscardUser1().add(commonCard);
+            sort();
             return;
         }
-        gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
         gameBattleField.getCloseCombatIsPlayedUser2().remove(commonCard);
         gameBattleField.getCommonCardsInDiscardUser2().add(commonCard);
         sort();
@@ -143,26 +140,25 @@ public class GameBattleFieldController {
         if (applySpyAbility) {
 
             if (userToPlay.getUsername().equals(gameBattleField.getUser2().getUsername())) {
-                gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
                 gameBattleField.getRangedIsPlayedUser1().add(commonCard);
-                gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+                gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
+                sort();
                 return;
             }
-            gameBattleField.getCommonCardInBattleFieldUser2().add(commonCard);
             gameBattleField.getRangedIsPlayedUser2().add(commonCard);
-            gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
+            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
 
+            sort();
             return;
         }
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
             gameBattleField.getRangedIsPlayedUser1().add(commonCard);
-            gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
+            sort();
             return;
         }
-        gameBattleField.getCommonCardInBattleFieldUser2().add(commonCard);
+        gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
         gameBattleField.getRangedIsPlayedUser2().add(commonCard);
-        gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
 
         sort();
 
@@ -173,26 +169,25 @@ public class GameBattleFieldController {
         if (applySpyAbility) {
 
             if (userToPlay.getUsername().equals(gameBattleField.getUser2().getUsername())) {
-                gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
+                gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
                 gameBattleField.getCloseCombatIsPlayedUser1().add(commonCard);
-                gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+                sort();
                 return;
             }
-            gameBattleField.getCommonCardInBattleFieldUser2().add(commonCard);
+            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getCloseCombatIsPlayedUser2().add(commonCard);
-            gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
+            sort();
             return;
 
         }
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
+            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getCloseCombatIsPlayedUser1().add(commonCard);
-            gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+            sort();
             return;
         }
-        gameBattleField.getCommonCardInBattleFieldUser2().add(commonCard);
+        gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
         gameBattleField.getCloseCombatIsPlayedUser2().add(commonCard);
-        gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
         sort();
     }
 
@@ -200,25 +195,24 @@ public class GameBattleFieldController {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (applySpyAbility) {
             if (userToPlay.getUsername().equals(gameBattleField.getUser2().getUsername())) {
-                gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
+                gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
                 gameBattleField.getSiegeIsPlayedUser1().add(commonCard);
-                gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+                sort();
                 return;
             }
-            gameBattleField.getCommonCardInBattleFieldUser2().add(commonCard);
+            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getSiegeIsPlayedUser2().add(commonCard);
-            gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
+            sort();
             return;
         }
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
-            gameBattleField.getCommonCardInBattleFieldUser1().add(commonCard);
+            gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
             gameBattleField.getSiegeIsPlayedUser1().add(commonCard);
-            gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+            sort();
             return;
         }
-        gameBattleField.getCommonCardInBattleFieldUser2().add(commonCard);
+        gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
         gameBattleField.getSiegeIsPlayedUser2().add(commonCard);
-        gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
         sort();
     }
 
@@ -227,22 +221,25 @@ public class GameBattleFieldController {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
             gameBattleField.setSpecialFieldInRangedUser1(specialCard);
-            gameBattleField.getSpecialCardsDeckUser1().remove(specialCard);
+            gameBattleField.getSpecialCardsBattleFieldUser1().remove(specialCard);
+            sort();
             return;
         }
         gameBattleField.setSpecialFieldInRangedUser2(specialCard);
-        gameBattleField.getSpecialCardsDeckUser2().remove(specialCard);
+        gameBattleField.getSpecialCardsBattleFieldUser2().remove(specialCard);
+        sort();
     }
 
     public void putSpecialCardInSpecialFieldSiege(SpecialCard specialCard) {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
             gameBattleField.setSpecialFieldInSiegeUser1(specialCard);
-            gameBattleField.getSpecialCardsDeckUser1().remove(specialCard);
+            gameBattleField.getSpecialCardsBattleFieldUser1().remove(specialCard);
+            sort();
             return;
         }
         gameBattleField.setSpecialFieldInSiegeUser2(specialCard);
-        gameBattleField.getSpecialCardsDeckUser2().remove(specialCard);
+        gameBattleField.getSpecialCardsBattleFieldUser2().remove(specialCard);
         sort();
     }
 
@@ -250,22 +247,29 @@ public class GameBattleFieldController {
         User userToPlay = gameBattleField.getWhichUserTurn();
         if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
             gameBattleField.setSpecialFieldInCloseCombatUser1(specialCard);
-            gameBattleField.getSpecialCardsDeckUser1().remove(specialCard);
+            gameBattleField.getSpecialCardsBattleFieldUser1().remove(specialCard);
+            sort();
             return;
         }
         gameBattleField.setSpecialFieldInCloseCombatUser2(specialCard);
-        gameBattleField.getSpecialCardsDeckUser2().remove(specialCard);
+        gameBattleField.getSpecialCardsBattleFieldUser2().remove(specialCard);
         sort();
     }
 
     public void putWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard) {
         gameBattleField.getWeatherCards().add(specialCard);
+        User userToPlay = gameBattleField.getWhichUserTurn();
+        if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
+            gameBattleField.getSpecialCardsBattleFieldUser1().remove(specialCard);
+            sort();
+            return;
+        }
+        gameBattleField.getSpecialCardsBattleFieldUser2().remove(specialCard);
         sort();
     }
 
     public void removeWeatherCardToSpecialFieldForWeatherCard(SpecialCard specialCard) {
         gameBattleField.getWeatherCards().remove(specialCard);
-        sort();
     }
 
     public void sortSpecial(ArrayList<SpecialCard> specialCards) {
