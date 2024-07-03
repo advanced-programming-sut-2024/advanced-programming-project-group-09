@@ -85,6 +85,10 @@ public class User {
         User.userLoginIn = userLoginIn;
     }
 
+    public static User getUserForTest() {
+        return new User("tome", "123", "abcd@gmail.com", "tom");
+    }
+
     public void setFactionLeader(Leader factionLeader) {
         this.factionLeader = factionLeader;
         saveUsers();
@@ -261,8 +265,7 @@ public class User {
     public static void saveUsers() {
         List<UserData> userDataList = new ArrayList<>();
         for (User user : allUsers) {
-            userDataList.add(new UserData(user.getUsername(), user.getPassword(), user.getEmail(), user.getNickname(),
-                    user.getFactionSelected(), user.getFactionLeader(), user.getCommonCardsInDeck(), user.getSpecialCardsInDeck()));
+            userDataList.add(new UserData(user.getUsername(), user.getPassword(), user.getEmail(), user.getNickname(), user.getFactionSelected(), user.getFactionLeader(), user.getCommonCardsInDeck(), user.getSpecialCardsInDeck()));
         }
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             gson.toJson(userDataList, writer);
@@ -352,8 +355,7 @@ public class User {
         private List<CommonCard> commonCardsInDeck;
         private List<SpecialCard> specialCardsInDeck;
 
-        public UserData(String username, String password, String email, String nickname, Faction factionSelected, Leader factionLeader,
-                        List<CommonCard> commonCardsInDeck, List<SpecialCard> specialCardsInDeck) {
+        public UserData(String username, String password, String email, String nickname, Faction factionSelected, Leader factionLeader, List<CommonCard> commonCardsInDeck, List<SpecialCard> specialCardsInDeck) {
             this.username = username;
             this.password = password;
             this.email = email;

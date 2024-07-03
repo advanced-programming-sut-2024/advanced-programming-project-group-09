@@ -1,7 +1,8 @@
 package Sample.Controller.ChooseCard;
 
 import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.Faction;
+import Sample.CardEnums.SpecialCard;
+import Sample.Model.User;
 import Sample.View.LoginMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -49,24 +50,24 @@ public class ChooseCardMonsterController {
     public VBox decoyVboxInCardCollection;
     public VBox commandersHornVboxInCardCollection;
     public VBox commandersHornVboxInDeck;
-    public ImageView commanderHornImageInDeck;
+    public ImageView special_hornInDeck;
     public Label commandersHornRemainderInDeck;
     public VBox decoyVboxInDeck;
-    public ImageView decoyImageInDeck;
+    public ImageView special_decoyInDeck;
     public Label decoyRemainderInDeck;
-    public ImageView mardroemImageInDeck;
+    public ImageView special_mardroemeInDeck;
     public Label mardroemRemainderInDeck;
-    public ImageView scorchImageInDeck;
+    public ImageView special_scorchInDeck;
     public Label schorchRemainderInDeck;
-    public ImageView bitingFrostImageInDeck;
+    public ImageView weather_frostInDeck;
     public Label bitingFrostRemainderInDeck;
-    public ImageView clearWeatherImageInDeck;
+    public ImageView weather_clearInDeck;
     public Label clearWeatherRemainderInDeck;
-    public ImageView impenetrableFogInDeck;
+    public ImageView weather_fogInDeck;
     public Label impenetrableFrogRemainderInDeck;
-    public ImageView skelligeStormInDeck;
+    public ImageView weather_stormInDeck;
     public Label skelligeStormRemainderInDeck;
-    public ImageView torrentialRainInDeck;
+    public ImageView weather_rainInDeck;
     public Label torrentialRainRemainderInDeck;
     public GridPane gridPaneInDeck;
     public Pane inDeckCardPane;
@@ -449,15 +450,15 @@ public class ChooseCardMonsterController {
 
     private void setImagesForCardsInDeck() {
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
-        commanderHornImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_horn.jpg"))));
-        decoyImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_decoy.jpg"))));
-        mardroemImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_mardroeme.jpg"))));
-        scorchImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_scorch.jpg"))));
-        bitingFrostImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_frost.jpg"))));
-        impenetrableFogInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_fog.jpg"))));
-        clearWeatherImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_clear.jpg"))));
-        skelligeStormInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_storm.jpg"))));
-        torrentialRainInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_rain.jpg"))));
+        special_hornInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_horn.jpg"))));
+        special_decoyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_decoy.jpg"))));
+        special_mardroemeInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_mardroeme.jpg"))));
+        special_scorchInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_scorch.jpg"))));
+        weather_frostInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_frost.jpg"))));
+        weather_fogInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_fog.jpg"))));
+        weather_clearInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_clear.jpg"))));
+        weather_stormInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_storm.jpg"))));
+        weather_rainInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_rain.jpg"))));
         neutral_ciriInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_ciri.jpg"))));
         neutral_geraltInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_geralt.jpg"))));
         neutral_trissInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_triss.jpg"))));
@@ -1719,7 +1720,34 @@ public class ChooseCardMonsterController {
         }
     }
 
-    public CommonCard getCardByIdAddress(String address) {
+    public SpecialCard getSpecialCardByIdAddress(String address) {
+        if (address.contains("InDeck")) address = address.split("InDeck")[0];
+        switch (address) {
+            case "special_decoy":
+                return SpecialCard.Decoy;
+            case "special_horn":
+                return SpecialCard.CommandersHorn;
+            case "special_mardroeme":
+                return SpecialCard.Mardroeme;
+            case "special_scorch":
+                return SpecialCard.Scorch;
+            case "weather_clear":
+                return SpecialCard.ClearWeather;
+            case "weather_fog":
+                return SpecialCard.ImpenetrableFog;
+            case "weather_frost":
+                return SpecialCard.BitingFrost;
+            case "weather_rain":
+                return SpecialCard.TorrentialRain;
+            case "weather_storm":
+                return SpecialCard.SkelligeStorm;
+        }
+        return null;
+    }
+
+    public CommonCard getCommonCardByIdAddress(String address) {
+        if (address.contains("InDeck")) address = address.split("InDeck")[0];
+        System.out.println("address: " + address);
         switch (address) {
             case "monsters_arachas":
                 return CommonCard.Arachas;
@@ -1815,7 +1843,7 @@ public class ChooseCardMonsterController {
                 return CommonCard.Geralt;
             case "neutral_mysterious_elf":
                 return CommonCard.MysteriousElf;
-                case "neutral_olgierd":
+            case "neutral_olgierd":
                 return CommonCard.OlgierdVonEverc;
             case "neutral_triss":
                 return CommonCard.TrissMerigold;
@@ -2002,12 +2030,56 @@ public class ChooseCardMonsterController {
     }
 
     public void done(MouseEvent mouseEvent) {
-        for (VBox box : imageViewsVboxesCardInDeck) {
-
+        User user = User.getUserForTest();
+        for (VBox child : imageViewsVboxesCardInDeck) {
+            if (child.isVisible()) {
+                if (!(child.getChildren().getFirst() instanceof StackPane)) {
+                    user.getCommonCardsInDeck().add(getCommonCardByIdAddress(child.getChildren().getFirst().getId()));
+                } else {
+                    StackPane stackPane = (StackPane) child.getChildren().getFirst();
+                    user.getCommonCardsInDeck().add(getCommonCardByIdAddress(stackPane.getChildren().getFirst().getId()));
+                }
+            }
         }
-        for (VBox vBox : specialCardVboxesInDeck) {
-
+        for (VBox child : specialCardVboxesInDeck) {
+            if (child.isVisible()) {
+                StackPane stackPane = (StackPane) child.getChildren().getFirst();
+                user.getSpecialCardsInDeck().add(getSpecialCardByIdAddress(stackPane.getChildren().getFirst().getId()));
+            }
         }
+        printDeck(user);
+    }
+
+    private void printDeck(User user) {
+        for (CommonCard commonCard : user.getCommonCardsInDeck()) {
+            System.out.println(commonCard.getCardName());
+        }
+        System.out.println("now Special cards:   siuuuuuuuuuuu");
+        for (SpecialCard specialCard : user.getSpecialCardsInDeck()) {
+            System.out.println(specialCard.getCardName());
+        }
+    }
+
+    public void updateNumberOfAsllCards() {
+        updateNumberOfSpecialCards();
+        int allCards = 0;
+        for (VBox child : imageViewsVboxesCardInDeck) {
+            if (child.isVisible()) {
+                if (!(child.getChildren().getFirst() instanceof StackPane)) allCards++;
+                else {
+                    for (Node node2 : child.getChildren()) {
+                        StackPane stackPane = (StackPane) node2;
+                        for (Node node : stackPane.getChildren()) {
+                            if (node instanceof Label) {
+                                allCards += Integer.parseInt(((Label) node).getText().substring(0, 1));
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        numberOfAllCards.setText("All cards Selected: " + allCards + " / 22");
     }
 }
 
