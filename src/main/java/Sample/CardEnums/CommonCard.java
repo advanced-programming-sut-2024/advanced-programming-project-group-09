@@ -4,6 +4,7 @@ import Sample.View.LoginMenu;
 import javafx.scene.image.Image;
 
 import java.util.Objects;
+import java.util.function.Supplier;
 
 public enum CommonCard {
     // Nilfgaard Cards
@@ -43,7 +44,7 @@ public enum CommonCard {
     DonarAnHindar("Donar an Hindar", Faction.Skellige, "", 4, "Close Combat", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_donar.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_donar.jpg")))),
     ClanAnCraite("Clan An Craite", Faction.Skellige, "Tight Bond", 6, "Close Combat", false, 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_craite_warrior.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_craite_warrior.jpg")))),
     MadmanLugos("Madman Lugos", Faction.Skellige, "", 6, "Close Combat", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_madmad_lugos.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_madmad_lugos.jpg")))),
-    Cerys("Cerys", Faction.Skellige, "Hero Muster", 10, "Close Combat", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_cerys.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_cerys.jpg")))),
+//    Cerys("Cerys", Faction.Skellige, "Hero Muster", 10, "Close Combat", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_cerys.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_cerys.jpg")))),
     Kambi("Kambi", Faction.Skellige, "Hero Transform", 11, "Close Combat", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_kambi.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_kambi.jpg")))),
     BirnaBran("Birna Bran", Faction.Skellige, "Medic", 2, "Close Combat", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_birna.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_birna.jpg")))),
     ClanDrummondShieldmaiden("Clan Drummond Shieldmaiden", Faction.Skellige, "Tight Bond", 4, "Close Combat", false, 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/skellige_shield_maiden.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/skellige_shield_maiden.jpg")))),
@@ -162,7 +163,9 @@ public enum CommonCard {
     YenneferOfVengerberg("Yennefer of Vengerberg", null, "Medic Hero", 7, "Ranged", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_yennefer.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/neutral_yennefer.jpg")))),
     ZoltanChivay("Zoltan Chivay", null, "", 5, "Close Combat", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_zoltan.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/neutral_zoltan.jpg")))),
     Geralt("Geralt", null, "", 15, "Close Combat", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_geralt.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/neutral_geralt.jpg")))),
-    ;
+    Trebuchet("Trebuchet", Faction.NorthernRealms, "", 10, "Ranged", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_trebuchet.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/realms_trebuchet.jpg")))),
+    MahakamDefender("Mahakam", Faction.Scoiatael, "", 5, "Close Combat", false, 5, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_mahakam.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_mahakam.jpg")))),
+    Saskia("Saskia", Faction.Scoiatael,"",10 ,"Siege" ,true , 1,new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_saskia.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_saskia.jpg"))));
     private final String cardName;
     private final Faction faction;
     private final String ability;

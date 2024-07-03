@@ -156,9 +156,6 @@
                     <VBox fx:id="neutral_dandelionVboxInCardCollection">
                         <ImageView fx:id="neutral_dandelion" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionSelected"/>
                     </VBox>
-                    <VBox fx:id="neutral_cowVboxInCardCollection">
-                        <ImageView fx:id="neutral_cow" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_cowSelected"/>
-                    </VBox>
                     <VBox fx:id="neutral_mysterious_elfVboxInCardCollection">
                         <ImageView fx:id="neutral_mysterious_elfInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfSelected"/>
                     </VBox>
@@ -462,9 +459,7 @@
                 <VBox fx:id="neutral_dandelionVboxInDeck">
                     <ImageView fx:id="neutral_dandelionInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionUnselected"/>
                 </VBox>
-                <VBox fx:id="neutral_cowVboxInDeck">
-                    <ImageView fx:id="neutral_cowInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_cowUnselected"/>
-                </VBox>
+
                 <VBox fx:id="neutral_mysterious_elfVboxInDeck">
                     <ImageView fx:id="neutral_mysterious_elfInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfUnselected"/>
                 </VBox>
