@@ -74,9 +74,11 @@ public class GameController {
     @FXML
     private HBox competitorSiegeCardsPlayed;
     private final GameBattleField gameBattleField = User.getUserLoginIn().getLastGameBattleField();
-    GameBattleFieldController gameBattleFieldController;
+    private GameBattleFieldController gameBattleFieldController;
 
     public void initialize() {
+        gameBattleFieldController.cloneChosenDeckForUsingInGame();
+        gameBattleFieldController.giveRandomInitialCards();
         updateBoard();
         gameBattleFieldController = new GameBattleFieldController(gameBattleField);
     }

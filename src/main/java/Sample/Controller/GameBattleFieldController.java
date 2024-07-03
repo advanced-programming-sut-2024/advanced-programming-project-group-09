@@ -5,6 +5,8 @@ import Sample.CardEnums.SpecialCard;
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameBattleFieldController {
@@ -43,17 +45,36 @@ public class GameBattleFieldController {
     public void giveRandomInitialCards() {
         Random random = new Random();
         int specialCard = random.nextInt(1, 5);
+        List<Integer> usedIndexes = new ArrayList<>();
+
         for (int i = 0; i < 10 - specialCard; i++) {
-            gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardInDeckUser1().get(2 * i));
-            gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardInDeckUser2().get(2 * i));
-            gameBattleField.getCommonCardInDeckUser1().remove(gameBattleField.getCommonCardInDeckUser1().get(2 * i));
-            gameBattleField.getCommonCardInDeckUser2().remove(gameBattleField.getCommonCardInDeckUser2().get(2 * i));
+            int randomIndex;
+            do {
+                randomIndex = random.nextInt(gameBattleField.getCommonCardInDeckUser1().size());
+            } while (usedIndexes.contains(randomIndex));
+
+            gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardInDeckUser1().get(randomIndex));
+            gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardInDeckUser2().get(randomIndex));
+            gameBattleField.getCommonCardInDeckUser1().remove(randomIndex);
+            gameBattleField.getCommonCardInDeckUser2().remove(randomIndex);
+
+            usedIndexes.add(randomIndex);
         }
+
+        usedIndexes.clear();
+
         for (int i = 0; i < specialCard; i++) {
-            gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(2 * i));
-            gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(2 * i));
-            gameBattleField.getSpecialCardsDeckUser1().remove(gameBattleField.getSpecialCardsDeckUser1().get(2 * i));
-            gameBattleField.getSpecialCardsDeckUser2().remove(gameBattleField.getSpecialCardsDeckUser2().get(2 * i));
+            int randomIndex;
+            do {
+                randomIndex = random.nextInt(gameBattleField.getSpecialCardsDeckUser1().size());
+            } while (usedIndexes.contains(randomIndex));
+
+            gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
+            gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex));
+            gameBattleField.getSpecialCardsDeckUser1().remove(randomIndex);
+            gameBattleField.getSpecialCardsDeckUser2().remove(randomIndex);
+
+            usedIndexes.add(randomIndex);
         }
 
     }
