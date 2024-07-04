@@ -1,5 +1,6 @@
 package Sample.Controller;
 
+import Sample.Model.GameBattleField;
 import Sample.Model.User;
 import Sample.View.GameMenu;
 import Sample.View.LeaderMenu;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 
 public class StartNewGameController {
     @FXML
+
     private TextField usernameInput;
 
     public void startNewGameWithUsername(MouseEvent mouseEvent) throws Exception {
@@ -34,8 +36,13 @@ public class StartNewGameController {
 //        ServerUser competitor = ServerUser.getUserByUsername(competitorUsername);
 //        ServerUser.getUserLoginIn().setCompetitor(competitor);
 //        assert competitor != null;
-//        competitor.setCompetitor(ServerUser.getUserLoginIn());
-//        ServerUser.setUserLoginIn(competitor);
+//        competitor.setCompetitor(User.getUserLoginIn());
+//        User.setUserLoginIn(competitor);
+        User user1 = User.getUserByUsername("tom");
+        User user2 = User.getUserByUsername("tom");
+        GameBattleField gameBattleField = new GameBattleField(user1, user2);
+        user1.setLastGameBattleField(gameBattleField);
+
         GameMenu gameMenu = new GameMenu();
         gameMenu.start(ApplicationController.getStage());
 //        LeaderMenu leaderMenu = new LeaderMenu();

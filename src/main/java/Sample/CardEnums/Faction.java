@@ -7,7 +7,7 @@ import java.io.InputStream;
 import java.util.Objects;
 
 public enum Faction {
-    Skellige("Skellige", "Draws 2 random cards from the graveyard at the start of the third round", new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_back_skellige.jpg")))),
+    Skellige("Skellige", "Draws 2 random cards from the graveyard at the start of the third round", new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_skellige.png")))),
     NorthernRealms("Northern Realms", "Draws a card from your deck whenever you win a round", new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_realms.png")))),
     Nilfgaard("Nilfgaard", "Wins any round that ends in a draw", new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_nilfgaard.png")))),
     Scoiatael("Scoia'tael", "Decide who takes the first turn in each round", new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/deck_shield_scoiatael.png")))),

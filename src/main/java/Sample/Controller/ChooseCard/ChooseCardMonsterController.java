@@ -1,7 +1,8 @@
 package Sample.Controller.ChooseCard;
 
 import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.Faction;
+import Sample.CardEnums.SpecialCard;
+import Sample.Model.User;
 import Sample.View.LoginMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -20,6 +21,8 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ChooseCardMonsterController {
     public Pane cardCollectionPane;
@@ -49,24 +52,24 @@ public class ChooseCardMonsterController {
     public VBox decoyVboxInCardCollection;
     public VBox commandersHornVboxInCardCollection;
     public VBox commandersHornVboxInDeck;
-    public ImageView commanderHornImageInDeck;
+    public ImageView special_hornInDeck;
     public Label commandersHornRemainderInDeck;
     public VBox decoyVboxInDeck;
-    public ImageView decoyImageInDeck;
+    public ImageView special_decoyInDeck;
     public Label decoyRemainderInDeck;
-    public ImageView mardroemImageInDeck;
+    public ImageView special_mardroemeInDeck;
     public Label mardroemRemainderInDeck;
-    public ImageView scorchImageInDeck;
+    public ImageView special_scorchInDeck;
     public Label schorchRemainderInDeck;
-    public ImageView bitingFrostImageInDeck;
+    public ImageView weather_frostInDeck;
     public Label bitingFrostRemainderInDeck;
-    public ImageView clearWeatherImageInDeck;
+    public ImageView weather_clearInDeck;
     public Label clearWeatherRemainderInDeck;
-    public ImageView impenetrableFogInDeck;
+    public ImageView weather_fogInDeck;
     public Label impenetrableFrogRemainderInDeck;
-    public ImageView skelligeStormInDeck;
+    public ImageView weather_stormInDeck;
     public Label skelligeStormRemainderInDeck;
-    public ImageView torrentialRainInDeck;
+    public ImageView weather_rainInDeck;
     public Label torrentialRainRemainderInDeck;
     public GridPane gridPaneInDeck;
     public Pane inDeckCardPane;
@@ -87,7 +90,6 @@ public class ChooseCardMonsterController {
     public ImageView neutral_gaunter_odimm;
     public ImageView neutral_emiel;
     public ImageView neutral_dandelion;
-    public ImageView neutral_cow;
     public ImageView neutral_chort;
     public Label neutral_gaunter_odimm_darknessRemainderInCardCollection;
     public Label neutral_gaunter_odimm_darknessRemainderInDeck;
@@ -100,7 +102,6 @@ public class ChooseCardMonsterController {
     public ImageView neutral_gaunter_odimm_darknessInDeck;
     public ImageView neutral_gaunter_odimmInDeck;
     public ImageView neutral_emielInDeck;
-    public ImageView neutral_cowInDeck;
     public ImageView neutral_chortInDeck;
     public ImageView neutral_dandelionInDeck;
     public ImageView monsters_arachas_behemoth;
@@ -192,7 +193,6 @@ public class ChooseCardMonsterController {
     public VBox neutral_gaunter_odimm_darknessVboxInDeck;
     public VBox neutral_gaunter_odimmVboxInDeck;
     public VBox neutral_emielVboxInDeck;
-    public VBox neutral_cowVboxInDeck;
     public VBox neutral_chordVboxInDeck;
     public VBox neutral_dandelionVboxInDeck;
     public VBox neutral_chortVboxInDeck;
@@ -250,7 +250,6 @@ public class ChooseCardMonsterController {
     public VBox neutral_gaunter_odimm_darknessVboxInCardCollection;
     public VBox neutral_gaunter_odimmVboxInCardCollection;
     public VBox neutral_emielVboxInCardCollection;
-    public VBox neutral_cowVboxInCardCollection;
     public VBox neutral_trissVboxInCardCollection;
     public VBox neutral_chortVboxInCardCollection;
     public VBox neutral_dandelionVboxInCardCollection;
@@ -305,6 +304,8 @@ public class ChooseCardMonsterController {
     public Text heroCards;
     public Button startGameButton;
     public Button backToLeaderMenu;
+    public Label monsters_arachasRemainderInDeck;
+    public Label monsters_arachasRemainderInCardCollection;
     ArrayList<VBox> imageViewsVboxesCardCollection = new ArrayList<>();
     ArrayList<VBox> imageViewsVboxesCardInDeck = new ArrayList<>();
 
@@ -399,8 +400,7 @@ public class ChooseCardMonsterController {
         neutral_gaunter_odimm.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_gaunter_odimm.jpg"))));
         neutral_emiel.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_emiel.jpg"))));
         neutral_dandelion.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_dandelion.jpg"))));
-        neutral_cow.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_cow.jpg"))));
-        neutral_chort.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
+//        neutral_chort.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
 
 
@@ -408,9 +408,8 @@ public class ChooseCardMonsterController {
 
 
         monsters_arachas_behemoth.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
-        monsters_arachas_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
-        monsters_arachas_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
-        monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
+//        monsters_arachas_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
+//        monsters_arachas_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
         monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
         monsters_poroniec.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_poroniec.jpg"))));
         monsters_celaeno_harpy.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
@@ -448,15 +447,15 @@ public class ChooseCardMonsterController {
 
     private void setImagesForCardsInDeck() {
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
-        commanderHornImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_horn.jpg"))));
-        decoyImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_decoy.jpg"))));
-        mardroemImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_mardroeme.jpg"))));
-        scorchImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_scorch.jpg"))));
-        bitingFrostImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_frost.jpg"))));
-        impenetrableFogInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_fog.jpg"))));
-        clearWeatherImageInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_clear.jpg"))));
-        skelligeStormInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_storm.jpg"))));
-        torrentialRainInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_rain.jpg"))));
+        special_hornInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_horn.jpg"))));
+        special_decoyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_decoy.jpg"))));
+        special_mardroemeInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_mardroeme.jpg"))));
+        special_scorchInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_scorch.jpg"))));
+        weather_frostInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_frost.jpg"))));
+        weather_fogInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_fog.jpg"))));
+        weather_clearInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_clear.jpg"))));
+        weather_stormInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_storm.jpg"))));
+        weather_rainInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/weather_rain.jpg"))));
         neutral_ciriInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_ciri.jpg"))));
         neutral_geraltInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_geralt.jpg"))));
         neutral_trissInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_triss.jpg"))));
@@ -470,8 +469,7 @@ public class ChooseCardMonsterController {
         neutral_gaunter_odimmInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_gaunter_odimm.jpg"))));
         neutral_emielInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_emiel.jpg"))));
         neutral_dandelionInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_dandelion.jpg"))));
-        neutral_cowInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_cow.jpg"))));
-        neutral_chortInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
+//        neutral_chortInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
 
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
 
@@ -479,8 +477,8 @@ public class ChooseCardMonsterController {
         monsters_arachasInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas.jpg"))));
         monsters_arachas_behemothInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
         monsters_bruxaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
-        monsters_arachas_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
-        monsters_arachas_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
+//        monsters_arachas_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
+//        monsters_arachas_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
         monsters_bruxaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
         monsters_celaeno_harpyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
         monsters_cockatriceInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_cockatrice.jpg"))));
@@ -563,7 +561,6 @@ public class ChooseCardMonsterController {
 
     public void updateNumberOfSpecialCards() {
         int specialCard = 0;
-        System.out.println(specialCardVboxesInDeck.getFirst().getChildren().getFirst().getId() + " sdjsgdksgd");
         for (VBox child : imageViewsVboxesCardInDeck) {
             if (child.isVisible() && specialCardVboxesInDeck.contains(child)) {
                 if (!(child.getChildren().getFirst() instanceof StackPane)) specialCard++;
@@ -613,7 +610,6 @@ public class ChooseCardMonsterController {
         for (Node child : cardCollectionPane.getChildren()) {
             if (child instanceof VBox) {
                 imageViews.add((VBox) child);
-                System.out.println(child);
             }
         }
         return imageViews;
@@ -1344,25 +1340,17 @@ public class ChooseCardMonsterController {
         neutral_dandelionVboxInDeck.setVisible(false);
     }
 
-    public void neutral_cowSelected(MouseEvent mouseEvent) {
-        neutral_cowVboxInCardCollection.setVisible(false);
-        neutral_cowVboxInDeck.setVisible(true);
-    }
 
-    public void neutral_cowUnselected(MouseEvent mouseEvent) {
-        neutral_cowVboxInCardCollection.setVisible(true);
-        neutral_cowVboxInDeck.setVisible(false);
-    }
-
-    public void neutral_chortSelected(MouseEvent mouseEvent) {
-        neutral_chortVboxInCardCollection.setVisible(false);
-        neutral_chortVboxInDeck.setVisible(true);
-    }
-
-    public void neutral_chortUnselected(MouseEvent mouseEvent) {
-        neutral_chortVboxInCardCollection.setVisible(true);
-        neutral_chortVboxInDeck.setVisible(false);
-    }
+//
+//    public void neutral_chortSelected(MouseEvent mouseEvent) {
+//        neutral_chortVboxInCardCollection.setVisible(false);
+//        neutral_chortVboxInDeck.setVisible(true);
+//    }
+//
+//    public void neutral_chortUnselected(MouseEvent mouseEvent) {
+//        neutral_chortVboxInCardCollection.setVisible(true);
+//        neutral_chortVboxInDeck.setVisible(false);
+//    }
 
     public void neutral_zoltanSelected(MouseEvent mouseEvent) {
         neutral_zoltanVboxInCardCollection.setVisible(false);
@@ -1718,8 +1706,41 @@ public class ChooseCardMonsterController {
         }
     }
 
-    public CommonCard getCardByIdAddress(String address) {
+    public SpecialCard getSpecialCardByIdAddress(String address) {
+        System.out.println("special before:" + address);
+        if (address.contains("InDeck")) address = address.split("InDeck")[0];
+        System.out.println("special after:" + address);
         switch (address) {
+            case "special_decoy":
+                return SpecialCard.Decoy;
+            case "special_horn":
+                return SpecialCard.CommandersHorn;
+            case "special_mardroeme":
+                return SpecialCard.Mardroeme;
+            case "special_scorch":
+                return SpecialCard.Scorch;
+            case "weather_clear":
+                return SpecialCard.ClearWeather;
+            case "weather_fog":
+                return SpecialCard.ImpenetrableFog;
+            case "weather_frost":
+                return SpecialCard.BitingFrost;
+            case "weather_rain":
+                return SpecialCard.TorrentialRain;
+            case "weather_storm":
+                return SpecialCard.SkelligeStorm;
+        }
+        return null;
+    }
+
+    public CommonCard getCommonCardByIdAddress(String address) {
+        System.out.println("address before: " + address);
+        if (address.contains("InDeck")) address = address.split("InDeck")[0];
+        System.out.println("address after: " + address);
+        switch (address) {
+
+            case "neutral_vesemir":
+                return CommonCard.Ves;
             case "monsters_arachas":
                 return CommonCard.Arachas;
             case "monsters_arachas_1":
@@ -1782,7 +1803,7 @@ public class ChooseCardMonsterController {
                 return CommonCard.Kayran;
             case "monsters_leshen":
                 return CommonCard.Leshen;
-            case "monsters_mighty_maiden":
+            case "monsters_mighty_maiden", "skellige_shield_maiden_2", "skellige_shield_maiden_1", "skellige_shield_maiden":
                 return CommonCard.PlagueMaiden;
             case "monsters_nekker":
                 return CommonCard.Nekker;
@@ -1814,7 +1835,7 @@ public class ChooseCardMonsterController {
                 return CommonCard.Geralt;
             case "neutral_mysterious_elf":
                 return CommonCard.MysteriousElf;
-                case "neutral_olgierd":
+            case "neutral_olgierd":
                 return CommonCard.OlgierdVonEverc;
             case "neutral_triss":
                 return CommonCard.TrissMerigold;
@@ -1887,116 +1908,236 @@ public class ChooseCardMonsterController {
             case "realms_banner_nubrse":
                 return CommonCard.DunBannerMedic;
             case "realms_blue_stripes":
-                return CommonCard.Stripes;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_triss":
-//                return CommonCard.TrissMerigold;
-//            case "neutral_vesemir":
-//                return CommonCard.TrissMerigold;
+                return CommonCard.BlueStripesCommando;
+            case "realms_crinfrid":
+                return CommonCard.CrinfridReaversDragonHunter;
+            case "realms_dethmold":
+                return CommonCard.Dethmold;
+            case "realms_dijkstra":
+                return CommonCard.SigismundDijkstra;
+            case "realms_esterad", "realms_esterad_1", "realms_esterad_2":
+                return CommonCard.EsteradThyssen;
+            case "realms_keira":
+                return CommonCard.ImperaBrigadeGuard;
+            case "nilfgaard_letho":
+                return CommonCard.MennoCoehoorn;
+            case "realms_natalis":
+                return CommonCard.JohnNatalis;
+            case "realms_philippa":
+                return CommonCard.PhilippaEilhart;
+            case "realms_poor_infantry":
+                return CommonCard.PoorFuckingInfantry;
+            case "realms_redania", "realms_redania_1":
+                return CommonCard.RedanianFootSoldier;
+            case "realms_sabrina":
+                return CommonCard.SabrinaGlevissing;
+            case "realms_sheala":
+                return CommonCard.SileDeTansarville;
+            case "realms_sheldon":
+                return CommonCard.SheldonSkaggs;
+            case "realms_siege_tower":
+                return CommonCard.SiegeTower;
+            case "realms_siegfried":
+                return CommonCard.SiegeTechnician;
+            case "realms_stennis":
+                return CommonCard.PrinceStennis;
+            case "realms_thaler":
+                return CommonCard.Thaler;
+            case "realms_trebuchet", "realms_trebuchet_1":
+                return CommonCard.Trebuchet;
+            case "realms_vernon":
+                return CommonCard.VernonRoche;
+            case "realms_ves":
+                return CommonCard.Ves;
+            case "realms_yarpen":
+                return CommonCard.YarpenZirgrin;
+            case "scoiatael_barclay":
+                return CommonCard.BarclayEls;
+            case "scoiatael_ciaran":
+                return CommonCard.CiaranAep;
+            case "scoiatael_dennis":
+                return CommonCard.DennisCranmer;
+            case "scoiatael_dol_archer":
+                return CommonCard.DolBlathannaArcher;
+            case "scoiatael_dol_infantry_2", "scoiatael_dol_infantry_1", "scoiatael_dol_infantry":
+                return CommonCard.PoorFuckingInfantry;
+            case "scoiatael_dwarf", "scoiatael_dwarf_1", "scoiatael_dwarf_2":
+                return CommonCard.DwarvenSkirmisher;
+            case "scoiatael_eithne":
+                return CommonCard.Eithne;
+            case "scoiatael_elf_skirmisher_2", "scoiatael_elf_skirmisher_1", "scoiatael_elf_skirmisher":
+                return CommonCard.ElvenSkirmisher;
+            case "scoiatael_filavandrel":
+                return CommonCard.FilavandrelAenFidhail;
+            case "scoiatael_havekar_nurse", "scoiatael_havekar_nurse_1", "scoiatael_havekar_nurse_2":
+                return CommonCard.HavekarHealer;
+            case "scoiatael_ida":
+                return CommonCard.IdaEmeanAep;
+            case "scoiatael_havekar_support", "scoiatael_havekar_support_1", "scoiatael_havekar_suppor_2":
+                return CommonCard.HavekarSmuggler;
+            case "scoiatael_iorveth":
+                return CommonCard.IsengrimFaoiltiarna;
+            case "scoiatael_isengrim":
+                return CommonCard.IsengrimFaoiltiarna;
+            case "scoiatael_mahakam":
+                return CommonCard.MahakamDefender;
+            case "scoiatael_milva":
+                return CommonCard.Milva;
+            case "scoiatael_riordain":
+                return CommonCard.Riordain;
+            case "scoiatael_saskia":
+                return CommonCard.Saskia;
+            case "scoiatael_schirru":
+                return CommonCard.Schirru;
+            case "scoiatael_toruviel":
+                return CommonCard.Toruviel;
+            case "scoiatael_vrihedd_brigade_1", "scoiatael_vrihedd_brigade":
+                return CommonCard.VriheddBrigadeRecruit;
+            case "scoiatael_vrihedd_cadet":
+                return CommonCard.VriheddBrigadeVeteran;
+            case "skellige_berserker", "skellige_young_berserker":
+                return CommonCard.Berserker;
+            case "skellige_birna":
+                return CommonCard.BirnaBran;
+            case "skellige_blueboy":
+                return CommonCard.BlueboyLugos;
+            case "skellige_brokva_archer":
+                return CommonCard.ClanBrokvarArcher;
+            case "skellige_craite_warrior":
+                return CommonCard.ClanAnCraite;
+            case "skellige_dimun_pirate":
+                return CommonCard.ClanDimunPirate;
+            case "skellige_donar":
+                return CommonCard.DonarAnHindar;
+            case "skellige_draig":
+                return CommonCard.DraigBonDhu;
+            case "skellige_ermion":
+                return CommonCard.Ermion;
+            case "skellige_hemdall":
+                return CommonCard.Hemdall;
+            case "skellige_heymaey":
+                return CommonCard.ClanHeymaeySkald;
+            case "skellige_hjalmar":
+                return CommonCard.Hjalmar;
+            case "skellige_holger":
+                return CommonCard.HolgerBlackhand;
+            case "skellige_cerys":
+                return CommonCard.Cerys;
+            case "skellige_kambi":
+                return CommonCard.Kambi;
+            case "skellige_light_longship", "skellige_war_longship":
+                return CommonCard.LightLongship;
+            case "skellige_madmad_lugos":
+                return CommonCard.MadmanLugos;
+            case "skellige_olaf":
+                return CommonCard.Olaf;
+            case "skellige_svanrige":
+                return CommonCard.Svanrige;
+            case "skellige_tordarroch":
+                return CommonCard.ClanTordarrochArmorsmith;
+            case "skellige_udalryk":
+                return CommonCard.Udalryk;
+            case "skellige_vildkaarl", "skellige_young_vildkaarl":
+                return CommonCard.TransformedVildkaarl;
+
+            default:
+                try {
+                    throw new Exception("Debug thiiiiissss in getAddress method: " + address);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
         }
+    }
+
+    public void done(MouseEvent mouseEvent) {
+        User user = User.getUserForTest();  // TODO : change this to current user
+        if (!checkEnoughSelection()) {
+            System.out.println("not enough selection");
+            return;
+        }
+
+        for (VBox child : imageViewsVboxesCardInDeck) {
+            if (child.isVisible()) {
+                if (!(child.getChildren().getFirst() instanceof StackPane)) {
+                    if (child.getChildren().getFirst().getId() == null || getCommonCardByIdAddress(child.getChildren().getFirst().getId()) == null) {
+                        System.out.println("Debug address1: " + child);
+                        System.out.println("id:" + child.getId());
+                        return;
+                    }
+                    user.getCommonCardsInDeck().add(getCommonCardByIdAddress(child.getChildren().getFirst().getId()));
+
+                } else {
+                    if (specialCardVboxesInDeck.contains(child)) continue;
+                    StackPane stackPane = (StackPane) child.getChildren().getFirst();
+                    if (stackPane.getChildren().getFirst().getId() == null || getCommonCardByIdAddress(stackPane.getChildren().getFirst().getId()) == null) {
+                        System.out.println("Debug address2: " + child);
+                        System.out.println("id:" + child.getId());
+                        return;
+                    }
+                    Label label = (Label) stackPane.getChildren().get(1);
+                    for (int i = 0; i < Integer.parseInt(label.getText().substring(0, 1)); i++) {
+                        user.getCommonCardsInDeck().add(getCommonCardByIdAddress(stackPane.getChildren().getFirst().getId()));
+                    }
+                }
+            }
+        }
+        for (VBox child : specialCardVboxesInDeck) {
+            if (child.isVisible()) {
+                StackPane stackPane = (StackPane) child.getChildren().getFirst();
+                if (stackPane.getChildren().getFirst().getId() == null || getSpecialCardByIdAddress(stackPane.getChildren().getFirst().getId()) == null) {
+                    System.out.println("DEBUG the address: " + stackPane.getChildren().getFirst().getId());
+                    return;
+                }
+                Label label = (Label) stackPane.getChildren().get(1);
+                for (int i = 0; i < Integer.parseInt(label.getText().substring(0, 1)); i++) {
+
+                    user.getSpecialCardsInDeck().add(getSpecialCardByIdAddress(stackPane.getChildren().getFirst().getId()));
+                }
+            }
+        }
+        printDeck(user);
+    }
+
+    private boolean checkEnoughSelection() {
+        return check10SelectionOfSpecialCard() && check22SelectionOfCommonCard();
+    }
+
+    private void printDeck(User user) {
+        System.out.println("First common cards: siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu!!");
+        for (CommonCard commonCard : user.getCommonCardsInDeck()) {
+            System.out.println("common card in deck:" + commonCard.getCardName());
+        }
+        System.out.println("now Special cards:   siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+        for (SpecialCard specialCard : user.getSpecialCardsInDeck()) {
+            System.out.println("special card: " + specialCard.getCardName());
+        }
+    }
+
+    // 22 ta bardashte check kon
+    // max 10 special
+    // choose card for other factions
+
+    public void loadCurrentSelectedDeckForUser() {
+    }
+
+    public boolean check22SelectionOfCommonCard() {
+        String regex = "Number of Unit Cards: (?<allCards>\\d+)/22";
+        Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
+        int allCards = Integer.parseInt(matcher.group("allCards"));
+        return allCards < 22;
+    }
+
+    public boolean check10SelectionOfSpecialCard() {
+        String regex = "Special Cards: (?<specialCards>\\d+)/10";
+        Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
+        int numOfSpecialCards = Integer.parseInt(matcher.group("specialCards"));
+        return numOfSpecialCards < 10;
+    }
+
+    private Matcher getCommandMatcher(String regex, Text text) {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text.getText());
+        if (matcher.matches()) return matcher;
         return null;
     }
 }

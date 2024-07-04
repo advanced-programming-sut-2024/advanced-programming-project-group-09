@@ -52,8 +52,12 @@ public class User {
     private static final String FILE_PATH = "users.json";
     private static final Gson gson = new Gson();
 
+
+//    static {
+//        loadUsers();
+//    }
+
     static {
-        loadUsers();
         File dir = new File(DECKS_DIR);
         if (!dir.exists()) {
             dir.mkdirs();
@@ -66,7 +70,7 @@ public class User {
         this.email = email;
         this.nickname = nickname;
         allUsers.add(this);
-        saveUsers();
+//        saveUsers();
     }
 
     public static ArrayList<User> getUsers() {
@@ -88,6 +92,10 @@ public class User {
 
     public static void setUserLoginIn(User userLoginIn) {
         User.userLoginIn = userLoginIn;
+    }
+
+    public static User getUserForTest() {
+        return new User("tome", "123", "abcd@gmail.com", "tom");
     }
 
     public void setFactionLeader(Leader factionLeader) {
@@ -357,8 +365,7 @@ public class User {
     public static void saveUsers() {
         List<UserData> userDataList = new ArrayList<>();
         for (User user : allUsers) {
-            userDataList.add(new UserData(user.getUsername(), user.getPassword(), user.getEmail(), user.getNickname(),
-                    user.getFactionSelected(), user.getFactionLeader(), user.getCommonCardsInDeck(), user.getSpecialCardsInDeck()));
+            userDataList.add(new UserData(user.getUsername(), user.getPassword(), user.getEmail(), user.getNickname(), user.getFactionSelected(), user.getFactionLeader(), user.getCommonCardsInDeck(), user.getSpecialCardsInDeck()));
         }
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             gson.toJson(userDataList, writer);
@@ -448,8 +455,7 @@ public class User {
         private List<CommonCard> commonCardsInDeck;
         private List<SpecialCard> specialCardsInDeck;
 
-        public UserData(String username, String password, String email, String nickname, Faction factionSelected, Leader factionLeader,
-                        List<CommonCard> commonCardsInDeck, List<SpecialCard> specialCardsInDeck) {
+        public UserData(String username, String password, String email, String nickname, Faction factionSelected, Leader factionLeader, List<CommonCard> commonCardsInDeck, List<SpecialCard> specialCardsInDeck) {
             this.username = username;
             this.password = password;
             this.email = email;
