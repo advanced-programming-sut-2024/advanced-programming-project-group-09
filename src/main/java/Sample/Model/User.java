@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -23,6 +24,7 @@ public class User {
     private String password;
     private String email;
     private String nickname;
+    private String avatarPath;
     private int gamesPlayed;
     private int wins;
     private int draws;
@@ -30,6 +32,8 @@ public class User {
     private double maxScore;
     private User competitor;
     private GameBattleField lastGameBattleField;
+    private long lastOnlineTime;
+    private Socket socket;
     private final ArrayList<GameBattleField> allGameBattleField = new ArrayList<>();
     private static final ArrayList<User> allUsers = new ArrayList<>();
     private static User userLoginIn;
@@ -38,6 +42,10 @@ public class User {
     private Leader factionLeader = Leader.KingOfTemeria;
     private final ArrayList<CommonCard> commonCardsInDeck = new ArrayList<>();
     private final ArrayList<SpecialCard> specialCardsInDeck = new ArrayList<>();
+    private ArrayList<String> senders = new ArrayList<>();
+    private final List<User> friends = new ArrayList<>();
+    private final List<User> friendRequestsSent = new ArrayList<>();
+    private final List<User> friendRequestsReceived = new ArrayList<>();
 
     private static final String DECKS_DIR = "decks/";
     private static final Map<String, String> savedDecks = new HashMap<>();
@@ -46,9 +54,6 @@ public class User {
 
     static {
         loadUsers();
-    }
-
-    static {
         File dir = new File(DECKS_DIR);
         if (!dir.exists()) {
             dir.mkdirs();
@@ -166,12 +171,12 @@ public class User {
         saveUsers();
     }
 
-    public void removeCardToCommonCardsInDeck(CommonCard commonCard) {
+    public void removeCardFromCommonCardsInDeck(CommonCard commonCard) {
         commonCardsInDeck.remove(commonCard);
         saveUsers();
     }
 
-    public void removeCardToSpecialCardsInDeck(SpecialCard specialCard) {
+    public void removeCardFromSpecialCardsInDeck(SpecialCard specialCard) {
         specialCardsInDeck.remove(specialCard);
         saveUsers();
     }
@@ -225,7 +230,7 @@ public class User {
         allUsers.sort(new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
-                return o2.getRank() - o1.getRank();
+                return Double.compare(o2.getMaxScore(), o1.getMaxScore());
             }
         });
         return allUsers.indexOf(this);
@@ -256,6 +261,97 @@ public class User {
     public void addToAllGameBattleField(GameBattleField gameBattleField) {
         allGameBattleField.add(gameBattleField);
         saveUsers();
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
+    }
+
+    public ArrayList<String> getSenders() {
+        return senders;
+    }
+
+    public void addSender(User user) {
+        senders.add(user.getUsername());
+        saveUsers();
+    }
+
+    public void removeSender(User user) {
+        senders.remove(user.getUsername());
+        saveUsers();
+    }
+
+    public long getLastOnlineTime() {
+        return lastOnlineTime;
+    }
+
+    public void updateLastOnline() {
+        this.lastOnlineTime = System.currentTimeMillis();
+        saveUsers();
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    public boolean isOnline(){
+        return socket != null;
+    }
+
+    public List<User> getFriends() {
+        return friends;
+    }
+
+    public List<User> getFriendRequestsSent() {
+        return friendRequestsSent;
+    }
+
+    public List<User> getFriendRequestsReceived() {
+        return friendRequestsReceived;
+    }
+
+    public void addFriend(User user) {
+        if (!friends.contains(user)) {
+            friends.add(user);
+            user.getFriends().add(this);
+        }
+    }
+
+    public void removeFriend(User user) {
+        if (friends.contains(user)) {
+            friends.remove(user);
+            user.getFriends().remove(this);
+        }
+    }
+
+    public void sendFriendRequest(User user) {
+        if (!friendRequestsSent.contains(user) && !friends.contains(user)) {
+            friendRequestsSent.add(user);
+            user.getFriendRequestsReceived().add(this);
+        }
+    }
+
+    public void acceptFriendRequest(User user) {
+        if (friendRequestsReceived.contains(user)) {
+            friendRequestsReceived.remove(user);
+            user.getFriendRequestsSent().remove(this);
+            addFriend(user);
+        }
+    }
+
+    public void rejectFriendRequest(User user) {
+        if (friendRequestsReceived.contains(user)) {
+            friendRequestsReceived.remove(user);
+            user.getFriendRequestsSent().remove(this);
+        }
     }
 
     public static void saveUsers() {
