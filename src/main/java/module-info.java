@@ -6,6 +6,7 @@ module approj1 {
     requires java.base;
     requires com.google.gson;
     requires jjwt.api;
+    requires javafx.swing;
 //    requires javafx.Controls;
 //    requires javafx.fxml;
 //    requires javafx.media;

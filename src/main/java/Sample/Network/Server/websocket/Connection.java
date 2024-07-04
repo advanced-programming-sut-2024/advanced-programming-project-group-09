@@ -1,5 +1,8 @@
 package Sample.Network.Server.websocket;
 
+import Sample.CardEnums.Faction;
+import Sample.CardEnums.Leader;
+import Sample.Model.GameBattleField;
 import com.google.gson.Gson;
 import Sample.Model.User;
 import Sample.Network.Server.database.ChatManager;
@@ -9,13 +12,16 @@ import Sample.Network.Server.model.Television.ResourceManager;
 import Sample.Network.Server.model.Television.SaveData;
 import Sample.Network.Server.model.chatRoom.Chat;
 import Sample.Network.Server.utils.Pair;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Connection extends Thread {
@@ -186,12 +192,62 @@ public class Connection extends Thread {
             case "setPassword":
                 user.setPassword(request.getParameters().get("password"));
                 break;
+            case "faction_leader":
+                user.setFactionLeader(Leader.valueOf(request.getParameters().get("faction_leader")));
+                break;
+            case "loses":
+                user.setLoses(Integer.parseInt(request.getParameters().get("loses")));
+                break;
+            case "draws":
+                user.setDraws(Integer.parseInt(request.getParameters().get("draws")));
+                break;
+            case "wins":
+                user.setWins(Integer.parseInt(request.getParameters().get("wins")));
+                break;
+            case "games_played":
+                user.setGamesPlayed(Integer.parseInt(request.getParameters().get("games_played")));
+                break;
+            case "competitor":
+                User competitor = new Gson().fromJson(request.getParameters().get("competitor"), User.class);
+                user.setCompetitor(competitor);
+                break;
+            case "last_game_battlefield":
+                GameBattleField gameBattleField = new Gson().fromJson(request.getParameters().get("last_game_battlefield"), GameBattleField.class);
+                user.setLastGameBattleField(gameBattleField);
+                break;
+            case "security_questions":
+                Type type = new TypeToken<HashMap<String, String>>() {}.getType();
+                HashMap<String, String> securityQuestions = new Gson().fromJson(request.getParameters().get("security_questions"), type);
+                user.setSecurityQuestionsAndAnswers(securityQuestions);
+                break;
+            case "faction_selected":
+                user.setFactionSelected(Faction.valueOf(request.getParameters().get("faction_selected")));
+                break;
             default:
                 outputStream.writeUTF("400: bad request");
                 return;
         }
         outputStream.writeUTF("200: success");
     }
+
+/*    private void handleUserData(Request request) throws IOException {
+        String userDataListJson = request.getParameters().get("userDataList");
+        Type type = new TypeToken<ArrayList<User.UserData>>() {}.getType();
+        ArrayList<User.UserData> userDataList = new Gson().fromJson(userDataListJson, type);
+        switch (request.getCommand()) {
+            case "save":
+                User.saveUsers();
+                break;
+            case "load":
+                User.loadUsers();
+                break;
+            default:
+                outputStream.writeUTF("400: bad request");
+                return;
+        }
+        outputStream.writeUTF("200: success");
+    }
+ */
 
     private void handleChat(Request request) throws IOException {
         switch (request.getCommand()) {
@@ -244,6 +300,28 @@ public class Connection extends Thread {
                 break;
             default:
                 outputStream.writeUTF("400: bad request");
+        }
+        outputStream.writeUTF("200: success");
+    }
+
+    private void handleDeck(Request request) throws IOException {
+        User user = User.getUserByUsername(request.getParameters().get("username"));
+        if (user == null) {
+            outputStream.writeUTF("400: no_user");
+            return;
+        }
+        switch (request.getCommand()) {
+            case "save":
+                String deckPath = request.getParameters().get("deck_path");
+                user.saveDeckToFile(deckPath);
+                break;
+            case "load":
+                deckPath = request.getParameters().get("deck_path");
+                user.loadDeckFromFile(deckPath);
+                break;
+            default:
+                outputStream.writeUTF("400: bad request");
+                return;
         }
         outputStream.writeUTF("200: success");
     }
