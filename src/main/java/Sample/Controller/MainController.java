@@ -23,7 +23,7 @@ public class MainController {
     }
 
     public void startNewGame() throws Exception {
-//        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
+//        if (ServerUser.getUserLoginIn().getCommonCardsInDeck().size() < 22 || ServerUser.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
 //            Alert alert = new Alert(Alert.AlertType.WARNING);
 //            alert.setTitle("Unacceptable deck");
 //            alert.setHeaderText("Change your deck via the deck menu");

@@ -17,7 +17,7 @@ public class StartNewGameController {
 
     public void startNewGameWithUsername(MouseEvent mouseEvent) throws Exception {
         String competitorUsername = usernameInput.getText();
-//        if (competitorUsername.equals(User.getUserLoginIn().getUsername())) {
+//        if (competitorUsername.equals(ServerUser.getUserLoginIn().getUsername())) {
 //            Alert alert = new Alert(Alert.AlertType.WARNING);
 //            alert.setTitle("Invalid username");
 //            alert.setHeaderText("You cannot enter the game with yourself");
@@ -25,7 +25,7 @@ public class StartNewGameController {
 //            alert.showAndWait();
 //            return;
 //        }
-//        if (User.getUserByUsername(competitorUsername) == null) {
+//        if (ServerUser.getUserByUsername(competitorUsername) == null) {
 //            Alert alert = new Alert(Alert.AlertType.WARNING);
 //            alert.setTitle("Invalid username");
 //            alert.setHeaderText("There is no such user in the system");
@@ -33,8 +33,8 @@ public class StartNewGameController {
 //            alert.showAndWait();
 //            return;
 //        }
-//        User competitor = User.getUserByUsername(competitorUsername);
-//        User.getUserLoginIn().setCompetitor(competitor);
+//        ServerUser competitor = ServerUser.getUserByUsername(competitorUsername);
+//        ServerUser.getUserLoginIn().setCompetitor(competitor);
 //        assert competitor != null;
 //        competitor.setCompetitor(User.getUserLoginIn());
 //        User.setUserLoginIn(competitor);
@@ -42,6 +42,7 @@ public class StartNewGameController {
         User user2 = User.getUserByUsername("tom");
         GameBattleField gameBattleField = new GameBattleField(user1, user2);
         user1.setLastGameBattleField(gameBattleField);
+
         GameMenu gameMenu = new GameMenu();
         gameMenu.start(ApplicationController.getStage());
 //        LeaderMenu leaderMenu = new LeaderMenu();
