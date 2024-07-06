@@ -4,10 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="create game battlfiled controller">
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="Continue game controller and set labels and images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/SpecialCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/SpecialCard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameBattleFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameBattleFieldController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/GameBattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/GameBattleField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardMonsterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardMonsterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNilfGaardianTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNilfGaardianTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNorthernRealmsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNorthernRealmsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseCard/ChooseCardMonster.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseCard/ChooseCardMonster.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_ability_scorch.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_ability_scorch.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_weather_storm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_weather_storm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +72,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/erfan/OneDrive/Desktop/approj1",
+    "last_opened_file_path": "C:/Users/erfan/OneDrive/Desktop/Reflection",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
@@ -66,6 +82,7 @@
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\Images\Icons" />
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\java\Sample\Model" />
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\Images" />
     </key>

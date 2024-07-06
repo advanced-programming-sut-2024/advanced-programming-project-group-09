@@ -39,9 +39,10 @@ public class StartNewGameController {
 //        competitor.setCompetitor(User.getUserLoginIn());
 //        User.setUserLoginIn(competitor);
         User user1 = User.getUserByUsername("tom");
-        User user2 = User.getUserByUsername("tom");
-        GameBattleField gameBattleField = new GameBattleField(user1, user2);
+        User user2 = User.getUserByUsername("alex");
+        GameBattleField gameBattleField = new GameBattleField(user2, user1);
         user1.setLastGameBattleField(gameBattleField);
+        user2.setLastGameBattleField(gameBattleField);
         GameMenu gameMenu = new GameMenu();
         gameMenu.start(ApplicationController.getStage());
 //        LeaderMenu leaderMenu = new LeaderMenu();

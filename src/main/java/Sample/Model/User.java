@@ -44,9 +44,9 @@ public class User {
     private static final String FILE_PATH = "users.json";
     private static final Gson gson = new Gson();
 
-//    static {
-//        loadUsers();
-//    }
+    static {
+        loadUsers();
+    }
 
     static {
         File dir = new File(DECKS_DIR);
@@ -61,7 +61,7 @@ public class User {
         this.email = email;
         this.nickname = nickname;
         allUsers.add(this);
-//        saveUsers();
+        saveUsers();
     }
 
     public static ArrayList<User> getUsers() {

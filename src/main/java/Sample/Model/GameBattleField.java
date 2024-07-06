@@ -50,9 +50,6 @@ public class GameBattleField {
     public User getUser1() {
         return user1;
     }
-    //add special cardd weather
-    // aval specila bar has esm
-    // bad common card ava score bad name
 
     public ArrayList<CommonCard> getCommonCardInBattleFieldUser1() {
         return commonCardInBattleFieldUser1;
@@ -223,7 +220,7 @@ public class GameBattleField {
     }
 
 
-    public void ChangeTurn() {
+    public void changeTurn() {
         if (whichUserTurn.equals(user1)) whichUserTurn = user2;
         else whichUserTurn = user1;
     }

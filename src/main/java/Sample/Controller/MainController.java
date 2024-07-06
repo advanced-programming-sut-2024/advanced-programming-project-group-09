@@ -1,6 +1,8 @@
 package Sample.Controller;
 
+import Sample.CardEnums.Faction;
 import Sample.Model.User;
+import Sample.View.ChooseCard.*;
 import Sample.View.LeaderMenu;
 import Sample.View.LoginMenu;
 import Sample.View.ProfileMenu;
@@ -10,7 +12,6 @@ import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 
 import java.util.Objects;
 
@@ -23,7 +24,7 @@ public class MainController {
     }
 
     public void startNewGame() throws Exception {
-//        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
+//        if (ServerUser.getUserLoginIn().getCommonCardsInDeck().size() < 22 || ServerUser.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
 //            Alert alert = new Alert(Alert.AlertType.WARNING);
 //            alert.setTitle("Unacceptable deck");
 //            alert.setHeaderText("Change your deck via the deck menu");
@@ -57,18 +58,40 @@ public class MainController {
         profileMenu.start(ApplicationController.getStage());
     }
 
-    public void setMouseImage(MouseEvent mouseEvent) {
+    public void setMouseImage() {
         Image cursor = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/cursor.png")));
         username.getScene().setCursor(new ImageCursor(cursor));
     }
 
-    public void goToLeaderMenu(MouseEvent mouseEvent) throws Exception {
+    public void goToLeaderMenu() throws Exception {
         LeaderMenu leaderMenu = new LeaderMenu();
         leaderMenu.start(ApplicationController.getStage());
     }
 
-    public void goToDeckMenu(MouseEvent mouseEvent) {
-
+    public void goToDeckMenu() throws Exception {
+        Faction factionSelected = User.getUserLoginIn().getFactionSelected();
+        switch (factionSelected) {
+            case Faction.Skellige -> {
+                ChooseCardSkelligeTest chooseCardSkelligeTest = new ChooseCardSkelligeTest();
+                chooseCardSkelligeTest.start(ApplicationController.getStage());
+            }
+            case Faction.Monsters -> {
+                ChooseCardMonsterTest chooseCardMonsterTest = new ChooseCardMonsterTest();
+                chooseCardMonsterTest.start(ApplicationController.getStage());
+            }
+            case Faction.NorthernRealms -> {
+                ChooseCardNorthernRealmsTest chooseCardNorthernRealmsTest = new ChooseCardNorthernRealmsTest();
+                chooseCardNorthernRealmsTest.start(ApplicationController.getStage());
+            }
+            case Faction.Scoiatael -> {
+                ChooseCardScoiaTaelTest chooseCardScoiaTaelTest = new ChooseCardScoiaTaelTest();
+                chooseCardScoiaTaelTest.start(ApplicationController.getStage());
+            }
+            case Faction.Nilfgaard -> {
+                ChooseCardNilfGaardianTest chooseCardNilfGaardianTest = new ChooseCardNilfGaardianTest();
+                chooseCardNilfGaardianTest.start(ApplicationController.getStage());
+            }
+        }
     }
 }
 

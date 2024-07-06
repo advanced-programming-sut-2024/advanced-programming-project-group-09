@@ -2,6 +2,7 @@ package Sample.Controller;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
+import Sample.Main;
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
 
@@ -45,42 +46,30 @@ public class GameBattleFieldController {
 
     public void giveRandomInitialCards() {
         Random random = new Random();
-        int specialCard = random.nextInt(1, 5);
-        List<Integer> usedIndexes = new ArrayList<>();
+        int specialCard = random.nextInt(1, Math.min(Math.min(gameBattleField.getSpecialCardsDeckUser1().size(), gameBattleField.getSpecialCardsDeckUser2().size()), 5));
 
         for (int i = 0; i < 10 - specialCard; i++) {
-            int randomIndex;
-            do {
-                randomIndex = random.nextInt(gameBattleField.getCommonCardInDeckUser1().size());
-            } while (usedIndexes.contains(randomIndex));
-
+            int randomIndex = random.nextInt(0, gameBattleField.getCommonCardInDeckUser1().size());
+            int randomIndex2 = random.nextInt(0, gameBattleField.getCommonCardInDeckUser2().size());
             gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardInDeckUser1().get(randomIndex));
-            gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardInDeckUser2().get(randomIndex));
+            gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardInDeckUser2().get(randomIndex2));
             gameBattleField.getCommonCardInDeckUser1().remove(randomIndex);
-            gameBattleField.getCommonCardInDeckUser2().remove(randomIndex);
-
-            usedIndexes.add(randomIndex);
+            gameBattleField.getCommonCardInDeckUser2().remove(randomIndex2);
         }
 
-        usedIndexes.clear();
 
         for (int i = 0; i < specialCard; i++) {
-            int randomIndex;
-            do {
-                randomIndex = random.nextInt(gameBattleField.getSpecialCardsDeckUser1().size());
-            } while (usedIndexes.contains(randomIndex));
-
+            int randomIndex = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser1().size());
+            int randomIndex2 = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser2().size());
             gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
-            gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex));
+            gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex2));
             gameBattleField.getSpecialCardsDeckUser1().remove(randomIndex);
-            gameBattleField.getSpecialCardsDeckUser2().remove(randomIndex);
-
-            usedIndexes.add(randomIndex);
+            gameBattleField.getSpecialCardsDeckUser2().remove(randomIndex2);
         }
         sort();
     }
 
-    private void sort() {
+    public void sort() {
         sortCommonByScoreThenName(gameBattleField.getCommonCardInBattleFieldUser1());
         sortCommonByScoreThenName(gameBattleField.getCommonCardInBattleFieldUser2());
         sortCommonByScoreThenName(gameBattleField.getRangedIsPlayedUser1());
@@ -272,13 +261,119 @@ public class GameBattleFieldController {
         gameBattleField.getWeatherCards().remove(specialCard);
     }
 
+    public void spyAbility() {
+        User userToPlay = gameBattleField.getWhichUserTurn();
+        if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
+            giveCardThroughSpyAbilityUser1();
+            return;
+        }
+        giveCardThroughSpyAbilityUser2();
+    }
+
+    private void giveCardThroughSpyAbilityUser2() {
+        Random random = new Random();
+        int specialCard = random.nextInt(0, Math.min(gameBattleField.getSpecialCardsDeckUser2().size(), 3));
+
+        for (int i = 0; i < 2 - specialCard; i++) {
+            int randomIndex = random.nextInt(0, gameBattleField.getCommonCardInDeckUser2().size());
+            gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardInDeckUser2().get(randomIndex));
+            gameBattleField.getCommonCardInDeckUser2().remove(randomIndex);
+        }
+
+        for (int i = 0; i < specialCard; i++) {
+            int randomIndex = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser2().size());
+            gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex));
+            gameBattleField.getSpecialCardsDeckUser2().remove(randomIndex);
+        }
+        sort();
+    }
+
+    private void giveCardThroughSpyAbilityUser1() {
+        Random random = new Random();
+        int specialCard = random.nextInt(0, Math.min(gameBattleField.getSpecialCardsDeckUser1().size(), 3));
+
+        for (int i = 0; i < 2 - specialCard; i++) {
+            int randomIndex = random.nextInt(0, gameBattleField.getCommonCardInDeckUser1().size());
+            gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardInDeckUser1().get(randomIndex));
+            gameBattleField.getCommonCardInDeckUser1().remove(randomIndex);
+        }
+
+        for (int i = 0; i < specialCard; i++) {
+            int randomIndex = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser1().size());
+            gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
+            gameBattleField.getSpecialCardsDeckUser1().remove(randomIndex);
+        }
+        sort();
+    }
+
+    public void bondAbility(CommonCard cardPut) {
+        User userToPlay = gameBattleField.getWhichUserTurn();
+        if (userToPlay.getUsername().equals(gameBattleField.getUser1().getUsername())) {
+            for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser1().size(); i++) {
+                CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser1().get(i);
+                String playField = commonCard.getPlayField();
+                if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+                        && commonCard.getAbility().contains("Muster")) {
+                    switch (playField) {
+                        case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser1().add(commonCard);
+                        case "Ranged" -> gameBattleField.getRangedIsPlayedUser1().add(commonCard);
+                        case "Siege" -> gameBattleField.getSiegeIsPlayedUser1().add(commonCard);
+                    }
+                    gameBattleField.getCommonCardInBattleFieldUser1().remove(commonCard);
+                    i -= 1;
+                }
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardInDeckUser1().size(); i++) {
+                CommonCard commonCard = gameBattleField.getCommonCardInDeckUser1().get(i);
+                String playField = commonCard.getPlayField();
+                if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+                        && commonCard.getAbility().contains("Muster")) {
+                    switch (playField) {
+                        case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser1().add(commonCard);
+                        case "Ranged" -> gameBattleField.getRangedIsPlayedUser1().add(commonCard);
+                        case "Siege" -> gameBattleField.getSiegeIsPlayedUser1().add(commonCard);
+                    }
+                    gameBattleField.getCommonCardInDeckUser1().remove(commonCard);
+                    i -= 1;
+                }
+            }
+            return;
+        }
+        for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser2().size(); i++) {
+            CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser2().get(i);
+            String playField = commonCard.getPlayField();
+            if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+                    && commonCard.getAbility().contains("Muster")) {
+                switch (playField) {
+                    case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser2().add(commonCard);
+                    case "Ranged" -> gameBattleField.getRangedIsPlayedUser2().add(commonCard);
+                    case "Siege" -> gameBattleField.getSiegeIsPlayedUser2().add(commonCard);
+                }
+                gameBattleField.getCommonCardInBattleFieldUser2().remove(commonCard);
+                i -= 1;
+            }
+        }
+        for (int i = 0; i < gameBattleField.getCommonCardInDeckUser2().size(); i++) {
+            CommonCard commonCard = gameBattleField.getCommonCardInDeckUser2().get(i);
+            String playField = commonCard.getPlayField();
+            if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+                    && commonCard.getAbility().contains("Muster")) {
+                switch (playField) {
+                    case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser2().add(commonCard);
+                    case "Ranged" -> gameBattleField.getRangedIsPlayedUser2().add(commonCard);
+                    case "Siege" -> gameBattleField.getSiegeIsPlayedUser2().add(commonCard);
+                }
+                gameBattleField.getCommonCardInDeckUser2().remove(commonCard);
+                i -= 1;
+            }
+        }
+    }
+
     public void sortSpecial(ArrayList<SpecialCard> specialCards) {
         specialCards.sort(Comparator.comparing(SpecialCard::getCardName));
-        sort();
     }
 
     public void sortCommonByScoreThenName(ArrayList<CommonCard> commonCards) {
         commonCards.sort(Comparator.comparing(CommonCard::getScore).thenComparing(Comparator.comparing(CommonCard::getCardName)));
-        sort();
     }
 }
