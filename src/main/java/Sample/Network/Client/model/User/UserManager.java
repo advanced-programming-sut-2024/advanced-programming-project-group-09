@@ -1,7 +1,7 @@
 package Sample.Network.Client.model.User;
 
 import Sample.Network.Client.Settings.Settings;
-import com.google.gson.Gson;
+import com.google.gson.*;
 
 import java.io.*;
 

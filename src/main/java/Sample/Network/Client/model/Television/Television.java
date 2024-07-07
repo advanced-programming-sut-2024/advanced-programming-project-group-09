@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import Sample.Network.Client.utils.Vector2D;
 import Sample.Network.Client.view.Main;
-import Sample.Network.Client.view.UserMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 
 import java.net.URL;
 import java.util.ResourceBundle;

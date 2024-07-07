@@ -1,7 +1,7 @@
 package Sample.Network.Client.view.LobbyMenus;
 
-import Sample.Network.Client.controller.GameControllers.LobbyController;
-import Sample.Network.Client.controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.LobbyController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -28,8 +28,8 @@ import Sample.Network.Client.model.Lobby.LobbyManager;
 import Sample.Network.Client.model.Lobby.LobbyStatus;
 import Sample.Model.User;
 import Sample.Network.Client.view.Main;
-import Sample.Network.Client.view.UserMenus.MainMenu;
-import Sample.Network.Client.view.UserMenus.ProfileMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.ProfileMenu;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,6 +1,6 @@
-package Sample.Network.Client.controller.UserControllers;
+package Sample.Network.Client.controller.UserAndGameControllers;
 
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 
 public class AvatarController {
     private final User currentUser;

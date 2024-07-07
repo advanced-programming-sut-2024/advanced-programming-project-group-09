@@ -1,4 +1,4 @@
-package Sample.Network.Client.view.UserMenus;
+package Sample.Network.Client.view.UserAndGameMenus;
 
 import controller.UserControllers.MainController;
 import javafx.scene.control.Button;

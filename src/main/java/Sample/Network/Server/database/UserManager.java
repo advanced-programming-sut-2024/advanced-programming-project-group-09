@@ -1,6 +1,6 @@
 package Sample.Network.Server.database;
 
-import Sample.Network.Server.model.ServerUser;
+import Sample.Network.Server.model.User;
 import com.google.gson.*;
 
 import java.io.*;
@@ -36,16 +36,16 @@ public class UserManager {
             return;
         JsonArray usersArray = jsonObject.getAsJsonArray("users");
         for (JsonElement element : usersArray)
-            database.addUser(gson.fromJson(element, ServerUser.class));
+            database.addUser(gson.fromJson(element, User.class));
     }
 
-    public static void updateAllUsers(Collection<ServerUser> serverUsers) {
+    public static void updateAllUsers(Collection<User> users) {
         Gson gson = new GsonBuilder().serializeNulls().create();
         JsonObject mainObject = new JsonObject();
         JsonArray usersArray = new JsonArray();
-        for (ServerUser serverUser : serverUsers)
-            usersArray.add(gson.toJsonTree(serverUser).getAsJsonObject());
-        mainObject.add("serverUsers", usersArray);
+        for (User user : users)
+            usersArray.add(gson.toJsonTree(user).getAsJsonObject());
+        mainObject.add("users", usersArray); // Consistent with previous code
         try {
             FileWriter fileWriter = new FileWriter(Settings.USERS_PATH);
             fileWriter.write(gson.toJson(mainObject));

@@ -3,7 +3,7 @@ package Sample.Network.Server.database;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import Sample.Network.Server.model.ServerUser;
+import Sample.Network.Server.model.User;
 import Sample.Network.Server.model.chatRoom.Chat;
 
 import java.io.*;
@@ -147,16 +147,16 @@ public class ChatManager {
     }
 
     public static Chat createGlobalChat() {
-        Collection<ServerUser> users = Database.getInstance().getUsers();
+        Collection<User> users = Database.getInstance().getUsers();
         ArrayList<String> chatParticipants = new ArrayList<>();
-        for (ServerUser user : users) {
+        for (User user : users) {
             chatParticipants.add(user.getUsername());
         }
         return new Chat(chatParticipants);
     }
 
     public static void notifyAllMembers(Chat chat) throws IOException {
-        for (ServerUser user : Database.getInstance().getOnlineUsers()) {
+        for (User user : Database.getInstance().getOnlineUsers()) {
             if (chat.getUsers().contains(user.getUsername())) {
                 Socket socket = user.getSocket();
                 OutputStream outputStream = socket.getOutputStream();

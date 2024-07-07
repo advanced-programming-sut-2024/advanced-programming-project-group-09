@@ -1,15 +1,17 @@
-package Sample.Network.Client.controller.GameControllers;
+package Sample.Network.Client.controller.UserAndGameControllers;
 
 import Sample.Network.Client.controller.ChatControllers.ChatController;
 import Sample.Network.Client.controller.ChatControllers.ChatCreationController;
-import Sample.Network.Client.controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.application.Platform;
 import Sample.Network.Client.model.Lobby.Lobby;
 import Sample.Network.Client.model.Lobby.LobbyManager;
 import Sample.Network.Client.model.Lobby.LobbyStatus;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.Player;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.model.chatRoom.ChatManager;
+import Sample.Network.Client.model.User.Color;
 import Sample.Network.Client.view.ChatMenus.MainChatMenu;
 import Sample.Network.Client.view.ChatMenus.MainChatMenuController;
 import Sample.Network.Client.view.Main;
@@ -38,6 +40,7 @@ public class LobbyController {
         gameRoom.setAdmin(admin);
     }
 
+
     public void removePlayer(User player) {
         if (gameRoom != null) {
             gameRoom.removePlayer(player);
@@ -56,6 +59,11 @@ public class LobbyController {
     public boolean isAdmin(User player) {
         if (gameRoom == null) return false;
         return player.getUsername().equals(gameRoom.getAdmin().getUsername());
+    }
+
+    public Color getColor(User player) {
+        if (gameRoom == null) return null;
+        return gameRoom.getColor(player);
     }
 
     public int getPlayersCount() {
@@ -89,14 +97,15 @@ public class LobbyController {
         updateGameRoom();
     }
 
+
     public void goToChat() throws Exception {
-        ChatCreationController controller = new ChatCreationController(MainController.getCurrentUser());
+        ChatCreationController controller = new ChatCreationController(MainController.currentUser);
         for (User user : getPlayers()) {
             controller.addUser(user.getUsername());
         }
         controller.setMode(Chat.ChatMode.ROOM);
         System.out.println(controller.CreateChat(gameId));
-        ChatController chatController = new ChatController(MainController.getCurrentUser());
+        ChatController chatController = new ChatController(MainController.currentUser);
         MainChatMenu chatMenu = new MainChatMenu();
         MainChatMenuController.setController(chatController);
         MainChatMenuController.currentChatMenu = chatMenu;

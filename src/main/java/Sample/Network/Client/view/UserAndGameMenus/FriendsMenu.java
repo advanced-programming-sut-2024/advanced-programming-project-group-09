@@ -1,4 +1,4 @@
-package Sample.Network.Client.view.UserMenus;
+package Sample.Network.Client.view.UserAndGameMenus;
 
 import controller.UserControllers.FriendsMenuController;
 import controller.UserControllers.MainController;
