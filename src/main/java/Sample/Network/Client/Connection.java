@@ -55,7 +55,7 @@ public class Connection {
     }
 
     public static void startListening() {
-        listener = new Listener(Connection.getInstance().getInputStream());
+        listener = new Listener(Connection.getInstance().inputStream);
         listener.start();
     }
 }

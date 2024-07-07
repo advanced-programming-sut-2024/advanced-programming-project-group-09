@@ -9,8 +9,8 @@ import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.model.chatRoom.ChatManager;
 import Sample.Network.Client.model.chatRoom.Message;
 import Sample.Network.Client.view.ChatMenus.MainChatMenuController;
-import Sample.Network.Client.view.UserMenus.LoginMenu;
-import Sample.Network.Client.view.UserMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 
 import java.net.URL;
 import java.util.HashMap;

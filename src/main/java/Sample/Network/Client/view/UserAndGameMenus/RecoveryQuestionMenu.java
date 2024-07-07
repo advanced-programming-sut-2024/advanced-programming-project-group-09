@@ -1,4 +1,4 @@
-package Sample.Network.Client.view.UserMenus;
+package Sample.Network.Client.view.UserAndGameMenus;
 
 import controller.UserControllers.SignupController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -46,7 +46,7 @@ public class RecoveryQuestionMenu extends Application implements Initializable {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("Stronghold");
+        stage.setTitle("Gwent");
         AnchorPane anchorPane = FXMLLoader.load(LoginMenu.class.getResource("/FXML/Userfxml/recoveryQuestion.fxml"));
         anchorPane.setBackground(new Background(new BackgroundImage(new Image(
                 MainMenu.class.getResource("/assets/backgrounds/loginMenu.jpg").toExternalForm()),

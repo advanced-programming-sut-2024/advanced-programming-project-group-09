@@ -1,16 +1,23 @@
 package Sample.Network.Server.database;
 
+import Sample.Network.Server.model.User;
 import Sample.Network.Server.model.Lobby;
-import Sample.Network.Server.model.ServerUser;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.*;
 
 public class Database {
     private static Database instance = null;
-    private final HashMap<String, ServerUser> users = new HashMap<>();
-    private final ArrayList<ServerUser> userRankings = new ArrayList<>();
+    private final HashMap<String, User> users = new HashMap<>();
+    private final ArrayList<User> userRankings = new ArrayList<>();
     private final HashMap<String, Lobby> lobbies = new HashMap<>();
+    private static final String USERS_FILE_PATH = "server_users.json";
+    private static final Gson gson = new Gson();
 
     private Database() {
     }
@@ -30,13 +37,11 @@ public class Database {
         UserManager.updateAllUsers(users.values());
     }
 
-    public ServerUser getUser(String username) {
-        if (username == null) return null;
-        if (!users.containsKey(username)) return null;
+    public User getUser(String username) {
         return users.get(username);
     }
 
-    public void addUser(ServerUser user) {
+    public void addUser(User user) {
         users.put(user.getUsername(), user);
         userRankings.add(user);
         updateData();
@@ -54,7 +59,7 @@ public class Database {
     }
 
     public boolean emailExists(String email) {
-        for (ServerUser user : users.values()) {
+        for (User user : users.values()) {
             if (user.getEmail().equalsIgnoreCase(email)) return true;
         }
         return false;
@@ -64,19 +69,20 @@ public class Database {
         return users.containsKey(username);
     }
 
-    public Collection<ServerUser> getUsers() {
+    public Collection<User> getUsers() {
         return users.values();
     }
 
-    public Collection<ServerUser> getOnlineUsers() {
-        ArrayList<ServerUser> onlineUsers = new ArrayList<>();
-        for (ServerUser user : users.values())
+    public Collection<User> getOnlineUsers() {
+        ArrayList<User> onlineUsers = new ArrayList<>();
+        for (User user : users.values()) {
             if (user.isOnline())
                 onlineUsers.add(user);
+        }
         return onlineUsers;
     }
 
-    public ArrayList<ServerUser> getUserRankings() {
+    public ArrayList<User> getUserRankings() {
         return userRankings;
     }
 

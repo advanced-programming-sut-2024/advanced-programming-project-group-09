@@ -1,14 +1,13 @@
 package Sample.Network.Client.view.LobbyMenus;
 
-import Sample.Network.Client.controller.GameControllers.LobbyController;
-import Sample.Network.Client.controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.LobbyController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +20,7 @@ import javafx.stage.Stage;
 import Sample.Network.Client.model.Lobby.Lobby;
 import Sample.Network.Client.model.Lobby.LobbyManager;
 import Sample.Network.Client.view.Main;
-import Sample.Network.Client.view.UserMenus.ProfileMenu;
+import Sample.Network.Client.view.UserAndGameMenus.ProfileMenu;
 
 import java.net.URL;
 import java.util.ArrayList;

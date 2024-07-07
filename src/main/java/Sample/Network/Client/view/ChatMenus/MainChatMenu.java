@@ -7,8 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import Sample.Network.Client.view.UserMenus.LoginMenu;
-import Sample.Network.Client.view.UserMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 
 import java.net.URL;
 

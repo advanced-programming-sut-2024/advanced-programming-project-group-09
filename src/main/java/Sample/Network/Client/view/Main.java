@@ -1,10 +1,10 @@
 package Sample.Network.Client.view;
 
-import Sample.Network.Client.controller.UserControllers.LoginController;
+import Sample.Network.Client.controller.UserAndGameControllers.LoginController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import Sample.Network.Client.Connection;
-import Sample.Network.Client.view.UserMenus.LoginMenu;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
 
 import java.io.IOException;
 
@@ -13,7 +13,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Connection.connect("localhost", 8080);
-        ConstantManager.load();
         launch(args);
     }
 

@@ -34,18 +34,19 @@ module approj1 {
     opens Sample.Network.Client.utils to com.google.gson;
     opens Sample.Network.Client.controller.GameControllers to com.google.gson;
     opens Sample.Network.Client.model.chatRoom to com.google.gson;
-    opens Sample.Network.Client.view.UserMenus to javafx.fxml;
+    opens Sample.Network.Client.view.UserAndGameMenus to javafx.fxml;
 
-    exports Sample.Network.Client.view.UserMenus;
+    exports Sample.Network.Client.view.UserAndGameMenus;
     exports Sample.Network.Client.view.ChatMenus;
     exports Sample.Network.Client.view;
     exports Sample.Network.Client.model.User;
     exports Sample.Network.Client.model.chatRoom;
     exports Sample.Network.Client.utils;
     exports Sample.Network.Client.controller.GameControllers;
-    exports Sample.Network.Client.controller.UserControllers;
+    exports Sample.Network.Client.controller.UserAndGameControllers;
     exports Sample.Network.Client.controller.ChatControllers;
     opens Sample.Network.Client.model.Lobby to com.google.gson;
     exports Sample.Network.Client.view.LobbyMenus;
     opens Sample.Network.Client.view.LobbyMenus to javafx.fxml;
+    opens Sample.Network.Client.controller.UserAndGameControllers to com.google.gson;
 }

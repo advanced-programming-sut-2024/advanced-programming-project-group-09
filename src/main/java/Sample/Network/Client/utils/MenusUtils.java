@@ -81,7 +81,7 @@ public class MenusUtils {
         if (friendShip) loadFriendPopUp(user, popup);
         else if (MainController.getCurrentUser().isHaveRequestFrom(user))loadSenderPopUp(user, popup);
         else loadUnFriendPopUp(user, popup);
-//        Stronghold.getInstance().updateData();
+//        Gwent.getInstance().updateData();
         return popup;
 
     }

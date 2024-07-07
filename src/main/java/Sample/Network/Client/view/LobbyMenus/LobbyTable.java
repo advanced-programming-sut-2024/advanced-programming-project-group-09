@@ -1,7 +1,7 @@
 package Sample.Network.Client.view.LobbyMenus;
 
-import Sample.Network.Client.controller.GameControllers.LobbyController;
-import Sample.Network.Client.controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.LobbyController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;

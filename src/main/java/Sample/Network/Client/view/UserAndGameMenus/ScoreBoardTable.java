@@ -1,15 +1,15 @@
-package Sample.Network.Client.view.UserMenus;
+package Sample.Network.Client.view.UserAndGameMenus;
 
-import controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import model.Stronghold;
-import model.User.User;
-import utils.MenusUtils;
-import view.Main;
+import Sample.Network.Client.model.Gwent;
+import Sample.Network.Client.model.User.User;
+import Sample.Network.Client.utils.MenusUtils;
+import Sample.Network.Client.view.Main;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +18,7 @@ public class ScoreBoardTable {
     private final int rank;
     private final Circle avatar = new Circle();
     private final String username;
-    private final int highScore;
+    private final double maxScore;
     private final ImageView connectionMode = new ImageView();
     private final ImageView television = new ImageView();
     private final Button select = new Button("select");
@@ -27,7 +27,7 @@ public class ScoreBoardTable {
     public ScoreBoardTable(User user) {
         rank = user.getRank();
         username = user.getUsername();
-        highScore = user.getHighScore();
+        maxScore = user.getMaxScore();
         setDetailsForImages(user);
         select.setOnMouseClicked(e -> {
             try {
@@ -37,7 +37,7 @@ public class ScoreBoardTable {
                 throw new RuntimeException(ex);
             }
         });
-        if (!Stronghold.getInstance().isUserOnline(user.getUsername()))
+        if (!Gwent.getInstance().isUserOnline(user.getUsername()))
             createLastSeen(user.getLastOnlineTime());
         else lastSeen = "now";
     }
@@ -58,7 +58,7 @@ public class ScoreBoardTable {
         connectionMode.setFitWidth(35);
         television.setFitWidth(35);
         television.setFitHeight(35);
-        if (Stronghold.getInstance().isUserOnline(user.getUsername()))
+        if (Gwent.getInstance().isUserOnline(user.getUsername()))
             connectionMode.setImage(new Image(ScoreBoardTable.class.getResource("/assets/icons/green.png").toString()));
         else connectionMode.setImage(new Image(ScoreBoardTable.class.getResource("/assets/icons/red.png").toString()));
         avatar.setFill(new ImagePattern(new Image(user.getAvatarPath())));
@@ -80,8 +80,8 @@ public class ScoreBoardTable {
         return username;
     }
 
-    public int getHighScore() {
-        return highScore;
+    public double getMaxScore() {
+        return maxScore;
     }
 
     public ImageView getConnectionMode() {

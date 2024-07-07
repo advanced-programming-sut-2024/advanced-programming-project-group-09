@@ -1,4 +1,4 @@
-package Sample.Network.Client.view.UserMenus;
+package Sample.Network.Client.view.UserAndGameMenus;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -20,10 +20,10 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.Stronghold;
-import model.Television.Television;
-import model.User.User;
-import view.Main;
+import Sample.Network.Client.model.Gwent;
+import Sample.Network.Client.model.Television.Television;
+import Sample.Network.Client.model.User.User;
+import Sample.Network.Client.view.Main;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -82,7 +82,7 @@ public class ScoreBoardMenu extends Application {
     private void addUsers() {
         rankingTable.clear();
         table.getItems().clear();
-        ArrayList<User> ranking = Stronghold.getInstance().getUserRankings();
+        ArrayList<User> ranking = Gwent.getInstance().getUserRankings();
         for (User user : ranking) {
             rankingTable.add(new ScoreBoardTable(user));
         }
@@ -91,7 +91,7 @@ public class ScoreBoardMenu extends Application {
 
     public void openProfile(MouseEvent mouseEvent) {
         if (table.getSelectionModel().getSelectedItem() != null) {
-//            ServerUser user = Stronghold.getInstance().getUser(table.getSelectionModel().getSelectedItem().getUsername());
+//            ServerUser user = Gwent.getInstance().getUser(table.getSelectionModel().getSelectedItem().getUsername());
 //            MenusUtils.createProfileShowPopUp(user, MainController.getCurrentUser().isFriend(user)).show(Main.mainStage);
             try {
                 new Television().start(Main.mainStage);

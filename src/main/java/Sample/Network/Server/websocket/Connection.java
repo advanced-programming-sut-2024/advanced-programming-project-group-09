@@ -230,7 +230,30 @@ public class Connection extends Thread {
         outputStream.writeUTF("200: success");
     }
 
-/*    private void handleUserData(Request request) throws IOException {
+    private void handleDeck(Request request) throws IOException {
+        User user = User.getUserByUsername(request.getParameters().get("username"));
+        if (user == null) {
+            outputStream.writeUTF("400: no_user");
+            return;
+        }
+        switch (request.getCommand()) {
+            case "save":
+                String deckPath = request.getParameters().get("deck_path");
+                user.saveDeckToFile(deckPath);
+                break;
+            case "load":
+                deckPath = request.getParameters().get("deck_path");
+                user.loadDeckFromFile(deckPath);
+                break;
+            default:
+                outputStream.writeUTF("400: bad request");
+                return;
+        }
+        outputStream.writeUTF("200: success");
+    }
+
+/*
+    private void handleUserData(Request request) throws IOException {
         String userDataListJson = request.getParameters().get("userDataList");
         Type type = new TypeToken<ArrayList<User.UserData>>() {}.getType();
         ArrayList<User.UserData> userDataList = new Gson().fromJson(userDataListJson, type);
@@ -247,7 +270,7 @@ public class Connection extends Thread {
         }
         outputStream.writeUTF("200: success");
     }
- */
+*/
 
     private void handleChat(Request request) throws IOException {
         switch (request.getCommand()) {
@@ -300,28 +323,6 @@ public class Connection extends Thread {
                 break;
             default:
                 outputStream.writeUTF("400: bad request");
-        }
-        outputStream.writeUTF("200: success");
-    }
-
-    private void handleDeck(Request request) throws IOException {
-        User user = User.getUserByUsername(request.getParameters().get("username"));
-        if (user == null) {
-            outputStream.writeUTF("400: no_user");
-            return;
-        }
-        switch (request.getCommand()) {
-            case "save":
-                String deckPath = request.getParameters().get("deck_path");
-                user.saveDeckToFile(deckPath);
-                break;
-            case "load":
-                deckPath = request.getParameters().get("deck_path");
-                user.loadDeckFromFile(deckPath);
-                break;
-            default:
-                outputStream.writeUTF("400: bad request");
-                return;
         }
         outputStream.writeUTF("200: success");
     }

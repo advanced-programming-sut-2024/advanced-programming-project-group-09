@@ -19,7 +19,7 @@ import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.model.chatRoom.ChatManager;
 import Sample.Network.Client.model.chatRoom.Message;
 import Sample.Network.Client.view.Main;
-import Sample.Network.Client.view.UserMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 
 import java.io.IOException;
 import java.net.URL;

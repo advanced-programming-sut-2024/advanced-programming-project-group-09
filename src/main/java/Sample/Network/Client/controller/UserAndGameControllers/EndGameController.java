@@ -1,5 +1,6 @@
-package Sample.Network.Client.controller.GameControllers;
+package Sample.Network.Client.controller.UserAndGameControllers;
 
+import Sample.Network.Client.model.Gwent;
 import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.utils.Pair;
 
@@ -43,9 +44,9 @@ public class EndGameController {
     private void updateScores() {
         User currentUser;
         for (Pair player : players) {
-            currentUser = Stronghold.getInstance().getUser(player.x);
-            if (currentUser.getHighScore() < Integer.parseInt(player.y))
-                currentUser.setHighScore(Integer.parseInt(player.y));
+            currentUser = Gwent.getInstance().getUser(player.x);
+            if (currentUser.getMaxScore() < Integer.parseInt(player.y))
+                currentUser.setMaxScore(Integer.parseInt(player.y));
         }
     }
 }

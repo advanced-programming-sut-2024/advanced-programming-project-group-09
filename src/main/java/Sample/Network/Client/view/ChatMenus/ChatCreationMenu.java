@@ -19,8 +19,8 @@ import javafx.util.Duration;
 import Sample.Model.User;
 import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.view.Main;
-import Sample.Network.Client.view.UserMenus.LoginMenu;
-import Sample.Network.Client.view.UserMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 import Sample.Network.Client.view.enums.messages.ChatMessage.ChatMessage;
 
 import java.net.URL;

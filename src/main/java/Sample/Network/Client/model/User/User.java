@@ -8,6 +8,7 @@ import Sample.Model.GameBattleField;
 import Sample.Network.Client.Connection;
 import Sample.Network.Client.Request;
 import Sample.Network.Client.Settings.Settings;
+import Sample.Network.Client.model.Gwent;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,7 +19,6 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -54,11 +54,6 @@ public class User {
     private static final String FILE_PATH = "users.json";
     private static final Gson gson = new Gson();
 
-
-//    static {
-//        loadUsers();
-//    }
-
     static {
         File dir = new File(DECKS_DIR);
         if (!dir.exists()) {
@@ -73,7 +68,6 @@ public class User {
         this.nickname = nickname;
         this.avatarPath = User.class.getResource(Settings.DEFAULT_AVATAR).toExternalForm();
         allUsers.add(this);
-        //        saveUsers();
     }
 
     public static ArrayList<User> getUsers() {
@@ -90,7 +84,7 @@ public class User {
     }
 
     public static void setUserLoginIn(User userLoginIn) {
-        userLoginIn = userLoginIn;
+        User.userLoginIn = userLoginIn;
     }
 
     public static User getUserForTest() {
@@ -212,7 +206,7 @@ public class User {
         }
     }
 
-    public void addSender(Sample.Model.User user) {
+    public void addSender(User user) {
         senders.add(user.getUsername());
         Request request = new Request();
         request.setType("friend");
@@ -228,7 +222,7 @@ public class User {
         saveUsers();
     }
 
-    public void removeSender(Sample.Model.User user) {
+    public void removeSender(User user) {
         senders.remove(user.getUsername());
         Request request = new Request();
         request.setType("friend");
@@ -244,7 +238,7 @@ public class User {
         saveUsers();
     }
 
-    public void addFriend(Sample.Model.User user) {
+    public void addFriend(User user) {
         friends.add(user.getUsername());
         Request request = new Request();
         request.setType("friend");
@@ -259,7 +253,7 @@ public class User {
         }
     }
 
-    public void removeFriend(Sample.Model.User user) {
+    public void removeFriend(User user) {
         friends.remove(user.getUsername());
         Request request = new Request();
         request.setType("friend");
@@ -296,7 +290,6 @@ public class User {
             }
         }
     }
-
 
     public void setLoses(int loses) {
         this.loses = loses;
@@ -370,7 +363,6 @@ public class User {
         }
     }
 
-
     public void setCompetitor(User competitor) {
         this.competitor = competitor;
         saveUsers();
@@ -388,7 +380,6 @@ public class User {
             }
         }
     }
-
 
     public void setLastGameBattleField(GameBattleField lastGameBattleField) {
         this.lastGameBattleField = lastGameBattleField;
@@ -514,20 +505,14 @@ public class User {
         return gamesPlayed;
     }
 
-
     public int getRank() {
-        allUsers.sort(new Comparator<User>() {
-            @Override
-            public int compare(User o1, User o2) {
-                return o2.getRank() - o1.getRank();
-            }
-        });
-        return allUsers.indexOf(this);
+        return Gwent.getInstance().getUserRank(this);
     }
 
     public User getCompetitor() {
         return competitor;
     }
+
     public String getAvatarPath() {
         return avatarPath;
     }
@@ -553,7 +538,7 @@ public class User {
         this.socket = socket;
     }
 
-    public boolean isOnline(){
+    public boolean isOnline() {
         return socket != null;
     }
 
@@ -569,12 +554,13 @@ public class User {
         return senders.contains(user.getUsername());
     }
 
-/*        public void updateLists() {
-        ClientUser user = (ClientUser) Stronghold.getInstance().getUser(getUsername());
-        setFriends(user.getFriends());
-        setSenders(user.getSenders());
+    public void updateLists() {
+        User user = Gwent.getInstance().getUser(username);
+        if (user != null) {
+            friends = user.friends;
+            senders = user.senders;
+        }
     }
-*/
 
     public static void saveUsers() {
         List<UserData> userDataList = new ArrayList<>();
@@ -636,8 +622,6 @@ public class User {
         }
     }
 
-
-
     public void saveDeckToFile(String filePath) {
         File file = new File(filePath);
         if (file.exists()) {
@@ -648,7 +632,6 @@ public class User {
         } catch (IOException e) {
             throw new RuntimeException("Error saving deck: " + e.getMessage(), e);
         }
-        // Request handling
         Request request = new Request();
         request.setType("deck");
         request.setCommand("save");
@@ -663,7 +646,6 @@ public class User {
             }
         }
     }
-
 
     public void loadDeckFromFile(String filePath) {
         File file = new File(filePath);
@@ -681,7 +663,6 @@ public class User {
         } catch (IOException e) {
             throw new RuntimeException("Error loading deck: " + e.getMessage(), e);
         }
-        // Request handling
         Request request = new Request();
         request.setType("deck");
         request.setCommand("load");
@@ -705,7 +686,6 @@ public class User {
         loadDeckFromFile(filePath);
     }
 
-
     private static class UserData {
         private String username;
         private String password;
@@ -726,8 +706,37 @@ public class User {
             this.commonCardsInDeck = commonCardsInDeck;
             this.specialCardsInDeck = specialCardsInDeck;
         }
+
+        public String getUsername() {
+            return username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public String getNickname() {
+            return nickname;
+        }
+
+        public Faction getFactionSelected() {
+            return factionSelected;
+        }
+
+        public Leader getFactionLeader() {
+            return factionLeader;
+        }
+
+        public List<CommonCard> getCommonCardsInDeck() {
+            return commonCardsInDeck;
+        }
+
+        public List<SpecialCard> getSpecialCardsInDeck() {
+            return specialCardsInDeck;
+        }
     }
 }
-
-
-
