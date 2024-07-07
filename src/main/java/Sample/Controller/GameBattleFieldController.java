@@ -61,8 +61,20 @@ public class GameBattleFieldController {
         for (int i = 0; i < specialCard; i++) {
             int randomIndex = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser1().size());
             int randomIndex2 = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser2().size());
-            gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
-            gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex2));
+            if (gameBattleField.getSpecialCardsDeckUser1().get(randomIndex) == SpecialCard.Decoy) {
+                gameBattleField.getCommonCardInBattleFieldUser1().add(CommonCard.Decoy);
+                System.out.println(20);
+            }
+            else {
+                gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
+            }
+            if (gameBattleField.getSpecialCardsDeckUser2().get(randomIndex) == SpecialCard.Decoy) {
+                gameBattleField.getCommonCardInBattleFieldUser2().add(CommonCard.Decoy);
+                System.out.println(10);
+            }
+            else {
+                gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex2));
+            }
             gameBattleField.getSpecialCardsDeckUser1().remove(randomIndex);
             gameBattleField.getSpecialCardsDeckUser2().remove(randomIndex2);
         }

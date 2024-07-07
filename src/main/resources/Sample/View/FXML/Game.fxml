@@ -697,29 +697,47 @@
             </StackPane.margin></ImageView>
       </StackPane>
    </HBox>
-   <StackPane fx:id="mySiegeSpecialCard" layoutX="380.0" layoutY="467.0" prefHeight="82.0" prefWidth="86.0">
+   <StackPane fx:id="mySiegeSpecialCard" layoutX="380.0" layoutY="467.0" onMouseClicked="#putSpecialCardInSiegeRow" prefHeight="82.0" prefWidth="86.0">
       <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
-      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="19.0" />
+         </StackPane.margin></ImageView>
    </StackPane>
-   <StackPane fx:id="myRangedSpecialCard" layoutX="380.0" layoutY="376.0" prefHeight="82.0" prefWidth="86.0">
+   <StackPane fx:id="myRangedSpecialCard" layoutX="380.0" layoutY="376.0" onMouseClicked="#putSpecialCardInRangedRow" prefHeight="82.0" prefWidth="86.0">
       <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
-      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="19.0" />
+         </StackPane.margin></ImageView>
    </StackPane>
-   <StackPane fx:id="myCloseCombatSpecialCard" layoutX="380.0" layoutY="287.0" prefHeight="82.0" prefWidth="86.0">
+   <StackPane fx:id="myCloseCombatSpecialCard" layoutX="380.0" layoutY="287.0" onMouseClicked="#putSpecialCardInCloseCombatRow" prefHeight="82.0" prefWidth="86.0">
       <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
-      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="19.0" />
+         </StackPane.margin></ImageView>
    </StackPane>
    <StackPane fx:id="competitorCloseCombatSpecialCard" layoutX="380.0" layoutY="188.0" prefHeight="82.0" prefWidth="86.0">
       <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
-      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="19.0" />
+         </StackPane.margin></ImageView>
    </StackPane>
    <StackPane fx:id="competitorRangedSpecialCard" layoutX="380.0" layoutY="97.0" prefHeight="82.0" prefWidth="86.0">
       <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
-      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="19.0" />
+         </StackPane.margin></ImageView>
    </StackPane>
    <StackPane fx:id="competitorSiegeSpecialCard" layoutX="380.0" layoutY="9.0" prefHeight="82.0" prefWidth="86.0">
       <ImageView fitHeight="82.0" fitWidth="52.0" pickOnBounds="true" />
-      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+      <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT">
+         <StackPane.margin>
+            <Insets left="19.0" />
+         </StackPane.margin></ImageView>
    </StackPane>
    <Label fx:id="competitorSiegeRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="27.0" prefHeight="45.0" prefWidth="26.0" text="00">
       <font>
@@ -757,7 +775,7 @@
    <StackPane layoutX="1155.0" layoutY="561.0" prefHeight="86.0" prefWidth="63.0">
       <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#564e4e" height="24.0" stroke="BLACK" strokeType="INSIDE" width="40.0" StackPane.alignment="BOTTOM_CENTER" />
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00" StackPane.alignment="BOTTOM_CENTER">
+      <Label fx:id="numberOfMyDiscard" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00" StackPane.alignment="BOTTOM_CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -766,7 +784,7 @@
    <StackPane layoutX="1155.0" layoutY="55.0" prefHeight="86.0" prefWidth="63.0">
       <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#564e4e" height="24.0" stroke="BLACK" strokeType="INSIDE" width="40.0" StackPane.alignment="BOTTOM_CENTER" />
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00" StackPane.alignment="BOTTOM_CENTER">
+      <Label fx:id="numberOfCompetitorDiscard" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="30.0" text="00" textFill="#ecff00" StackPane.alignment="BOTTOM_CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -908,7 +926,7 @@
       </font>
    </Label>
    <Button layoutX="223.0" layoutY="583.0" mnemonicParsing="false" onMouseClicked="#pass" prefHeight="36.0" prefWidth="68.0" style="-fx-background-color: Black; -fx-border-color: Yellow;" text="Pass" />
-   <HBox fx:id="weatherCards" layoutX="95.0" layoutY="300.0" prefHeight="93.0" prefWidth="183.0">
+   <HBox fx:id="weatherCards" layoutX="95.0" layoutY="300.0" onMouseClicked="#putWeatherCard" prefHeight="93.0" prefWidth="183.0">
       <StackPane prefHeight="93.0" prefWidth="61.0">
          <ImageView fitHeight="93.0" fitWidth="61.0" pickOnBounds="true" />
          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />

@@ -66,12 +66,12 @@ public class Main {
             user2.getCommonCardsInDeck().add(CommonCard.GaunterODimmDarkness);
             user2.getCommonCardsInDeck().add(CommonCard.GaunterODimmDarkness);
             user2.getCommonCardsInDeck().add(CommonCard.GaunterODimmDarkness);
-            user2.getSpecialCardsInDeck().add(SpecialCard.Decoy);
-            user2.getSpecialCardsInDeck().add(SpecialCard.Decoy);
-            user2.getSpecialCardsInDeck().add(SpecialCard.Scorch);
-            user2.getSpecialCardsInDeck().add(SpecialCard.Scorch);
-            user2.getSpecialCardsInDeck().add(SpecialCard.Mardroeme);
-            user2.getSpecialCardsInDeck().add(SpecialCard.Mardroeme);
+            user2.getSpecialCardsInDeck().add(SpecialCard.BitingFrost);
+            user2.getSpecialCardsInDeck().add(SpecialCard.ImpenetrableFog);
+            user2.getSpecialCardsInDeck().add(SpecialCard.ClearWeather);
+            user2.getSpecialCardsInDeck().add(SpecialCard.TorrentialRain);
+            user2.getSpecialCardsInDeck().add(SpecialCard.SkelligeStorm);
+            user2.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
             user2.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
             user2.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
 

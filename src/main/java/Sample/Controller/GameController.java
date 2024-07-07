@@ -18,9 +18,7 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -149,6 +147,7 @@ public class GameController {
     private final Image cardAbilityScorch = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/card_ability_scorch.png")));
     private final Image cardAbilitySpy = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/card_ability_spy.png")));
     private final Image cardAbilityHorn = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/card_ability_horn.png")));
+    private final Image decoyPower = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/card_special_decoy.png")));
     private final Image spyAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_spy.png")));
     private final Image medicAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_medic.png")));
     private final Image bondAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_bond.png")));
@@ -157,9 +156,14 @@ public class GameController {
     private final Image hornAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_horn.png")));
     private final Image scorchAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_scorch.png")));
     private final Image profilePng = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/profile.png")));
+    private final Image putRainWeather = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/overlay_rain.png")));
+    private final Image putFrostWeather = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/overlay_frost.png")));
+    private final Image putFogWeather = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/overlay_fog.png")));
 
     private CommonCard selectedCommonCard = null;
     private SpecialCard selectedSpecialCard = null;
+
+    private boolean isTransitioning = false;
 
     private final GameBattleField gameBattleField = User.getUserLoginIn().getLastGameBattleField();
     private GameBattleFieldController gameBattleFieldController;
@@ -207,28 +211,6 @@ public class GameController {
         firstPlayerUsername.setText(gameBattleField.getWhichUserTurn().getUsername());
         secondPlayerUsername.setText(whichUserIsNotTurn().getUsername());
 
-        int firstPlayerScoreInGame;
-        int secondPlayerScoreInGame;
-        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
-            firstPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser1, siegeIsPlayedUser1, rangedIsPlayedUser1, firstPlayerScore);
-            secondPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser2, siegeIsPlayedUser2, rangedIsPlayedUser2, secondPlayerScore);
-            scoreCalculation(closeCombatPlayedUser1, null, null, myCloseCombatRowScore);
-            scoreCalculation(null, siegeIsPlayedUser1, null, mySiegeRowScore);
-            scoreCalculation(null, null, rangedIsPlayedUser1, myRangedRowScore);
-            scoreCalculation(closeCombatPlayedUser2, null, null, competitorCloseCombatRowScore);
-            scoreCalculation(null, siegeIsPlayedUser2, null, competitorSiegeRowScore);
-            scoreCalculation(null, null, rangedIsPlayedUser2, competitorRangedRowScore);
-        } else {
-            firstPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser2, siegeIsPlayedUser2, rangedIsPlayedUser2, firstPlayerScore);
-            secondPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser1, siegeIsPlayedUser1, rangedIsPlayedUser1, secondPlayerScore);
-            scoreCalculation(closeCombatPlayedUser2, null, null, myCloseCombatRowScore);
-            scoreCalculation(null, siegeIsPlayedUser2, null, mySiegeRowScore);
-            scoreCalculation(null, null, rangedIsPlayedUser2, myRangedRowScore);
-            scoreCalculation(closeCombatPlayedUser1, null, null, competitorCloseCombatRowScore);
-            scoreCalculation(null, siegeIsPlayedUser1, null, competitorSiegeRowScore);
-            scoreCalculation(null, null, rangedIsPlayedUser1, competitorRangedRowScore);
-        }
-
         if (gameBattleField.isPassedUser1() && gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1()))
             firstPlayerPassedLabel.setVisible(true);
         else if (gameBattleField.isPassedUser1() && !gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1()))
@@ -237,6 +219,30 @@ public class GameController {
             firstPlayerPassedLabel.setVisible(true);
         else if (gameBattleField.isPassedUser2() && !gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2()))
             secondPlayerPassedLabel.setVisible(true);
+
+        putCardsInBoard();
+
+        int firstPlayerScoreInGame;
+        int secondPlayerScoreInGame;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            scoreCalculation(closeCombatPlayedUser1, null, null, myCloseCombatRowScore);
+            scoreCalculation(null, siegeIsPlayedUser1, null, mySiegeRowScore);
+            scoreCalculation(null, null, rangedIsPlayedUser1, myRangedRowScore);
+            scoreCalculation(closeCombatPlayedUser2, null, null, competitorCloseCombatRowScore);
+            scoreCalculation(null, siegeIsPlayedUser2, null, competitorSiegeRowScore);
+            scoreCalculation(null, null, rangedIsPlayedUser2, competitorRangedRowScore);
+            firstPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser1, siegeIsPlayedUser1, rangedIsPlayedUser1, firstPlayerScore);
+            secondPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser2, siegeIsPlayedUser2, rangedIsPlayedUser2, secondPlayerScore);
+        } else {
+            scoreCalculation(closeCombatPlayedUser2, null, null, myCloseCombatRowScore);
+            scoreCalculation(null, siegeIsPlayedUser2, null, mySiegeRowScore);
+            scoreCalculation(null, null, rangedIsPlayedUser2, myRangedRowScore);
+            scoreCalculation(closeCombatPlayedUser1, null, null, competitorCloseCombatRowScore);
+            scoreCalculation(null, siegeIsPlayedUser1, null, competitorSiegeRowScore);
+            scoreCalculation(null, null, rangedIsPlayedUser1, competitorRangedRowScore);
+            firstPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser2, siegeIsPlayedUser2, rangedIsPlayedUser2, firstPlayerScore);
+            secondPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser1, siegeIsPlayedUser1, rangedIsPlayedUser1, secondPlayerScore);
+        }
 
         if (firstPlayerScoreInGame > secondPlayerScoreInGame) {
             firstPlayerCrown.setVisible(true);
@@ -272,8 +278,6 @@ public class GameController {
             firstPlayerShield.setImage(user2.getFactionSelected().getImagePath());
             secondPlayerShield.setImage(user1.getFactionSelected().getImagePath());
         }
-
-        putCardsInBoard();
     }
 
     private void putCardsInBoard() {
@@ -284,26 +288,35 @@ public class GameController {
             putCommonCardsInRows(rangedIsPlayedUser1, myRangedCombatCardsPlayed);
             putCommonCardsInRows(siegeIsPlayedUser1, mySiegeCardsPlayed);
 
-            putSpecialCardInRows(specialFieldInCloseCombatUser1, specialFieldInSiegeUser1, specialFieldInRangedUser1);
+            putSpecialCardInRows(specialFieldInCloseCombatUser1, specialFieldInSiegeUser1, specialFieldInRangedUser1, true);
 
             putCommonCardsInRows(closeCombatPlayedUser2, competitorCloseCombatCardsPlayed);
             putCommonCardsInRows(rangedIsPlayedUser2, competitorRangedCombatCardsPlayed);
             putCommonCardsInRows(siegeIsPlayedUser2, competitorSiegeCardsPlayed);
 
-            putSpecialCardInRows(specialFieldInCloseCombatUser2, specialFieldInSiegeUser2, specialFieldInRangedUser2);
+            putSpecialCardInRows(specialFieldInCloseCombatUser2, specialFieldInSiegeUser2, specialFieldInRangedUser2, false);
         } else {
             putMyBattleFieldCards(specialCardsBattleFieldUser2, commonCardInBattleFieldUser2);
             putCommonCardsInRows(closeCombatPlayedUser2, myCloseCombatCardsPlayed);
             putCommonCardsInRows(rangedIsPlayedUser2, myRangedCombatCardsPlayed);
             putCommonCardsInRows(siegeIsPlayedUser2, mySiegeCardsPlayed);
 
-            putSpecialCardInRows(specialFieldInCloseCombatUser2, specialFieldInSiegeUser2, specialFieldInRangedUser2);
+            putSpecialCardInRows(specialFieldInCloseCombatUser2, specialFieldInSiegeUser2, specialFieldInRangedUser2, true);
 
             putCommonCardsInRows(closeCombatPlayedUser1, competitorCloseCombatCardsPlayed);
             putCommonCardsInRows(rangedIsPlayedUser1, competitorRangedCombatCardsPlayed);
             putCommonCardsInRows(siegeIsPlayedUser1, competitorSiegeCardsPlayed);
 
-            putSpecialCardInRows(specialFieldInCloseCombatUser1, specialFieldInSiegeUser1, specialFieldInRangedUser1);
+            putSpecialCardInRows(specialFieldInCloseCombatUser1, specialFieldInSiegeUser1, specialFieldInRangedUser1, false);
+        }
+        putWeatherCardInWeatherCards();
+    }
+
+    private void putWeatherCardInWeatherCards() {
+        for (int i = 0; i < gameBattleField.getWeatherCards().size(); i++) {
+            StackPane stackPane = (StackPane) weatherCards.getChildren().get(i);
+            ((ImageView) stackPane.getChildren().getFirst()).setImage(gameBattleField.getWeatherCards().get(i).getImageForGame());
+            ((ImageView) stackPane.getChildren().get(1)).setImage(gameBattleField.getWeatherCards().get(i).getImageForPower());
         }
     }
 
@@ -333,24 +346,30 @@ public class GameController {
             stackPane.getChildren().get(2).setVisible(false);
         }
         for (int i = specialCardsBattleFieldUser1.size(); i < specialCardsBattleFieldUser1.size() + commonCardInBattleFieldUser1.size(); i++) {
+            String playField = commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getPlayField();
             StackPane stackPane = (StackPane) myHandCards.getChildren().get(i);
             ((ImageView) stackPane.getChildren().getFirst()).setImage(commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getImageForGame());
             if (commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).isHero()) {
                 ((ImageView) stackPane.getChildren().get(1)).setImage(powerHeroImage);
                 ((Label) stackPane.getChildren().get(2)).setTextFill(Color.WHITE);
-            } else {
+            } else if (playField != null) {
                 ((ImageView) stackPane.getChildren().get(1)).setImage(powerNormalImage);
                 ((Label) stackPane.getChildren().get(2)).setTextFill(Color.BLACK);
+            } else {
+                ((ImageView) stackPane.getChildren().get(1)).setImage(decoyPower);
             }
-            ((Label) stackPane.getChildren().get(2)).setText(String.valueOf(commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getScore()));
-            stackPane.getChildren().get(2).setVisible(true);
+            if (playField != null) {
+                ((Label) stackPane.getChildren().get(2)).setText(String.valueOf(commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getScore()));
+                stackPane.getChildren().get(2).setVisible(true);
+            }
 
-            String playField = commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getPlayField();
-            switch (playField) {
-                case "Close Combat" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowClose);
-                case "Ranged" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowRanged);
-                case "Siege" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowSiege);
-                case "Agile" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowAgile);
+            if (playField != null) {
+                switch (playField) {
+                    case "Close Combat" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowClose);
+                    case "Ranged" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowRanged);
+                    case "Siege" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowSiege);
+                    case "Agile" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowAgile);
+                }
             }
 
             String ability = commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getAbility();
@@ -376,41 +395,63 @@ public class GameController {
         }
     }
 
-    private void putSpecialCardInRows(SpecialCard specialFieldInCloseCombatUser1, SpecialCard specialFieldInSiegeUser1, SpecialCard specialFieldInRangedUser1) {
-        if (specialFieldInCloseCombatUser1 != null) {
-            ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).setImage(specialFieldInCloseCombatUser1.getImageForGame());
-            ((ImageView) myCloseCombatSpecialCard.getChildren().get(1)).setImage(specialFieldInCloseCombatUser1.getImageForPower());
-        }
-        if (specialFieldInSiegeUser1 != null) {
-            ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).setImage(specialFieldInSiegeUser1.getImageForGame());
-            ((ImageView) mySiegeSpecialCard.getChildren().get(1)).setImage(specialFieldInSiegeUser1.getImageForPower());
-        }
-        if (specialFieldInRangedUser1 != null) {
-            ((ImageView) myRangedSpecialCard.getChildren().getFirst()).setImage(specialFieldInRangedUser1.getImageForGame());
-            ((ImageView) myRangedSpecialCard.getChildren().get(1)).setImage(specialFieldInRangedUser1.getImageForPower());
+    private void putSpecialCardInRows(SpecialCard specialFieldInCloseCombatUser1, SpecialCard specialFieldInSiegeUser1, SpecialCard specialFieldInRangedUser1, boolean isMe) {
+        if (isMe) {
+            if (specialFieldInCloseCombatUser1 != null) {
+                ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).setImage(specialFieldInCloseCombatUser1.getImageForGame());
+                ((ImageView) myCloseCombatSpecialCard.getChildren().get(1)).setImage(specialFieldInCloseCombatUser1.getImageForPower());
+            }
+            if (specialFieldInSiegeUser1 != null) {
+                ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).setImage(specialFieldInSiegeUser1.getImageForGame());
+                ((ImageView) mySiegeSpecialCard.getChildren().get(1)).setImage(specialFieldInSiegeUser1.getImageForPower());
+            }
+            if (specialFieldInRangedUser1 != null) {
+                ((ImageView) myRangedSpecialCard.getChildren().getFirst()).setImage(specialFieldInRangedUser1.getImageForGame());
+                ((ImageView) myRangedSpecialCard.getChildren().get(1)).setImage(specialFieldInRangedUser1.getImageForPower());
+            }
+        } else {
+            if (specialFieldInCloseCombatUser1 != null) {
+                ((ImageView) competitorCloseCombatSpecialCard.getChildren().getFirst()).setImage(specialFieldInCloseCombatUser1.getImageForGame());
+                ((ImageView) competitorCloseCombatSpecialCard.getChildren().get(1)).setImage(specialFieldInCloseCombatUser1.getImageForPower());
+            }
+            if (specialFieldInSiegeUser1 != null) {
+                ((ImageView) competitorSiegeSpecialCard.getChildren().getFirst()).setImage(specialFieldInSiegeUser1.getImageForGame());
+                ((ImageView) competitorSiegeSpecialCard.getChildren().get(1)).setImage(specialFieldInSiegeUser1.getImageForPower());
+            }
+            if (specialFieldInRangedUser1 != null) {
+                ((ImageView) competitorRangedSpecialCard.getChildren().getFirst()).setImage(specialFieldInRangedUser1.getImageForGame());
+                ((ImageView) competitorRangedSpecialCard.getChildren().get(1)).setImage(specialFieldInRangedUser1.getImageForPower());
+            }
         }
     }
 
     private void putCommonCardsInRows(ArrayList<CommonCard> closeCombatPlayedUser1, HBox myCloseCombatCardsPlayed) {
         for (int i = 0; i < closeCombatPlayedUser1.size(); i++) {
+            String playField = closeCombatPlayedUser1.get(i).getPlayField();
             StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
             ((ImageView) stackPane.getChildren().getFirst()).setImage(closeCombatPlayedUser1.get(i).getImageForGame());
             if (closeCombatPlayedUser1.get(i).isHero()) {
                 ((ImageView) stackPane.getChildren().get(1)).setImage(powerHeroImage);
                 ((Label) stackPane.getChildren().get(2)).setTextFill(Color.WHITE);
+            } else if (playField != null) {
+                ((ImageView) stackPane.getChildren().get(1)).setImage(powerNormalImage);
+                ((Label) stackPane.getChildren().get(2)).setTextFill(Color.BLACK);
             } else {
                 ((ImageView) stackPane.getChildren().get(1)).setImage(powerNormalImage);
                 ((Label) stackPane.getChildren().get(2)).setTextFill(Color.BLACK);
             }
-            ((Label) stackPane.getChildren().get(2)).setText(setLabelScores(closeCombatPlayedUser1.get(i), closeCombatPlayedUser1));
-            stackPane.getChildren().get(2).setVisible(true);
+            if (playField != null) {
+                ((Label) stackPane.getChildren().get(2)).setText(setLabelScores(closeCombatPlayedUser1.get(i), closeCombatPlayedUser1));
+                stackPane.getChildren().get(2).setVisible(true);
+            }
 
-            String playField = closeCombatPlayedUser1.get(i).getPlayField();
-            switch (playField) {
-                case "Close Combat" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowClose);
-                case "Ranged" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowRanged);
-                case "Siege" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowSiege);
-                case "Agile" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowAgile);
+            if (playField != null) {
+                switch (playField) {
+                    case "Close Combat" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowClose);
+                    case "Ranged" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowRanged);
+                    case "Siege" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowSiege);
+                    case "Agile" -> ((ImageView) stackPane.getChildren().get(3)).setImage(cardRowAgile);
+                }
             }
 
             String ability = closeCombatPlayedUser1.get(i).getAbility();
@@ -521,12 +562,12 @@ public class GameController {
 
     private int scoreCalculation(ArrayList<CommonCard> closeCombatPlayedUser, ArrayList<CommonCard> siegeIsPlayedUser, ArrayList<CommonCard> rangedIsPlayedUser, Label playerScore) {
         int playerScoreInGame = 0;
-        System.out.println(playerScore.getId());
-        if (playerScore.getId().contains("competitor")) {
+        if (playerScore.getId().contains("competitor") || playerScore.getId().contains("second")) {
             if (closeCombatPlayedUser != null) {
                 for (int i = 0; i < closeCombatPlayedUser.size(); i++) {
                     StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
                     int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                    System.out.println(score);
                     playerScoreInGame += score;
                 }
             }
@@ -534,6 +575,7 @@ public class GameController {
                 for (int i = 0; i < siegeIsPlayedUser.size(); i++) {
                     StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
                     int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                    System.out.println(score);
                     playerScoreInGame += score;
                 }
             }
@@ -541,6 +583,7 @@ public class GameController {
                 for (int i = 0; i < rangedIsPlayedUser.size(); i++) {
                     StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
                     int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                    System.out.println(score);
                     playerScoreInGame += score;
                 }
             }
@@ -549,6 +592,7 @@ public class GameController {
                 for (int i = 0; i < closeCombatPlayedUser.size(); i++) {
                     StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
                     int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                    System.out.println(score);
                     playerScoreInGame += score;
                 }
             }
@@ -556,6 +600,7 @@ public class GameController {
                 for (int i = 0; i < siegeIsPlayedUser.size(); i++) {
                     StackPane stackPane = (StackPane) mySiegeCardsPlayed.getChildren().get(i);
                     int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                    System.out.println(score);
                     playerScoreInGame += score;
                 }
             }
@@ -563,15 +608,21 @@ public class GameController {
                 for (int i = 0; i < rangedIsPlayedUser.size(); i++) {
                     StackPane stackPane = (StackPane) myRangedCombatCardsPlayed.getChildren().get(i);
                     int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                    System.out.println(score);
                     playerScoreInGame += score;
                 }
             }
         }
+        System.out.println("-----------------");
         playerScore.setText(String.valueOf(playerScoreInGame));
         return playerScoreInGame;
     }
 
     public void changeTurn() {
+        if (isTransitioning) {
+            return;
+        }
+        isTransitioning = true;
         gameBattleField.changeTurn();
         ImageView imageView = new ImageView(profilePng);
         imageView.setFitHeight(120);
@@ -605,6 +656,7 @@ public class GameController {
                 pane.setEffect(null);
 
                 updateBoard();
+                isTransitioning = false;
             });
             pause2.play();
         });
@@ -618,6 +670,9 @@ public class GameController {
     }
 
     public void selectCard(MouseEvent mouseEvent) {
+        if (isTransitioning) {
+            return;
+        }
         int numberOfCardSelected = getNumberOfCardSelected(mouseEvent);
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
             if (numberOfCardSelected <= specialCardsBattleFieldUser1.size() - 1) {
@@ -650,39 +705,54 @@ public class GameController {
             weatherCards.setStyle("-fx-background-color: transparent;");
             String playField = selectedCommonCard.getPlayField();
             if (!selectedCommonCard.getAbility().contains("Spy")) {
-                switch (playField) {
-                    case "Close Combat" -> {
+                if (playField != null) {
+                    switch (playField) {
+                        case "Close Combat" -> {
+                            myCloseCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
+                            competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            myRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                        }
+                        case "Ranged" -> {
+                            myRangedCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
+                            myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                        }
+                        case "Siege" -> {
+                            mySiegeCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
+                            myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            myRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                        }
+                        case "Agile" -> {
+                            myCloseCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
+                            myRangedCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
+                            competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                            competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                        }
+                    }
+                } else {
+                    if (((ImageView) ((StackPane) myCloseCombatCardsPlayed.getChildren().getFirst()).getChildren().getFirst()).getImage() != null) {
                         myCloseCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
-                        competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        myRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
                     }
-                    case "Ranged" -> {
+                    if (((ImageView) ((StackPane) myRangedCombatCardsPlayed.getChildren().getFirst()).getChildren().getFirst()).getImage() != null) {
                         myRangedCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
-                        myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
                     }
-                    case "Siege" -> {
+                    if (((ImageView) ((StackPane) mySiegeCardsPlayed.getChildren().getFirst()).getChildren().getFirst()).getImage() != null) {
                         mySiegeCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
-                        myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        myRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
                     }
-                    case "Agile" -> {
-                        myCloseCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
-                        myRangedCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
-                        competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
-                        competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
-                    }
+                    competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
                 }
             } else {
                 switch (playField) {
@@ -746,9 +816,9 @@ public class GameController {
                 if (((ImageView) mySiegeSpecialCard.getChildren().getFirst()).getImage() == null) {
                     mySiegeSpecialCard.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
                 }
-                competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                competitorRangedSpecialCard.setStyle("-fx-background-color: transparent;");
+                competitorCloseCombatSpecialCard.setStyle("-fx-background-color: transparent;");
+                competitorSiegeSpecialCard.setStyle("-fx-background-color: transparent;");
             } else if (selectedSpecialCard.equals(SpecialCard.BitingFrost) || selectedSpecialCard.equals(SpecialCard.ClearWeather)
                     || selectedSpecialCard.equals(SpecialCard.SkelligeStorm) || selectedSpecialCard.equals(SpecialCard.ImpenetrableFog)
                     || selectedSpecialCard.equals(SpecialCard.TorrentialRain)) {
@@ -778,6 +848,9 @@ public class GameController {
     }
 
     public void unSelectCardWithMouseClick(MouseEvent mouseEvent) {
+        if (isTransitioning) {
+            return;
+        }
         if ((mouseEvent.getX() > 350 && mouseEvent.getX() < 1030) || (mouseEvent.getX() >= 1027 && mouseEvent.getX() <= 1227 && mouseEvent.getY() >= 166 && mouseEvent.getY() <= 526))
             return;
         myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
@@ -800,6 +873,9 @@ public class GameController {
     }
 
     public void unSelectCard() {
+        if (isTransitioning) {
+            return;
+        }
         myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
         competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
         myRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
@@ -820,6 +896,9 @@ public class GameController {
     }
 
     public void focusOnImage(MouseEvent mouseEvent) {
+        if (isTransitioning) {
+            return;
+        }
         StackPane stackPane = (StackPane) mouseEvent.getSource();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(250), stackPane);
         translateTransition.setToX(0);
@@ -828,6 +907,9 @@ public class GameController {
     }
 
     public void unFocus(MouseEvent mouseEvent) {
+        if (isTransitioning) {
+            return;
+        }
         StackPane stackPane = (StackPane) mouseEvent.getSource();
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(250), stackPane);
         translateTransition.setToX(0);
@@ -836,6 +918,9 @@ public class GameController {
     }
 
     public void putCardInMyCloseCombatRow() {
+        if (isTransitioning) {
+            return;
+        }
         if (selectedCommonCard == null || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
             return;
         gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, false);
@@ -853,11 +938,15 @@ public class GameController {
             setAnimationForCloseCombat(hornAnimation);
         } else {
             unSelectCard();
+            updateBoard();
             changeTurn();
         }
     }
 
     public void putCardInMyRangedRow() {
+        if (isTransitioning) {
+            return;
+        }
         if (selectedCommonCard == null || (!selectedCommonCard.getPlayField().equals("Ranged") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
             return;
         gameBattleFieldController.putCommonCardRanged(selectedCommonCard, false);
@@ -875,11 +964,15 @@ public class GameController {
             setAnimationForRanged(hornAnimation);
         } else {
             unSelectCard();
+            updateBoard();
             changeTurn();
         }
     }
 
     public void putCardInMySiegeRow() {
+        if (isTransitioning) {
+            return;
+        }
         if (selectedCommonCard == null || !selectedCommonCard.getPlayField().equals("Siege") || selectedCommonCard.getAbility().contains("Spy"))
             return;
         gameBattleFieldController.putCommonCardSiege(selectedCommonCard, false);
@@ -897,11 +990,15 @@ public class GameController {
             setAnimationForSiege(hornAnimation);
         } else {
             unSelectCard();
+            updateBoard();
             changeTurn();
         }
     }
 
     public void putCardInCompetitorSiegeRow() {
+        if (isTransitioning) {
+            return;
+        }
         if (selectedCommonCard != null && selectedCommonCard.getAbility().contains("Spy") && selectedCommonCard.getPlayField().equals("Close Combat")) {
             StackPane stackPane;
             gameBattleFieldController.putCommonCardSiege(selectedCommonCard, true);
@@ -931,9 +1028,11 @@ public class GameController {
             }
             unSelectCard();
             gameBattleFieldController.spyAbility();
+            isTransitioning = true;
             Timeline timeline = new Timeline(new KeyFrame(
                     Duration.seconds(1.5),
                     event -> {
+                        isTransitioning = false;
                         stackPane.getChildren().removeLast();
                         updateBoard();
                         changeTurn();
@@ -943,6 +1042,9 @@ public class GameController {
     }
 
     public void putCardInCompetitorCloseCombatRow() {
+        if (isTransitioning) {
+            return;
+        }
         if (selectedCommonCard != null && selectedCommonCard.getAbility().contains("Spy") && selectedCommonCard.getPlayField().equals("Close Combat")) {
             StackPane stackPane;
             gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, true);
@@ -972,15 +1074,119 @@ public class GameController {
             }
             unSelectCard();
             gameBattleFieldController.spyAbility();
+            isTransitioning = true;
             Timeline timeline = new Timeline(new KeyFrame(
                     Duration.seconds(1.5),
                     event -> {
+                        isTransitioning = false;
                         stackPane.getChildren().removeLast();
                         updateBoard();
                         changeTurn();
                     }));
             timeline.play();
         }
+    }
+
+    public void putSpecialCardInSiegeRow() {
+        if (isTransitioning) {
+            return;
+        }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.CommandersHorn) && ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).getImage() == null) {
+            gameBattleFieldController.putSpecialCardInSpecialFieldSiege(selectedSpecialCard);
+            StackPane stackPane = mySiegeSpecialCard;
+            updateBoard();
+            ImageView imageView = new ImageView(hornAnimation);
+            imageView.setFitWidth(40);
+            imageView.setFitHeight(35);
+            StackPane.setAlignment(imageView, Pos.CENTER);
+            stackPane.getChildren().add(imageView);
+            unSelectCard();
+            isTransitioning = true;
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.seconds(1.5),
+                    event -> {
+                        isTransitioning = false;
+                        stackPane.getChildren().removeLast();
+                        updateBoard();
+                        changeTurn();
+                    }));
+            timeline.play();
+        } else if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Mardroeme) && ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).getImage() == null) {
+            gameBattleFieldController.putSpecialCardInSpecialFieldSiege(selectedSpecialCard);
+            updateBoard();
+            unSelectCard();
+            changeTurn();
+        }
+    }
+
+    public void putSpecialCardInRangedRow() {
+        if (isTransitioning) {
+            return;
+        }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.CommandersHorn) && ((ImageView) myRangedSpecialCard.getChildren().getFirst()).getImage() == null) {
+            gameBattleFieldController.putSpecialCardInSpecialFieldRanged(selectedSpecialCard);
+            StackPane stackPane = myRangedSpecialCard;
+            updateBoard();
+            ImageView imageView = new ImageView(hornAnimation);
+            imageView.setFitWidth(40);
+            imageView.setFitHeight(35);
+            StackPane.setAlignment(imageView, Pos.CENTER);
+            stackPane.getChildren().add(imageView);
+            unSelectCard();
+            isTransitioning = true;
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.seconds(1.5),
+                    event -> {
+                        isTransitioning = false;
+                        stackPane.getChildren().removeLast();
+                        updateBoard();
+                        changeTurn();
+                    }));
+            timeline.play();
+        } else if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Mardroeme) && ((ImageView) myRangedSpecialCard.getChildren().getFirst()).getImage() == null) {
+            gameBattleFieldController.putSpecialCardInSpecialFieldRanged(selectedSpecialCard);
+            updateBoard();
+            unSelectCard();
+            changeTurn();
+        }
+    }
+
+    public void putSpecialCardInCloseCombatRow() {
+        if (isTransitioning) {
+            return;
+        }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.CommandersHorn) && ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).getImage() == null) {
+            gameBattleFieldController.putSpecialCardInSpecialFieldCloseCombat(selectedSpecialCard);
+            StackPane stackPane = myCloseCombatSpecialCard;
+            updateBoard();
+            ImageView imageView = new ImageView(hornAnimation);
+            imageView.setFitWidth(40);
+            imageView.setFitHeight(35);
+            StackPane.setAlignment(imageView, Pos.CENTER);
+            stackPane.getChildren().add(imageView);
+            unSelectCard();
+            isTransitioning = true;
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.seconds(1.5),
+                    event -> {
+                        isTransitioning = false;
+                        stackPane.getChildren().removeLast();
+                        updateBoard();
+                        changeTurn();
+                    }));
+            timeline.play();
+        } else if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Mardroeme) && ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).getImage() == null) {
+            gameBattleFieldController.putSpecialCardInSpecialFieldCloseCombat(selectedSpecialCard);
+            updateBoard();
+            unSelectCard();
+            changeTurn();
+        }
+    }
+
+    public boolean isWeatherCard(SpecialCard selectedSpecialCard) {
+        return selectedSpecialCard.equals(SpecialCard.BitingFrost) || selectedSpecialCard.equals(SpecialCard.ClearWeather)
+                || selectedSpecialCard.equals(SpecialCard.SkelligeStorm) || selectedSpecialCard.equals(SpecialCard.ImpenetrableFog)
+                || selectedSpecialCard.equals(SpecialCard.TorrentialRain);
     }
 
     private void setAnimationForSiege(Image medicAnimation) {
@@ -1014,9 +1220,11 @@ public class GameController {
             stackPane.getChildren().add(imageView);
         }
         unSelectCard();
+        isTransitioning = true;
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.seconds(1.5),
                 event -> {
+                    isTransitioning = false;
                     stackPane.getChildren().removeLast();
                     updateBoard();
                     changeTurn();
@@ -1055,9 +1263,11 @@ public class GameController {
             stackPane.getChildren().add(imageView);
         }
         unSelectCard();
+        isTransitioning = true;
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.seconds(1.5),
                 event -> {
+                    isTransitioning = false;
                     stackPane.getChildren().removeLast();
                     updateBoard();
                     changeTurn();
@@ -1096,13 +1306,71 @@ public class GameController {
             stackPane.getChildren().add(imageView);
         }
         unSelectCard();
+        isTransitioning = true;
         Timeline timeline = new Timeline(new KeyFrame(
                 Duration.seconds(1.5),
                 event -> {
+                    isTransitioning = false;
                     stackPane.getChildren().removeLast();
                     updateBoard();
                     changeTurn();
                 }));
         timeline.play();
+    }
+
+    public void putWeatherCard() {
+        if (isTransitioning) {
+            return;
+        }
+        if (selectedSpecialCard == null || !isWeatherCard(selectedSpecialCard) || gameBattleField.getWeatherCards().size() == 3) return;
+        gameBattleFieldController.putWeatherCardToSpecialFieldForWeatherCard(selectedSpecialCard);
+        if (selectedSpecialCard.equals(SpecialCard.BitingFrost)) {
+            BackgroundImage backgroundImage = new BackgroundImage(putFrostWeather, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            Background background = new Background(backgroundImage);
+            myCloseCombatCardsPlayed.setBackground(background);
+            competitorCloseCombatCardsPlayed.setBackground(background);
+            unSelectCard();
+            updateBoard();
+            changeTurn();
+        } else if (selectedSpecialCard.equals(SpecialCard.ImpenetrableFog)) {
+            BackgroundImage backgroundImage = new BackgroundImage(putFogWeather, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            Background background = new Background(backgroundImage);
+            myRangedCombatCardsPlayed.setBackground(background);
+            competitorRangedCombatCardsPlayed.setBackground(background);
+            unSelectCard();
+            updateBoard();
+            changeTurn();
+        } else if (selectedSpecialCard.equals(SpecialCard.TorrentialRain)) {
+            BackgroundImage backgroundImage = new BackgroundImage(putRainWeather, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            Background background = new Background(backgroundImage);
+            mySiegeCardsPlayed.setBackground(background);
+            competitorSiegeCardsPlayed.setBackground(background);
+            unSelectCard();
+            updateBoard();
+            changeTurn();
+        } else if (selectedSpecialCard.equals(SpecialCard.SkelligeStorm)) {
+            BackgroundImage backgroundImage = new BackgroundImage(putRainWeather, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            Background background = new Background(backgroundImage);
+            BackgroundImage backgroundImage2 = new BackgroundImage(putFogWeather, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            Background background2 = new Background(backgroundImage2);
+            mySiegeCardsPlayed.setBackground(background);
+            competitorSiegeCardsPlayed.setBackground(background);
+            myRangedCombatCardsPlayed.setBackground(background2);
+            competitorRangedCombatCardsPlayed.setBackground(background2);
+            unSelectCard();
+            updateBoard();
+            changeTurn();
+        } else if (selectedSpecialCard.equals(SpecialCard.ClearWeather)) {
+            myCloseCombatCardsPlayed.setBackground(null);
+            mySiegeCardsPlayed.setBackground(null);
+            myRangedCombatCardsPlayed.setBackground(null);
+            competitorCloseCombatCardsPlayed.setBackground(null);
+            competitorSiegeCardsPlayed.setBackground(null);
+            competitorRangedCombatCardsPlayed.setBackground(null);
+            gameBattleField.getWeatherCards().clear();
+            unSelectCard();
+            updateBoard();
+            changeTurn();
+        }
     }
 }

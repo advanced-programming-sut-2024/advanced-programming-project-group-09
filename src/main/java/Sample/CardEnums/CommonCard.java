@@ -164,7 +164,9 @@ public enum CommonCard {
     Geralt("Geralt", null, "", 15, "Close Combat", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_geralt.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/neutral_geralt.jpg")))),
     Trebuchet("Trebuchet", Faction.NorthernRealms, "", 10, "Ranged", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_trebuchet.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/realms_trebuchet.jpg")))),
     MahakamDefender("Mahakam", Faction.Scoiatael, "", 5, "Close Combat", false, 5, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_mahakam.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_mahakam.jpg")))),
-    Saskia("Saskia", Faction.Scoiatael, "", 10, "Siege", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_saskia.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_saskia.jpg"))));
+    Saskia("Saskia", Faction.Scoiatael, "", 10, "Siege", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_saskia.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_saskia.jpg")))),
+    Decoy("Decoy", null, "Decoy", 0, null, false, 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_decoy.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/special_decoy.jpg"))))
+    ;
     private final String cardName;
     private final Faction faction;
     private final String ability;
