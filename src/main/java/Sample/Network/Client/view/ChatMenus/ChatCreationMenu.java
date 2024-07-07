@@ -16,7 +16,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.view.Main;
 import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;

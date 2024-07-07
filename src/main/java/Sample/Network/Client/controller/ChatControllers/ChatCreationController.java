@@ -1,6 +1,6 @@
 package Sample.Network.Client.controller.ChatControllers;
 
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.model.chatRoom.ChatManager;
 import Sample.Network.Client.view.enums.messages.ChatMessage.ChatMessage;

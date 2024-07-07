@@ -1,7 +1,7 @@
 package Sample.Network.Client.controller.UserAndGameControllers;
 
-import Sample.CardEnums.Faction;
-import Sample.CardEnums.Leader;
+import Sample.Network.Client.CardEnums.Faction;
+import Sample.Network.Client.CardEnums.Leader;
 import Sample.Network.Client.model.Gwent;
 import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.view.UserAndGameMenus.LeaderMenu;

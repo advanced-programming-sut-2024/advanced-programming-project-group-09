@@ -1,7 +1,7 @@
 package Sample.Network.Client.controller.UserAndGameControllers;
 
-import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.SpecialCard;
+import Sample.Network.Client.CardEnums.CommonCard;
+import Sample.Network.Client.CardEnums.SpecialCard;
 import Sample.Network.Client.model.GameBattleField;
 import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
@@ -165,7 +165,7 @@ public class GameController {
 
     private boolean isTransitioning = false;
 
-    private final GameBattleField gameBattleField = Sample.Network.Client.model.User.getUserLoginIn().getLastGameBattleField();
+    private final GameBattleField gameBattleField = User.getUserLoginIn().getLastGameBattleField();
     private GameBattleFieldController gameBattleFieldController;
 
     public void initialize() {

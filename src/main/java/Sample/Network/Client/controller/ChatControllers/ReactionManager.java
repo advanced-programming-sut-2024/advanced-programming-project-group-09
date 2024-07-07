@@ -87,7 +87,7 @@ public class ReactionManager {
     }
 
     public static void heart(AnchorPane anchorPane, Message msg) {
-        String username = MainMenu.mainController.currentUser.getUsername();
+        String username = MainMenu.currentUser.getUsername();
         if (userNotReacted(username, msg)) {
             String text = ((Label) anchorPane.getChildren().get(10)).getText();
             int num = Integer.parseInt(text);

@@ -2,8 +2,8 @@ package Sample.Network.Client.controller.UserAndGameControllers;
 
 import Sample.Network.Client.model.Gwent;
 import Sample.Network.Client.model.User.User;
-import Sample.Enum.Commands;
-import Sample.View.MainMenu;
+import Sample.Network.Client.Enum.Commands;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;

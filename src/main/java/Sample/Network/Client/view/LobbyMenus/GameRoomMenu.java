@@ -21,7 +21,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import Sample.Network.Client.model.Lobby.LobbyManager;
 import Sample.Network.Client.model.Lobby.LobbyStatus;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.view.Main;
 import Sample.Network.Client.view.UserAndGameMenus.ProfileMenu;
 

@@ -1,6 +1,6 @@
 package Sample.Network.Client.view.UserAndGameMenus;
 
-import controller.UserControllers.SignupController;
+import Sample.Network.Client.controller.UserAndGameControllers.RegisterController;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -23,9 +23,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import utils.Captcha;
-import view.Main;
-import view.enums.messages.UserMessage.SignupAndLoginMessage;
+import Sample.Network.Client.utils.Captcha;
+import Sample.Network.Client.view.Main;
+import Sample.Network.Client.view.enums.messages.UserMessage.SignupAndLoginMessage;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,14 +1,13 @@
 package Sample.Network.Client.controller.UserAndGameControllers;
 
-import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.SpecialCard;
+import Sample.Network.Client.CardEnums.CommonCard;
+import Sample.Network.Client.CardEnums.SpecialCard;
 import Sample.Network.Client.model.GameBattleField;
 import Sample.Network.Client.model.Gwent;
 import Sample.Network.Client.model.User.User;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Random;
 
 public class GameBattleFieldController {

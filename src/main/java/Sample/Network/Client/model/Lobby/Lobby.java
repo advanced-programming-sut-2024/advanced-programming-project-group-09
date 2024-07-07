@@ -4,7 +4,7 @@ import Sample.Network.Client.model.User.Color;
 import Sample.Network.Client.Connection;
 import Sample.Network.Client.Request;
 import com.google.gson.Gson;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 
 import java.util.HashMap;
 import java.util.HashSet;
