@@ -1,6 +1,7 @@
 package Sample.Network.Client.view.UserAndGameMenus;
 
 import Sample.Controller.ApplicationController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ import java.net.URL;
 import java.util.Objects;
 
 public class MainMenu extends Application {
+    public static MainController mainController;
     private static MediaPlayer mediaPlayer = null;
     @Override
     public void start(Stage stage) throws Exception {

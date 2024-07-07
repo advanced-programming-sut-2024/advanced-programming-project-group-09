@@ -1,5 +1,6 @@
 package Sample.CardEnums;
 
+import Sample.Network.Client.CardEnums.Faction;
 import Sample.View.LoginMenu;
 import javafx.scene.image.Image;
 

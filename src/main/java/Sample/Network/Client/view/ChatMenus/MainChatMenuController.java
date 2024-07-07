@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class MainChatMenuController {
+public class    MainChatMenuController {
     public TextField text;
     public ImageView sendButton;
     public VBox chatList;

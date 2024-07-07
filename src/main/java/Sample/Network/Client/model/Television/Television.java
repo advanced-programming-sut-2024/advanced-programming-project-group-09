@@ -21,6 +21,7 @@ import Sample.Network.Client.view.Main;
 import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Television extends Application implements Initializable {
@@ -56,8 +57,8 @@ public class Television extends Application implements Initializable {
                 back();
                 return;
             }
-            Map map = MapManager.load(saveData.mapId);
-            loadMap(map);
+//            Map map = MapManager.load(saveData.mapId);
+//            loadMap(map);
             number++;
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -78,10 +79,10 @@ public class Television extends Application implements Initializable {
     }
 
     private void goToLive() {
-        while (TelevisionManager.load(gameId, number + ".save") != null){
-            number ++;
+        while (TelevisionManager.load(gameId, number + ".save") != null) {
+            number++;
         }
-        number -- ;
+        number--;
     }
 
     private void loadMap(Map map) {
@@ -94,14 +95,15 @@ public class Television extends Application implements Initializable {
                 coordinate.x = x;
                 coordinate.y = y;
 
-                GridPane gridPane = initializeCellGrid(map.getCell(coordinate).getType().getImage().toString());
-                mainGrid.getChildren().add(gridPane);
-                GridPane cellGrid = (GridPane) mainGrid.getChildren().get(x + 100 * y);
-                cellGrid.setBackground(new Background(new BackgroundImage((map.getCell(coordinate).getType().getImage()),
-                        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
-                        new BackgroundSize(1, 1, true, true, false, false))));
+//                GridPane gridPane = initializeCellGrid(map.getCell(coordinate).getType().getImage().toString());
+////                mainGrid.getChildren().add(gridPane);
+//                GridPane cellGrid = (GridPane) mainGrid.getChildren().get(x + 100 * y);
+////                cellGrid.setBackground(new Background(new BackgroundImage((map.getCell(coordinate).getType().getImage()),
+//                        BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
+////                        new BackgroundSize(1, 1, true, true, false, false))));
+//            }
+                // updateCellGrid(x,y,);
             }
-            // updateCellGrid(x,y,);
         }
     }
 
@@ -109,7 +111,7 @@ public class Television extends Application implements Initializable {
         SaveData saveData = TelevisionManager.load(gameId, number + ".save");
         if (saveData == null) {
             if (!live) timeline.stop();
-            number --;
+            number--;
             return;
         }
         for (int y = 0; y < 100; y++) {
@@ -173,6 +175,7 @@ public class Television extends Application implements Initializable {
     public void back(MouseEvent mouseEvent) throws Exception {
         new MainMenu().start(Main.mainStage);
     }
+
     public void back() throws Exception {
         new MainMenu().start(Main.mainStage);
     }
@@ -181,3 +184,4 @@ public class Television extends Application implements Initializable {
         Television.gameId = gameId;
     }
 }
+

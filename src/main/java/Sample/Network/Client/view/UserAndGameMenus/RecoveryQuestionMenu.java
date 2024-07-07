@@ -32,7 +32,7 @@ import java.util.ResourceBundle;
 
 public class RecoveryQuestionMenu extends Application implements Initializable {
     private final Popup popup = createPopUp();
-    private static SignupController controller;
+    private static RegisterController controller;
     public TextField recoveryAnswer;
     public Button confirm;
     public Text recoveryError;
@@ -67,7 +67,7 @@ public class RecoveryQuestionMenu extends Application implements Initializable {
       questions.setItems(recoveryQuestions);
       questions.setValue(recoveryQuestions.get(0));
       generateCaptchaImageview();
-      refresh.setOnMousePressed(e -> generateCaptchaImageview());
+      refresh.setOnMo usePressed(e -> generateCaptchaImageview());
 
       confirm.setOnMouseClicked(e -> generateUser(controller.pickQuestion(questions.getValue(), recoveryAnswer.getText(),
               confirmation.getText(), captcha.getText())));

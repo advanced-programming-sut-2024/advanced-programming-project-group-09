@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        LoginMenu.setLoginController(new LoginController());
+//        LoginMenu.setLoginController(new LoginController());
         mainStage = stage;
         stage.setOnCloseRequest(event -> {
             try {
