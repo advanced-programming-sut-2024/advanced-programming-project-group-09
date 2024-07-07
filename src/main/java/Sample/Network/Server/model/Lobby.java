@@ -1,6 +1,6 @@
 package Sample.Network.Server.model;
 
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Server.database.Database;
 
 import java.util.*;

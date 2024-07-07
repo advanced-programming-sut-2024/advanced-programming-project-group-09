@@ -1,9 +1,9 @@
-package Sample.Controller.ChooseCard;
+package Sample.Network.Client.controller.UserAndGameControllers.ChooseCard;
 
-import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.SpecialCard;
-import Sample.Model.User;
-import Sample.View.LoginMenu;
+import Sample.Network.Client.CardEnums.CommonCard;
+import Sample.Network.Client.CardEnums.SpecialCard;
+import Sample.Network.Client.model.User.User;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;

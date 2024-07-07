@@ -1,6 +1,6 @@
 package Sample.Network.Client.view.UserAndGameMenus;
 
-import Sample.Controller.ApplicationController;
+import Sample.Network.Client.controller.UserAndGameControllers.ApplicationController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

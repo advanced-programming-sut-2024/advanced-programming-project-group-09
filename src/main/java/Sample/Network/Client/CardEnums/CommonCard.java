@@ -1,6 +1,6 @@
-package Sample.Network.Client.model.CardEnums;
+package Sample.Network.Client.CardEnums;
 
-import Sample.View.LoginMenu;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
 import javafx.scene.image.Image;
 
 import java.util.Objects;

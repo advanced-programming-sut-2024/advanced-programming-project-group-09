@@ -1,17 +1,16 @@
 package Sample.Network.Server.websocket;
 
-import Sample.CardEnums.Faction;
-import Sample.CardEnums.Leader;
-import Sample.Model.GameBattleField;
+import Sample.Network.Client.CardEnums.Faction;
+import Sample.Network.Client.CardEnums.Leader;
+import Sample.Network.Client.model.GameBattleField;
 import com.google.gson.Gson;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Server.database.ChatManager;
 import Sample.Network.Server.database.Database;
 import Sample.Network.Server.model.*;
 import Sample.Network.Server.model.Television.ResourceManager;
 import Sample.Network.Server.model.Television.SaveData;
 import Sample.Network.Server.model.chatRoom.Chat;
-import Sample.Network.Server.utils.Pair;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.DataInputStream;

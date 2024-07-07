@@ -1,6 +1,6 @@
 package Sample.Network.Client.view.ChatMenus;
 
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.controller.ChatControllers.ChatController;
 import Sample.Network.Client.controller.ChatControllers.ChatCreationController;
 import Sample.Network.Client.controller.ChatControllers.ReactionManager;

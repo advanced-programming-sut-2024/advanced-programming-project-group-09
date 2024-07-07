@@ -2,7 +2,7 @@ package Sample.Network.Client.controller.ChatControllers;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.model.chatRoom.Chat;
 import Sample.Network.Client.model.chatRoom.Message;
 import Sample.Network.Client.Connection;

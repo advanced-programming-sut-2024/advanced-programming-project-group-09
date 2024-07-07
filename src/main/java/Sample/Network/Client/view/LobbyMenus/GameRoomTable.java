@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import Sample.Model.User;
+import Sample.Network.Client.model.User.User;
 
 public class GameRoomTable {
     private final Circle avatar = new Circle();

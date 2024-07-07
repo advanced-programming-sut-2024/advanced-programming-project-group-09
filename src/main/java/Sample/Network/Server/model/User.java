@@ -1,12 +1,12 @@
 package Sample.Network.Server.model;
 
-import Sample.Model.GameBattleField;
+import Sample.Network.Client.model.GameBattleField;
 import Sample.Network.Client.Settings.Settings;
 import Sample.Network.Server.database.Database;
-import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.Faction;
-import Sample.CardEnums.Leader;
-import Sample.CardEnums.SpecialCard;
+import Sample.Network.Client.CardEnums.CommonCard;
+import Sample.Network.Client.CardEnums.Faction;
+import Sample.Network.Client.CardEnums.Leader;
+import Sample.Network.Client.CardEnums.SpecialCard;
 
 import java.net.Socket;
 

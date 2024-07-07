@@ -1,7 +1,7 @@
 package Sample;
 
-import Sample.Model.User;
-import Sample.View.LoginMenu;
+import Sample.Network.Server.model.User;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
 
 public class Main {
     public static void main(String[] args) {

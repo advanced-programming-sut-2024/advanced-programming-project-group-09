@@ -1,7 +1,7 @@
 package Sample.Network.Client.view.UserAndGameMenus;
 
-import controller.UserControllers.FriendsMenuController;
-import controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.FriendsMenuController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -24,9 +24,9 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import model.Stronghold;
-import model.User.User;
-import utils.MenusUtils;
+import Sample.Network.Client.model.Gwent;
+import Sample.Network.Client.model.User.User;
+import Sample.Network.Client.utils.MenusUtils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,7 +88,7 @@ public class FriendsMenu extends Application implements Initializable {
 
     private void createSenders() {
         for (String username : MainController.currentUser.getSenders())
-            senders.add(Stronghold.getInstance().getUser(username));
+            senders.add(Gwent.getInstance().getUser(username));
     }
 
 
@@ -114,7 +114,7 @@ public class FriendsMenu extends Application implements Initializable {
 
     public void openProfile(MouseEvent mouseEvent) throws IOException {
         if (table.getSelectionModel().getSelectedItem() != null) {
-            User user = Stronghold.getInstance().getUser(table.getSelectionModel().getSelectedItem().getUsername());
+            User user = Gwent.getInstance().getUser(table.getSelectionModel().getSelectedItem().getUsername());
             MenusUtils.createProfileShowPopUp(user, MainController.getCurrentUser().isFriend(user)).show(stage);
         }
     }

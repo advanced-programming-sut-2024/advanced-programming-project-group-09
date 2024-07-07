@@ -1,8 +1,8 @@
 package Sample.Network.Client.model;
 
-import Sample.CardEnums.CommonCard;
-import Sample.CardEnums.SpecialCard;
-import Sample.Model.User;
+import Sample.Network.Client.CardEnums.CommonCard;
+import Sample.Network.Client.CardEnums.SpecialCard;
+import Sample.Network.Client.model.User.User;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

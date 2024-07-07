@@ -1,13 +1,13 @@
 package Sample.Network.Client.view.UserAndGameMenus;
 
-import controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
-import model.User.User;
-import utils.MenusUtils;
+import Sample.Network.Client.model.User.User;
+import Sample.Network.Client.utils.MenusUtils;
 
 import java.io.IOException;
 

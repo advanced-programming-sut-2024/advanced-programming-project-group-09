@@ -1,9 +1,9 @@
 package Sample.Network.Client.controller.UserAndGameControllers;
 
-import Sample.Enum.Commands;
+import Sample.Network.Client.Enum.Commands;
 import Sample.Network.Client.model.User.User;
 import Sample.Network.Client.model.Gwent;
-import Sample.View.LoginMenu;
+import Sample.Network.Client.view.UserAndGameMenus.LoginMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;

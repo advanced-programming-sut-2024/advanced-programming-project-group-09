@@ -1,6 +1,6 @@
 package Sample.Network.Client.utils;
 
-import view.enums.messages.UserMessage.SignupAndLoginMessage;
+import Sample.Network.Client.view.enums.messages.UserMessage.SignupAndLoginMessage;
 
 public enum FormatValidation {
     USERNAME("[\\w\\d\\_]+"),

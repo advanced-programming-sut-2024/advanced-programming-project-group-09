@@ -2,8 +2,8 @@ package Sample.Network.Client.controller.UserAndGameControllers;
 
 import Sample.Network.Client.model.Gwent;
 import Sample.Network.Client.model.User.User;
-import Sample.View.MainMenu;
-import Sample.View.RegisterMenu;
+import Sample.Network.Client.view.UserAndGameMenus.MainMenu;
+import Sample.Network.Client.view.UserAndGameMenus.RegisterMenu;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

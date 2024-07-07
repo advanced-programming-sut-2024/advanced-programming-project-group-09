@@ -1,6 +1,6 @@
 package Sample.Network.Client.utils;
 
-import controller.UserControllers.MainController;
+import Sample.Network.Client.controller.UserAndGameControllers.MainController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -8,8 +8,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
-import model.Stronghold;
-import model.User.User;
+import Sample.Network.Client.model.Gwent;
+import Sample.Network.Client.model.User.User;
 
 import java.io.IOException;
 import java.util.HashMap;
