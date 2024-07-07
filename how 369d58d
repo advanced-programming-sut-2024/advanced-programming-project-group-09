@@ -1,0 +1,84 @@
+[33m369d58d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #9 from advanced-programming-sut-2024/Phase3
+[33meadf353[m[33m ([m[1;31morigin/Phase3[m[33m, [m[1;32mPhase3[m[33m)[m added Network package with all its classes and updated the User class to therefore match them
+[33med2698a[m Merge pull request #8 from advanced-programming-sut-2024/Phase3
+[33mef78694[m added Network package with all its classes and updated the User class to therefore match them
+[33m2cb83f8[m Merge pull request #7 from advanced-programming-sut-2024/Network
+[33m3d5bc5a[m[33m ([m[1;31morigin/Network[m[33m)[m Merge branch 'master' into Network
+[33m7a316cb[m[33m ([m[1;32mNetwork[m[33m)[m added Network package with all its classes and updated the User class to therefore match them
+[33m9a865bf[m add checker for checking enough card selection
+[33m7bc3d4c[m add image
+[33mdf6674d[m save deck for user in Class User
+[33mfda58fc[m Little change in GameBattleFieldController
+[33m8e572be[m continue game controller and put cards in board
+[33m2242c03[m update chose monster deck
+[33mcf4ca25[m update monster faction choose card
+[33ma35a5b6[m add sort for speciald and common cards
+[33m1e33c1d[m continue game controller
+[33md29fd67[m create game battlfiled controller
+[33m5f1baba[m fix gameControllerbattleFiled using
+[33me3385bf[m update and create gameBattle Filed Controller
+[33m8f00c73[m Start game controller and set images and labels
+[33m770a6fe[m update and create gameBattle Filed Controller
+[33mcf551df[m Convert the address of the images to the image itself
+[33mbdee6fb[m Modify the address of all images
+[33m7c2a3f5[m Convert the address of the images to the image itself
+[33mdee07fc[m Merge pull request #6 from advanced-programming-sut-2024/AddingCards
+[33m2670172[m[33m ([m[1;31morigin/AddingCards[m[33m, [m[1;32mAddingCards[m[33m)[m Updated and completed the Common cards an special cards
+[33mab52a0a[m update card create some uncreated cards
+[33m027ebf6[m AddImagePathToFactionAndLeader
+[33mf68b01c[m fix stackpane added
+[33md23214e[m CompleteGameFxml
+[33mab5b213[m updated my code with that of the latest code to include the saving/loading functionality
+[33m77f2294[m BackToChooseDeck
+[33me9b720a[m Add files via upload
+[33ma039e1a[m BackToChangeInDeck2_2
+[33m5f160ce[m BackToChangeInDeck2
+[33m233c1d2[m Merge pull request #5 from advanced-programming-sut-2024/Save
+[33md887895[m[33m ([m[1;31morigin/Save[m[33m)[m Merge branch 'master' into Save
+[33m01577ad[m Updated MainController.java to resolve merge conflict
+[33m2a9a236[m Updated User.java to resolve merge conflict
+[33m67866ce[m[33m ([m[1;32mSave[m[33m)[m Added deck save and load functionality for users and decks
+[33m9e46d70[m ChangeInDeck2
+[33me0cdfc2[m ChangeInDeck1
+[33m52320dc[m StartNewGameControllerAndChangeInUserFields
+[33m2a2767f[m StartNewGameControllerAndChangeInUserFields
+[33m54fad0f[m debug and fix the choose card menu monster 22
+[33m1925a5c[m debug and fix the choose card menu monster
+[33m1bb5684[m Merge remote-tracking branch 'origin/master'
+[33m705e206[m Monster Chose Card Menu
+[33mbdd7f5d[m StartNewGameControllerAndChangeInUserFields
+[33m15b5e5a[m commit
+[33mb99f68c[m commit
+[33m1c65d04[m Monster Chose Card Menu
+[33mfac4516[m unversioned
+[33mf9bb180[m StartNewGameWithALittleChangeInFactionAndLeader
+[33m4622b14[m Merge pull request #4 from advanced-programming-sut-2024/modifications
+[33mb68e941[m[33m ([m[1;31morigin/modifications[m[33m, [m[1;32mmodifications[m[33m)[m some modifications in the saving/loading process
+[33m52b68e8[m Merge remote-tracking branch 'origin/master'
+[33m5bff0a2[m FactionAndLeaderChooseCompleted
+[33mb6c92c7[m Merge pull request #3 from advanced-programming-sut-2024/SavingData
+[33m6f1ffde[m[33m ([m[1;31morigin/SavingData[m[33m, [m[1;32mSavingData[m[33m)[m Added JSON serialization and deserialization for game state and user data
+[33mc2868de[m Added JSON serialization and deserialization for game state and user data
+[33m915f065[m ChooseLeaderWithoutFinishFactionSelect
+[33mcdf9396[m addImages
+[33m0676a99[m firstCommitForChangeFactionAndAddImages
+[33m21aaef6[m Merge pull request #1 from advanced-programming-sut-2024/update/card-enums
+[33m3d74564[m[33m ([m[1;31morigin/update/card-enums[m[33m, [m[1;32mupdate/card-enums[m[33m)[m Updated CardEnums package, including CommonCard, Faction, Leader, SpecialCard classes
+[33m566010e[m update and fix necessary errors for changing data in profile menu
+[33m062e604[m RegisterMenuWithOutSecurityQuestionsCompleted
+[33m08e73d5[m fix text field prompt text colors
+[33m6a18b70[m LoginAndRegisterMenuCompletedVersion3WithPasswordErrors
+[33mdfe301f[m Merge branch 'test'
+[33m2c93fb5[m[33m ([m[1;31morigin/test[m[33m)[m salam
+[33m0ef50c7[m salam
+[33m5ef3dca[m LoginAndRegisterMenuCompletedVersion3WithPasswordErrors
+[33m106430d[m LoginAndRegisterMenuCompletedVersion2AndMainMenuStarted
+[33mbc0c388[m LoginAndRegisterMenuCompleted
+[33m6916eed[m profilemenu
+[33m39546ca[m Merge remote-tracking branch 'origin/master'
+[33md088a8a[m LoginMenu
+[33m53cc3b8[m LoginMenu
+[33mc60a6fe[m third
+[33m1e03660[m third
+[33mb7d94b1[m second :)
+[33mf77c66f[m first commit :)
