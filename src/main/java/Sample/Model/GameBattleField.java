@@ -2,6 +2,7 @@ package Sample.Model;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -162,6 +163,7 @@ public class GameBattleField {
     public SpecialCard getSpecialFieldInSiegeUser2() {
         return specialFieldInSiegeUser2;
     }
+//    Color color = Color;
 
     public void setSpecialFieldInSiegeUser2(SpecialCard specialFieldInSiegeUser2) {
         this.specialFieldInSiegeUser2 = specialFieldInSiegeUser2;

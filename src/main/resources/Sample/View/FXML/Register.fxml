@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -14,31 +15,50 @@
                <Font name="Euclid" size="20.0" />
             </font></Label>
          <Label prefHeight="7.0" prefWidth="0.0" />
-            <Label text="Username" textFill="#ea0000">
-            <font>
-               <Font name="Imprint MT Shadow" size="14.0" />
-            </font></Label>
+         <HBox alignment="CENTER" prefHeight="20.0" prefWidth="356.0" spacing="5.0">
+            <children>
+                <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/icons8-user-64.png" />
+                </ImageView>
+                  <Label text="Username" textFill="#ea0000">
+                  <font>
+                     <Font name="Imprint MT Shadow" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets right="30.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
             <TextField fx:id="username" alignment="CENTER" promptText="Your name Here">
             <font>
                <Font name="Harrington" size="12.0" />
             </font></TextField>
-         <Label layoutX="121.0" layoutY="152.0" prefWidth="78.0" text="Password" textFill="#ea0000">
-            <font>
-               <Font name="Imprint MT Shadow" size="14.0" />
-            </font>
-         </Label>
+         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="356.0" spacing="5.0">
+            <children>
+                <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/icons8-lock-64.png" />
+                </ImageView>
+               <Label prefHeight="23.0" prefWidth="70.0" text="Password" textFill="#ea0000">
+                  <font>
+                     <Font name="Imprint MT Shadow" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets right="30.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
             <HBox prefHeight="30.0" prefWidth="356.0" spacing="2">
                 <AnchorPane prefHeight="40.0" prefWidth="235.0">
-                    <PasswordField fx:id="password" alignment="CENTER" prefHeight="35.0" prefWidth="235.0"
-                                   promptText="Your password here">
+                    <PasswordField fx:id="password" alignment="CENTER" prefHeight="35.0" prefWidth="235.0" promptText="Your password here">
                         <font>
-                            <Font name="Harrington" size="12.0"/>
+                            <Font name="Harrington" size="12.0" />
                         </font>
                     </PasswordField>
-                    <TextField fx:id="showPassword" alignment="CENTER" prefHeight="35.0" prefWidth="235.0"
-                               promptText="Your password here" visible="false">
+                    <TextField fx:id="showPassword" alignment="CENTER" prefHeight="35.0" prefWidth="235.0" promptText="Your password here" visible="false">
                         <font>
-                            <Font name="Harrington" size="12.0"/>
+                            <Font name="Harrington" size="12.0" />
                         </font>
                     </TextField>
                 </AnchorPane>
@@ -46,39 +66,70 @@
                     <Circle radius="15.0" stroke="BLACK" strokeType="INSIDE" />
                     <ImageView fx:id="hideOrRevealPasswordImage" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                 </StackPane>
-                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#generateRandomPassword" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: Gold;" text="Random" />
+                <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#generateRandomPassword" prefHeight="36.0" prefWidth="86.0" style="-fx-background-color: Purple;" text="Random" />
             </HBox>
-            <Label alignment="CENTER" prefHeight="26.0" prefWidth="178.0" text="Confirm Password" textFill="#ea0000">
-            <font>
-               <Font name="Imprint MT Shadow" size="14.0" />
-            </font></Label>
+         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="356.0" spacing="5.0">
+            <children>
+                <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/icons8-lock-64.png" />
+                </ImageView>
+                  <Label alignment="CENTER" prefHeight="26.0" prefWidth="139.0" text="Confirm Password" textFill="#ea0000">
+                  <font>
+                     <Font name="Imprint MT Shadow" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets right="30.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
             <PasswordField fx:id="passwordConfirmation" alignment="CENTER" promptText="Your confirmation password here">
             <font>
                <Font name="Harrington" size="12.0" />
             </font></PasswordField>
-         <Label layoutX="121.0" layoutY="228.0" text="Nickname" textFill="#ea0000">
-            <font>
-               <Font name="Imprint MT Shadow" size="14.0" />
-            </font>
-         </Label>
+         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="356.0" spacing="5.0">
+            <children>
+                <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/icons8-name-50.png" />
+                </ImageView>
+               <Label text="Nickname" textFill="#ea0000">
+                  <font>
+                     <Font name="Imprint MT Shadow" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets right="30.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
          <TextField fx:id="nickname" alignment="CENTER" layoutX="10.0" layoutY="264.0" promptText="Your nickname here">
             <font>
                <Font name="Harrington" size="12.0" />
             </font>
          </TextField>
-         <Label layoutX="121.0" layoutY="188.0" text="Email" textFill="#ea0000">
-            <font>
-               <Font name="Imprint MT Shadow" size="14.0" />
-            </font>
-         </Label>
+         <HBox alignment="CENTER" prefHeight="0.0" prefWidth="356.0" spacing="5.0">
+            <children>
+                <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../Images/icons8-email-48.png" />
+                </ImageView>
+               <Label text="Email" textFill="#ea0000">
+                  <font>
+                     <Font name="Imprint MT Shadow" size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets right="30.0" />
+                  </HBox.margin>
+               </Label>
+            </children>
+         </HBox>
          <TextField fx:id="email" alignment="CENTER" layoutX="10.0" layoutY="224.0" promptText="Your email here">
             <font>
                <Font name="Harrington" size="12.0" />
             </font>
          </TextField>
             <HBox alignment="CENTER" prefWidth="320.0" spacing="10.0">
-                <Button alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#register" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: pink;" text="Register" textFill="#262845" />
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="10.0" onMouseClicked="#backToLoginMenu" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: pink;" text="Back" textFill="#262845" />
+                <Button alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#register" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: FireBrick;" text="Register" textFill="#262845" />
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="10.0" onMouseClicked="#backToLoginMenu" prefHeight="36.0" prefWidth="102.0" style="-fx-background-color: FireBrick;" text="Back" textFill="#262845" />
             </HBox>
         </VBox>
     </center>
