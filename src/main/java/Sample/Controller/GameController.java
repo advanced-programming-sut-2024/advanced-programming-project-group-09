@@ -263,6 +263,12 @@ public class GameController {
     }
 
     private void changeCard(ImageView imageView) {
+        gameBattleFieldController.sort();
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser1().size(); i++) {
+                ((ImageView)allCards.getChildren().get(i)).setImage(gameBattleField.getSpecialCardsBattleFieldUser1().get(i).getImage());
+            }
+        }
         numberOfCardsChanged += 1;
         int number = Integer.parseInt(imageView.getId());
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
@@ -837,13 +843,13 @@ public class GameController {
         ImageView imageView = new ImageView(profilePng);
         imageView.setFitHeight(120);
         imageView.setFitWidth(120);
-        imageView.setTranslateX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
-        imageView.setTranslateY((pane.getHeight() - imageView.getFitHeight()) / 2);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2);
         imageView.setOpacity(1.0);
 
         Label label = new Label(gameBattleField.getWhichUserTurn().getUsername() + " turn");
-        label.setTranslateX((pane.getWidth() - label.getWidth()) / 2 + 40);
-        label.setTranslateY((pane.getHeight() - label.getHeight()) / 2 - 10);
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 + 40);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 10);
         label.setOpacity(1.0);
         label.setTextFill(Color.LEMONCHIFFON);
         label.setFont(Font.font(30));
@@ -854,15 +860,19 @@ public class GameController {
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.8);
 
+        Pane newPane = new Pane();
+
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.setOnFinished(event -> {
             removeAllCards();
-            parentPane.getChildren().addAll(imageView, label);
+            newPane.getChildren().addAll(imageView, label);
+            parentPane.getChildren().add(newPane);
             pane.setEffect(colorAdjust);
 
             PauseTransition pause2 = new PauseTransition(Duration.seconds(3));
             pause2.setOnFinished(event2 -> {
-                parentPane.getChildren().removeAll(imageView, label);
+                newPane.getChildren().removeAll(imageView, label);
+                parentPane.getChildren().remove(newPane);
                 pane.setEffect(null);
 
                 updateBoard();
