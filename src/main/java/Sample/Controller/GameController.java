@@ -12,6 +12,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorAdjust;
@@ -231,8 +232,10 @@ public class GameController {
                 imageView.setId(String.valueOf(i + gameBattleField.getSpecialCardsBattleFieldUser1().size()));
                 allCards.getChildren().add(imageView);
             }
-        }
-        else {
+            Button cancelButton = new Button("Cancel Veto");
+            cancelButton.setStyle(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("CSS/style.css")).toString());
+
+        } else {
             allCards.getChildren().clear();
             for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser2().size(); i++) {
                 ImageView imageView = new ImageView(gameBattleField.getSpecialCardsBattleFieldUser2().get(i).getImage());
@@ -264,11 +267,6 @@ public class GameController {
 
     private void changeCard(ImageView imageView) {
         gameBattleFieldController.sort();
-        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
-            for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser1().size(); i++) {
-                ((ImageView)allCards.getChildren().get(i)).setImage(gameBattleField.getSpecialCardsBattleFieldUser1().get(i).getImage());
-            }
-        }
         numberOfCardsChanged += 1;
         int number = Integer.parseInt(imageView.getId());
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
@@ -277,33 +275,45 @@ public class GameController {
                 gameBattleField.getSpecialCardsBattleFieldUser1().remove(number);
                 SpecialCard specialCardGiven = gameBattleFieldController.giveOneRandomSpecialCardToUserPlayed(gameBattleField.getUser1());
                 gameBattleField.getSpecialCardsDeckUser1().add(specialCard);
-                ((ImageView)allCards.getChildren().get(number)).setImage(specialCardGiven.getImage());
-            }
-            else {
+                ((ImageView) allCards.getChildren().get(number)).setImage(specialCardGiven.getImage());
+            } else {
                 CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser1().get(number - gameBattleField.getSpecialCardsBattleFieldUser1().size());
                 gameBattleField.getCommonCardInBattleFieldUser1().remove(number - gameBattleField.getSpecialCardsBattleFieldUser1().size());
                 CommonCard commonCardGiven = gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
                 gameBattleField.getCommonCardInDeckUser1().add(commonCard);
-                ((ImageView)allCards.getChildren().get(number)).setImage(commonCardGiven.getImage());
+                ((ImageView) allCards.getChildren().get(number)).setImage(commonCardGiven.getImage());
             }
             updateBoard();
-        }
-        else {
+        } else {
             if (number < gameBattleField.getSpecialCardsBattleFieldUser2().size()) {
                 SpecialCard specialCard = gameBattleField.getSpecialCardsBattleFieldUser2().get(number);
                 gameBattleField.getSpecialCardsBattleFieldUser2().remove(number);
                 SpecialCard specialCardGiven = gameBattleFieldController.giveOneRandomSpecialCardToUserPlayed(gameBattleField.getUser2());
                 gameBattleField.getSpecialCardsDeckUser2().add(specialCard);
-                ((ImageView)allCards.getChildren().get(number)).setImage(specialCardGiven.getImage());
-            }
-            else {
+                ((ImageView) allCards.getChildren().get(number)).setImage(specialCardGiven.getImage());
+            } else {
                 CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser2().get(number - gameBattleField.getSpecialCardsBattleFieldUser2().size());
                 gameBattleField.getCommonCardInBattleFieldUser2().remove(number - gameBattleField.getSpecialCardsBattleFieldUser2().size());
                 CommonCard commonCardGiven = gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
                 gameBattleField.getCommonCardInDeckUser2().add(commonCard);
-                ((ImageView)allCards.getChildren().get(number)).setImage(commonCardGiven.getImage());
+                ((ImageView) allCards.getChildren().get(number)).setImage(commonCardGiven.getImage());
             }
             updateBoard();
+        }
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser1().size(); i++) {
+                ((ImageView) allCards.getChildren().get(i)).setImage(gameBattleField.getSpecialCardsBattleFieldUser1().get(i).getImage());
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser1().size(); i++) {
+                ((ImageView) allCards.getChildren().get(i + gameBattleField.getSpecialCardsBattleFieldUser1().size())).setImage(gameBattleField.getCommonCardInBattleFieldUser1().get(i).getImage());
+            }
+        } else {
+            for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser2().size(); i++) {
+                ((ImageView) allCards.getChildren().get(i)).setImage(gameBattleField.getSpecialCardsBattleFieldUser2().get(i).getImage());
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser2().size(); i++) {
+                ((ImageView) allCards.getChildren().get(i + gameBattleField.getSpecialCardsBattleFieldUser2().size())).setImage(gameBattleField.getCommonCardInBattleFieldUser2().get(i).getImage());
+            }
         }
         if (numberOfCardsChanged == 2) {
             allCards.getChildren().clear();
