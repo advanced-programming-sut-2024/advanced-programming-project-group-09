@@ -28,7 +28,7 @@ public class GameMenu extends Application {
 
         URL url = LoginMenu.class.getResource("FXMl/Game.fxml");
         assert url != null;
-        AnchorPane root = FXMLLoader.load(url);
+        Pane root = FXMLLoader.load(url);
 //        if (MainMenu.getMediaPlayer() == null) {
 //            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("/Media/MainMenuMedia.mp3")).toExternalForm());
 //            mediaPlayer = new MediaPlayer(media);

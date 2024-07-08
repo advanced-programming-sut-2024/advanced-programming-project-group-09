@@ -2141,5 +2141,3 @@ public class ChooseCardMonsterController {
         return null;
     }
 }
-
-

@@ -9,7 +9,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
-import javafx.css.Style;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -83,6 +82,8 @@ public class GameController {
     @FXML
     private ImageView firstPlayerShield;
     @FXML
+    private StackPane parentPane;
+    @FXML
     private AnchorPane pane;
     @FXML
     private HBox myHandCards;
@@ -114,6 +115,18 @@ public class GameController {
     private HBox weatherCards;
     @FXML
     private ImageView bigCardShow;
+    @FXML
+    private Label numberOfMyDeckCards;
+    @FXML
+    private Label numberOfCompetitorDeckCards;
+    @FXML
+    private ImageView imageOfMyFaction;
+    @FXML
+    private ImageView imageOfCompetitorFaction;
+    @FXML
+    private ImageView myLastDiscard;
+    @FXML
+    private ImageView competitorLastDiscard;
     private ArrayList<CommonCard> commonCardInBattleFieldUser1 = new ArrayList<>();
     private ArrayList<SpecialCard> specialCardsBattleFieldUser1 = new ArrayList<>();
     private ArrayList<CommonCard> closeCombatPlayedUser1 = new ArrayList<>();
@@ -169,6 +182,8 @@ public class GameController {
     private boolean isTransitioning = false;
     private boolean isFirstTimeForUser1 = true;
     private boolean isFirstTimeForUser2 = true;
+    private int numberOfCardsChanged = 0;
+    private HBox allCards;
     private final GameBattleField gameBattleField = User.getUserLoginIn().getLastGameBattleField();
     private GameBattleFieldController gameBattleFieldController;
 
@@ -176,18 +191,121 @@ public class GameController {
         gameBattleFieldController = new GameBattleFieldController(gameBattleField);
         gameBattleFieldController.cloneChosenDeckForUsingInGame();
         gameBattleFieldController.giveRandomInitialCards();
-        updateBoard();
         if (isFirstTimeForUser1) {
             isFirstTimeForUser1 = false;
             changeTwoCardsOfDeck();
         }
+        updateBoard();
     }
 
     private void changeTwoCardsOfDeck() {
         GaussianBlur gaussianBlur = new GaussianBlur(10);
         pane.setEffect(gaussianBlur);
-        HBox allCards = new HBox();
+
+        allCards = new HBox(1050);
+        allCards.setLayoutX(90);
+        allCards.setLayoutY(200);
+        allCards.setSpacing(10);
+        allCards.setAlignment(Pos.CENTER);
+        allCards.setEffect(new GaussianBlur(0));
+
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            allCards.getChildren().clear();
+            for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser1().size(); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getSpecialCardsBattleFieldUser1().get(i).getImage());
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(200);
+                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
+                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
+                imageView.setOnMouseClicked(e -> changeCard(imageView));
+                imageView.setId(String.valueOf(i));
+                allCards.getChildren().add(imageView);
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser1().size(); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getCommonCardInBattleFieldUser1().get(i).getImage());
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(200);
+                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
+                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
+                imageView.setOnMouseClicked(e -> changeCard(imageView));
+                imageView.setId(String.valueOf(i + gameBattleField.getSpecialCardsBattleFieldUser1().size()));
+                allCards.getChildren().add(imageView);
+            }
+        }
+        else {
+            allCards.getChildren().clear();
+            for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser2().size(); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getSpecialCardsBattleFieldUser2().get(i).getImage());
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(200);
+                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
+                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
+                imageView.setOnMouseClicked(e -> changeCard(imageView));
+                imageView.setId(String.valueOf(i));
+                allCards.getChildren().add(imageView);
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser2().size(); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getCommonCardInBattleFieldUser2().get(i).getImage());
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(200);
+                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
+                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
+                imageView.setOnMouseClicked(e -> changeCard(imageView));
+                imageView.setId(String.valueOf(i + gameBattleField.getSpecialCardsBattleFieldUser2().size()));
+                allCards.getChildren().add(imageView);
+            }
+        }
+
+        Pane overlayPane = new Pane();
+        overlayPane.getChildren().add(allCards);
+
+        parentPane.getChildren().add(overlayPane);
     }
+
+    private void changeCard(ImageView imageView) {
+        numberOfCardsChanged += 1;
+        int number = Integer.parseInt(imageView.getId());
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (number < gameBattleField.getSpecialCardsBattleFieldUser1().size()) {
+                SpecialCard specialCard = gameBattleField.getSpecialCardsBattleFieldUser1().get(number);
+                gameBattleField.getSpecialCardsBattleFieldUser1().remove(number);
+                SpecialCard specialCardGiven = gameBattleFieldController.giveOneRandomSpecialCardToUserPlayed(gameBattleField.getUser1());
+                gameBattleField.getSpecialCardsDeckUser1().add(specialCard);
+                ((ImageView)allCards.getChildren().get(number)).setImage(specialCardGiven.getImage());
+            }
+            else {
+                CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser1().get(number - gameBattleField.getSpecialCardsBattleFieldUser1().size());
+                gameBattleField.getCommonCardInBattleFieldUser1().remove(number - gameBattleField.getSpecialCardsBattleFieldUser1().size());
+                CommonCard commonCardGiven = gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
+                gameBattleField.getCommonCardInDeckUser1().add(commonCard);
+                ((ImageView)allCards.getChildren().get(number)).setImage(commonCardGiven.getImage());
+            }
+            updateBoard();
+        }
+        else {
+            if (number < gameBattleField.getSpecialCardsBattleFieldUser2().size()) {
+                SpecialCard specialCard = gameBattleField.getSpecialCardsBattleFieldUser2().get(number);
+                gameBattleField.getSpecialCardsBattleFieldUser2().remove(number);
+                SpecialCard specialCardGiven = gameBattleFieldController.giveOneRandomSpecialCardToUserPlayed(gameBattleField.getUser2());
+                gameBattleField.getSpecialCardsDeckUser2().add(specialCard);
+                ((ImageView)allCards.getChildren().get(number)).setImage(specialCardGiven.getImage());
+            }
+            else {
+                CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser2().get(number - gameBattleField.getSpecialCardsBattleFieldUser2().size());
+                gameBattleField.getCommonCardInBattleFieldUser2().remove(number - gameBattleField.getSpecialCardsBattleFieldUser2().size());
+                CommonCard commonCardGiven = gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
+                gameBattleField.getCommonCardInDeckUser2().add(commonCard);
+                ((ImageView)allCards.getChildren().get(number)).setImage(commonCardGiven.getImage());
+            }
+            updateBoard();
+        }
+        if (numberOfCardsChanged == 2) {
+            allCards.getChildren().clear();
+            parentPane.getChildren().removeLast();
+            pane.setEffect(null);
+        }
+    }
+
 
     private void updateBoard() {
         gameBattleFieldController.sort();
@@ -247,6 +365,40 @@ public class GameController {
             scoreCalculation(null, null, rangedIsPlayedUser2, competitorRangedRowScore);
             firstPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser1, siegeIsPlayedUser1, rangedIsPlayedUser1, firstPlayerScore);
             secondPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser2, siegeIsPlayedUser2, rangedIsPlayedUser2, secondPlayerScore);
+
+            int numberOfMyDeckCard = gameBattleField.getCommonCardInDeckUser1().size() + gameBattleField.getSpecialCardsDeckUser1().size();
+            imageOfMyFaction.setImage(gameBattleField.getUser1().getFactionSelected().getImageForGame());
+            numberOfMyDeckCards.setText(String.valueOf(numberOfMyDeckCard));
+            for (int i = 1; i < Math.min(25, numberOfMyDeckCard); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getUser1().getFactionSelected().getImageForGame());
+                imageView.setFitHeight(imageOfMyFaction.getFitHeight());
+                imageView.setFitWidth(imageOfMyFaction.getFitWidth());
+                imageView.setX(imageOfMyFaction.getX() - i * 0.01);
+                imageView.setY(imageOfMyFaction.getY() - i * 0.01);
+                ((StackPane) imageOfMyFaction.getParent()).getChildren().add(i, imageView);
+            }
+            int numberOfCompetitorDeckCard = gameBattleField.getCommonCardInDeckUser2().size() + gameBattleField.getSpecialCardsDeckUser2().size();
+            imageOfCompetitorFaction.setImage(gameBattleField.getUser2().getFactionSelected().getImageForGame());
+            numberOfCompetitorDeckCards.setText(String.valueOf(numberOfCompetitorDeckCard));
+            for (int i = 1; i < Math.min(25, numberOfCompetitorDeckCard); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getUser2().getFactionSelected().getImageForGame());
+                imageView.setFitHeight(imageOfCompetitorFaction.getFitHeight());
+                imageView.setFitWidth(imageOfCompetitorFaction.getFitWidth());
+                imageView.setX(imageOfCompetitorFaction.getX() - i * 0.01);
+                imageView.setY(imageOfCompetitorFaction.getY() - i * 0.01);
+                ((StackPane) imageOfCompetitorFaction.getParent()).getChildren().add(i, imageView);
+            }
+
+            if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty())
+                myLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser1().getLast().getImageForGame());
+            else if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
+                myLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser1().getLast().getImageForGame());
+            }
+            if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty())
+                competitorLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser2().getLast().getImageForGame());
+            else if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
+                competitorLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser2().getLast().getImageForGame());
+            }
         } else {
             scoreCalculation(closeCombatPlayedUser2, null, null, myCloseCombatRowScore);
             scoreCalculation(null, siegeIsPlayedUser2, null, mySiegeRowScore);
@@ -256,7 +408,43 @@ public class GameController {
             scoreCalculation(null, null, rangedIsPlayedUser1, competitorRangedRowScore);
             firstPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser2, siegeIsPlayedUser2, rangedIsPlayedUser2, firstPlayerScore);
             secondPlayerScoreInGame = scoreCalculation(closeCombatPlayedUser1, siegeIsPlayedUser1, rangedIsPlayedUser1, secondPlayerScore);
+
+            int numberOfMyDeckCard = gameBattleField.getCommonCardInDeckUser2().size() + gameBattleField.getSpecialCardsDeckUser2().size();
+            imageOfMyFaction.setImage(gameBattleField.getUser2().getFactionSelected().getImageForGame());
+            numberOfMyDeckCards.setText(String.valueOf(numberOfMyDeckCard));
+            for (int i = 1; i < Math.min(25, numberOfMyDeckCard); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getUser2().getFactionSelected().getImageForGame());
+                imageView.setFitHeight(imageOfMyFaction.getFitHeight());
+                imageView.setFitWidth(imageOfMyFaction.getFitWidth());
+                imageView.setX(imageOfMyFaction.getX() - i * 0.01);
+                imageView.setY(imageOfMyFaction.getY() - i * 0.01);
+                ((StackPane) imageOfMyFaction.getParent()).getChildren().add(i, imageView);
+            }
+            int numberOfCompetitorDeckCard = gameBattleField.getCommonCardInDeckUser1().size() + gameBattleField.getSpecialCardsDeckUser1().size();
+            imageOfCompetitorFaction.setImage(gameBattleField.getUser1().getFactionSelected().getImageForGame());
+            numberOfCompetitorDeckCards.setText(String.valueOf(numberOfCompetitorDeckCard));
+            for (int i = 1; i < Math.min(25, numberOfCompetitorDeckCard); i++) {
+                ImageView imageView = new ImageView(gameBattleField.getUser1().getFactionSelected().getImageForGame());
+                imageView.setFitHeight(imageOfCompetitorFaction.getFitHeight());
+                imageView.setFitWidth(imageOfCompetitorFaction.getFitWidth());
+                imageView.setX(imageOfCompetitorFaction.getX() - i * 0.01);
+                imageView.setY(imageOfCompetitorFaction.getY() - i * 0.01);
+                ((StackPane) imageOfCompetitorFaction.getParent()).getChildren().add(i, imageView);
+            }
+
+            if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty())
+                myLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser2().getLast().getImageForGame());
+            else if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
+                myLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser2().getLast().getImageForGame());
+            }
+            if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty())
+                competitorLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser1().getLast().getImageForGame());
+            else if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
+                competitorLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser1().getLast().getImageForGame());
+            }
         }
+        System.out.println(gameBattleField.getSpecialCardsDiscardUser1().size());
+        System.out.println(gameBattleField.getSpecialCardsDiscardUser2().size());
 
         if (firstPlayerScoreInGame > secondPlayerScoreInGame) {
             firstPlayerCrown.setVisible(true);
@@ -349,6 +537,20 @@ public class GameController {
         removeSpecialCardsFromBoard(competitorRangedSpecialCard);
         removeSpecialCardsFromBoard(competitorSiegeSpecialCard);
         removeWeatherCards();
+        removeImageOfDeckCards();
+        removeImageOfDiscard();
+    }
+
+    private void removeImageOfDiscard() {
+        myLastDiscard.setImage(null);
+        competitorLastDiscard.setImage(null);
+    }
+
+    private void removeImageOfDeckCards() {
+        imageOfMyFaction.setImage(null);
+        imageOfCompetitorFaction.setImage(null);
+        ((StackPane) imageOfMyFaction.getParent()).getChildren().removeIf(node -> node instanceof ImageView && !node.equals(((StackPane) imageOfMyFaction.getParent()).getChildren().getFirst()));
+        ((StackPane) imageOfCompetitorFaction.getParent()).getChildren().removeIf(node -> node instanceof ImageView && !node.equals(((StackPane) imageOfCompetitorFaction.getParent()).getChildren().getFirst()));
     }
 
     private void putMyBattleFieldCards(ArrayList<SpecialCard> specialCardsBattleFieldUser1, ArrayList<CommonCard> commonCardInBattleFieldUser1) {
@@ -627,10 +829,6 @@ public class GameController {
     }
 
     public void changeTurn() {
-        if (isFirstTimeForUser2) {
-            isFirstTimeForUser2 = false;
-            changeTwoCardsOfDeck();
-        }
         if (isTransitioning) {
             return;
         }
@@ -659,12 +857,12 @@ public class GameController {
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.setOnFinished(event -> {
             removeAllCards();
-            pane.getChildren().addAll(imageView, label);
+            parentPane.getChildren().addAll(imageView, label);
             pane.setEffect(colorAdjust);
 
             PauseTransition pause2 = new PauseTransition(Duration.seconds(3));
             pause2.setOnFinished(event2 -> {
-                pane.getChildren().removeAll(imageView, label);
+                parentPane.getChildren().removeAll(imageView, label);
                 pane.setEffect(null);
 
                 updateBoard();
@@ -907,6 +1105,16 @@ public class GameController {
         bigCardShow.setImage(null);
     }
 
+    public void focusOnImageForStart(ImageView imageView) {
+        if (isTransitioning) {
+            return;
+        }
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(250), imageView);
+        translateTransition.setToX(0);
+        translateTransition.setToY(-20);
+        translateTransition.play();
+    }
+
     public void focusOnImage(MouseEvent mouseEvent) {
         if (isTransitioning) {
             return;
@@ -915,6 +1123,16 @@ public class GameController {
         TranslateTransition translateTransition = new TranslateTransition(Duration.millis(250), stackPane);
         translateTransition.setToX(0);
         translateTransition.setToY(-11);
+        translateTransition.play();
+    }
+
+    public void unFocusForStart(ImageView imageView) {
+        if (isTransitioning) {
+            return;
+        }
+        TranslateTransition translateTransition = new TranslateTransition(Duration.millis(250), imageView);
+        translateTransition.setToX(0);
+        translateTransition.setToY(0);
         translateTransition.play();
     }
 
@@ -1334,7 +1552,8 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
-        if (selectedSpecialCard == null || !isWeatherCard(selectedSpecialCard) || gameBattleField.getWeatherCards().size() == 3) return;
+        if (selectedSpecialCard == null || !isWeatherCard(selectedSpecialCard) || gameBattleField.getWeatherCards().size() == 3)
+            return;
         gameBattleFieldController.putWeatherCardToSpecialFieldForWeatherCard(selectedSpecialCard);
         if (selectedSpecialCard.equals(SpecialCard.BitingFrost)) {
             ImageView frostImageView = new ImageView(putFrostWeather);
@@ -1440,6 +1659,7 @@ public class GameController {
             } else {
                 gameBattleField.getSpecialCardsDiscardUser2().add(SpecialCard.ClearWeather);
             }
+            gameBattleField.getWeatherCards().remove(SpecialCard.ClearWeather);
 
             Collections.shuffle(gameBattleField.getWeatherCards());
             int totalCards = gameBattleField.getWeatherCards().size();
