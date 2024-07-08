@@ -67,7 +67,7 @@ public class RecoveryQuestionMenu extends Application implements Initializable {
       questions.setItems(recoveryQuestions);
       questions.setValue(recoveryQuestions.get(0));
       generateCaptchaImageview();
-      refresh.setOnMo usePressed(e -> generateCaptchaImageview());
+      refresh.setOnMousePressed(e -> generateCaptchaImageview());
 
       confirm.setOnMouseClicked(e -> generateUser(controller.pickQuestion(questions.getValue(), recoveryAnswer.getText(),
               confirmation.getText(), captcha.getText())));

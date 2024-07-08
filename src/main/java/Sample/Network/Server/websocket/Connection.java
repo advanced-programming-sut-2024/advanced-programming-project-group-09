@@ -309,7 +309,8 @@ public class Connection extends Thread {
         }
         switch (request.getCommand()) {
             case "add_friend":
-                user.sendFriendRequest(targetUser);
+                user.send(targetUser);
+                user.addFriend((new Gson().fromJson(request.getParameters().get("user"), User.class)));
                 break;
             case "accept_friend":
                 user.acceptFriendRequest(targetUser);

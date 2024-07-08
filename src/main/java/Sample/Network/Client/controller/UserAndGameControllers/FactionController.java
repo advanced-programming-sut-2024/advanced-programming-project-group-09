@@ -76,13 +76,13 @@ public class FactionController {
         image4.setImage(factionScoiatael);
         image5.setImage(factionSkellige);
 
-        Faction factionSelected = Gwent.getInstance().getUserLoginIn().getFactionSelected();
+        Faction factionSelected = Gwent.getInstance().getUser().getFactionSelected();
         faction.setText(factionSelected.getFactionName());
         sentence.setText(factionSelected.getAbility());
     }
 
     private void checkFactionLeader() {
-        User user = Gwent.getInstance().getUserLoginIn();
+        User user = Gwent.getInstance().getUser();
         if (user.getFactionSelected().equals(Faction.Monsters)) {
             addBorder(1);
         } else if (user.getFactionSelected().equals(Faction.Nilfgaard)) {
