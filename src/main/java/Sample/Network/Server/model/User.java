@@ -24,7 +24,6 @@ public class User {
     private String password;
     private String email;
     private String nickname;
-    private String avatarPath;
     private int gamesPlayed;
     private int wins;
     private int draws;
@@ -129,11 +128,6 @@ public class User {
 
     public String getNickname() {
         return nickname;
-    }
-
-    public void setAvatarPath(String avatarPath) {
-        this.avatarPath = avatarPath;
-        Database.getInstance().updateData();
     }
 
     public void addFriend(User user) {
