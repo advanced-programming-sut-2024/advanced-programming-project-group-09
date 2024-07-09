@@ -1,6 +1,7 @@
 package Sample.Controller;
 
 import Sample.CardEnums.CommonCard;
+import Sample.CardEnums.Faction;
 import Sample.CardEnums.SpecialCard;
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
@@ -125,9 +126,9 @@ public class GameController {
     @FXML
     private ImageView imageOfCompetitorFaction;
     @FXML
-    private ImageView myLastDiscard;
+    private StackPane myLastDiscard;
     @FXML
-    private ImageView competitorLastDiscard;
+    private StackPane competitorLastDiscard;
     private ArrayList<CommonCard> commonCardInBattleFieldUser1 = new ArrayList<>();
     private ArrayList<SpecialCard> specialCardsBattleFieldUser1 = new ArrayList<>();
     private ArrayList<CommonCard> closeCombatPlayedUser1 = new ArrayList<>();
@@ -210,59 +211,57 @@ public class GameController {
         allCards.setAlignment(Pos.CENTER);
         allCards.setEffect(new GaussianBlur(0));
 
+        Button cancelButton = new Button("Cancel Veto");
+        cancelButton.setStyle(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("CSS/style.css")).toString());
+        cancelButton.setStyle("-fx-background-color: #000000;");
+        cancelButton.setLayoutX(580);
+        cancelButton.setLayoutY(500);
+        cancelButton.setOnMouseClicked(e -> cancelVeto());
+
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
             allCards.getChildren().clear();
             for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser1().size(); i++) {
-                ImageView imageView = new ImageView(gameBattleField.getSpecialCardsBattleFieldUser1().get(i).getImage());
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(200);
-                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
-                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
-                imageView.setOnMouseClicked(e -> changeCard(imageView));
-                imageView.setId(String.valueOf(i));
+                ImageView imageView = getImageView(gameBattleField.getSpecialCardsBattleFieldUser1().get(i).getImage(), i);
                 allCards.getChildren().add(imageView);
             }
             for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser1().size(); i++) {
-                ImageView imageView = new ImageView(gameBattleField.getCommonCardInBattleFieldUser1().get(i).getImage());
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(200);
-                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
-                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
-                imageView.setOnMouseClicked(e -> changeCard(imageView));
-                imageView.setId(String.valueOf(i + gameBattleField.getSpecialCardsBattleFieldUser1().size()));
+                ImageView imageView = getImageView(gameBattleField.getCommonCardInBattleFieldUser1().get(i).getImage(), i + gameBattleField.getSpecialCardsBattleFieldUser1().size());
                 allCards.getChildren().add(imageView);
             }
-            Button cancelButton = new Button("Cancel Veto");
-            cancelButton.setStyle(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("CSS/style.css")).toString());
-
         } else {
             allCards.getChildren().clear();
             for (int i = 0; i < gameBattleField.getSpecialCardsBattleFieldUser2().size(); i++) {
-                ImageView imageView = new ImageView(gameBattleField.getSpecialCardsBattleFieldUser2().get(i).getImage());
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(200);
-                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
-                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
-                imageView.setOnMouseClicked(e -> changeCard(imageView));
-                imageView.setId(String.valueOf(i));
+                ImageView imageView = getImageView(gameBattleField.getSpecialCardsBattleFieldUser2().get(i).getImage(), i);
                 allCards.getChildren().add(imageView);
             }
             for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser2().size(); i++) {
-                ImageView imageView = new ImageView(gameBattleField.getCommonCardInBattleFieldUser2().get(i).getImage());
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(200);
-                imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
-                imageView.setOnMouseExited(e -> unFocusForStart(imageView));
-                imageView.setOnMouseClicked(e -> changeCard(imageView));
-                imageView.setId(String.valueOf(i + gameBattleField.getSpecialCardsBattleFieldUser2().size()));
+                ImageView imageView = getImageView(gameBattleField.getCommonCardInBattleFieldUser2().get(i).getImage(), i + gameBattleField.getSpecialCardsBattleFieldUser2().size());
                 allCards.getChildren().add(imageView);
             }
         }
 
         Pane overlayPane = new Pane();
-        overlayPane.getChildren().add(allCards);
+        overlayPane.getChildren().addAll(allCards, cancelButton);
 
         parentPane.getChildren().add(overlayPane);
+    }
+
+    private ImageView getImageView(Image gameBattleField, int i) {
+        ImageView imageView = new ImageView(gameBattleField);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(200);
+        imageView.setOnMouseMoved(e -> focusOnImageForStart(imageView));
+        imageView.setOnMouseExited(e -> unFocusForStart(imageView));
+        imageView.setOnMouseClicked(e -> changeCard(imageView));
+        imageView.setId(String.valueOf(i));
+        return imageView;
+    }
+
+    private void cancelVeto() {
+        allCards.getChildren().clear();
+        parentPane.getChildren().removeLast();
+        pane.setEffect(null);
+        numberOfCardsChanged = 0;
     }
 
     private void changeCard(ImageView imageView) {
@@ -319,11 +318,16 @@ public class GameController {
             allCards.getChildren().clear();
             parentPane.getChildren().removeLast();
             pane.setEffect(null);
+            numberOfCardsChanged = 0;
         }
     }
 
 
     private void updateBoard() {
+        if (isFirstTimeForUser2 && gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2())) {
+            isFirstTimeForUser2 = false;
+            changeTwoCardsOfDeck();
+        }
         gameBattleFieldController.sort();
 
         User user1 = gameBattleField.getUser1();
@@ -359,14 +363,13 @@ public class GameController {
         firstPlayerUsername.setText(gameBattleField.getWhichUserTurn().getUsername());
         secondPlayerUsername.setText(whichUserIsNotTurn().getUsername());
 
-        if (gameBattleField.isPassedUser1() && gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1()))
-            firstPlayerPassedLabel.setVisible(true);
-        else if (gameBattleField.isPassedUser1() && !gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1()))
-            secondPlayerUsername.setVisible(true);
-        if (gameBattleField.isPassedUser2() && gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2()))
-            firstPlayerPassedLabel.setVisible(true);
-        else if (gameBattleField.isPassedUser2() && !gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2()))
-            secondPlayerPassedLabel.setVisible(true);
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            firstPlayerPassedLabel.setVisible(gameBattleField.isPassedUser1());
+            secondPlayerPassedLabel.setVisible(gameBattleField.isPassedUser2());
+        } else {
+            firstPlayerPassedLabel.setVisible(gameBattleField.isPassedUser2());
+            secondPlayerPassedLabel.setVisible(gameBattleField.isPassedUser1());
+        }
 
         putCardsInBoard();
 
@@ -405,16 +408,8 @@ public class GameController {
                 ((StackPane) imageOfCompetitorFaction.getParent()).getChildren().add(i, imageView);
             }
 
-            if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty())
-                myLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser1().getLast().getImageForGame());
-            else if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
-                myLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser1().getLast().getImageForGame());
-            }
-            if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty())
-                competitorLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser2().getLast().getImageForGame());
-            else if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
-                competitorLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser2().getLast().getImageForGame());
-            }
+            setImageOfDiscard(gameBattleField.getCommonCardsInDiscardUser1(), myLastDiscard, gameBattleField.getSpecialCardsDiscardUser1());
+            setImageOfDiscard(gameBattleField.getCommonCardsInDiscardUser2(), competitorLastDiscard, gameBattleField.getSpecialCardsDiscardUser2());
         } else {
             scoreCalculation(closeCombatPlayedUser2, null, null, myCloseCombatRowScore);
             scoreCalculation(null, siegeIsPlayedUser2, null, mySiegeRowScore);
@@ -448,19 +443,9 @@ public class GameController {
                 ((StackPane) imageOfCompetitorFaction.getParent()).getChildren().add(i, imageView);
             }
 
-            if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty())
-                myLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser2().getLast().getImageForGame());
-            else if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
-                myLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser2().getLast().getImageForGame());
-            }
-            if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty())
-                competitorLastDiscard.setImage(gameBattleField.getCommonCardsInDiscardUser1().getLast().getImageForGame());
-            else if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
-                competitorLastDiscard.setImage(gameBattleField.getSpecialCardsDiscardUser1().getLast().getImageForGame());
-            }
+            setImageOfDiscard(gameBattleField.getCommonCardsInDiscardUser2(), myLastDiscard, gameBattleField.getSpecialCardsDiscardUser2());
+            setImageOfDiscard(gameBattleField.getCommonCardsInDiscardUser1(), competitorLastDiscard, gameBattleField.getSpecialCardsDiscardUser1());
         }
-        System.out.println(gameBattleField.getSpecialCardsDiscardUser1().size());
-        System.out.println(gameBattleField.getSpecialCardsDiscardUser2().size());
 
         if (firstPlayerScoreInGame > secondPlayerScoreInGame) {
             firstPlayerCrown.setVisible(true);
@@ -498,32 +483,90 @@ public class GameController {
         }
     }
 
+    private void setImageOfDiscard(ArrayList<CommonCard> gameBattleField, StackPane myLastDiscard, ArrayList<SpecialCard> gameBattleField1) {
+        if (!gameBattleField.isEmpty()) {
+            String playField = gameBattleField.getLast().getPlayField();
+            ((ImageView) myLastDiscard.getChildren().getFirst()).setImage(gameBattleField.getLast().getImageForGame());
+            if (gameBattleField.getLast().isHero()) {
+                ((ImageView) myLastDiscard.getChildren().get(1)).setImage(powerHeroImage);
+                ((Label) myLastDiscard.getChildren().get(2)).setTextFill(Color.WHITE);
+            } else if (playField != null) {
+                ((ImageView) myLastDiscard.getChildren().get(1)).setImage(powerNormalImage);
+                ((Label) myLastDiscard.getChildren().get(2)).setTextFill(Color.BLACK);
+            } else {
+                ((ImageView) myLastDiscard.getChildren().get(1)).setImage(decoyPower);
+            }
+            if (playField != null) {
+                ((Label) myLastDiscard.getChildren().get(2)).setText(String.valueOf(gameBattleField.getLast().getScore()));
+                myLastDiscard.getChildren().get(2).setVisible(true);
+            }
+
+            if (playField != null) {
+                switch (playField) {
+                    case "Close Combat" -> ((ImageView) myLastDiscard.getChildren().get(3)).setImage(cardRowClose);
+                    case "Ranged" -> ((ImageView) myLastDiscard.getChildren().get(3)).setImage(cardRowRanged);
+                    case "Siege" -> ((ImageView) myLastDiscard.getChildren().get(3)).setImage(cardRowSiege);
+                    case "Agile" -> ((ImageView) myLastDiscard.getChildren().get(3)).setImage(cardRowAgile);
+                }
+            }
+
+            String ability = gameBattleField.getLast().getAbility();
+            if (ability.contains("Transform"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityAvenger);
+            else if (ability.contains("Mardroeme"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMardroeme);
+            else if (ability.contains("Muster"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMuster);
+            else if (ability.contains("Commander's Horn"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityHorn);
+            else if (ability.contains("Morale Boost")) {
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMorale);
+            } else if (ability.contains("Tight Bond"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityBond);
+            else if (ability.contains("Increase Score By Mardroeme"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityBerserker);
+            else if (ability.contains("Scorch")) {
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityScorch);
+            } else if (ability.contains("Spy"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilitySpy);
+            else if (ability.contains("Medic"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMedic);
+
+        } else if (!gameBattleField1.isEmpty()) {
+            ((ImageView) myLastDiscard.getChildren().getFirst()).setImage(gameBattleField1.getLast().getImageForGame());
+            ((ImageView) myLastDiscard.getChildren().get(1)).setImage(gameBattleField1.getLast().getImageForPower());
+            myLastDiscard.getChildren().get(2).setVisible(false);
+            ((ImageView) myLastDiscard.getChildren().get(3)).setImage(null);
+            ((ImageView) myLastDiscard.getChildren().get(4)).setImage(null);
+        }
+    }
+
     private void putCardsInBoard() {
         removeAllCards();
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
             putMyBattleFieldCards(specialCardsBattleFieldUser1, commonCardInBattleFieldUser1);
-            putCommonCardsInRows(closeCombatPlayedUser1, myCloseCombatCardsPlayed);
-            putCommonCardsInRows(rangedIsPlayedUser1, myRangedCombatCardsPlayed);
-            putCommonCardsInRows(siegeIsPlayedUser1, mySiegeCardsPlayed);
+            putCommonCardsInRows(closeCombatPlayedUser1, myCloseCombatCardsPlayed, 1);
+            putCommonCardsInRows(rangedIsPlayedUser1, myRangedCombatCardsPlayed, 2);
+            putCommonCardsInRows(siegeIsPlayedUser1, mySiegeCardsPlayed, 3);
 
             putSpecialCardInRows(specialFieldInCloseCombatUser1, specialFieldInSiegeUser1, specialFieldInRangedUser1, true);
 
-            putCommonCardsInRows(closeCombatPlayedUser2, competitorCloseCombatCardsPlayed);
-            putCommonCardsInRows(rangedIsPlayedUser2, competitorRangedCombatCardsPlayed);
-            putCommonCardsInRows(siegeIsPlayedUser2, competitorSiegeCardsPlayed);
+            putCommonCardsInRows(closeCombatPlayedUser2, competitorCloseCombatCardsPlayed, 1);
+            putCommonCardsInRows(rangedIsPlayedUser2, competitorRangedCombatCardsPlayed, 2);
+            putCommonCardsInRows(siegeIsPlayedUser2, competitorSiegeCardsPlayed, 3);
 
             putSpecialCardInRows(specialFieldInCloseCombatUser2, specialFieldInSiegeUser2, specialFieldInRangedUser2, false);
         } else {
             putMyBattleFieldCards(specialCardsBattleFieldUser2, commonCardInBattleFieldUser2);
-            putCommonCardsInRows(closeCombatPlayedUser2, myCloseCombatCardsPlayed);
-            putCommonCardsInRows(rangedIsPlayedUser2, myRangedCombatCardsPlayed);
-            putCommonCardsInRows(siegeIsPlayedUser2, mySiegeCardsPlayed);
+            putCommonCardsInRows(closeCombatPlayedUser2, myCloseCombatCardsPlayed, 1);
+            putCommonCardsInRows(rangedIsPlayedUser2, myRangedCombatCardsPlayed, 2);
+            putCommonCardsInRows(siegeIsPlayedUser2, mySiegeCardsPlayed, 3);
 
             putSpecialCardInRows(specialFieldInCloseCombatUser2, specialFieldInSiegeUser2, specialFieldInRangedUser2, true);
 
-            putCommonCardsInRows(closeCombatPlayedUser1, competitorCloseCombatCardsPlayed);
-            putCommonCardsInRows(rangedIsPlayedUser1, competitorRangedCombatCardsPlayed);
-            putCommonCardsInRows(siegeIsPlayedUser1, competitorSiegeCardsPlayed);
+            putCommonCardsInRows(closeCombatPlayedUser1, competitorCloseCombatCardsPlayed, 1);
+            putCommonCardsInRows(rangedIsPlayedUser1, competitorRangedCombatCardsPlayed, 2);
+            putCommonCardsInRows(siegeIsPlayedUser1, competitorSiegeCardsPlayed, 3);
 
             putSpecialCardInRows(specialFieldInCloseCombatUser1, specialFieldInSiegeUser1, specialFieldInRangedUser1, false);
         }
@@ -558,8 +601,14 @@ public class GameController {
     }
 
     private void removeImageOfDiscard() {
-        myLastDiscard.setImage(null);
-        competitorLastDiscard.setImage(null);
+        for (Node child : myLastDiscard.getChildren()) {
+            if (child instanceof ImageView) ((ImageView) child).setImage(null);
+            else if (child instanceof Label) child.setVisible(false);
+        }
+        for (Node child : competitorLastDiscard.getChildren()) {
+            if (child instanceof ImageView) ((ImageView) child).setImage(null);
+            else if (child instanceof Label) child.setVisible(false);
+        }
     }
 
     private void removeImageOfDeckCards() {
@@ -657,24 +706,36 @@ public class GameController {
         }
     }
 
-    private void putCommonCardsInRows(ArrayList<CommonCard> closeCombatPlayedUser1, HBox myCloseCombatCardsPlayed) {
+    private void putCommonCardsInRows(ArrayList<CommonCard> closeCombatPlayedUser1, HBox myCloseCombatCardsPlayed, int row) {
         for (int i = 0; i < closeCombatPlayedUser1.size(); i++) {
             String playField = closeCombatPlayedUser1.get(i).getPlayField();
             StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
             ((ImageView) stackPane.getChildren().getFirst()).setImage(closeCombatPlayedUser1.get(i).getImageForGame());
+            if (playField != null && row == 1) {
+                ((Label) stackPane.getChildren().get(2)).setText(setLabelScores(closeCombatPlayedUser1.get(i), closeCombatPlayedUser1, 1));
+                stackPane.getChildren().get(2).setVisible(true);
+            } else if (playField != null && row == 2) {
+                ((Label) stackPane.getChildren().get(2)).setText(setLabelScores(closeCombatPlayedUser1.get(i), closeCombatPlayedUser1, 2));
+                stackPane.getChildren().get(2).setVisible(true);
+            } else if (playField != null && row == 3) {
+                ((Label) stackPane.getChildren().get(2)).setText(setLabelScores(closeCombatPlayedUser1.get(i), closeCombatPlayedUser1, 3));
+                stackPane.getChildren().get(2).setVisible(true);
+            }
             if (closeCombatPlayedUser1.get(i).isHero()) {
                 ((ImageView) stackPane.getChildren().get(1)).setImage(powerHeroImage);
                 ((Label) stackPane.getChildren().get(2)).setTextFill(Color.WHITE);
             } else if (playField != null) {
                 ((ImageView) stackPane.getChildren().get(1)).setImage(powerNormalImage);
-                ((Label) stackPane.getChildren().get(2)).setTextFill(Color.BLACK);
+                if (Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText()) > closeCombatPlayedUser1.get(i).getScore()) {
+                    ((Label) stackPane.getChildren().get(2)).setTextFill(Color.GOLDENROD);
+                } else if (Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText()) < closeCombatPlayedUser1.get(i).getScore()) {
+                    ((Label) stackPane.getChildren().get(2)).setTextFill(Color.RED);
+                } else {
+                    ((Label) stackPane.getChildren().get(2)).setTextFill(Color.BLACK);
+                }
             } else {
-                ((ImageView) stackPane.getChildren().get(1)).setImage(powerNormalImage);
+                ((ImageView) stackPane.getChildren().get(1)).setImage(decoyPower);
                 ((Label) stackPane.getChildren().get(2)).setTextFill(Color.BLACK);
-            }
-            if (playField != null) {
-                ((Label) stackPane.getChildren().get(2)).setText(setLabelScores(closeCombatPlayedUser1.get(i), closeCombatPlayedUser1));
-                stackPane.getChildren().get(2).setVisible(true);
             }
 
             if (playField != null) {
@@ -709,17 +770,17 @@ public class GameController {
         }
     }
 
-    private String setLabelScores(CommonCard commonCard, ArrayList<CommonCard> commonCards) {
+    private String setLabelScores(CommonCard commonCard, ArrayList<CommonCard> commonCards, int row) {
         int score = commonCard.getScore();
-        String playField = commonCard.getPlayField();
         if (commonCard.isHero()) return String.valueOf(score);
-        if (playField.equals("Close Combat") && gameBattleField.getWeatherCards().contains(SpecialCard.BitingFrost)) {
+        if (row == 1 && gameBattleField.getWeatherCards().contains(SpecialCard.BitingFrost)) {
             score = Math.min(1, commonCard.getScore());
-        } else if (playField.equals("Ranged") && (gameBattleField.getWeatherCards().contains(SpecialCard.ImpenetrableFog) || gameBattleField.getWeatherCards().contains(SpecialCard.SkelligeStorm))) {
+        } else if (row == 2 && (gameBattleField.getWeatherCards().contains(SpecialCard.ImpenetrableFog) || gameBattleField.getWeatherCards().contains(SpecialCard.SkelligeStorm))) {
             score = Math.min(1, commonCard.getScore());
-        } else if (playField.equals("Siege") && (gameBattleField.getWeatherCards().contains(SpecialCard.TorrentialRain) || gameBattleField.getWeatherCards().contains(SpecialCard.SkelligeStorm))) {
+        } else if (row == 3 && (gameBattleField.getWeatherCards().contains(SpecialCard.TorrentialRain) || gameBattleField.getWeatherCards().contains(SpecialCard.SkelligeStorm))) {
             score = Math.min(1, commonCard.getScore());
         }
+
         if (commonCard.getAbility().contains("Tight Bond")) {
             int number = 0;
             for (CommonCard card : commonCards) {
@@ -848,6 +909,10 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
+        if ((gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1()) && gameBattleField.isPassedUser2())
+                || (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2()) && gameBattleField.isPassedUser1())) {
+            return;
+        }
         isTransitioning = true;
         gameBattleField.changeTurn();
         ImageView imageView = new ImageView(profilePng);
@@ -894,9 +959,222 @@ public class GameController {
         pause.play();
     }
 
+    public void changeTurnAfterPass() {
+        if (isTransitioning) {
+            return;
+        }
+        isTransitioning = true;
+        gameBattleField.changeTurn();
+        ImageView imageView = new ImageView(profilePng);
+        imageView.setFitHeight(120);
+        imageView.setFitWidth(120);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2);
+        imageView.setOpacity(1.0);
+
+        Label label = new Label(gameBattleField.getWhichUserTurn().getUsername() + " turn");
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 + 40);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 10);
+        label.setOpacity(1.0);
+        label.setTextFill(Color.LEMONCHIFFON);
+        label.setFont(Font.font(30));
+
+        imageView.setBlendMode(BlendMode.SRC_OVER);
+        label.setBlendMode(BlendMode.SRC_OVER);
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.8);
+
+        Pane newPane = new Pane();
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.01));
+        pause.setOnFinished(event -> {
+            removeAllCards();
+            newPane.getChildren().addAll(imageView, label);
+            parentPane.getChildren().add(newPane);
+            pane.setEffect(colorAdjust);
+
+            PauseTransition pause2 = new PauseTransition(Duration.seconds(3));
+            pause2.setOnFinished(event2 -> {
+                newPane.getChildren().removeAll(imageView, label);
+                parentPane.getChildren().remove(newPane);
+                pane.setEffect(null);
+
+                updateBoard();
+                isTransitioning = false;
+            });
+            pause2.play();
+        });
+
+        pause.play();
+    }
 
     public void pass(MouseEvent mouseEvent) {
+        if (isTransitioning) {
+            return;
+        }
+        isTransitioning = true;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            gameBattleField.setPassedUser1(true);
+        } else {
+            gameBattleField.setPassedUser2(true);
+        }
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/notif_round_passed.png"))));
+        imageView.setFitHeight(240);
+        imageView.setFitWidth(320);
+        imageView.setLayoutX((parentPane.getWidth() - imageView.getFitWidth()) / 2 - 200);
+        imageView.setLayoutY((parentPane.getHeight() - imageView.getFitHeight()) / 2 - 50);
 
+        Label passLabel = new Label();
+        passLabel.setText("Round Passed");
+        passLabel.setTextFill(Color.GOLD);
+        Font font = Font.font("Broadway", 40);
+        passLabel.setFont(font);
+        passLabel.setLayoutX((parentPane.getWidth() - passLabel.getWidth()) / 2 - 20);
+        passLabel.setLayoutY((parentPane.getHeight() - passLabel.getHeight()) / 2 - 30);
+
+        Pane newPane = new Pane(imageView, passLabel);
+        parentPane.getChildren().add(newPane);
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.8);
+        pane.setEffect(colorAdjust);
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        pause.setOnFinished(event -> {
+            isTransitioning = false;
+            parentPane.getChildren().remove(newPane);
+            pane.setEffect(null);
+            if ((whichUserIsNotTurn().equals(gameBattleField.getUser1()) && !gameBattleField.isPassedUser1())
+                    || (whichUserIsNotTurn().equals(gameBattleField.getUser2()) && !gameBattleField.isPassedUser2())) {
+                changeTurnAfterPass();
+            } else {
+                endOfTheRound();
+            }
+        });
+
+        pause.play();
+    }
+
+    private void endOfTheRound() {
+        if (isTransitioning) {
+            return;
+        }
+        isTransitioning = true;
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/notif_draw_round.png"))));
+        imageView.setFitHeight(240);
+        imageView.setFitWidth(320);
+        imageView.setLayoutX((parentPane.getWidth() - imageView.getFitWidth()) / 2 - 200);
+        imageView.setLayoutY((parentPane.getHeight() - imageView.getFitHeight()) / 2 - 50);
+
+        Label passLabel = new Label();
+        passLabel.setText("Round Ended");
+        passLabel.setTextFill(Color.GOLD);
+        Font font = Font.font("Broadway", 40);
+        passLabel.setFont(font);
+        passLabel.setLayoutX((parentPane.getWidth() - passLabel.getWidth()) / 2 - 20);
+        passLabel.setLayoutY((parentPane.getHeight() - passLabel.getHeight()) / 2 - 30);
+
+        Pane newPane = new Pane(imageView, passLabel);
+        parentPane.getChildren().add(newPane);
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.8);
+        pane.setEffect(colorAdjust);
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        pause.setOnFinished(event -> {
+            parentPane.getChildren().remove(newPane);
+        });
+        pause.play();
+
+        int scoreFirstPlayer = Integer.parseInt(firstPlayerScore.getText());
+        int scoreSecondPlayer = Integer.parseInt(secondPlayerScore.getText());
+        String winner;
+
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (scoreFirstPlayer > scoreSecondPlayer) {
+                gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                winner = gameBattleField.getUser1().getUsername();
+            } else if (scoreFirstPlayer < scoreSecondPlayer) {
+                gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                winner = gameBattleField.getUser2().getUsername();
+            } else {
+                Faction faction1 = gameBattleField.getUser1().getFactionSelected();
+                Faction faction2 = gameBattleField.getUser2().getFactionSelected();
+                if (faction1.equals(Faction.Nilfgaard) && faction2.equals(Faction.Nilfgaard)) {
+                    winner = "draw";
+                    gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                    gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                } else if (faction1.equals(Faction.Nilfgaard)) {
+                    gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                    winner = gameBattleField.getUser1().getUsername();
+                } else if (faction2.equals(Faction.Nilfgaard)) {
+                    gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                    winner = gameBattleField.getUser2().getUsername();
+                } else {
+                    gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                    gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                    winner = "draw";
+                }
+            }
+        } else {
+            if (scoreFirstPlayer > scoreSecondPlayer) {
+                gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                winner = gameBattleField.getUser2().getUsername();
+            } else if (scoreFirstPlayer < scoreSecondPlayer) {
+                gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                winner = gameBattleField.getUser1().getUsername();
+            } else {
+                Faction faction1 = gameBattleField.getUser1().getFactionSelected();
+                Faction faction2 = gameBattleField.getUser2().getFactionSelected();
+                if (faction1.equals(Faction.Nilfgaard) && faction2.equals(Faction.Nilfgaard)) {
+                    gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                    gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                    winner = "draw";
+                } else if (faction1.equals(Faction.Nilfgaard)) {
+                    gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                    winner = gameBattleField.getUser1().getUsername();
+                } else if (faction2.equals(Faction.Nilfgaard)) {
+                    gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                    winner = gameBattleField.getUser2().getUsername();
+                } else {
+                    gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
+                    gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
+                    winner = "draw";
+                }
+            }
+        }
+        imageView.setImage(profilePng);
+        imageView.setFitHeight(120);
+        imageView.setFitWidth(120);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2);
+        imageView.setOpacity(1.0);
+
+        Label label = new Label();
+        if (winner.equals("draw")) {
+            label.setText("Round tied");
+        } else {
+            label.setText(winner + " won the round");
+        }
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 + 40);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 10);
+        label.setOpacity(1.0);
+        label.setTextFill(Color.LEMONCHIFFON);
+        label.setFont(Font.font(30));
+
+        imageView.setBlendMode(BlendMode.SRC_OVER);
+        label.setBlendMode(BlendMode.SRC_OVER);
+
+        Pane newPane2 = new Pane(imageView, passLabel);
+        parentPane.getChildren().add(newPane2);
+
+        pause = new PauseTransition(Duration.seconds(3));
+        pause.setOnFinished(event -> {
+            parentPane.getChildren().remove(newPane2);
+        });
+        pause.play();
     }
 
     public void selectCard(MouseEvent mouseEvent) {

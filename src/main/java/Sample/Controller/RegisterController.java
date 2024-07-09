@@ -179,4 +179,28 @@ public class RegisterController {
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.start(ApplicationController.getStage());
     }
+
+    public void setUsername(TextField username) {
+        this.username = username;
+    }
+
+    public void setPassword(PasswordField password) {
+        this.password = password;
+    }
+
+    public void setShowPassword(TextField showPassword) {
+        this.showPassword = showPassword;
+    }
+
+    public void setPasswordConfirmation(PasswordField passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
+    }
+
+    public void setNickname(TextField nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setEmail(TextField email) {
+        this.email = email;
+    }
 }

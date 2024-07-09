@@ -2,7 +2,6 @@ package Sample.Model;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -38,6 +37,8 @@ public class GameBattleField {
     private SpecialCard specialFieldInRangedUser2 = null;
     private boolean isPassedUser2 = false;
     private int healthUser2 = 2;
+
+    private int round = 1;
 
     private User whichUserTurn;
     private final ArrayList<SpecialCard> weatherCards = new ArrayList<>();
@@ -163,7 +164,6 @@ public class GameBattleField {
     public SpecialCard getSpecialFieldInSiegeUser2() {
         return specialFieldInSiegeUser2;
     }
-//    Color color = Color;
 
     public void setSpecialFieldInSiegeUser2(SpecialCard specialFieldInSiegeUser2) {
         this.specialFieldInSiegeUser2 = specialFieldInSiegeUser2;
@@ -179,10 +179,6 @@ public class GameBattleField {
 
     public User getWhichUserTurn() {
         return whichUserTurn;
-    }
-
-    public void setWhichUserTurn(User whichUserTurn) {
-        this.whichUserTurn = whichUserTurn;
     }
 
     public boolean isPassedUser1() {
@@ -227,4 +223,11 @@ public class GameBattleField {
         else whichUserTurn = user1;
     }
 
+    public int getRound() {
+        return round;
+    }
+
+    public void setRound(int round) {
+        this.round = round;
+    }
 }

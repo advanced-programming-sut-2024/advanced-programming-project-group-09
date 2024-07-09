@@ -1,4 +1,4 @@
-package Sample.Controller.ChooseCard;
+package Sample.Controller;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;

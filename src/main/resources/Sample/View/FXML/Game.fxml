@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
+
 <StackPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unSelectCardWithMouseClick" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.GameController">
-   <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unSelectCardWithMouseClick" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" >
+   <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unSelectCardWithMouseClick" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
       <ImageView fitHeight="720" fitWidth="1280" layoutX="-1.0">
          <Image url="@../Images/Board.jpg">
          </Image>
@@ -770,8 +771,26 @@
          </font>
       </Label>
       <ImageView fx:id="bigCardShow" fitHeight="360.0" fitWidth="200.0" layoutX="1027.0" layoutY="166.0" pickOnBounds="true" />
-      <ImageView fx:id="myLastDiscard" fitHeight="86.0" fitWidth="63.0" layoutX="1033.0" layoutY="558.0" pickOnBounds="true" />
-      <ImageView fx:id="competitorLastDiscard" fitHeight="86.0" fitWidth="63.0" layoutX="1033.0" layoutY="54.0" pickOnBounds="true" />
+      <StackPane fx:id="myLastDiscard" layoutX="1033.0" layoutY="558.0" prefHeight="86.0" prefWidth="63.0">
+         <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
+         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="22.0" prefWidth="22.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="BOTTOM_RIGHT" />
+         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
+            <StackPane.margin>
+               <Insets left="8.0" />
+            </StackPane.margin></ImageView>
+      </StackPane>
+      <StackPane fx:id="competitorLastDiscard" layoutX="1033.0" layoutY="54.0" prefHeight="86.0" prefWidth="63.0">
+         <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
+         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
+         <Label alignment="CENTER" prefHeight="22.0" prefWidth="22.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
+         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="BOTTOM_RIGHT" />
+         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="BOTTOM_LEFT">
+            <StackPane.margin>
+               <Insets left="8.0" />
+            </StackPane.margin></ImageView>
+      </StackPane>
       <StackPane layoutX="1138.0" layoutY="547.0" prefHeight="100.0" prefWidth="80.0">
          <ImageView fx:id="imageOfMyFaction" fitHeight="86.0" fitWidth="63.0" pickOnBounds="true">
             <StackPane.margin>
@@ -933,12 +952,12 @@
       <ImageView fx:id="firstPlayerCrown" fitHeight="48.0" fitWidth="68.0" layoutX="269.0" layoutY="470.0" pickOnBounds="true" visible="false">
          <Image url="@../Images/Icons/icon_high_score.png" />
       </ImageView>
-      <Label fx:id="secondPlayerPassedLabel" alignment="CENTER" layoutX="260.0" layoutY="151.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed" visible="false">
+      <Label fx:id="secondPlayerPassedLabel" alignment="CENTER" layoutX="260.0" layoutY="151.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed" textFill="WHITE" visible="false">
          <font>
             <Font size="12.0" />
          </font>
       </Label>
-      <Label fx:id="firstPlayerPassedLabel" alignment="CENTER" layoutX="260.0" layoutY="508.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed" visible="false">
+      <Label fx:id="firstPlayerPassedLabel" alignment="CENTER" layoutX="260.0" layoutY="508.0" prefHeight="47.0" prefWidth="84.0" style="-fx-font-size: 25;" styleClass="titleLabel" text="Passed" textFill="WHITE" visible="false">
          <font>
             <Font size="12.0" />
          </font>

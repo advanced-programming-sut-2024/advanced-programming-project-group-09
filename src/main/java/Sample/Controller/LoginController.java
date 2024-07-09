@@ -61,4 +61,12 @@ public class LoginController {
         RegisterMenu registerMenu = new RegisterMenu();
         registerMenu.start(ApplicationController.getStage());
     }
+
+    public void setUsername(TextField username) {
+        this.username = username;
+    }
+
+    public void setPassword(PasswordField password) {
+        this.password = password;
+    }
 }

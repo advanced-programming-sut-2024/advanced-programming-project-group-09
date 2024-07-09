@@ -1,4 +1,4 @@
-package Sample.Controller.ChooseCard;
+package Sample.Controller;
 
 public class ChooseCardSkelligeController {
 }
