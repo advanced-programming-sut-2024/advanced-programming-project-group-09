@@ -19,9 +19,10 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 
 @SuppressWarnings({"FieldCanBeLocal", "MismatchedQueryAndUpdateOfCollection"})
 public class User {
@@ -29,7 +30,6 @@ public class User {
     private String password;
     private String email;
     private String nickname;
-    private String avatarPath;
     private int gamesPlayed;
     private int wins;
     private int draws;
@@ -66,7 +66,6 @@ public class User {
         this.password = password;
         this.email = email;
         this.nickname = nickname;
-        this.avatarPath = User.class.getResource(Settings.DEFAULT_AVATAR).toExternalForm();
         allUsers.add(this);
     }
 
@@ -83,12 +82,16 @@ public class User {
         return null;
     }
 
+    public static User getUserLoginIn() {
+        return userLoginIn;
+    }
+
     public static void setUserLoginIn(User userLoginIn) {
         User.userLoginIn = userLoginIn;
     }
 
     public static User getUserForTest() {
-        return new User("tom", "123", "abcd@gmail.com", "tom");
+        return new User("tome", "123", "abcd@gmail.com", "tom");
     }
 
     public void setFactionLeader(Leader factionLeader) {
@@ -186,23 +189,6 @@ public class User {
             throw new Exception("User doesn't exist");
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public void setAvatarPath(String avatarPath) {
-        this.avatarPath = avatarPath;
-        Request request = new Request();
-        request.setType("user_change");
-        request.setCommand("set_avatar");
-        request.addParameter("username", this.username);
-        request.addParameter("avatar_path", avatarPath);
-        String result = Connection.getInstance().sendRequest(request);
-        if (result.startsWith("400")) {
-            try {
-                throw new Exception("User doesn't exist");
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 
@@ -435,12 +421,12 @@ public class User {
         saveUsers();
     }
 
-    public void removeCardFromCommonCardsInDeck(CommonCard commonCard) {
+    public void removeCardToCommonCardsInDeck(CommonCard commonCard) {
         commonCardsInDeck.remove(commonCard);
         saveUsers();
     }
 
-    public void removeCardFromSpecialCardsInDeck(SpecialCard specialCard) {
+    public void removeCardToSpecialCardsInDeck(SpecialCard specialCard) {
         specialCardsInDeck.remove(specialCard);
         saveUsers();
     }
@@ -467,10 +453,6 @@ public class User {
 
     public String getNickname() {
         return nickname;
-    }
-
-    public static User getUserLoginIn() {
-        return userLoginIn;
     }
 
     public Leader getFactionLeader() {
@@ -506,15 +488,17 @@ public class User {
     }
 
     public int getRank() {
-        return Gwent.getInstance().getUserRank(this);
+        allUsers.sort(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return o2.getRank() - o1.getRank();
+            }
+        });
+        return allUsers.indexOf(this);
     }
 
     public User getCompetitor() {
         return competitor;
-    }
-
-    public String getAvatarPath() {
-        return avatarPath;
     }
 
     public ArrayList<String> getSenders() {
