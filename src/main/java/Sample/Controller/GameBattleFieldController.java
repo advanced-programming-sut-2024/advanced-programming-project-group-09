@@ -53,14 +53,13 @@ public class GameBattleFieldController {
             gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
             specialCard = gameBattleField.getSpecialCardsDeckUser1().get(randomIndex);
             gameBattleField.getSpecialCardsDeckUser1().remove(randomIndex);
-            return specialCard;
         } else {
             randomIndex = random.nextInt(0, gameBattleField.getSpecialCardsDeckUser2().size());
             gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex));
             specialCard = gameBattleField.getSpecialCardsDeckUser2().get(randomIndex);
             gameBattleField.getSpecialCardsDeckUser2().remove(randomIndex);
-            return specialCard;
         }
+        return specialCard;
     }
 
     public CommonCard giveOneRandomCommonCardToUserPlayed(User user) {
@@ -72,14 +71,13 @@ public class GameBattleFieldController {
             gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardInDeckUser1().get(randomIndex));
             commonCard = gameBattleField.getCommonCardInDeckUser1().get(randomIndex);
             gameBattleField.getCommonCardInDeckUser1().remove(randomIndex);
-            return commonCard;
         } else {
             randomIndex = random.nextInt(0, gameBattleField.getCommonCardInDeckUser2().size());
             gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardInDeckUser2().get(randomIndex));
             commonCard = gameBattleField.getCommonCardInDeckUser2().get(randomIndex);
             gameBattleField.getCommonCardInDeckUser2().remove(randomIndex);
-            return commonCard;
         }
+        return commonCard;
     }
 
     public void giveRandomInitialCards() {
@@ -106,7 +104,7 @@ public class GameBattleFieldController {
             else {
                 gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
             }
-            if (gameBattleField.getSpecialCardsDeckUser2().get(randomIndex) == SpecialCard.Decoy) {
+            if (gameBattleField.getSpecialCardsDeckUser2().get(randomIndex2) == SpecialCard.Decoy) {
                 gameBattleField.getCommonCardInBattleFieldUser2().add(CommonCard.Decoy);
                 System.out.println(10);
             }

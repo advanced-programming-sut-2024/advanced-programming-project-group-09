@@ -705,26 +705,50 @@ public class GameController {
                 ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).setImage(specialFieldInCloseCombatUser1.getImageForGame());
                 ((ImageView) myCloseCombatSpecialCard.getChildren().get(1)).setImage(specialFieldInCloseCombatUser1.getImageForPower());
             }
+            else {
+                ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).setImage(null);
+                ((ImageView) myCloseCombatSpecialCard.getChildren().get(1)).setImage(null);
+            }
             if (specialFieldInSiegeUser1 != null) {
                 ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).setImage(specialFieldInSiegeUser1.getImageForGame());
                 ((ImageView) mySiegeSpecialCard.getChildren().get(1)).setImage(specialFieldInSiegeUser1.getImageForPower());
             }
+            else {
+                ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).setImage(null);
+                ((ImageView) mySiegeSpecialCard.getChildren().get(1)).setImage(null);
+            }
             if (specialFieldInRangedUser1 != null) {
                 ((ImageView) myRangedSpecialCard.getChildren().getFirst()).setImage(specialFieldInRangedUser1.getImageForGame());
                 ((ImageView) myRangedSpecialCard.getChildren().get(1)).setImage(specialFieldInRangedUser1.getImageForPower());
+            }
+            else {
+                ((ImageView) myRangedSpecialCard.getChildren().getFirst()).setImage(null);
+                ((ImageView) myRangedSpecialCard.getChildren().get(1)).setImage(null);
             }
         } else {
             if (specialFieldInCloseCombatUser1 != null) {
                 ((ImageView) competitorCloseCombatSpecialCard.getChildren().getFirst()).setImage(specialFieldInCloseCombatUser1.getImageForGame());
                 ((ImageView) competitorCloseCombatSpecialCard.getChildren().get(1)).setImage(specialFieldInCloseCombatUser1.getImageForPower());
             }
+            else {
+                ((ImageView) competitorCloseCombatSpecialCard.getChildren().getFirst()).setImage(null);
+                ((ImageView) competitorCloseCombatSpecialCard.getChildren().get(1)).setImage(null);
+            }
             if (specialFieldInSiegeUser1 != null) {
                 ((ImageView) competitorSiegeSpecialCard.getChildren().getFirst()).setImage(specialFieldInSiegeUser1.getImageForGame());
                 ((ImageView) competitorSiegeSpecialCard.getChildren().get(1)).setImage(specialFieldInSiegeUser1.getImageForPower());
             }
+            else {
+                ((ImageView) competitorSiegeSpecialCard.getChildren().getFirst()).setImage(null);
+                ((ImageView) competitorSiegeSpecialCard.getChildren().get(1)).setImage(null);
+            }
             if (specialFieldInRangedUser1 != null) {
                 ((ImageView) competitorRangedSpecialCard.getChildren().getFirst()).setImage(specialFieldInRangedUser1.getImageForGame());
                 ((ImageView) competitorRangedSpecialCard.getChildren().get(1)).setImage(specialFieldInRangedUser1.getImageForPower());
+            }
+            else {
+                ((ImageView) competitorRangedSpecialCard.getChildren().getFirst()).setImage(null);
+                ((ImageView) competitorRangedSpecialCard.getChildren().get(1)).setImage(null);
             }
         }
     }
@@ -1228,39 +1252,39 @@ public class GameController {
     private void addCardsToDiscard() {
         commonCardsInDiscardUser1.addAll(closeCombatPlayedUser1);
         closeCombatPlayedUser1.clear();
-        if (specialFieldInCloseCombatUser1 != null) {
-            specialCardsDiscardUser1.add(specialFieldInCloseCombatUser1);
-            specialFieldInCloseCombatUser1 = null;
+        if (gameBattleField.getSpecialFieldInCloseCombatUser1() != null) {
+            specialCardsDiscardUser1.add(gameBattleField.getSpecialFieldInCloseCombatUser1());
+            gameBattleField.setSpecialFieldInCloseCombatUser1(null);
         }
         commonCardsInDiscardUser1.addAll(rangedIsPlayedUser1);
         rangedIsPlayedUser1.clear();
-        if (specialFieldInRangedUser1 != null) {
-            specialCardsDiscardUser1.add(specialFieldInRangedUser1);
-            specialFieldInRangedUser1 = null;
+        if (gameBattleField.getSpecialFieldInRangedUser1() != null) {
+            specialCardsDiscardUser1.add(gameBattleField.getSpecialFieldInRangedUser1());
+            gameBattleField.setSpecialFieldInRangedUser1(null);
         }
         commonCardsInDiscardUser1.addAll(siegeIsPlayedUser1);
         siegeIsPlayedUser1.clear();
-        if (specialFieldInSiegeUser1 != null) {
-            specialCardsDiscardUser1.add(specialFieldInSiegeUser1);
-            specialFieldInSiegeUser1 = null;
+        if (gameBattleField.getSpecialFieldInSiegeUser1() != null) {
+            specialCardsDiscardUser1.add(gameBattleField.getSpecialFieldInSiegeUser1());
+            gameBattleField.setSpecialFieldInSiegeUser1(null);
         }
         commonCardsInDiscardUser2.addAll(closeCombatPlayedUser2);
         closeCombatPlayedUser2.clear();
-        if (specialFieldInCloseCombatUser2 != null) {
-            specialCardsDiscardUser2.add(specialFieldInCloseCombatUser2);
-            specialFieldInCloseCombatUser2 = null;
+        if (gameBattleField.getSpecialFieldInCloseCombatUser2() != null) {
+            specialCardsDiscardUser2.add(gameBattleField.getSpecialFieldInCloseCombatUser2());
+            gameBattleField.setSpecialFieldInCloseCombatUser2(null);
         }
         commonCardsInDiscardUser2.addAll(rangedIsPlayedUser2);
         rangedIsPlayedUser2.clear();
-        if (specialFieldInRangedUser2 != null) {
-            specialCardsDiscardUser2.add(specialFieldInRangedUser2);
-            specialFieldInRangedUser2 = null;
+        if (gameBattleField.getSpecialFieldInRangedUser2() != null) {
+            specialCardsDiscardUser2.add(gameBattleField.getSpecialFieldInRangedUser2());
+            gameBattleField.setSpecialFieldInRangedUser2(null);
         }
         commonCardsInDiscardUser2.addAll(siegeIsPlayedUser2);
         siegeIsPlayedUser2.clear();
-        if (specialFieldInSiegeUser2 != null) {
-            specialCardsDiscardUser2.add(specialFieldInSiegeUser2);
-            specialFieldInSiegeUser2 = null;
+        if (gameBattleField.getSpecialFieldInSiegeUser2() != null) {
+            specialCardsDiscardUser2.add(gameBattleField.getSpecialFieldInSiegeUser2());
+            gameBattleField.setSpecialFieldInSiegeUser2(null);
         }
         addWeatherCardsToDiscard();
         updateBoard();
@@ -1414,6 +1438,19 @@ public class GameController {
                         }
                     }
                 } else {
+                    myCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    myRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    mySiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
+                    mySiegeSpecialCard.setStyle("-fx-background-color: transparent;");
+                    myRangedSpecialCard.setStyle("-fx-background-color: transparent;");
+                    myCloseCombatSpecialCard.setStyle("-fx-background-color: transparent;");
+                    competitorSiegeSpecialCard.setStyle("-fx-background-color: transparent;");
+                    competitorRangedSpecialCard.setStyle("-fx-background-color: transparent;");
+                    competitorCloseCombatSpecialCard.setStyle("-fx-background-color: transparent;");
+                    weatherCards.setStyle("-fx-background-color: transparent;");
                     if (((ImageView) ((StackPane) myCloseCombatCardsPlayed.getChildren().getFirst()).getChildren().getFirst()).getImage() != null) {
                         myCloseCombatCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
                     }
@@ -1423,9 +1460,6 @@ public class GameController {
                     if (((ImageView) ((StackPane) mySiegeCardsPlayed.getChildren().getFirst()).getChildren().getFirst()).getImage() != null) {
                         mySiegeCardsPlayed.setStyle("-fx-background-color: rgba(255, 255, 0, 0.3);");
                     }
-                    competitorCloseCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                    competitorRangedCombatCardsPlayed.setStyle("-fx-background-color: transparent;");
-                    competitorSiegeCardsPlayed.setStyle("-fx-background-color: transparent;");
                 }
             } else {
                 switch (playField) {
@@ -1668,8 +1702,6 @@ public class GameController {
             setAnimationForRanged(moraleAnimation);
         } else if (selectedCommonCard.getAbility().contains("Commander's Horn")) {
             setAnimationForRanged(hornAnimation);
-        } else if (selectedCommonCard.getAbility().equals("Scorch")) {
-            scorchAbility();
         } else if (selectedCommonCard.getAbility().equals("Scorch Ranged")) {
             scorchRangedAbility();
         } else {
@@ -2415,58 +2447,162 @@ public class GameController {
 
     private void scorchAbility() {
         int maxScore = 0;
-        ArrayList<CommonCard> allCommonCardsPlayed = new ArrayList<>();
-        allCommonCardsPlayed.addAll(gameBattleField.getSiegeIsPlayedUser1());
-        allCommonCardsPlayed.addAll(gameBattleField.getSiegeIsPlayedUser2());
-        allCommonCardsPlayed.addAll(gameBattleField.getCloseCombatIsPlayedUser1());
-        allCommonCardsPlayed.addAll(gameBattleField.getCloseCombatIsPlayedUser2());
-        allCommonCardsPlayed.addAll(gameBattleField.getRangedIsPlayedUser1());
-        allCommonCardsPlayed.addAll(gameBattleField.getRangedIsPlayedUser2());
-        for (CommonCard commonCard : allCommonCardsPlayed) {
-            if (commonCard.getScore() > maxScore && !commonCard.isHero()) maxScore = commonCard.getScore();
-        }
+        maxScore = getMaxScore(maxScore);
+
         if (maxScore != 0) {
-            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
-                if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).getScore() == maxScore && !gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) {
-                    gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
-                    gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
-                    i -= 1;
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
+                        gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
                 }
+                for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) myRangedCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
+                        gameBattleField.getRangedIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) mySiegeCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
+                        gameBattleField.getSiegeIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
+                        gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
+                        gameBattleField.getRangedIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
+                        gameBattleField.getSiegeIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                gameBattleField.getSpecialCardsDiscardUser1().add(selectedSpecialCard);
+                gameBattleField.getSpecialCardsBattleFieldUser1().remove(selectedSpecialCard);
+            } else {
+                for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
+                    if (((ImageView)stackPane.getChildren().getFirst()).getImage() == null) break;
+                    if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
+                        gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) myRangedCombatCardsPlayed.getChildren().get(i);
+                    if (((ImageView)stackPane.getChildren().getFirst()).getImage() == null) break;
+                    if (gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
+                        gameBattleField.getRangedIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) mySiegeCardsPlayed.getChildren().get(i);
+                    if (((ImageView)stackPane.getChildren().getFirst()).getImage() == null) break;
+                    if (gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
+                        gameBattleField.getSiegeIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                    if (((ImageView)stackPane.getChildren().getFirst()).getImage() == null) break;
+                    if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
+                        gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                    if (((ImageView)stackPane.getChildren().getFirst()).getImage() == null) break;
+                    if (gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
+                        gameBattleField.getRangedIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                    if (((ImageView)stackPane.getChildren().getFirst()).getImage() == null) break;
+                    if (gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
+                        gameBattleField.getSiegeIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+                gameBattleField.getSpecialCardsDiscardUser2().add(selectedSpecialCard);
+                gameBattleField.getSpecialCardsBattleFieldUser2().remove(selectedSpecialCard);
             }
-            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
-                if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).getScore() == maxScore && !gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) {
-                    gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
-                    gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
-                    i -= 1;
-                }
-            }
-            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
-                if (gameBattleField.getRangedIsPlayedUser1().get(i).getScore() == maxScore && !gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) {
-                    gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
-                    gameBattleField.getRangedIsPlayedUser1().remove(i);
-                    i -= 1;
-                }
-            }
-            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
-                if (gameBattleField.getRangedIsPlayedUser2().get(i).getScore() == maxScore && !gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) {
-                    gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
-                    gameBattleField.getRangedIsPlayedUser2().remove(i);
-                    i -= 1;
-                }
-            }
-            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
-                if (gameBattleField.getSiegeIsPlayedUser1().get(i).getScore() == maxScore && !gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) {
-                    gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
-                    gameBattleField.getSiegeIsPlayedUser1().remove(i);
-                    i -= 1;
-                }
-            }
-            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
-                if (gameBattleField.getSiegeIsPlayedUser2().get(i).getScore() == maxScore && !gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) {
-                    gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
-                    gameBattleField.getSiegeIsPlayedUser2().remove(i);
-                    i -= 1;
-                }
+        }
+        else {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                gameBattleField.getSpecialCardsDiscardUser1().add(selectedSpecialCard);
+                gameBattleField.getSpecialCardsBattleFieldUser1().remove(selectedSpecialCard);
+            } else {
+                gameBattleField.getSpecialCardsDiscardUser2().add(selectedSpecialCard);
+                gameBattleField.getSpecialCardsBattleFieldUser2().remove(selectedSpecialCard);
             }
         }
         isTransitioning = false;
@@ -2475,15 +2611,259 @@ public class GameController {
         changeTurn();
     }
 
-    private void scorchCloseCombatAbility() {
+    private int getMaxScore(int maxScore) {
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) myRangedCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) mySiegeCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+        } else {
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) myCloseCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) myRangedCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) mySiegeCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                if (maxScore < score) maxScore = score;
+            }
+        }
+        return maxScore;
+    }
 
+    private void scorchCloseCombatAbility() {
+        int maxScore = getMaxScoreInCloseCombatRow();
+        if (maxScore != 0) {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
+                        gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+            }
+            else {
+                for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
+                        gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+            }
+        }
+        unSelectCard();
+        updateBoard();
+        changeTurn();
+    }
+
+    private int getMaxScoreInCloseCombatRow() {
+        int maxScore = 0;
+        int sum = 0;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                sum += score;
+                if (maxScore < score) maxScore = score;
+            }
+        } else {
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) competitorCloseCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                sum += score;
+                if (maxScore < score) maxScore = score;
+            }
+        }
+        if (sum < 10) return 0;
+        return maxScore;
     }
 
     private void scorchRangedAbility() {
+        int maxScore = getMaxScoreInRangedRow();
+        if (maxScore != 0) {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
+                        gameBattleField.getRangedIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+            }
+            else {
+                for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
+                        gameBattleField.getRangedIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+            }
+        }
+        unSelectCard();
+        updateBoard();
+        changeTurn();
+    }
 
+    private int getMaxScoreInRangedRow() {
+        int maxScore = 0;
+        int sum = 0;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                sum += score;
+                if (maxScore < score) maxScore = score;
+            }
+        } else {
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) competitorRangedCombatCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                sum += score;
+                if (maxScore < score) maxScore = score;
+            }
+        }
+        if (sum < 10) return 0;
+        return maxScore;
     }
 
     private void scorchSiegeAbility() {
+        int maxScore = getMaxScoreInSiegeRow();
+        if (maxScore != 0) {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
+                        gameBattleField.getSiegeIsPlayedUser2().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+            }
+            else {
+                for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                    StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                    if (gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) continue;
+                    int score = Integer.parseInt(((Label)stackPane.getChildren().get(2)).getText());
+                    if (maxScore == score) {
+                        gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
+                        gameBattleField.getSiegeIsPlayedUser1().remove(i);
+                        i -= 1;
+                        updateBoard();
+                    }
+                }
+            }
+        }
+        unSelectCard();
+        updateBoard();
+        changeTurn();
+    }
 
+    private int getMaxScoreInSiegeRow() {
+        int maxScore = 0;
+        int sum = 0;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                sum += score;
+                if (maxScore < score) maxScore = score;
+            }
+        } else {
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                StackPane stackPane = (StackPane) competitorSiegeCardsPlayed.getChildren().get(i);
+                if (gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) continue;
+                int score = Integer.parseInt(((Label) stackPane.getChildren().get(2)).getText());
+                sum += score;
+                if (maxScore < score) maxScore = score;
+            }
+        }
+        if (sum < 10) return 0;
+        return maxScore;
     }
 }
