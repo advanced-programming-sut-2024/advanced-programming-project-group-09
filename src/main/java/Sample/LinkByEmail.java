@@ -8,7 +8,7 @@ import java.util.Properties;
 public class LinkByEmail {
 
     private static final String USERNAME = "parhamfaizolahi@gmail.com";
-    private static final String PASSWORD = "sth";
+    private static final String PASSWORD = "rloy ifjg jrod ltmt";
 
     public static void sendAuthenticationEmail(String toEmail, String token) {
         Properties properties = new Properties();
