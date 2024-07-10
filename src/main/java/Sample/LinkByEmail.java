@@ -6,7 +6,6 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class LinkByEmail {
-
     private static final String USERNAME = "parhamfaizolahi@gmail.com";
     private static final String PASSWORD = "rloy ifjg jrod ltmt";
 
@@ -30,6 +29,7 @@ public class LinkByEmail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("Authentication Link");
 
+            // This URL should be accessible from the recipient's side
             String link = "http://localhost:8080/authenticate?token=" + token;
             message.setText("Click the following link to authenticate: " + link);
 

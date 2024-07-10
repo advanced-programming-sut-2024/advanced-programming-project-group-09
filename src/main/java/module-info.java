@@ -5,6 +5,10 @@ module approj1 {
     requires javafx.controls;
     requires java.base;
     requires com.google.gson;
+    requires javax.mail.api;
+    requires spring.boot;
+    requires spring.boot.autoconfigure;
+    requires spring.web;
 //    requires javafx.Controls;
 //    requires javafx.fxml;
 //    requires javafx.media;
