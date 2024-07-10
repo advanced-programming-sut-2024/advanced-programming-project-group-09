@@ -14,7 +14,7 @@ public class Main {
         if (User.getUsers().isEmpty()) {
             User user = new User("tom", "123", "", "");
             user.setFactionSelected(Faction.Monsters);
-            user.setFactionLeader(Leader.BringerOfDeath);
+            user.setFactionLeader(Leader.TheBeautiful);
             user.getCommonCardsInDeck().add(CommonCard.Botchling);
             user.getCommonCardsInDeck().add(CommonCard.Draug);
             user.getCommonCardsInDeck().add(CommonCard.Leshen);
@@ -44,7 +44,7 @@ public class Main {
 
             User user2 = new User("alex", "123", "", "");
             user2.setFactionSelected(Faction.Monsters);
-            user2.setFactionLeader(Leader.DestroyerOfWorlds);
+            user2.setFactionLeader(Leader.SiegeMaster);
             user2.getCommonCardsInDeck().add(CommonCard.Ghoul);
             user2.getCommonCardsInDeck().add(CommonCard.Imlerith);
             user2.getCommonCardsInDeck().add(CommonCard.Harpy);
@@ -71,9 +71,9 @@ public class Main {
             user2.getSpecialCardsInDeck().add(SpecialCard.ClearWeather);
             user2.getSpecialCardsInDeck().add(SpecialCard.TorrentialRain);
             user2.getSpecialCardsInDeck().add(SpecialCard.SkelligeStorm);
-            user2.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
-            user2.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
-            user2.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
+            user2.getSpecialCardsInDeck().add(SpecialCard.Scorch);
+            user2.getSpecialCardsInDeck().add(SpecialCard.Scorch);
+            user2.getSpecialCardsInDeck().add(SpecialCard.Scorch);
 
             User.saveUsers();
         }

@@ -1,11 +1,13 @@
-package Sample.Controller;
+package Sample.Controller.ChooseCard;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
+import Sample.Enum.Commands;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -24,7 +26,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ChooseCardMonsterController {
+public class ChooseCardScoiaTaelController {
     public Pane cardCollectionPane;
     public ImageView commanderHorn;
     public ImageView decoy;
@@ -73,11 +75,6 @@ public class ChooseCardMonsterController {
     public Label torrentialRainRemainderInDeck;
     public GridPane gridPaneInDeck;
     public Pane inDeckCardPane;
-    public ImageView monsters_leshen;
-    public ImageView monsters_draug;
-    public ImageView monsters_imlerith;
-    public ImageView monsters_kayran;
-    public ImageView monsters_toad;
     public ImageView neutral_ciriInDeck;
     public ImageView neutral_geraltInDeck;
     public ImageView neutral_zoltan;
@@ -90,7 +87,6 @@ public class ChooseCardMonsterController {
     public ImageView neutral_gaunter_odimm;
     public ImageView neutral_emiel;
     public ImageView neutral_dandelion;
-    public ImageView neutral_chort;
     public Label neutral_gaunter_odimm_darknessRemainderInCardCollection;
     public Label neutral_gaunter_odimm_darknessRemainderInDeck;
     public ImageView neutral_zoltanInDeck;
@@ -104,75 +100,6 @@ public class ChooseCardMonsterController {
     public ImageView neutral_emielInDeck;
     public ImageView neutral_chortInDeck;
     public ImageView neutral_dandelionInDeck;
-    public ImageView monsters_arachas_behemoth;
-    public ImageView monsters_earth_elemental;
-    public ImageView monsters_fiend;
-    public ImageView monsters_fire_elemental;
-    public ImageView monsters_forktail;
-    public ImageView monsters_frightener;
-    public ImageView monsters_gravehag;
-    public ImageView monsters_frost_giant;
-    public ImageView monsters_mighty_maiden;
-    public ImageView monsters_katakan;
-    public ImageView monsters_werewolf;
-    public ImageView monsters_arachas;
-    public ImageView monsters_bruxa;
-    public ImageView monsters_ekkima;
-    public ImageView monsters_fleder;
-    public ImageView monsters_celaeno_harpy;
-    public ImageView monsters_cockatrice;
-    public ImageView monsters_endrega;
-    public ImageView monsters_fogling;
-    public ImageView monsters_gargoyle;
-    public ImageView monsters_harpy;
-    public ImageView monsters_nekker_1;
-    public ImageView monsters_ghoul;
-    public ImageView monsters_ghoul_2;
-    public ImageView monsters_ghoul_1;
-    public ImageView monsters_nekker_2;
-    public ImageView monsters_nekker;
-    public ImageView monsters_leshenInDeck;
-    public ImageView monsters_ghoulInDeck;
-    public ImageView monsters_ghoul_2InDeck;
-    public ImageView monsters_ghoul_1InDeck;
-    public ImageView monsters_nekker_2InDeck;
-    public ImageView monsters_nekkerInDeck;
-    public ImageView monsters_nekker_1InDeck;
-    public ImageView monsters_harpyInDeck;
-    public ImageView monsters_gargoyleInDeck;
-    public ImageView monsters_foglingInDeck;
-    public ImageView monsters_endregaInDeck;
-    public ImageView monsters_cockatriceInDeck;
-    public ImageView monsters_celaeno_harpyInDeck;
-    public ImageView monsters_garkainInDeck;
-    public ImageView monsters_flederInDeck;
-    public ImageView monsters_ekkimaInDeck;
-    public ImageView monsters_bruxaInDeck;
-    public ImageView monsters_arachasInDeck;
-    public ImageView monsters_werewolfInDeck;
-    public ImageView monsters_katakanInDeck;
-    public ImageView monsters_mighty_maidenInDeck;
-    public ImageView monsters_frost_giantInDeck;
-    public ImageView monsters_gravehagInDeck;
-    public ImageView monsters_frightenerInDeck;
-    public ImageView monsters_forktailInDeck;
-    public ImageView monsters_fire_elementalInDeck;
-    public ImageView monsters_fiendInDeck;
-    public ImageView monsters_earth_elementalInDeck;
-    public ImageView monsters_arachas_behemothInDeck;
-    public ImageView monsters_toadInDeck;
-    public ImageView monsters_kayranInDeck;
-    public ImageView monsters_inheritsInDeck;
-    public ImageView monsters_draugInDeck;
-    public ImageView monsters_arachas_1InDeck;
-    public ImageView monsters_garkain;
-    public ImageView monsters_arachas_1;
-    public ImageView monsters_arachas_2;
-    public ImageView monsters_arachas_2InDeck;
-    public ImageView monsters_poroniec;
-    public ImageView monsters_poroniecInDeck;
-    public ImageView monsters_wyvern;
-    public ImageView monsters_wyvernInDeck;
     public VBox mardroemVboxInDeck;
     public VBox mardroemVboxInCardCollection;
     public VBox schorchVboxInDeck;
@@ -197,42 +124,6 @@ public class ChooseCardMonsterController {
     public VBox neutral_dandelionVboxInDeck;
     public VBox neutral_chortVboxInDeck;
     public VBox neutral_trissVboxInDeck;
-    public VBox monsters_leshenVboxInDeck;
-    public VBox monsters_draugVboxInDeck;
-    public VBox monsters_imlerithVboxInDeck;
-    public VBox monsters_kayranVboxInDeck;
-    public VBox monsters_toadVboxInDeck;
-    public VBox monsters_arachas_behemothVboxInDeck;
-    public VBox monsters_arachas_1VboxInDeck;
-    public VBox monsters_arachas_2VboxInDeck;
-    public VBox monsters_earth_elementalVboxInDeck;
-    public VBox monsters_fiendVboxInDeck;
-    public VBox monsters_fire_elementalVboxInDeck;
-    public VBox monsters_forktailVboxInDeck;
-    public VBox monsters_frightenerVboxInDeck;
-    public VBox monsters_gravehagVboxInDeck;
-    public VBox monsters_frost_giantVboxInDeck;
-    public VBox monsters_poroniecVboxInDeck;
-    public VBox monsters_wyvernVboxInDeck;
-    public VBox monsters_mighty_maidenVboxInDeck;
-    public VBox monsters_katakanVboxInDeck;
-    public VBox monsters_arachasVboxInDeck;
-    public VBox monsters_bruxaVboxInDeck;
-    public VBox monsters_ekkimaVboxInDeck;
-    public VBox monsters_garkainVboxInDeck;
-    public VBox monsters_flederVboxInDeck;
-    public VBox monsters_celaeno_harpyVboxInDeck;
-    public VBox monsters_cockatriceVboxInDeck;
-    public VBox monsters_endregaVboxInDeck;
-    public VBox monsters_foglingVboxInDeck;
-    public VBox monsters_gargoyleVboxInDeck;
-    public VBox monsters_harpyVboxInDeck;
-    public VBox monsters_nekker_1VboxInDeck;
-    public VBox monsters_nekkerVboxInDeck;
-    public VBox monsters_nekker_2VboxInDeck;
-    public VBox monsters_ghoul_1VboxInDeck;
-    public VBox monsters_ghoul_2VboxInDeck;
-    public VBox monsters_ghoulVboxInDeck;
     public VBox schorchVboxInCardCollection;
     public VBox bitingFrostVboxInCardCollection;
     public VBox clearWeatherVboxInCardCollection;
@@ -253,48 +144,6 @@ public class ChooseCardMonsterController {
     public VBox neutral_trissVboxInCardCollection;
     public VBox neutral_chortVboxInCardCollection;
     public VBox neutral_dandelionVboxInCardCollection;
-    public VBox monsters_lessenVboxInCardCollection;
-    public VBox monsters_draugVboxInCardCollection;
-    public VBox monsters_imlerithVboxInCardCollection;
-    public VBox monsters_kayranVboxInCardCollection;
-    public VBox monsters_toadVboxInCardCollection;
-    public VBox monsters_arachas_behemothVboxInCardCollection;
-    public VBox monsters_earth_elementalVboxInCardCollection;
-    public VBox monsters_fiendVboxInCardCollection;
-    public VBox monsters_fire_elementalVboxInCardCollection;
-    public VBox monsters_forktailVboxInCardCollection;
-    public VBox monsters_frightenerVboxInCardCollection;
-    public VBox monsters_gravehagVboxInCardCollection;
-    public VBox monsters_frost_giantVboxInCardCollection;
-    public VBox monsters_mighty_maidenVboxInCardCollection;
-    public VBox monsters_katakanVboxInCardCollection;
-    public VBox monsters_werewolfVboxInCardCollection;
-    public VBox monsters_leshenVboxInCardCollection;
-    public VBox monsters_arachasVboxInCardCollection;
-    public VBox monsters_bruxaVboxInCardCollection;
-    public VBox monsters_ekkimaVboxInCardCollection;
-    public VBox monsters_flederVboxInCardCollection;
-    public VBox monsters_garkainVboxInCardCollection;
-    public VBox monsters_celaeno_harpyVboxInCardCollection;
-    public VBox monsters_cockatriceVboxInCardCollection;
-    public VBox monsters_arachas_1VboxInCardCollection;
-    public VBox monsters_endregaVboxInCardCollection;
-    public VBox monsters_arachas_2VboxInCardCollection;
-    public VBox monsters_foglingVboxInCardCollection;
-    public VBox monsters_wyvernVboxInCardCollection;
-    public VBox monsters_gargoyleVboxInCardCollection;
-    public VBox monsters_harpyVboxInCardCollection;
-    public VBox monsters_nekker_1VboxInCardCollection;
-    public VBox monsters_poroniecVboxInCardCollection;
-    public VBox monsters_nekkerVboxInCardCollection;
-    public VBox monsters_nekker_2VboxInCardCollection;
-    public VBox monsters_ghoul_1InCardCollection;
-    public VBox monsters_ghoul_2InCardCollection;
-    public VBox monsters_ghoulVboxInCardCollection;
-    public VBox neutral_mysterious_elfVboxInCardCollection;
-    public VBox monsters_werewolfVboxInDeck;
-    public VBox monsters_ghoul_1VboxInCardCollection;
-    public VBox monsters_ghoul_2VboxInCardCollection;
     public Text leaderName;
     public Button uploadDeckButton;
     public Button changeFactionButton;
@@ -304,26 +153,118 @@ public class ChooseCardMonsterController {
     public Text heroCards;
     public Button startGameButton;
     public Button backToLeaderMenu;
-    public Label monsters_arachasRemainderInDeck;
-    public Label monsters_arachasRemainderInCardCollection;
+    public VBox scoiatael_yaevinnVboxInDeck;
+    public ImageView scoreline_yaevinnInDeck;
+    public VBox scoiatael_vrihedd_cadetVboxInDeck;
+    public ImageView scoiatael_vrihedd_cadetInDeck;
+    public VBox scoiatael_vrihedd_brigadeVboxInDeck;
+    public ImageView scoiatael_vrihedd_brigadeInDeck;
+    public Label scoiatael_vrihedd_brigadeRemainderInDeck;
+    public VBox scoiatael_toruvielVboxInDeck;
+    public ImageView scoiatael_toruvielInDeck;
+    public VBox scoiatael_saskiaVboxInDeck;
+    public ImageView scoiatael_saskiaInDeck;
+    public VBox scoiatael_riordainVboxInDeck;
+    public ImageView scoiatael_riordainInDeck;
+    public VBox scoiatael_milvaVboxInDeck;
+    public ImageView scoiatael_milvaInDeck;
+    public VBox scoiatael_mahakamVboxInDeck;
+    public ImageView scoiatael_mahakamInDeck;
+    public Label scoiatael_mahakamRemainderInDeck;
+    public VBox scoiatael_havekar_supportVboxInDeck;
+    public ImageView scoiatael_havekar_supportInDeck;
+    public Label scoiatael_havekar_supportRemainderInDeck;
+    public VBox scoiatael_filavandrelVboxInDeck;
+    public ImageView scoiatael_filavandrelInDeck;
+    public Label scoiatael_filavandrelRemainderInDeck;
+    public VBox scoiatael_elf_skirmisherVboxInDeck;
+    public ImageView scoiatael_elf_skirmisherInDeck;
+    public Label scoiatael_elf_skirmisherRemainderInDeck;
+    public VBox scoiatael_dol_infantryVboxInDeck;
+    public ImageView scoiatael_dol_infantryInDeck;
+    public Label scoiatael_dol_infantryRemainderInDeck;
+    public VBox scoiatael_dwarfVboxInDeck;
+    public ImageView scoiatael_dwarfInDeck;
+    public Label scoiatael_dwarfRemainderInDeck;
+    public VBox scoiatael_isengrimVboxInDeck;
+    public ImageView scoiatael_isengrimInDeck;
+    public VBox scoiatael_iorvethVboxInDeck;
+    public ImageView scoiatael_iorvethInDeck;
+    public VBox scoiatael_idaVboxInDeck;
+    public ImageView scoiatael_idaInDeck;
+    public VBox scoiatael_eithneVboxInDeck;
+    public ImageView scoiatael_eithneInDeck;
+    public VBox scoiatael_dol_archerVboxInDeck;
+    public ImageView scoiatael_dol_archerInDeck;
+    public VBox scoiatael_ciaranVboxInDeck;
+    public ImageView scoiatael_ciaranInDeck;
+    public VBox scoiatael_dennisVboxInDeck;
+    public ImageView scoiatael_dennisInDeck;
+    public VBox scoiatael_barclayVboxInDeck;
+    public ImageView scoiatael_barclayInDeck;
+    public ImageView scoiatael_yaevinn;
     ArrayList<VBox> imageViewsVboxesCardCollection = new ArrayList<>();
     ArrayList<VBox> imageViewsVboxesCardInDeck = new ArrayList<>();
-
     ArrayList<VBox> specialCardVboxesInDeck = new ArrayList<>();
     ArrayList<VBox> heroCardsVboxes = new ArrayList<>();
+    @FXML
+    private VBox neutral_mysterious_elfVboxInCardCollection;
+    private VBox monsters_draugVboxInDeck;
+    private VBox monsters_imlerithVboxInDeck;
+    private VBox monsters_leshenVboxInDeck;
+    private VBox monsters_kayranVboxInDeck;
 
-    public static ChooseCardMonsterController instance;
-
-    public static ChooseCardMonsterController getInstance() {
-        if (instance == null) {
-            instance = new ChooseCardMonsterController();
-        }
-        return instance;
-    }
-
+    public VBox scoiatael_yaevinnVbox;
+    public ImageView scoreline_yaevinn;
+    public VBox scoiatael_vrihedd_cadetVbox;
+    public ImageView scoiatael_vrihedd_cadet;
+    public VBox scoiatael_vrihedd_brigadeVboxInCardCollection;
+    public ImageView scoiatael_vrihedd_brigade;
+    public Label scoiatael_vrihedd_brigadeRemainderInCardCollection;
+    public VBox scoiatael_toruvielVbox;
+    public ImageView scoiatael_toruviel;
+    public VBox scoiatael_saskiaVbox;
+    public ImageView scoiatael_saskia;
+    public VBox scoiatael_riordainVbox;
+    public ImageView scoiatael_riordain;
+    public VBox scoiatael_milvaVbox;
+    public ImageView scoiatael_milva;
+    public VBox scoiatael_mahakamVboxInCardCollection;
+    public ImageView scoiatael_mahakam;
+    public Label scoiatael_mahakamRemainderInCardCollection;
+    public VBox scoiatael_havekar_supportVboxInCardCollection;
+    public ImageView scoiatael_havekar_support;
+    public Label scoiatael_havekar_supportRemainderInCardCollection;
+    public VBox scoiatael_filavandrelVboxInCardCollection;
+    public ImageView scoiatael_filavandrel;
+    public Label scoiatael_filavandrelRemainderInCardCollection;
+    public VBox scoiatael_elf_skirmisherVboxInCardCollection;
+    public ImageView scoiatael_elf_skirmisher;
+    public Label scoiatael_elf_skirmisherRemainderInCardCollection;
+    public VBox scoiatael_dol_infantryVboxInCardCollection;
+    public ImageView scoiatael_dol_infantry;
+    public Label scoiatael_dol_infantryRemainderInCardCollection;
+    public VBox scoiatael_dwarfVboxInCardCollection;
+    public ImageView scoiatael_dwarf;
+    public Label scoiatael_dwarfRemainderInCardCollection;
+    public VBox scoiatael_isengrimVbox;
+    public ImageView scoiatael_isengrim;
+    public VBox scoiatael_iorvethVbox;
+    public ImageView scoiatael_iorveth;
+    public VBox scoiatael_idaVbox;
+    public ImageView scoiatael_ida;
+    public VBox scoiatael_eithneVbox;
+    public ImageView scoiatael_eithne;
+    public VBox scoiatael_dol_archerVbox;
+    public ImageView scoiatael_dol_archer;
+    public VBox scoiatael_ciaranVbox;
+    public ImageView scoiatael_ciaran;
+    public VBox scoiatael_dennisVbox;
+    public ImageView scoiatael_dennis;
+    public VBox scoiatael_barclayVbox;
+    public ImageView scoiatael_barclay;
 
     public void initialize() {
-
         createHeroCardList();
         createSpecialCardList();
         setImagesForCardCollection();
@@ -331,8 +272,6 @@ public class ChooseCardMonsterController {
         imageViewsVboxesCardCollection = createListOfVBoxesForCardCollection();
         imageViewsVboxesCardInDeck = createListOfVBoxesForCardInDeck();
         setAllCardImages();
-
-
         createTimelineForUpdating();
     }
 
@@ -402,47 +341,27 @@ public class ChooseCardMonsterController {
         neutral_dandelion.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_dandelion.jpg"))));
 //        neutral_chort.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
+        scoiatael_eithne.setImage(CommonCard.Eithne.getImage());
+        scoiatael_isengrim.setImage(CommonCard.IsengrimFaoiltiarna.getImage());
+        scoiatael_barclay.setImage(CommonCard.BarclayEls.getImage());
+        scoiatael_dennis.setImage(CommonCard.DennisCranmer.getImage());
+        scoiatael_ciaran.setImage(CommonCard.CiaranAep.getImage());
+        scoiatael_dol_archer.setImage(CommonCard.DolBlathannaArcher.getImage());
+        scoiatael_ida.setImage(CommonCard.IdaEmeanAep.getImage());
+//        scoiatael_iorveth.setImage(CommonCard.io);
+        scoiatael_isengrim.setImage(CommonCard.IsengrimFaoiltiarna.getImage());
+        scoiatael_dwarf.setImage(CommonCard.DwarvenSkirmisher.getImage());
+        scoiatael_dol_infantry.setImage(CommonCard.DolBlathannaScout.getImage());
+        scoiatael_elf_skirmisher.setImage(CommonCard.ElvenSkirmisher.getImage());
+        scoiatael_filavandrel.setImage(CommonCard.FilavandrelAenFidhail.getImage());
+        scoiatael_havekar_support.setImage(CommonCard.HavekarHealer.getImage());
+        scoiatael_mahakam.setImage(CommonCard.MahakamDefender.getImage());
+        scoiatael_riordain.setImage(CommonCard.Riordain.getImage());
+        scoiatael_saskia.setImage(CommonCard.Saskia.getImage());
+        scoiatael_toruviel.setImage(CommonCard.Toruviel.getImage());
+        scoiatael_vrihedd_brigade.setImage(CommonCard.VriheddBrigadeVeteran.getImage());
+        scoiatael_vrihedd_cadet.setImage(CommonCard.VriheddBrigadeRecruit.getImage());
 
-
-        monsters_arachas.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas.jpg"))));
-
-
-        monsters_arachas_behemoth.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
-//        monsters_arachas_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
-//        monsters_arachas_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
-        monsters_bruxa.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
-        monsters_poroniec.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_poroniec.jpg"))));
-        monsters_celaeno_harpy.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
-        monsters_cockatrice.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_cockatrice.jpg"))));
-        monsters_draug.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_draug.jpg"))));
-        monsters_earth_elemental.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_earth_elemental.jpg"))));
-        monsters_ekkima.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ekkima.jpg"))));
-        monsters_endrega.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_endrega.jpg"))));
-        monsters_fiend.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fiend.jpg"))));
-        monsters_fire_elemental.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fire_elemental.jpg"))));
-        monsters_fleder.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fleder.jpg"))));
-        monsters_fogling.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fogling.jpg"))));
-        monsters_forktail.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_forktail.jpg"))));
-        monsters_frightener.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_frightener.jpg"))));
-        monsters_frost_giant.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_frost_giant.jpg"))));
-        monsters_gargoyle.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_gargoyle.jpg"))));
-        monsters_garkain.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_garkain.jpg"))));
-        monsters_ghoul.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul.jpg"))));
-        monsters_ghoul_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul_1.jpg"))));
-        monsters_ghoul_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul_2.jpg"))));
-        monsters_gravehag.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_gravehag.jpg"))));
-        monsters_harpy.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_harpy.jpg"))));
-        monsters_imlerith.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_imlerith.jpg"))));
-        monsters_katakan.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_katakan.jpg"))));
-        monsters_kayran.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_kayran.jpg"))));
-        monsters_leshen.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_leshen.jpg"))));
-        monsters_mighty_maiden.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_mighty_maiden.jpg"))));
-        monsters_nekker.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker.jpg"))));
-        monsters_nekker_1.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker_1.jpg"))));
-        monsters_nekker_2.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker_2.jpg"))));
-        monsters_toad.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_toad.jpg"))));
-        monsters_werewolf.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_werewolf.jpg"))));
-        monsters_wyvern.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_wyvern.jpg"))));
     }
 
     private void setImagesForCardsInDeck() {
@@ -472,49 +391,28 @@ public class ChooseCardMonsterController {
 //        neutral_chortInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_chort.jpg"))));
 
 // TODO : NEUTRAL  -> SHOULD BE COPIED FOR ALL DECK
-
-
-        monsters_arachasInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas.jpg"))));
-        monsters_arachas_behemothInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_behemoth.jpg"))));
-        monsters_bruxaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
-//        monsters_arachas_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_1.jpg"))));
-//        monsters_arachas_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_arachas_2.jpg"))));
-        monsters_bruxaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_bruxa.jpg"))));
-        monsters_celaeno_harpyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_celaeno_harpy.jpg"))));
-        monsters_cockatriceInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_cockatrice.jpg"))));
-        monsters_draugInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_draug.jpg"))));
-        monsters_earth_elementalInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_earth_elemental.jpg"))));
-        monsters_ekkimaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ekkima.jpg"))));
-        monsters_endregaInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_endrega.jpg"))));
-        monsters_fiendInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fiend.jpg"))));
-        monsters_fire_elementalInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fire_elemental.jpg"))));
-        monsters_flederInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fleder.jpg"))));
-        monsters_foglingInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_fogling.jpg"))));
-        monsters_forktailInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_forktail.jpg"))));
-        monsters_frightenerInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_frightener.jpg"))));
-        monsters_frost_giantInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_frost_giant.jpg"))));
-        monsters_gargoyleInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_gargoyle.jpg"))));
-        monsters_garkainInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_garkain.jpg"))));
-        monsters_ghoulInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul.jpg"))));
-        monsters_ghoul_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul_1.jpg"))));
-        monsters_ghoul_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul_2.jpg"))));
-        monsters_gravehagInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_gravehag.jpg"))));
-        monsters_harpyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_harpy.jpg"))));
-        monsters_inheritsInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_imlerith.jpg"))));
-        monsters_katakanInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_katakan.jpg"))));
-        monsters_kayranInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_kayran.jpg"))));
-        monsters_leshenInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_leshen.jpg"))));
-        monsters_mighty_maidenInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_mighty_maiden.jpg"))));
-        monsters_nekkerInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker.jpg"))));
-        monsters_nekker_1InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker_1.jpg"))));
-        monsters_nekker_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_nekker_2.jpg"))));
-        monsters_poroniecInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_poroniec.jpg"))));
-        monsters_toadInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_toad.jpg"))));
-        monsters_werewolfInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_werewolf.jpg"))));
-        monsters_wyvernInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_wyvern.jpg"))));
+        scoiatael_isengrimInDeck.setImage(CommonCard.IsengrimFaoiltiarna.getImage());
+        scoiatael_eithneInDeck.setImage(CommonCard.Eithne.getImage());
+        scoiatael_barclayInDeck.setImage(CommonCard.BarclayEls.getImage());
+        scoiatael_dennisInDeck.setImage(CommonCard.DennisCranmer.getImage());
+        scoiatael_ciaranInDeck.setImage(CommonCard.CiaranAep.getImage());
+        scoiatael_dol_archerInDeck.setImage(CommonCard.DolBlathannaArcher.getImage());
+        scoiatael_idaInDeck.setImage(CommonCard.IdaEmeanAep.getImage());
+//        scoiatael_iorveth.setImage(CommonCard.io);
+        scoiatael_isengrimInDeck.setImage(CommonCard.IsengrimFaoiltiarna.getImage());
+        scoiatael_dwarfInDeck.setImage(CommonCard.DwarvenSkirmisher.getImage());
+        scoiatael_dol_infantryInDeck.setImage(CommonCard.DolBlathannaScout.getImage());
+        scoiatael_elf_skirmisherInDeck.setImage(CommonCard.ElvenSkirmisher.getImage());
+        scoiatael_filavandrelInDeck.setImage(CommonCard.FilavandrelAenFidhail.getImage());
+        scoiatael_havekar_supportInDeck.setImage(CommonCard.HavekarHealer.getImage());
+        scoiatael_mahakamInDeck.setImage(CommonCard.MahakamDefender.getImage());
+        scoiatael_riordainInDeck.setImage(CommonCard.Riordain.getImage());
+        scoiatael_saskiaInDeck.setImage(CommonCard.Saskia.getImage());
+        scoiatael_toruvielInDeck.setImage(CommonCard.Toruviel.getImage());
+        scoiatael_vrihedd_brigadeInDeck.setImage(CommonCard.VriheddBrigadeVeteran.getImage());
+        scoiatael_vrihedd_cadetInDeck.setImage(CommonCard.VriheddBrigadeRecruit.getImage());
 
     }
-
 
     public void createSpecialCardList() {
         specialCardVboxesInDeck.add(decoyVboxInDeck);
@@ -599,7 +497,7 @@ public class ChooseCardMonsterController {
                 }
             }
         }
-        numberOfAllCards.setText("All cards Selected: " + allCards + " / 22");
+        numberOfAllCards.setText("Number of Unit Cards: " + allCards + "/22");
     }
 
 
@@ -636,6 +534,7 @@ public class ChooseCardMonsterController {
             int decoyInCardCollection = Integer.parseInt(decoyRemainderInCardCollection.getText().substring(0, 1));
             if (decoyInCardCollection == 0) {
                 decoyVboxInCardCollection.setVisible(true);
+
             }
             decoyInCardCollection++;
             decoyRemainderInCardCollection.setText(decoyInCardCollection + "X");
@@ -944,6 +843,60 @@ public class ChooseCardMonsterController {
         bitingFrostRemainderInCardCollection.setText(remainingInCardSelection + "X");
     }
 
+    public void scoiatael_elf_skirmisherUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_elf_skirmisherRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int scoiatael_elf_skirmisherInDeck = Integer.parseInt(scoiatael_elf_skirmisherRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_elf_skirmisherInDeck == 1) {
+                scoiatael_elf_skirmisherVboxInDeck.setVisible(false);
+            }
+            scoiatael_elf_skirmisherInDeck--;
+            scoiatael_elf_skirmisherRemainderInDeck.setText(scoiatael_elf_skirmisherInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int scoiatael_elf_skirmisherInCardCollection = Integer.parseInt(scoiatael_elf_skirmisherRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_elf_skirmisherInCardCollection == 0) {
+                scoiatael_elf_skirmisherVboxInCardCollection.setVisible(true);
+            }
+            scoiatael_elf_skirmisherInCardCollection++;
+            scoiatael_elf_skirmisherRemainderInCardCollection.setText(scoiatael_elf_skirmisherInCardCollection + "X");
+        }
+        scoiatael_elf_skirmisherRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void scoiatael_elf_skirmisherSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_elf_skirmisherRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int scoiatael_elf_skirmisherInCardCollection = Integer.parseInt(scoiatael_elf_skirmisherRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_elf_skirmisherInCardCollection == 1) {
+                scoiatael_elf_skirmisherVboxInCardCollection.setVisible(false);
+            }
+            scoiatael_elf_skirmisherInCardCollection--;
+            scoiatael_elf_skirmisherRemainderInCardCollection.setText(scoiatael_elf_skirmisherInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int scoiatael_elf_skirmisherInDeck = Integer.parseInt(scoiatael_elf_skirmisherRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_elf_skirmisherInDeck == 0) {
+                scoiatael_elf_skirmisherVboxInDeck.setVisible(true);
+            }
+            scoiatael_elf_skirmisherInDeck++;
+            scoiatael_elf_skirmisherRemainderInDeck.setText(scoiatael_elf_skirmisherInDeck + "X");
+        }
+        scoiatael_elf_skirmisherRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
 
     public void clearWeatherUnselected(MouseEvent mouseEvent) {
         int remainingInDeck = Integer.parseInt(clearWeatherRemainderInDeck.getText().substring(0, 1));
@@ -1110,6 +1063,60 @@ public class ChooseCardMonsterController {
     }
 
 
+    public void scoiatael_mahakamUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_mahakamRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int scoiatael_mahakamInDeck = Integer.parseInt(scoiatael_mahakamRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_mahakamInDeck == 1) {
+                scoiatael_mahakamVboxInDeck.setVisible(false);
+            }
+            scoiatael_mahakamInDeck--;
+            scoiatael_mahakamRemainderInDeck.setText(scoiatael_mahakamInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int scoiatael_mahakamInCardCollection = Integer.parseInt(scoiatael_mahakamRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_mahakamInCardCollection == 0) {
+                scoiatael_mahakamVboxInCardCollection.setVisible(true);
+            }
+            scoiatael_mahakamInCardCollection++;
+            scoiatael_mahakamRemainderInCardCollection.setText(scoiatael_mahakamInCardCollection + "X");
+        }
+        scoiatael_mahakamRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void scoiatael_mahakamSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_mahakamRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int scoiatael_mahakamInCardCollection = Integer.parseInt(scoiatael_mahakamRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_mahakamInCardCollection == 1) {
+                scoiatael_mahakamVboxInCardCollection.setVisible(false);
+            }
+            scoiatael_mahakamInCardCollection--;
+            scoiatael_mahakamRemainderInCardCollection.setText(scoiatael_mahakamInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int scoiatael_mahakamInDeck = Integer.parseInt(scoiatael_mahakamRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_mahakamInDeck == 0) {
+                scoiatael_mahakamVboxInDeck.setVisible(true);
+            }
+            scoiatael_mahakamInDeck++;
+            scoiatael_mahakamRemainderInDeck.setText(scoiatael_mahakamInDeck + "X");
+        }
+        scoiatael_mahakamRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
     public void torrentialRainUnselected(MouseEvent mouseEvent) {
         int remainingInDeck = Integer.parseInt(torrentialRainRemainderInDeck.getText().substring(0, 1));
         if (remainingInDeck == 0) return;
@@ -1163,58 +1170,275 @@ public class ChooseCardMonsterController {
         }
         torrentialRainRemainderInCardCollection.setText(remainingInCardSelection + "X");
     }
-    public void monsters_arachasUnselected(MouseEvent mouseEvent) {
-        int remainingInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
+
+    public void scoiatael_dwarfUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_dwarfRemainderInDeck.getText().substring(0, 1));
         if (remainingInDeck == 0) return;
         remainingInDeck--;
         if (remainingInDeck == 0)
 //            deleteOneDecoyFromDeck();
         {
-            int monsters_arachasInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
-            if (monsters_arachasInDeck == 1) {
-                monsters_arachasVboxInDeck.setVisible(false);
+            int scoiatael_dwarfInDeck = Integer.parseInt(scoiatael_dwarfRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_dwarfInDeck == 1) {
+                scoiatael_dwarfVboxInDeck.setVisible(false);
             }
-            monsters_arachasInDeck--;
-            monsters_arachasRemainderInDeck.setText(monsters_arachasInDeck + "X");
+            scoiatael_dwarfInDeck--;
+            scoiatael_dwarfRemainderInDeck.setText(scoiatael_dwarfInDeck + "X");
 
         }
 //        addOneDecoyToCardCollection();
         {
-            int monsters_arachasInCardCollection = Integer.parseInt(monsters_arachasRemainderInCardCollection.getText().substring(0, 1));
-            if (monsters_arachasInCardCollection == 0) {
-                monsters_arachasVboxInCardCollection.setVisible(true);
+            int scoiatael_dwarfInCardCollection = Integer.parseInt(scoiatael_dwarfRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_dwarfInCardCollection == 0) {
+                scoiatael_dwarfVboxInCardCollection.setVisible(true);
             }
-            monsters_arachasInCardCollection++;
-            monsters_arachasRemainderInCardCollection.setText(monsters_arachasInCardCollection + "X");
+            scoiatael_dwarfInCardCollection++;
+            scoiatael_dwarfRemainderInCardCollection.setText(scoiatael_dwarfInCardCollection + "X");
         }
-        monsters_arachasRemainderInDeck.setText(remainingInDeck + "X");
+        scoiatael_dwarfRemainderInDeck.setText(remainingInDeck + "X");
     }
 
 
-    public void monsters_arachasSelected(MouseEvent mouseEvent) {
-        int remainingInCardSelection = Integer.parseInt(monsters_arachasRemainderInCardCollection.getText().substring(0, 1));
+    public void scoiatael_dwarfSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_dwarfRemainderInCardCollection.getText().substring(0, 1));
         if (remainingInCardSelection == 0) return;
         remainingInCardSelection--;
         if (remainingInCardSelection == 0) {
 //            deleteOneDecoyFromCardCollection();
-            int monsters_arachasInCardCollection = Integer.parseInt(monsters_arachasRemainderInCardCollection.getText().substring(0, 1));
-            if (monsters_arachasInCardCollection == 1) {
-                monsters_arachasVboxInCardCollection.setVisible(false);
+            int scoiatael_dwarfInCardCollection = Integer.parseInt(scoiatael_dwarfRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_dwarfInCardCollection == 1) {
+                scoiatael_dwarfVboxInCardCollection.setVisible(false);
             }
-            monsters_arachasInCardCollection--;
-            monsters_arachasRemainderInCardCollection.setText(monsters_arachasInCardCollection + "X");
+            scoiatael_dwarfInCardCollection--;
+            scoiatael_dwarfRemainderInCardCollection.setText(scoiatael_dwarfInCardCollection + "X");
 
         }
 //        addOneDecoyToDeck();
         {
-            int monsters_arachasInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
-            if (monsters_arachasInDeck == 0) {
-                monsters_arachasVboxInDeck.setVisible(true);
+            int scoiatael_dwarfInDeck = Integer.parseInt(scoiatael_dwarfRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_dwarfInDeck == 0) {
+                scoiatael_dwarfVboxInDeck.setVisible(true);
             }
-            monsters_arachasInDeck++;
-            monsters_arachasRemainderInDeck.setText(monsters_arachasInDeck + "X");
+            scoiatael_dwarfInDeck++;
+            scoiatael_dwarfRemainderInDeck.setText(scoiatael_dwarfInDeck + "X");
         }
-        monsters_arachasRemainderInCardCollection.setText(remainingInCardSelection + "X");
+        scoiatael_dwarfRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
+    public void scoiatael_filavandrelUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_filavandrelRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int scoiatael_filavandrelInDeck = Integer.parseInt(scoiatael_filavandrelRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_filavandrelInDeck == 1) {
+                scoiatael_filavandrelVboxInDeck.setVisible(false);
+            }
+            scoiatael_filavandrelInDeck--;
+            scoiatael_filavandrelRemainderInDeck.setText(scoiatael_filavandrelInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int scoiatael_filavandrelInCardCollection = Integer.parseInt(scoiatael_filavandrelRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_filavandrelInCardCollection == 0) {
+                scoiatael_filavandrelVboxInCardCollection.setVisible(true);
+            }
+            scoiatael_filavandrelInCardCollection++;
+            scoiatael_filavandrelRemainderInCardCollection.setText(scoiatael_filavandrelInCardCollection + "X");
+        }
+        scoiatael_filavandrelRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void scoiatael_filavandrelSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_filavandrelRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int scoiatael_filavandrelInCardCollection = Integer.parseInt(scoiatael_filavandrelRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_filavandrelInCardCollection == 1) {
+                scoiatael_filavandrelVboxInCardCollection.setVisible(false);
+            }
+            scoiatael_filavandrelInCardCollection--;
+            scoiatael_filavandrelRemainderInCardCollection.setText(scoiatael_filavandrelInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int scoiatael_filavandrelInDeck = Integer.parseInt(scoiatael_filavandrelRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_filavandrelInDeck == 0) {
+                scoiatael_filavandrelVboxInDeck.setVisible(true);
+            }
+            scoiatael_filavandrelInDeck++;
+            scoiatael_filavandrelRemainderInDeck.setText(scoiatael_filavandrelInDeck + "X");
+        }
+        scoiatael_filavandrelRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
+    public void scoiatael_havekar_supportUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_havekar_supportRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int scoiatael_havekar_supportInDeck = Integer.parseInt(scoiatael_havekar_supportRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_havekar_supportInDeck == 1) {
+                scoiatael_havekar_supportVboxInDeck.setVisible(false);
+            }
+            scoiatael_havekar_supportInDeck--;
+            scoiatael_havekar_supportRemainderInDeck.setText(scoiatael_havekar_supportInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int scoiatael_havekar_supportInCardCollection = Integer.parseInt(scoiatael_havekar_supportRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_havekar_supportInCardCollection == 0) {
+                scoiatael_havekar_supportVboxInCardCollection.setVisible(true);
+            }
+            scoiatael_havekar_supportInCardCollection++;
+            scoiatael_havekar_supportRemainderInCardCollection.setText(scoiatael_havekar_supportInCardCollection + "X");
+        }
+        scoiatael_havekar_supportRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void scoiatael_havekar_supportSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_havekar_supportRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int scoiatael_havekar_supportInCardCollection = Integer.parseInt(scoiatael_havekar_supportRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_havekar_supportInCardCollection == 1) {
+                scoiatael_havekar_supportVboxInCardCollection.setVisible(false);
+            }
+            scoiatael_havekar_supportInCardCollection--;
+            scoiatael_havekar_supportRemainderInCardCollection.setText(scoiatael_havekar_supportInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int scoiatael_havekar_supportInDeck = Integer.parseInt(scoiatael_havekar_supportRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_havekar_supportInDeck == 0) {
+                scoiatael_havekar_supportVboxInDeck.setVisible(true);
+            }
+            scoiatael_havekar_supportInDeck++;
+            scoiatael_havekar_supportRemainderInDeck.setText(scoiatael_havekar_supportInDeck + "X");
+        }
+        scoiatael_havekar_supportRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
+    public void scoiatael_vrihedd_brigadeUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_vrihedd_brigadeRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int scoiatael_vrihedd_brigadeInDeck = Integer.parseInt(scoiatael_vrihedd_brigadeRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_vrihedd_brigadeInDeck == 1) {
+                scoiatael_vrihedd_brigadeVboxInDeck.setVisible(false);
+            }
+            scoiatael_vrihedd_brigadeInDeck--;
+            scoiatael_vrihedd_brigadeRemainderInDeck.setText(scoiatael_vrihedd_brigadeInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int scoiatael_vrihedd_brigadeInCardCollection = Integer.parseInt(scoiatael_vrihedd_brigadeRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_vrihedd_brigadeInCardCollection == 0) {
+                scoiatael_vrihedd_brigadeVboxInCardCollection.setVisible(true);
+            }
+            scoiatael_vrihedd_brigadeInCardCollection++;
+            scoiatael_vrihedd_brigadeRemainderInCardCollection.setText(scoiatael_vrihedd_brigadeInCardCollection + "X");
+        }
+        scoiatael_vrihedd_brigadeRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void scoiatael_dol_infantrySelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_dol_infantryRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int scoiatael_dol_infantryInCardCollection = Integer.parseInt(scoiatael_dol_infantryRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_dol_infantryInCardCollection == 1) {
+                scoiatael_dol_infantryVboxInCardCollection.setVisible(false);
+            }
+            scoiatael_dol_infantryInCardCollection--;
+            scoiatael_dol_infantryRemainderInCardCollection.setText(scoiatael_dol_infantryInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int scoiatael_dol_infantryInDeck = Integer.parseInt(scoiatael_dol_infantryRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_dol_infantryInDeck == 0) {
+                scoiatael_dol_infantryVboxInDeck.setVisible(true);
+            }
+            scoiatael_dol_infantryInDeck++;
+            scoiatael_dol_infantryRemainderInDeck.setText(scoiatael_dol_infantryInDeck + "X");
+        }
+        scoiatael_dol_infantryRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
+    public void scoiatael_dol_infantryUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(scoiatael_dol_infantryRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int scoiatael_dol_infantryInDeck = Integer.parseInt(scoiatael_dol_infantryRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_dol_infantryInDeck == 1) {
+                scoiatael_dol_infantryVboxInDeck.setVisible(false);
+            }
+            scoiatael_dol_infantryInDeck--;
+            scoiatael_dol_infantryRemainderInDeck.setText(scoiatael_dol_infantryInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int scoiatael_dol_infantryInCardCollection = Integer.parseInt(scoiatael_dol_infantryRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_dol_infantryInCardCollection == 0) {
+                scoiatael_dol_infantryVboxInCardCollection.setVisible(true);
+            }
+            scoiatael_dol_infantryInCardCollection++;
+            scoiatael_dol_infantryRemainderInCardCollection.setText(scoiatael_dol_infantryInCardCollection + "X");
+        }
+        scoiatael_dol_infantryRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void scoiatael_vrihedd_brigadeSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(scoiatael_vrihedd_brigadeRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int scoiatael_vrihedd_brigadeInCardCollection = Integer.parseInt(scoiatael_vrihedd_brigadeRemainderInCardCollection.getText().substring(0, 1));
+            if (scoiatael_vrihedd_brigadeInCardCollection == 1) {
+                scoiatael_vrihedd_brigadeVboxInCardCollection.setVisible(false);
+            }
+            scoiatael_vrihedd_brigadeInCardCollection--;
+            scoiatael_vrihedd_brigadeRemainderInCardCollection.setText(scoiatael_vrihedd_brigadeInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int scoiatael_vrihedd_brigadeInDeck = Integer.parseInt(scoiatael_vrihedd_brigadeRemainderInDeck.getText().substring(0, 1));
+            if (scoiatael_vrihedd_brigadeInDeck == 0) {
+                scoiatael_vrihedd_brigadeVboxInDeck.setVisible(true);
+            }
+            scoiatael_vrihedd_brigadeInDeck++;
+            scoiatael_vrihedd_brigadeRemainderInDeck.setText(scoiatael_vrihedd_brigadeInDeck + "X");
+        }
+        scoiatael_vrihedd_brigadeRemainderInCardCollection.setText(remainingInCardSelection + "X");
     }
 
     public void neutral_ciriUnselected(MouseEvent mouseEvent) {
@@ -1260,63 +1484,6 @@ public class ChooseCardMonsterController {
     public void neutral_yenneferSelected(MouseEvent mouseEvent) {
         neutral_yenneferVboxInCardCollection.setVisible(false);
         neutral_yenneferVboxInDeck.setVisible(true);
-    }
-
-
-    public void monsters_leshenUnselected(MouseEvent mouseEvent) {
-        monsters_leshenVboxInCardCollection.setVisible(true);
-        monsters_leshenVboxInDeck.setVisible(false);
-    }
-
-
-    public void monsters_leshenSelected(MouseEvent mouseEvent) {
-        monsters_leshenVboxInCardCollection.setVisible(false);
-        monsters_leshenVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_draugUnselected(MouseEvent mouseEvent) {
-        monsters_draugVboxInCardCollection.setVisible(true);
-        monsters_draugVboxInDeck.setVisible(false);
-    }
-
-
-    public void monsters_draugSelected(MouseEvent mouseEvent) {
-        monsters_draugVboxInCardCollection.setVisible(false);
-        monsters_draugVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_imlerithUnselected(MouseEvent mouseEvent) {
-        monsters_imlerithVboxInCardCollection.setVisible(true);
-        monsters_imlerithVboxInDeck.setVisible(false);
-    }
-
-
-    public void monsters_imlerithSelected(MouseEvent mouseEvent) {
-        monsters_imlerithVboxInCardCollection.setVisible(false);
-        monsters_imlerithVboxInDeck.setVisible(true);
-    }
-
-
-    public void monsters_kayranUnselected(MouseEvent mouseEvent) {
-        monsters_kayranVboxInCardCollection.setVisible(true);
-        monsters_kayranVboxInDeck.setVisible(false);
-    }
-
-
-    public void monsters_kayranSelected(MouseEvent mouseEvent) {
-        monsters_kayranVboxInCardCollection.setVisible(false);
-        monsters_kayranVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_toadUnselected(MouseEvent mouseEvent) {
-        monsters_toadVboxInCardCollection.setVisible(true);
-        monsters_toadVboxInDeck.setVisible(false);
-    }
-
-
-    public void monsters_toadSelected(MouseEvent mouseEvent) {
-        monsters_toadVboxInCardCollection.setVisible(false);
-        monsters_toadVboxInDeck.setVisible(true);
     }
 
     public void neutral_villenUnselected(MouseEvent mouseEvent) {
@@ -1393,18 +1560,6 @@ public class ChooseCardMonsterController {
         neutral_dandelionVboxInDeck.setVisible(false);
     }
 
-
-//
-//    public void neutral_chortSelected(MouseEvent mouseEvent) {
-//        neutral_chortVboxInCardCollection.setVisible(false);
-//        neutral_chortVboxInDeck.setVisible(true);
-//    }
-//
-//    public void neutral_chortUnselected(MouseEvent mouseEvent) {
-//        neutral_chortVboxInCardCollection.setVisible(true);
-//        neutral_chortVboxInDeck.setVisible(false);
-//    }
-
     public void neutral_zoltanSelected(MouseEvent mouseEvent) {
         neutral_zoltanVboxInCardCollection.setVisible(false);
         neutral_zoltanVboxInDeck.setVisible(true);
@@ -1426,311 +1581,138 @@ public class ChooseCardMonsterController {
         neutral_mysterious_elfVboxInDeck.setVisible(false);
     }
 
-
-    public void monsters_earth_elementalSelected(MouseEvent mouseEvent) {
-        monsters_earth_elementalVboxInCardCollection.setVisible(false);
-        monsters_earth_elementalVboxInDeck.setVisible(true);
+    public void scoiatael_vrihedd_cadetSelected(MouseEvent mouseEvent) {
+        scoiatael_vrihedd_cadetVbox.setVisible(false);
+        scoiatael_vrihedd_cadetVboxInDeck.setVisible(true);
     }
 
-    public void monsters_earth_elementalUnselected(MouseEvent mouseEvent) {
-        monsters_earth_elementalVboxInCardCollection.setVisible(true);
-        monsters_earth_elementalVboxInDeck.setVisible(false);
+    public void scoiatael_vrihedd_cadetUnselected(MouseEvent mouseEvent) {
+        scoiatael_vrihedd_cadetVbox.setVisible(true);
+        scoiatael_vrihedd_cadetVboxInDeck.setVisible(false);
     }
 
-    public void monsters_fiendSelected(MouseEvent mouseEvent) {
-        monsters_fiendVboxInCardCollection.setVisible(false);
-        monsters_fiendVboxInDeck.setVisible(true);
+    public void scoiatael_toruvielSelected(MouseEvent mouseEvent) {
+        scoiatael_toruvielVbox.setVisible(false);
+        scoiatael_toruvielVboxInDeck.setVisible(true);
     }
 
-    public void monsters_fiendUnselected(MouseEvent mouseEvent) {
-        monsters_fiendVboxInCardCollection.setVisible(true);
-        monsters_fiendVboxInDeck.setVisible(false);
+    public void scoiatael_toruvielUnselected(MouseEvent mouseEvent) {
+        scoiatael_toruvielVbox.setVisible(true);
+        scoiatael_toruvielVboxInDeck.setVisible(false);
     }
 
-    public void monsters_fire_elementalSelected(MouseEvent mouseEvent) {
-        monsters_fire_elementalVboxInCardCollection.setVisible(false);
-        monsters_fire_elementalVboxInDeck.setVisible(true);
+    public void scoiatael_milvaSelected(MouseEvent mouseEvent) {
+        scoiatael_milvaVbox.setVisible(false);
+        scoiatael_milvaVboxInDeck.setVisible(true);
     }
 
-    public void monsters_fire_elementalUnselected(MouseEvent mouseEvent) {
-        monsters_fire_elementalVboxInCardCollection.setVisible(true);
-        monsters_fire_elementalVboxInDeck.setVisible(false);
+    public void scoiatael_milvaUnselected(MouseEvent mouseEvent) {
+        scoiatael_milvaVbox.setVisible(true);
+        scoiatael_milvaVboxInDeck.setVisible(false);
     }
 
-    public void monsters_forktailSelected(MouseEvent mouseEvent) {
-        monsters_forktailVboxInCardCollection.setVisible(false);
-        monsters_forktailVboxInDeck.setVisible(true);
+    public void scoiatael_saskiaSelected(MouseEvent mouseEvent) {
+        scoiatael_saskiaVbox.setVisible(false);
+        scoiatael_saskiaVboxInDeck.setVisible(true);
     }
 
-    public void monsters_forktailUnselected(MouseEvent mouseEvent) {
-        monsters_forktailVboxInCardCollection.setVisible(true);
-        monsters_forktailVboxInDeck.setVisible(false);
+    public void scoiatael_saskiaUnselected(MouseEvent mouseEvent) {
+        scoiatael_saskiaVbox.setVisible(true);
+        scoiatael_saskiaVboxInDeck.setVisible(false);
     }
 
-    public void monsters_frightenerSelected(MouseEvent mouseEvent) {
-        monsters_frightenerVboxInCardCollection.setVisible(false);
-        monsters_frightenerVboxInDeck.setVisible(true);
+    public void scoiatael_riordainSelected(MouseEvent mouseEvent) {
+        scoiatael_riordainVbox.setVisible(false);
+        scoiatael_riordainVboxInDeck.setVisible(true);
     }
 
-    public void monsters_frightenerUnselected(MouseEvent mouseEvent) {
-        monsters_frightenerVboxInCardCollection.setVisible(true);
-        monsters_frightenerVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_gravehagSelected(MouseEvent mouseEvent) {
-        monsters_gravehagVboxInCardCollection.setVisible(false);
-        monsters_gravehagVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_gravehagUnselected(MouseEvent mouseEvent) {
-        monsters_gravehagVboxInCardCollection.setVisible(true);
-        monsters_gravehagVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_frost_giantSelected(MouseEvent mouseEvent) {
-        monsters_frost_giantVboxInCardCollection.setVisible(false);
-        monsters_frost_giantVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_frost_giantUnselected(MouseEvent mouseEvent) {
-        monsters_frost_giantVboxInCardCollection.setVisible(true);
-        monsters_frost_giantVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_mighty_maidenSelected(MouseEvent mouseEvent) {
-        monsters_mighty_maidenVboxInCardCollection.setVisible(false);
-        monsters_mighty_maidenVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_mighty_maidenUnselected(MouseEvent mouseEvent) {
-        monsters_mighty_maidenVboxInCardCollection.setVisible(true);
-        monsters_mighty_maidenVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_katakanSelected(MouseEvent mouseEvent) {
-        monsters_katakanVboxInCardCollection.setVisible(false);
-        monsters_katakanVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_katakanUnselected(MouseEvent mouseEvent) {
-        monsters_katakanVboxInCardCollection.setVisible(true);
-        monsters_katakanVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_werewolfSelected(MouseEvent mouseEvent) {
-        monsters_werewolfVboxInCardCollection.setVisible(false);
-        monsters_werewolfVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_werewolfUnselected(MouseEvent mouseEvent) {
-        monsters_werewolfVboxInCardCollection.setVisible(true);
-        monsters_werewolfVboxInDeck.setVisible(false);
+    public void scoiatael_riordainUnselected(MouseEvent mouseEvent) {
+        scoiatael_riordainVbox.setVisible(true);
+        scoiatael_riordainVboxInDeck.setVisible(false);
     }
 
 
-
-    public void monsters_arachas_1Selected(MouseEvent mouseEvent) {
-        monsters_arachas_1VboxInCardCollection.setVisible(false);
-        monsters_arachas_1VboxInDeck.setVisible(true);
+    public void scoiatael_isengrimUnselected(MouseEvent mouseEvent) {
+        scoiatael_isengrimVbox.setVisible(true);
+        scoiatael_isengrimVboxInDeck.setVisible(false);
     }
 
-    public void monsters_arachas_1Unselected(MouseEvent mouseEvent) {
-        monsters_arachas_1VboxInCardCollection.setVisible(true);
-        monsters_arachas_1VboxInDeck.setVisible(false);
+    public void scoiatael_isengrimSelected(MouseEvent mouseEvent) {
+        scoiatael_isengrimVbox.setVisible(false);
+        scoiatael_isengrimVboxInDeck.setVisible(true);
     }
 
-    public void monsters_arachas_2Selected(MouseEvent mouseEvent) {
-        monsters_arachas_2VboxInCardCollection.setVisible(false);
-        monsters_arachas_2VboxInDeck.setVisible(true);
+    public void scoiatael_iorvethUnselected(MouseEvent mouseEvent) {
+        scoiatael_iorvethVbox.setVisible(true);
+        scoiatael_iorvethVboxInDeck.setVisible(false);
     }
 
-    public void monsters_arachas_2Unselected(MouseEvent mouseEvent) {
-        monsters_arachas_2VboxInCardCollection.setVisible(true);
-        monsters_arachas_2VboxInDeck.setVisible(false);
+    public void scoiatael_iorvethSelected(MouseEvent mouseEvent) {
+        scoiatael_iorvethVbox.setVisible(false);
+        scoiatael_iorvethVboxInDeck.setVisible(true);
     }
 
-
-    public void monsters_bruxaSelected(MouseEvent mouseEvent) {
-        monsters_bruxaVboxInCardCollection.setVisible(false);
-        monsters_bruxaVboxInDeck.setVisible(true);
+    public void scoiatael_idaUnselected(MouseEvent mouseEvent) {
+        scoiatael_idaVbox.setVisible(true);
+        scoiatael_idaVboxInDeck.setVisible(false);
     }
 
-    public void monsters_bruxaUnselected(MouseEvent mouseEvent) {
-        monsters_bruxaVboxInCardCollection.setVisible(true);
-        monsters_bruxaVboxInDeck.setVisible(false);
+    public void scoiatael_idaSelected(MouseEvent mouseEvent) {
+        scoiatael_idaVbox.setVisible(false);
+        scoiatael_idaVboxInDeck.setVisible(true);
     }
 
-    public void monsters_ekkimaSelected(MouseEvent mouseEvent) {
-        monsters_ekkimaVboxInCardCollection.setVisible(false);
-        monsters_ekkimaVboxInDeck.setVisible(true);
+    public void scoiatael_eithneUnselected(MouseEvent mouseEvent) {
+        scoiatael_eithneVbox.setVisible(true);
+        scoiatael_eithneVboxInDeck.setVisible(false);
     }
 
-    public void monsters_ekkimaUnselected(MouseEvent mouseEvent) {
-        monsters_ekkimaVboxInCardCollection.setVisible(true);
-        monsters_ekkimaVboxInDeck.setVisible(false);
+    public void scoiatael_eithneSelected(MouseEvent mouseEvent) {
+        scoiatael_eithneVbox.setVisible(false);
+        scoiatael_eithneVboxInDeck.setVisible(true);
     }
 
-    public void monsters_flederSelected(MouseEvent mouseEvent) {
-        monsters_flederVboxInCardCollection.setVisible(false);
-        monsters_flederVboxInDeck.setVisible(true);
+    public void scoiatael_dol_archerUnselected(MouseEvent mouseEvent) {
+        scoiatael_dol_archerVbox.setVisible(true);
+        scoiatael_dol_archerVboxInDeck.setVisible(false);
     }
 
-    public void monsters_flederUnselected(MouseEvent mouseEvent) {
-        monsters_flederVboxInCardCollection.setVisible(true);
-        monsters_flederVboxInDeck.setVisible(false);
+    public void scoiatael_dol_archerSelected(MouseEvent mouseEvent) {
+        scoiatael_dol_archerVbox.setVisible(false);
+        scoiatael_dol_archerVboxInDeck.setVisible(true);
     }
 
-    public void monsters_garkainSelected(MouseEvent mouseEvent) {
-        monsters_garkainVboxInCardCollection.setVisible(false);
-        monsters_garkainVboxInDeck.setVisible(true);
+    public void scoiatael_ciaranUnselected(MouseEvent mouseEvent) {
+        scoiatael_ciaranVbox.setVisible(true);
+        scoiatael_ciaranVboxInDeck.setVisible(false);
     }
 
-    public void monsters_garkainUnselected(MouseEvent mouseEvent) {
-        monsters_garkainVboxInCardCollection.setVisible(true);
-        monsters_garkainVboxInDeck.setVisible(false);
+    public void scoiatael_ciaranSelected(MouseEvent mouseEvent) {
+        scoiatael_ciaranVbox.setVisible(false);
+        scoiatael_ciaranVboxInDeck.setVisible(true);
     }
 
-    public void monsters_celaeno_harpySelected(MouseEvent mouseEvent) {
-        monsters_celaeno_harpyVboxInCardCollection.setVisible(false);
-        monsters_celaeno_harpyVboxInDeck.setVisible(true);
+    public void scoiatael_dennisUnselected(MouseEvent mouseEvent) {
+        scoiatael_dennisVbox.setVisible(true);
+        scoiatael_dennisVboxInDeck.setVisible(false);
     }
 
-    public void monsters_celaeno_harpyUnselected(MouseEvent mouseEvent) {
-        monsters_celaeno_harpyVboxInCardCollection.setVisible(true);
-        monsters_celaeno_harpyVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_cockatriceSelected(MouseEvent mouseEvent) {
-        monsters_cockatriceVboxInCardCollection.setVisible(false);
-        monsters_cockatriceVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_cockatriceUnselected(MouseEvent mouseEvent) {
-        monsters_cockatriceVboxInCardCollection.setVisible(true);
-        monsters_cockatriceVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_endregaSelected(MouseEvent mouseEvent) {
-        monsters_endregaVboxInCardCollection.setVisible(false);
-        monsters_endregaVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_endregaUnselected(MouseEvent mouseEvent) {
-        monsters_endregaVboxInCardCollection.setVisible(true);
-        monsters_endregaVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_foglingSelected(MouseEvent mouseEvent) {
-        monsters_foglingVboxInCardCollection.setVisible(false);
-        monsters_foglingVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_foglingUnselected(MouseEvent mouseEvent) {
-        monsters_foglingVboxInCardCollection.setVisible(true);
-        monsters_foglingVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_gargoyleSelected(MouseEvent mouseEvent) {
-        monsters_gargoyleVboxInCardCollection.setVisible(false);
-        monsters_gargoyleVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_gargoyleUnselected(MouseEvent mouseEvent) {
-        monsters_gargoyleVboxInCardCollection.setVisible(true);
-        monsters_gargoyleVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_harpySelected(MouseEvent mouseEvent) {
-        monsters_harpyVboxInCardCollection.setVisible(false);
-        monsters_harpyVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_harpyUnselected(MouseEvent mouseEvent) {
-        monsters_harpyVboxInCardCollection.setVisible(true);
-        monsters_harpyVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_wyvernSelected(MouseEvent mouseEvent) {
-        monsters_wyvernVboxInCardCollection.setVisible(false);
-        monsters_wyvernVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_wyvernUnselected(MouseEvent mouseEvent) {
-        monsters_wyvernVboxInCardCollection.setVisible(true);
-        monsters_wyvernVboxInDeck.setVisible(false);
+    public void scoiatael_dennisSelected(MouseEvent mouseEvent) {
+        scoiatael_dennisVbox.setVisible(false);
+        scoiatael_dennisVboxInDeck.setVisible(true);
     }
 
 
-    public void monsters_ghoulSelected(MouseEvent mouseEvent) {
-        monsters_ghoulVboxInCardCollection.setVisible(false);
-        monsters_ghoulVboxInDeck.setVisible(true);
+    public void scoiatael_barclayUnselected(MouseEvent mouseEvent) {
+        scoiatael_barclayVbox.setVisible(true);
+        scoiatael_barclayVboxInDeck.setVisible(false);
     }
 
-    public void monsters_ghoulUnselected(MouseEvent mouseEvent) {
-        monsters_ghoulVboxInCardCollection.setVisible(true);
-        monsters_ghoulVboxInDeck.setVisible(false);
+    public void scoiatael_barclaySelected(MouseEvent mouseEvent) {
+        scoiatael_barclayVbox.setVisible(false);
+        scoiatael_barclayVboxInDeck.setVisible(true);
     }
 
-    public void monsters_ghoul_1Selected(MouseEvent mouseEvent) {
-        monsters_ghoul_1VboxInCardCollection.setVisible(false);
-        monsters_ghoul_1VboxInDeck.setVisible(true);
-    }
-
-    public void monsters_ghoul_1Unselected(MouseEvent mouseEvent) {
-        monsters_ghoul_1VboxInCardCollection.setVisible(true);
-        monsters_ghoul_1VboxInDeck.setVisible(false);
-    }
-
-    public void monsters_ghoul_2Selected(MouseEvent mouseEvent) {
-        monsters_ghoul_2VboxInCardCollection.setVisible(false);
-        monsters_ghoul_2VboxInDeck.setVisible(true);
-    }
-
-    public void monsters_ghoul_2Unselected(MouseEvent mouseEvent) {
-        monsters_ghoul_2VboxInCardCollection.setVisible(true);
-        monsters_ghoul_2VboxInDeck.setVisible(false);
-    }
-
-    public void monsters_nekkerSelected(MouseEvent mouseEvent) {
-        monsters_nekkerVboxInCardCollection.setVisible(false);
-        monsters_nekkerVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_nekkerUnselected(MouseEvent mouseEvent) {
-        monsters_nekkerVboxInCardCollection.setVisible(true);
-        monsters_nekkerVboxInDeck.setVisible(false);
-    }
-
-    public void monsters_nekker_1Selected(MouseEvent mouseEvent) {
-        monsters_nekker_1VboxInCardCollection.setVisible(false);
-        monsters_nekker_1VboxInDeck.setVisible(true);
-    }
-
-    public void monsters_nekker_1Unselected(MouseEvent mouseEvent) {
-        monsters_nekker_1VboxInCardCollection.setVisible(true);
-        monsters_nekker_1VboxInDeck.setVisible(false);
-    }
-
-    public void monsters_nekker_2Selected(MouseEvent mouseEvent) {
-        monsters_nekker_2VboxInCardCollection.setVisible(false);
-        monsters_nekker_2VboxInDeck.setVisible(true);
-    }
-
-    public void monsters_nekker_2Unselected(MouseEvent mouseEvent) {
-        monsters_nekker_2VboxInCardCollection.setVisible(true);
-        monsters_nekker_2VboxInDeck.setVisible(false);
-    }
-
-
-    public void monsters_poroniecSelected(MouseEvent mouseEvent) {
-        monsters_poroniecVboxInCardCollection.setVisible(false);
-        monsters_poroniecVboxInDeck.setVisible(true);
-    }
-
-    public void monsters_poroniecUnselected(MouseEvent mouseEvent) {
-        monsters_poroniecVboxInCardCollection.setVisible(true);
-        monsters_poroniecVboxInDeck.setVisible(false);
-    }
 
     public void backToLeaderMenu(MouseEvent mouseEvent) {
         saveDeckForUser();
@@ -1741,350 +1723,13 @@ public class ChooseCardMonsterController {
             if (vBox.isVisible()) System.out.println(vBox.getId());
         }
     }
-
     public SpecialCard getSpecialCardByIdAddress(String address) {
-        System.out.println("special before:" + address);
-        if (address.contains("InDeck")) address = address.split("InDeck")[0];
-        System.out.println("special after:" + address);
-        switch (address) {
-            case "special_decoy":
-                return SpecialCard.Decoy;
-            case "special_horn":
-                return SpecialCard.CommandersHorn;
-            case "special_mardroeme":
-                return SpecialCard.Mardroeme;
-            case "special_scorch":
-                return SpecialCard.Scorch;
-            case "weather_clear":
-                return SpecialCard.ClearWeather;
-            case "weather_fog":
-                return SpecialCard.ImpenetrableFog;
-            case "weather_frost":
-                return SpecialCard.BitingFrost;
-            case "weather_rain":
-                return SpecialCard.TorrentialRain;
-            case "weather_storm":
-                return SpecialCard.SkelligeStorm;
-        }
-        return null;
+        return ChooseCardMonsterController.getSpecialCardByIdAddress(address);
     }
 
     public CommonCard getCommonCardByIdAddress(String address) {
-        System.out.println("address before: " + address);
-        if (address.contains("InDeck")) address = address.split("InDeck")[0];
-        System.out.println("address after: " + address);
-        switch (address) {
-
-            case "neutral_vesemir":
-                return CommonCard.Ves;
-            case "monsters_arachas":
-                return CommonCard.Arachas;
-            case "monsters_arachas_1":
-                return CommonCard.Arachas;
-            case "monsters_arachas_2":
-                return CommonCard.Arachas;
-            case "monsters_arachas_behemoth":
-                return CommonCard.ArachasBehemoth;
-            case "monsters_bruxa":
-                return CommonCard.VampireBruxa;
-            case "monsters_witch_velen_1":
-                return CommonCard.CroneWeavess;
-            case "monsters_celaeno_harpy":
-                return CommonCard.Harpy;
-            case "monsters_cockatrice":
-                return CommonCard.Cockatrice;
-            case "monsters_draug":
-                return CommonCard.Draug;
-            case "monsters_earth_elemental":
-                return CommonCard.EarthElemental;
-            case "monsters_ekkima":
-                return CommonCard.VampireEkimmara;
-            case "monsters_endrega":
-                return CommonCard.Endrega;
-            case "monsters_fiend":
-                return CommonCard.Fiend;
-            case "monsters_fire_elemental":
-                return CommonCard.FireElemental;
-            case "monsters_fleder":
-                return CommonCard.VampireFleder;
-            case "monsters_fogling":
-                return CommonCard.Foglet;
-            case "monsters_forktail":
-                return CommonCard.Forktail;
-            case "monsters_frightener":
-                return CommonCard.Forktail; // Note : there is no card with name frightener !
-            case "monsters_frost_giant":
-                return CommonCard.IceGiant;
-            case "monsters_gargoyle":
-                return CommonCard.Gargoyle; // Note : there is no card with name gargoyle !
-            case "monsters_garkain":
-                return CommonCard.VampireGarkain;
-            case "monsters_ghoul":
-                return CommonCard.Ghoul;
-            case "monsters_ghoul_1":
-                return CommonCard.Ghoul;
-            case "monsters_ghoul_2":
-                return CommonCard.Ghoul;
-            case "monsters_gravehag":
-                return CommonCard.GraveHag;
-            case "monsters_gryffin":
-                return CommonCard.Griffin;
-            case "monsters_harpy":
-                return CommonCard.Harpy;
-            case "monsters_imlerith":
-                return CommonCard.Imlerith;
-            case "monsters_katakan":
-                return CommonCard.VampireKatakan;
-            case "monsters_kayran":
-                return CommonCard.Kayran;
-            case "monsters_leshen":
-                return CommonCard.Leshen;
-            case "monsters_mighty_maiden", "skellige_shield_maiden_2", "skellige_shield_maiden_1", "skellige_shield_maiden":
-                return CommonCard.PlagueMaiden;
-            case "monsters_nekker":
-                return CommonCard.Nekker;
-            case "monsters_nekker_1":
-                return CommonCard.Nekker;
-            case "monsters_nekker_2":
-                return CommonCard.Nekker;
-            case "monsters_poroniec":
-                return CommonCard.Botchling;
-            case "monsters_toad":
-                return CommonCard.Toad;
-            case "monsters_werewolf":
-                return CommonCard.Werewolf;
-            case "monsters_witch_velen":
-                return CommonCard.CroneWeavess;
-            case "monsters_witch_velen_2":
-                return CommonCard.CroneWeavess;
-            case "monsters_wyvern":
-                return CommonCard.Wyvern;
-            case "neutral_dandelion":
-                return CommonCard.Dandelion;
-            case "neutral_emiel":
-                return CommonCard.EmielRegis;
-            case "neutral_gaunter_odimm":
-                return CommonCard.GaunterODimm;
-            case "neutral_gaunter_odimm_darkness":
-                return CommonCard.GaunterODimmDarkness;
-            case "neutral_geralt":
-                return CommonCard.Geralt;
-            case "neutral_mysterious_elf":
-                return CommonCard.MysteriousElf;
-            case "neutral_olgierd":
-                return CommonCard.OlgierdVonEverc;
-            case "neutral_triss":
-                return CommonCard.TrissMerigold;
-            case "neutral_villen":
-                return CommonCard.Villentretenmerth;
-            case "neutral_yennefer":
-                return CommonCard.YenneferOfVengerberg;
-            case "neutral_zoltan":
-                return CommonCard.ZoltanChivay;
-            case "nilfgaard_albrich":
-                return CommonCard.Albrich;
-            case "nilfgaard_archer_support":
-                return CommonCard.BlackInfantryArcher;
-            case "nilfgaard_archer_support_1":
-                return CommonCard.BlackInfantryArcher;
-            case "nilfgaard_assire":
-                return CommonCard.Assire;
-            case "nilfgaard_cahir":
-                return CommonCard.CahirMawrDyffrynAepCeallach;
-            case "nilfgaard_cynthia":
-                return CommonCard.Cynthia;
-            case "nilfgaard_fringilla":
-                return CommonCard.FringillaVigo;
-            case "nilfgaard_heavy_zerri":
-                return CommonCard.ZerrikanianFireScorpion;
-            case "nilfgaard_imperal_brigade":
-                return CommonCard.ImperaBrigadeGuard;
-//            case "nilfgaard_letho":
-//                return CommonCard.Letho;
-            case "nilfgaard_menno":
-                return CommonCard.TrissMerigold;
-            case "nilfgaard_moorvran":
-                return CommonCard.MorvranVoorhis;
-            case "nilfgaard_morteisen":
-                return CommonCard.Morteisen;
-            case "nilfgaard_nauzicaa_2":
-                return CommonCard.NausicaaCavalryRider;
-            case "nilfgaard_puttkammer":
-                return CommonCard.Puttkammer;
-            case "nilfgaard_rainfarn":
-                return CommonCard.RainFarn;
-            case "nilfgaard_renuald":
-                return CommonCard.RenualdAepMatsen;
-            case "nilfgaard_rotten":
-                return CommonCard.RottenMangonel;
-            case "nilfgaard_shilard":
-                return CommonCard.Shilard;
-            case "nilfgaard_siege_engineer":
-                return CommonCard.SiegeEngineer;
-            case "nilfgaard_siege_support":
-                return CommonCard.SiegeEngineer;
-            case "nilfgaard_stefan":
-                return CommonCard.StefanSkellen;
-            case "nilfgaard_sweers":
-                return CommonCard.Sweers;
-            case "nilfgaard_tibor":
-                return CommonCard.TiborEggebracht;
-            case "nilfgaard_vanhemar":
-                return CommonCard.Vanhemar;
-            case "nilfgaard_vattier":
-                return CommonCard.VattierDeRideaux;
-            case "nilfgaard_young_emissary":
-                return CommonCard.YoungEmissary;
-            case "nilfgaard_young_emissary_1":
-                return CommonCard.YoungEmissary;
-            case "nilfgaard_zerri":
-                return CommonCard.ZerrikanianFireScorpion;
-            case "realms_ballista":
-                return CommonCard.Ballista;
-            case "realms_banner_nubrse":
-                return CommonCard.DunBannerMedic;
-            case "realms_blue_stripes":
-                return CommonCard.BlueStripesCommando;
-            case "realms_crinfrid":
-                return CommonCard.CrinfridReaversDragonHunter;
-            case "realms_dethmold":
-                return CommonCard.Dethmold;
-            case "realms_dijkstra":
-                return CommonCard.SigismundDijkstra;
-            case "realms_esterad", "realms_esterad_1", "realms_esterad_2":
-                return CommonCard.EsteradThyssen;
-            case "realms_keira":
-                return CommonCard.ImperaBrigadeGuard;
-            case "nilfgaard_letho":
-                return CommonCard.MennoCoehoorn;
-            case "realms_natalis":
-                return CommonCard.JohnNatalis;
-            case "realms_philippa":
-                return CommonCard.PhilippaEilhart;
-            case "realms_poor_infantry":
-                return CommonCard.PoorFuckingInfantry;
-            case "realms_redania", "realms_redania_1":
-                return CommonCard.RedanianFootSoldier;
-            case "realms_sabrina":
-                return CommonCard.SabrinaGlevissing;
-            case "realms_sheala":
-                return CommonCard.SileDeTansarville;
-            case "realms_sheldon":
-                return CommonCard.SheldonSkaggs;
-            case "realms_siege_tower":
-                return CommonCard.SiegeTower;
-            case "realms_siegfried":
-                return CommonCard.SiegeTechnician;
-            case "realms_stennis":
-                return CommonCard.PrinceStennis;
-            case "realms_thaler":
-                return CommonCard.Thaler;
-            case "realms_trebuchet", "realms_trebuchet_1":
-                return CommonCard.Trebuchet;
-            case "realms_vernon":
-                return CommonCard.VernonRoche;
-            case "realms_ves":
-                return CommonCard.Ves;
-            case "realms_yarpen":
-                return CommonCard.YarpenZirgrin;
-            case "scoiatael_barclay":
-                return CommonCard.BarclayEls;
-            case "scoiatael_ciaran":
-                return CommonCard.CiaranAep;
-            case "scoiatael_dennis":
-                return CommonCard.DennisCranmer;
-            case "scoiatael_dol_archer":
-                return CommonCard.DolBlathannaArcher;
-            case "scoiatael_dol_infantry_2", "scoiatael_dol_infantry_1", "scoiatael_dol_infantry":
-                return CommonCard.PoorFuckingInfantry;
-            case "scoiatael_dwarf", "scoiatael_dwarf_1", "scoiatael_dwarf_2":
-                return CommonCard.DwarvenSkirmisher;
-            case "scoiatael_eithne":
-                return CommonCard.Eithne;
-            case "scoiatael_elf_skirmisher_2", "scoiatael_elf_skirmisher_1", "scoiatael_elf_skirmisher":
-                return CommonCard.ElvenSkirmisher;
-            case "scoiatael_filavandrel":
-                return CommonCard.FilavandrelAenFidhail;
-            case "scoiatael_havekar_nurse", "scoiatael_havekar_nurse_1", "scoiatael_havekar_nurse_2":
-                return CommonCard.HavekarHealer;
-            case "scoiatael_ida":
-                return CommonCard.IdaEmeanAep;
-            case "scoiatael_havekar_support", "scoiatael_havekar_support_1", "scoiatael_havekar_suppor_2":
-                return CommonCard.HavekarSmuggler;
-            case "scoiatael_iorveth":
-                return CommonCard.IsengrimFaoiltiarna;
-            case "scoiatael_isengrim":
-                return CommonCard.IsengrimFaoiltiarna;
-            case "scoiatael_mahakam":
-                return CommonCard.MahakamDefender;
-            case "scoiatael_milva":
-                return CommonCard.Milva;
-            case "scoiatael_riordain":
-                return CommonCard.Riordain;
-            case "scoiatael_saskia":
-                return CommonCard.Saskia;
-            case "scoiatael_schirru":
-                return CommonCard.Schirru;
-            case "scoiatael_toruviel":
-                return CommonCard.Toruviel;
-            case "scoiatael_vrihedd_brigade_1", "scoiatael_vrihedd_brigade":
-                return CommonCard.VriheddBrigadeRecruit;
-            case "scoiatael_vrihedd_cadet":
-                return CommonCard.VriheddBrigadeVeteran;
-            case "skellige_berserker", "skellige_young_berserker":
-                return CommonCard.Berserker;
-            case "skellige_birna":
-                return CommonCard.BirnaBran;
-            case "skellige_blueboy":
-                return CommonCard.BlueboyLugos;
-            case "skellige_brokva_archer":
-                return CommonCard.ClanBrokvarArcher;
-            case "skellige_craite_warrior":
-                return CommonCard.ClanAnCraite;
-            case "skellige_dimun_pirate":
-                return CommonCard.ClanDimunPirate;
-            case "skellige_donar":
-                return CommonCard.DonarAnHindar;
-            case "skellige_draig":
-                return CommonCard.DraigBonDhu;
-            case "skellige_ermion":
-                return CommonCard.Ermion;
-            case "skellige_hemdall":
-                return CommonCard.Hemdall;
-            case "skellige_heymaey":
-                return CommonCard.ClanHeymaeySkald;
-            case "skellige_hjalmar":
-                return CommonCard.Hjalmar;
-            case "skellige_holger":
-                return CommonCard.HolgerBlackhand;
-            case "skellige_cerys":
-                return CommonCard.Cerys;
-            case "skellige_kambi":
-                return CommonCard.Kambi;
-            case "skellige_light_longship", "skellige_war_longship":
-                return CommonCard.LightLongship;
-            case "skellige_madmad_lugos":
-                return CommonCard.MadmanLugos;
-            case "skellige_olaf":
-                return CommonCard.Olaf;
-            case "skellige_svanrige":
-                return CommonCard.Svanrige;
-            case "skellige_tordarroch":
-                return CommonCard.ClanTordarrochArmorsmith;
-            case "skellige_udalryk":
-                return CommonCard.Udalryk;
-            case "skellige_vildkaarl", "skellige_young_vildkaarl":
-                return CommonCard.TransformedVildkaarl;
-
-            default:
-                try {
-                    throw new Exception("Debug thiiiiissss in getAddress method: " + address);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-        }
+        return ChooseCardMonsterController.getCommonCardByIdAddress(address);
     }
-
     public void done(MouseEvent mouseEvent) {
         User user = User.getUserForTest();  // TODO : change this to current user
         if (!checkEnoughSelection()) {
@@ -2157,15 +1802,17 @@ public class ChooseCardMonsterController {
     }
 
     public boolean check22SelectionOfCommonCard() {
+        System.out.println(numberOfAllCards.getText());
         String regex = "Number of Unit Cards: (?<allCards>\\d+)/22";
         Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
+        assert matcher != null;
         int allCards = Integer.parseInt(matcher.group("allCards"));
         return allCards < 22;
     }
 
     public boolean check10SelectionOfSpecialCard() {
         String regex = "Special Cards: (?<specialCards>\\d+)/10";
-        Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
+        Matcher matcher = getCommandMatcher(regex, specialCards);
         int numOfSpecialCards = Integer.parseInt(matcher.group("specialCards"));
         return numOfSpecialCards < 10;
     }
@@ -2176,4 +1823,6 @@ public class ChooseCardMonsterController {
         if (matcher.matches()) return matcher;
         return null;
     }
+
+
 }

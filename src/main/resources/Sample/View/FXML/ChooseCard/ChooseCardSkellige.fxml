@@ -6,9 +6,497 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
 <VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Sample.Controller.ChooseCardSkelligeController"
-            prefHeight="400.0" prefWidth="600.0">
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Sample.Controller.ChooseCard.ChooseCardSkelligeController"
+      prefHeight="400.0" prefWidth="600.0" stylesheets="@../../CSS/style.css">
+    <HBox spacing="10">
+        <VBox>
+
+            <Label styleClass="headers" text="Card Collection"/>
+            <ScrollPane minWidth="320" prefWidth="320">
+                <Pane fx:id="cardCollectionPane">
+                    <!--TODO      :Neutral should be          copy for all decks-->
+                    <VBox fx:id="commandersHornVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="commanderHorn" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornSelected"/>
+                            <Label fx:id="commandersHornRemainderInCardCollection" alignment="TOP_LEFT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+
+                    </VBox>
+                    <VBox fx:id="decoyVboxInCardCollection">
+                        <StackPane fx:id="sinus">
+                            <ImageView fx:id="decoy" fitHeight="180" fitWidth="100" onMouseClicked="#decoySelected"/>
+                            <Label fx:id="decoyRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="mardroemVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="mardroem" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemSelected"/>
+                            <Label fx:id="mardroemRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="schorchVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="scorchImage" fitHeight="180" fitWidth="100" onMouseClicked="#schorchSelected"/>
+                            <Label fx:id="schorchRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="bitingFrostVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="bitingFrostImage" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostSelected"/>
+                            <Label fx:id="bitingFrostRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="clearWeatherVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="clearWeatherImage" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherSelected"/>
+                            <Label fx:id="clearWeatherRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="impenetrableFrogVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="impenetrableFog" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogSelected"/>
+                            <Label fx:id="impenetrableFrogRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="skelligeStormVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="skelligeStorm" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStormSelected"/>
+                            <Label fx:id="skelligeStormRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="torrentialRainVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="torrentialRain" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainSelected"/>
+                            <Label fx:id="torrentialRainRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="neutral_ciriVboxInCardCollection">
+                        <ImageView fx:id="neutral_ciri" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_geraltVboxInCardCollection">
+                        <ImageView fx:id="neutral_geralt" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltSelected"/>
+                    </VBox>
+
+                    <!--                    <VBox fx:id="neutral_chortVboxInCardCollection">-->
+                    <!--                        <ImageView fx:id="neutral_chort" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortSelected" />-->
+                    <!--                    </VBox>-->
+
+                    <VBox fx:id="neutral_yenneferVboxInCardCollection">
+                        <ImageView fx:id="neutral_yennefer" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_villenVboxInCardCollection">
+                        <ImageView fx:id="neutral_villen" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_villenSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_trissVboxInCardCollection">
+                        <ImageView fx:id="neutral_triss" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_trissSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_vesemirVboxInCardCollection">
+                        <ImageView fx:id="neutral_vesemir" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_vesemirSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_olgierdVboxInCardCollection">
+                        <ImageView fx:id="neutral_olgierd" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_olgierdSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_zoltanVboxInCardCollection">
+                        <ImageView fx:id="neutral_zoltan" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_zoltanSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_emielVboxInCardCollection">
+                        <ImageView fx:id="neutral_emiel" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_gaunter_odimm_darknessVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="neutral_gaunter_odimm_darkness" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessSelected"/>
+                            <Label fx:id="neutral_gaunter_odimm_darknessRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="skellige_shield_maidenVboxInCardCollection">
+                        <StackPane>
+                            <ImageView fx:id="skellige_shield_maiden" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_shield_maidenSelected"/>
+                            <Label fx:id="skellige_shield_maidenRemainderInCardCollection" alignment="BOTTOM_RIGHT" styleClass="counter" text="3X" StackPane.alignment="BOTTOM_RIGHT">
+                                <StackPane.margin>
+                                    <Insets bottom="15"/>
+                                </StackPane.margin>
+                            </Label>
+                        </StackPane>
+                    </VBox>
+                    <VBox fx:id="neutral_gaunter_odimmVboxInCardCollection">
+                        <ImageView fx:id="neutral_gaunter_odimm" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmSelected"/>
+                    </VBox>
+
+
+                    <VBox fx:id="neutral_dandelionVboxInCardCollection">
+                        <ImageView fx:id="neutral_dandelion" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionSelected"/>
+                    </VBox>
+                    <VBox fx:id="neutral_mysterious_elfVboxInCardCollection">
+                        <ImageView fx:id="neutral_mysterious_elfInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfSelected"/>
+                    </VBox>
+
+
+                    <!--                    ToDO: skellige-->
+                    <VBox fx:id="skellige_cerysVboxInCardCollection">
+                        <ImageView fx:id="skellige_cerysInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_cerysSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_young_berserkerVboxInCardCollection">
+                        <ImageView fx:id="skellige_young_berserkerInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_young_berserkerSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_war_longshipVboxInCardCollection">
+                        <ImageView fx:id="skellige_war_longshipInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_war_longshipSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_udalrykVboxInCardCollection">
+                        <ImageView fx:id="skellige_udalrykInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_udalrykSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_tordarrochVboxInCardCollection">
+                        <ImageView fx:id="skellige_tordarrochInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_tordarrochSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_svanrigeVboxInCardCollection">
+                        <ImageView fx:id="skellige_svanrigeInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_svanrigeSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_olafVboxInCardCollection">
+                        <ImageView fx:id="skellige_olafInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_olafSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_madmad_lugosVboxInCardCollection">
+                        <ImageView fx:id="skellige_madmad_lugosInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_madmad_lugosSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_light_longshipVboxInCardCollection">
+                        <ImageView fx:id="skellige_light_longshipInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_light_longshipSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_holgerVboxInCardCollection">
+                        <ImageView fx:id="skellige_holgerInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_holgerSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_hjalmarVboxInCardCollection">
+                        <ImageView fx:id="skellige_hjalmarInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_hjalmarSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_heymaeyVboxInCardCollection">
+                        <ImageView fx:id="skellige_heymaeyInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_heymaeySelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_hemdallVboxInCardCollection">
+                        <ImageView fx:id="skellige_hemdallInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_hemdallSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_draigVboxInCardCollection">
+                        <ImageView fx:id="skellige_draigInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_draigSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_donarVboxInCardCollection">
+                        <ImageView fx:id="skellige_donarInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_donarSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_dimun_pirateVboxInCardCollection">
+                        <ImageView fx:id="skellige_dimun_pirateInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_dimun_pirateSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_craite_warriorVboxInCardCollection">
+                        <ImageView fx:id="skellige_craite_warriorInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_craite_warriorSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_brokva_archerVboxInCardCollection">
+                        <ImageView fx:id="skellige_brokva_archerInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_brokva_archerSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_blueboyVboxInCardCollection">
+                        <ImageView fx:id="skellige_blueboyInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_blueboySelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_birnaVboxInCardCollection">
+                        <ImageView fx:id="skellige_birnaInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_birnaSelected"/>
+                    </VBox>
+                    <VBox fx:id="skellige_berserkerVboxInCardCollection">
+                        <ImageView fx:id="skellige_berserkerInCardCollection" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_berserkerSelected"/>
+                    </VBox>
+                    <GridPane fx:id="gridPaneCardCollection" hgap="2" vgap="2">
+
+                    </GridPane>
+                </Pane>
+
+
+            </ScrollPane>
+        </VBox>
+        <VBox alignment="TOP_CENTER">
+            <Text fx:id="leaderName" style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Monster"/>
+            <Text style="-fx-font-size: 16px;" styleClass="label" text="Wins any round that ends in a draw."/>
+            <Button fx:id="uploadDeckButton" text="Upload Deck"/>
+            <Button fx:id="changeFactionButton" text="Change Faction"/>
+            <Button fx:id="downloadDeckButton" text="Download Deck"/>
+            <Button fx:id="startGameButton" text="Start game"/>
+            <Button fx:id="backToLeaderMenu" text="Done and back" onMouseClicked="#done"/>
+            <Text fx:id="numberOfAllCards" styleClass="label" text="Number of Unit Cards: 0/22"/>
+            <Text fx:id="specialCards" styleClass="label" text="Special Cards: 0/10"/>
+            <Text fx:id="heroCards" styleClass="label" text="Hero Cards: 0"/>
+
+        </VBox>
+        <VBox alignment="TOP_RIGHT">
+            <Label styleClass="headers" text="Deck"/>
+            <ScrollPane minWidth="320" prefWidth="320">
+                <GridPane fx:id="gridPaneInDeck" hgap="2" vgap="2">
+
+                </GridPane>
+            </ScrollPane>
+            <Pane fx:id="inDeckCardPane">
+                <!--TODO                copy for all decks-->
+                <VBox fx:id="commandersHornVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="special_hornInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#commandersHornUnselected"/>
+                        <Label fx:id="commandersHornRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT"/>
+                        <StackPane.margin>
+                            <Insets bottom="15"/>
+                        </StackPane.margin>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="decoyVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="special_decoyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#decoyUnselected"/>
+                        <Label fx:id="decoyRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="mardroemVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="special_mardroemeInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#mardroemUnselected"/>
+                        <Label fx:id="mardroemRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="schorchVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="special_scorchInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#schorchUnselected"/>
+                        <Label fx:id="schorchRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="bitingFrostVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="weather_frostInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#bitingFrostUnselected"/>
+                        <Label fx:id="bitingFrostRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="clearWeatherVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="weather_clearInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#clearWeatherUnselected"/>
+                        <Label fx:id="clearWeatherRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="impenetrableFrogVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="weather_fogInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#impenetrableFrogUnselected"/>
+                        <Label fx:id="impenetrableFrogRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="skelligeStormVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="weather_stormInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skelligeStromUnselected"/>
+                        <Label fx:id="skelligeStormRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="torrentialRainVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="weather_rainInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#torrentialRainUnselected"/>
+                        <Label fx:id="torrentialRainRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+
+                <!--            TODO     neutral-->
+
+
+                <VBox fx:id="neutral_ciriVboxInDeck">
+                    <ImageView fx:id="neutral_ciriInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_ciriUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_geraltVboxInDeck">
+                    <ImageView fx:id="neutral_geraltInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_geraltUnselected"/>
+                </VBox>
+                <!--                <VBox fx:id="neutral_chortVboxInDeck">-->
+                <!--                    <ImageView fx:id="neutral_chortInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_chortUnselected" />-->
+                <!--                </VBox>-->
+                <VBox fx:id="neutral_yenneferVboxInDeck">
+                    <ImageView fx:id="neutral_yenneferInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_yenneferUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_villenVboxInDeck">
+                    <ImageView fx:id="neutral_villenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_villenUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_trissVboxInDeck">
+                    <ImageView fx:id="neutral_trissInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_trissUnselected"/>
+                </VBox>
+
+                <VBox fx:id="neutral_vesemirVboxInDeck">
+                    <ImageView fx:id="neutral_vesemirInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_vesemirUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_olgierdVboxInDeck">
+                    <ImageView fx:id="neutral_olgierdInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_olgierdUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_zoltanVboxInDeck">
+                    <ImageView fx:id="neutral_zoltanInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_zoltanUnselected"/>
+                </VBox>
+
+
+                <VBox fx:id="neutral_emielVboxInDeck">
+                    <ImageView fx:id="neutral_emielInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_emielUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_gaunter_odimm_darknessVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="neutral_gaunter_odimm_darknessInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimm_darknessUnselected"/>
+                        <Label fx:id="neutral_gaunter_odimm_darknessRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+
+                <VBox fx:id="neutral_gaunter_odimmVboxInDeck">
+                    <ImageView fx:id="neutral_gaunter_odimmInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_gaunter_odimmUnselected"/>
+                </VBox>
+                <VBox fx:id="neutral_dandelionVboxInDeck">
+                    <ImageView fx:id="neutral_dandelionInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_dandelionUnselected"/>
+                </VBox>
+
+                <VBox fx:id="neutral_mysterious_elfVboxInDeck">
+                    <ImageView fx:id="neutral_mysterious_elfInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#neutral_mysterious_elfUnselected"/>
+                </VBox>
+                <!--            TODO     neutral-->
+
+                <!--                    TODO             copy for all decks-->
+                <VBox fx:id="skellige_shield_maidenVboxInDeck">
+                    <StackPane>
+                        <ImageView fx:id="skellige_shield_maidenInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_shield_maidenUnselected"/>
+                        <Label fx:id="skellige_shield_maidenRemainderInDeck" alignment="BOTTOM_RIGHT" styleClass="counter" text="0X" StackPane.alignment="BOTTOM_RIGHT">
+                            <StackPane.margin>
+                                <Insets bottom="15"/>
+                            </StackPane.margin>
+                        </Label>
+                    </StackPane>
+                </VBox>
+                <VBox fx:id="skellige_cerysVboxInDeck">
+                    <ImageView fx:id="skellige_cerysInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_cerysUnselected"/>
+                </VBox>
+
+                <VBox fx:id="skellige_young_berserkerVboxInDeck">
+                    <ImageView fx:id="skellige_young_berserkerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_young_berserkerUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_war_longshipVboxInDeck">
+                    <ImageView fx:id="skellige_war_longshipInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_war_longshipUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_udalrykVboxInDeck">
+                    <ImageView fx:id="skellige_udalrykInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_udalrykUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_tordarrochVboxInDeck">
+                    <ImageView fx:id="skellige_tordarrochInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_tordarrochUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_svanrigeVboxInDeck">
+                    <ImageView fx:id="skellige_svanrigeInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_svanrigeUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_olafVboxInDeck">
+                    <ImageView fx:id="skellige_olafInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_olafUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_madmad_lugosVboxInDeck">
+                    <ImageView fx:id="skellige_madmad_lugosInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_madmad_lugosUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_light_longshipVboxInDeck">
+                    <ImageView fx:id="skellige_light_longshipInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_light_longshipUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_holgerVboxInDeck">
+                    <ImageView fx:id="skellige_holgerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_holgerUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_hjalmarVboxInDeck">
+                    <ImageView fx:id="skellige_hjalmarInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_hjalmarUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_heymaeyVboxInDeck">
+                    <ImageView fx:id="skellige_heymaeyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_heymaeyUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_hemdallVboxInDeck">
+                    <ImageView fx:id="skellige_hemdallInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_hemdallUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_draigVboxInDeck">
+                    <ImageView fx:id="skellige_draigInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_draigUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_donarVboxInDeck">
+                    <ImageView fx:id="skellige_donarInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_donarUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_dimun_pirateVboxInDeck">
+                    <ImageView fx:id="skellige_dimun_pirateInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_dimun_pirateUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_craite_warriorVboxInDeck">
+                    <ImageView fx:id="skellige_craite_warriorInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_craite_warriorUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_brokva_archerVboxInDeck">
+                    <ImageView fx:id="skellige_brokva_archerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_brokva_archerUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_blueboyVboxInDeck">
+                    <ImageView fx:id="skellige_blueboyInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_blueboyUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_birnaVboxInDeck">
+                    <ImageView fx:id="skellige_birnaInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_birnaUnselected"/>
+                </VBox>
+                <VBox fx:id="skellige_berserkerVboxInDeck">
+                    <ImageView fx:id="skellige_berserkerInDeck" fitHeight="180" fitWidth="100" onMouseClicked="#skellige_berserkerUnselected"/>
+                </VBox>
+
+            </Pane>
+        </VBox>
+    </HBox>
 
 </VBox>

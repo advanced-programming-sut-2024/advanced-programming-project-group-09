@@ -19,4 +19,6 @@ module approj1 {
     exports Sample.Model;
     exports Sample.View.ChooseCard;
     opens Sample.View.ChooseCard to javafx.fxml;
+    exports Sample.Controller.ChooseCard;
+    opens Sample.Controller.ChooseCard to javafx.fxml;
 }

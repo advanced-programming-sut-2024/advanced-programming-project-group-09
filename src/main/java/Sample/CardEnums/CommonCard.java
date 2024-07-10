@@ -165,6 +165,7 @@ public enum CommonCard {
     Trebuchet("Trebuchet", Faction.NorthernRealms, "", 10, "Ranged", false, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/realms_trebuchet.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/realms_trebuchet.jpg")))),
     MahakamDefender("Mahakam", Faction.Scoiatael, "", 5, "Close Combat", false, 5, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_mahakam.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_mahakam.jpg")))),
     Saskia("Saskia", Faction.Scoiatael, "", 10, "Siege", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/scoiatael_saskia.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/scoiatael_saskia.jpg")))),
+    Ciri("Carilla Fiona", null, "", 15, "Close Combat", true, 1, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/neutral_ciri.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/neutral_ciri.jpg")))),
     Decoy("Decoy", null, "Decoy", 0, null, false, 3, new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/special_decoy.jpg"))), new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardGameImages/special_decoy.jpg"))))
     ;
     private final String cardName;

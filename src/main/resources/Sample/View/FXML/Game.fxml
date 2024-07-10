@@ -827,8 +827,8 @@
             </StackPane.margin>
          </Label>
       </StackPane>
-      <ImageView fx:id="myLeader" fitHeight="86.0" fitWidth="60.0" layoutX="95.0" layoutY="558.0" pickOnBounds="true" />
-      <ImageView fx:id="competitorLeader" fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="55.0" pickOnBounds="true" />
+      <ImageView fx:id="myLeader" fitHeight="86.0" fitWidth="60.0" layoutX="95.0" layoutY="558.0" onMouseClicked="#focusOnTheLeaderCard" pickOnBounds="true" />
+      <ImageView fx:id="competitorLeader" fitHeight="86.0" fitWidth="63.0" layoutX="95.0" layoutY="55.0" onMouseClicked="#focusOnTheLeaderCardCompetitor" pickOnBounds="true" />
       <StackPane alignment="CENTER_LEFT" layoutY="156.0" prefHeight="114.0" prefWidth="302.0" style="-fx-background-color: black">
          <StackPane alignment="BOTTOM_LEFT" maxWidth="200.0" prefHeight="111.0" prefWidth="200.0">
             <StackPane.margin>

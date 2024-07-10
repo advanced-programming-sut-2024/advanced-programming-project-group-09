@@ -21,6 +21,7 @@ public class GameBattleField {
     private SpecialCard specialFieldInRangedUser1 = null;
     private boolean isPassedUser1 = false;
     private int healthUser1 = 2;
+    private boolean isExistAbilityUser1 = true;
 
     private final User user2;
     private final ArrayList<CommonCard> commonCardInBattleFieldUser2 = new ArrayList<>();
@@ -37,16 +38,19 @@ public class GameBattleField {
     private SpecialCard specialFieldInRangedUser2 = null;
     private boolean isPassedUser2 = false;
     private int healthUser2 = 2;
+    private boolean isExistAbilityUser2 = true;
 
     private int round = 1;
 
     private User whichUserTurn;
+    private User userFirstPlay;
     private final ArrayList<SpecialCard> weatherCards = new ArrayList<>();
 
     public GameBattleField(User user1, User user2) {
         this.user1 = user1;
         this.user2 = user2;
         whichUserTurn = user1;
+        userFirstPlay = user1;
     }
 
     public User getUser1() {
@@ -223,11 +227,44 @@ public class GameBattleField {
         else whichUserTurn = user1;
     }
 
+    public void changeFirstPlayerInRound() {
+        if (userFirstPlay.equals(user1)) userFirstPlay = user2;
+        else userFirstPlay = user1;
+    }
+
     public int getRound() {
         return round;
     }
 
     public void setRound(int round) {
         this.round = round;
+    }
+
+    public void setWhichUserTurn(User whichUserTurn) {
+        this.whichUserTurn = whichUserTurn;
+    }
+
+    public User getUserFirstPlay() {
+        return userFirstPlay;
+    }
+
+    public void setUserFirstPlay(User userFirstPlay) {
+        this.userFirstPlay = userFirstPlay;
+    }
+
+    public boolean isExistAbilityUser1() {
+        return isExistAbilityUser1;
+    }
+
+    public void setExistAbilityUser1(boolean existAbilityUser1) {
+        isExistAbilityUser1 = existAbilityUser1;
+    }
+
+    public boolean isExistAbilityUser2() {
+        return isExistAbilityUser2;
+    }
+
+    public void setExistAbilityUser2(boolean existAbilityUser2) {
+        isExistAbilityUser2 = existAbilityUser2;
     }
 }

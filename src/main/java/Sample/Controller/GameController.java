@@ -2,15 +2,18 @@ package Sample.Controller;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.Faction;
+import Sample.CardEnums.Leader;
 import Sample.CardEnums.SpecialCard;
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
+import Sample.View.MainMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -23,12 +26,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
+
+import static javafx.scene.text.TextAlignment.CENTER;
 
 public class GameController {
     @FXML
@@ -172,7 +178,6 @@ public class GameController {
     private final Image musterAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_muster.png")));
     private final Image moraleAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_morale.png")));
     private final Image hornAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_horn.png")));
-    private final Image scorchAnimation = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/anim_scorch.png")));
     private final Image profilePng = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/profile.png")));
     private final Image putRainWeather = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/overlay_rain.png")));
     private final Image putFrostWeather = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/overlay_frost.png")));
@@ -196,6 +201,11 @@ public class GameController {
         if (isFirstTimeForUser1) {
             isFirstTimeForUser1 = false;
             changeTwoCardsOfDeck();
+        }
+        if (gameBattleField.getUser1().getFactionLeader().equals(Leader.EmperorOfNilfgaard)
+                || gameBattleField.getUser2().getFactionLeader().equals(Leader.EmperorOfNilfgaard)) {
+            gameBattleField.setExistAbilityUser1(false);
+            gameBattleField.setExistAbilityUser2(false);
         }
         updateBoard();
     }
@@ -363,12 +373,25 @@ public class GameController {
         firstPlayerUsername.setText(gameBattleField.getWhichUserTurn().getUsername());
         secondPlayerUsername.setText(whichUserIsNotTurn().getUsername());
 
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.7);
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
             firstPlayerPassedLabel.setVisible(gameBattleField.isPassedUser1());
             secondPlayerPassedLabel.setVisible(gameBattleField.isPassedUser2());
+
+            if (gameBattleField.isExistAbilityUser1()) myLeader.setEffect(null);
+            else myLeader.setEffect(colorAdjust);
+            if (gameBattleField.isExistAbilityUser2()) competitorLeader.setEffect(null);
+            else competitorLeader.setEffect(colorAdjust);
         } else {
             firstPlayerPassedLabel.setVisible(gameBattleField.isPassedUser2());
             secondPlayerPassedLabel.setVisible(gameBattleField.isPassedUser1());
+
+            if (gameBattleField.isExistAbilityUser2()) myLeader.setEffect(null);
+            else myLeader.setEffect(colorAdjust);
+            if (gameBattleField.isExistAbilityUser1()) competitorLeader.setEffect(null);
+            else competitorLeader.setEffect(colorAdjust);
         }
 
         putCardsInBoard();
@@ -793,18 +816,18 @@ public class GameController {
         for (CommonCard card : commonCards) {
             if (card.getAbility().contains("Morale")) score += 1;
         }
-        if (commonCards == closeCombatPlayedUser1 && specialFieldInCloseCombatUser1 != null && specialFieldInCloseCombatUser1.equals(SpecialCard.CommandersHorn)) {
+        if (commonCards == closeCombatPlayedUser1 && ((specialFieldInCloseCombatUser1 != null && specialFieldInCloseCombatUser1.equals(SpecialCard.CommandersHorn)) || closeCombatPlayedUser1.contains(CommonCard.Dandelion))) {
             score *= 2;
         } else if (commonCards == rangedIsPlayedUser1 && specialFieldInRangedUser1 != null && specialFieldInRangedUser1.equals(SpecialCard.CommandersHorn)) {
             score *= 2;
-        } else if (commonCards == siegeIsPlayedUser1 && specialFieldInSiegeUser1 != null && specialFieldInSiegeUser1.equals(SpecialCard.CommandersHorn)) {
+        } else if (commonCards == siegeIsPlayedUser1 && ((specialFieldInSiegeUser1 != null && specialFieldInSiegeUser1.equals(SpecialCard.CommandersHorn)) || siegeIsPlayedUser1.contains(CommonCard.DraigBonDhu))) {
             score *= 2;
         }
-        if (commonCards == closeCombatPlayedUser2 && specialFieldInCloseCombatUser2 != null && specialFieldInCloseCombatUser2.equals(SpecialCard.CommandersHorn)) {
+        if (commonCards == closeCombatPlayedUser2 && ((specialFieldInCloseCombatUser2 != null && specialFieldInCloseCombatUser2.equals(SpecialCard.CommandersHorn)) || closeCombatPlayedUser2.contains(CommonCard.Dandelion))) {
             score *= 2;
         } else if (commonCards == rangedIsPlayedUser2 && specialFieldInRangedUser2 != null && specialFieldInRangedUser2.equals(SpecialCard.CommandersHorn)) {
             score *= 2;
-        } else if (commonCards == siegeIsPlayedUser2 && specialFieldInSiegeUser2 != null && specialFieldInSiegeUser2.equals(SpecialCard.CommandersHorn)) {
+        } else if (commonCards == siegeIsPlayedUser2 && ((specialFieldInSiegeUser2 != null && specialFieldInSiegeUser2.equals(SpecialCard.CommandersHorn)) || siegeIsPlayedUser2.contains(CommonCard.DraigBonDhu))) {
             score *= 2;
         }
         return String.valueOf(score);
@@ -915,19 +938,19 @@ public class GameController {
         }
         isTransitioning = true;
         gameBattleField.changeTurn();
-        ImageView imageView = new ImageView(profilePng);
-        imageView.setFitHeight(120);
-        imageView.setFitWidth(120);
-        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
-        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2);
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/notif_me_turn.png"))));
+        imageView.setFitHeight(180);
+        imageView.setFitWidth(250);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 120);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2 - 10);
         imageView.setOpacity(1.0);
 
         Label label = new Label(gameBattleField.getWhichUserTurn().getUsername() + " turn");
-        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 + 40);
-        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 10);
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 - 10);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 20);
         label.setOpacity(1.0);
-        label.setTextFill(Color.LEMONCHIFFON);
-        label.setFont(Font.font(30));
+        label.setTextFill(Color.GOLD);
+        label.setFont(Font.font("Broadway", 40));
 
         imageView.setBlendMode(BlendMode.SRC_OVER);
         label.setBlendMode(BlendMode.SRC_OVER);
@@ -965,19 +988,19 @@ public class GameController {
         }
         isTransitioning = true;
         gameBattleField.changeTurn();
-        ImageView imageView = new ImageView(profilePng);
-        imageView.setFitHeight(120);
-        imageView.setFitWidth(120);
-        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
-        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2);
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/notif_me_turn.png"))));
+        imageView.setFitHeight(180);
+        imageView.setFitWidth(250);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 120);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2 - 10);
         imageView.setOpacity(1.0);
 
         Label label = new Label(gameBattleField.getWhichUserTurn().getUsername() + " turn");
-        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 + 40);
-        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 10);
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 - 10);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 20);
         label.setOpacity(1.0);
-        label.setTextFill(Color.LEMONCHIFFON);
-        label.setFont(Font.font(30));
+        label.setTextFill(Color.GOLD);
+        label.setFont(Font.font("Broadway", 40));
 
         imageView.setBlendMode(BlendMode.SRC_OVER);
         label.setBlendMode(BlendMode.SRC_OVER);
@@ -987,7 +1010,7 @@ public class GameController {
 
         Pane newPane = new Pane();
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(0.01));
+        PauseTransition pause = new PauseTransition(Duration.seconds(0));
         pause.setOnFinished(event -> {
             removeAllCards();
             newPane.getChildren().addAll(imageView, label);
@@ -1009,16 +1032,19 @@ public class GameController {
         pause.play();
     }
 
-    public void pass(MouseEvent mouseEvent) {
+    public void pass() {
         if (isTransitioning) {
             return;
         }
         isTransitioning = true;
+        selectedSpecialCard = null;
+        selectedCommonCard = null;
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
             gameBattleField.setPassedUser1(true);
         } else {
             gameBattleField.setPassedUser2(true);
         }
+        updateBoard();
         ImageView imageView = new ImageView(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/notif_round_passed.png"))));
         imageView.setFitHeight(240);
         imageView.setFitWidth(320);
@@ -1040,7 +1066,7 @@ public class GameController {
         colorAdjust.setBrightness(-0.8);
         pane.setEffect(colorAdjust);
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
         pause.setOnFinished(event -> {
             isTransitioning = false;
             parentPane.getChildren().remove(newPane);
@@ -1065,7 +1091,7 @@ public class GameController {
         imageView.setFitHeight(240);
         imageView.setFitWidth(320);
         imageView.setLayoutX((parentPane.getWidth() - imageView.getFitWidth()) / 2 - 200);
-        imageView.setLayoutY((parentPane.getHeight() - imageView.getFitHeight()) / 2 - 50);
+        imageView.setLayoutY((parentPane.getHeight() - imageView.getFitHeight()) / 2 - 30);
 
         Label passLabel = new Label();
         passLabel.setText("Round Ended");
@@ -1073,21 +1099,25 @@ public class GameController {
         Font font = Font.font("Broadway", 40);
         passLabel.setFont(font);
         passLabel.setLayoutX((parentPane.getWidth() - passLabel.getWidth()) / 2 - 20);
-        passLabel.setLayoutY((parentPane.getHeight() - passLabel.getHeight()) / 2 - 30);
+        passLabel.setLayoutY((parentPane.getHeight() - passLabel.getHeight()) / 2 - 40);
 
-        Pane newPane = new Pane(imageView, passLabel);
+        Pane newPane = new Pane();
+        newPane.getChildren().addAll(imageView, passLabel);
         parentPane.getChildren().add(newPane);
 
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(-0.8);
         pane.setEffect(colorAdjust);
 
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.setOnFinished(event -> {
             parentPane.getChildren().remove(newPane);
+            startNewRound();
         });
         pause.play();
+    }
 
+    private void startNewRound() {
         int scoreFirstPlayer = Integer.parseInt(firstPlayerScore.getText());
         int scoreSecondPlayer = Integer.parseInt(secondPlayerScore.getText());
         String winner;
@@ -1145,34 +1175,169 @@ public class GameController {
                 }
             }
         }
+        updateBoard();
+        ImageView imageView = new ImageView();
         imageView.setImage(profilePng);
         imageView.setFitHeight(120);
         imageView.setFitWidth(120);
-        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 30);
-        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 135);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2 - 10);
         imageView.setOpacity(1.0);
-
         Label label = new Label();
         if (winner.equals("draw")) {
             label.setText("Round tied");
         } else {
             label.setText(winner + " won the round");
         }
-        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 + 40);
-        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 10);
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 - 70);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 40);
         label.setOpacity(1.0);
-        label.setTextFill(Color.LEMONCHIFFON);
-        label.setFont(Font.font(30));
+        label.setTextFill(Color.GOLD);
+        label.setFont(Font.font("Broadway", 40));
 
         imageView.setBlendMode(BlendMode.SRC_OVER);
         label.setBlendMode(BlendMode.SRC_OVER);
 
-        Pane newPane2 = new Pane(imageView, passLabel);
-        parentPane.getChildren().add(newPane2);
+        Pane newPane = new Pane(imageView, label);
+        parentPane.getChildren().add(newPane);
 
-        pause = new PauseTransition(Duration.seconds(3));
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.setOnFinished(event -> {
-            parentPane.getChildren().remove(newPane2);
+            parentPane.getChildren().remove(newPane);
+            updateBoardAfterARound();
+        });
+        pause.play();
+    }
+
+    private void updateBoardAfterARound() {
+        if (gameBattleField.getHealthUser1() == 0 || gameBattleField.getHealthUser2() == 0) {
+            endOfTheGame();
+        } else {
+            gameBattleField.setRound(gameBattleField.getRound() + 1);
+            gameBattleField.setPassedUser1(false);
+            gameBattleField.setPassedUser2(false);
+            gameBattleField.changeFirstPlayerInRound();
+            User user = gameBattleField.getUserFirstPlay();
+            if (!gameBattleField.getWhichUserTurn().equals(user)) {
+                gameBattleField.setWhichUserTurn(user);
+            }
+            addCardsToDiscard();
+        }
+    }
+
+    private void addCardsToDiscard() {
+        commonCardsInDiscardUser1.addAll(closeCombatPlayedUser1);
+        closeCombatPlayedUser1.clear();
+        if (specialFieldInCloseCombatUser1 != null) {
+            specialCardsDiscardUser1.add(specialFieldInCloseCombatUser1);
+            specialFieldInCloseCombatUser1 = null;
+        }
+        commonCardsInDiscardUser1.addAll(rangedIsPlayedUser1);
+        rangedIsPlayedUser1.clear();
+        if (specialFieldInRangedUser1 != null) {
+            specialCardsDiscardUser1.add(specialFieldInRangedUser1);
+            specialFieldInRangedUser1 = null;
+        }
+        commonCardsInDiscardUser1.addAll(siegeIsPlayedUser1);
+        siegeIsPlayedUser1.clear();
+        if (specialFieldInSiegeUser1 != null) {
+            specialCardsDiscardUser1.add(specialFieldInSiegeUser1);
+            specialFieldInSiegeUser1 = null;
+        }
+        commonCardsInDiscardUser2.addAll(closeCombatPlayedUser2);
+        closeCombatPlayedUser2.clear();
+        if (specialFieldInCloseCombatUser2 != null) {
+            specialCardsDiscardUser2.add(specialFieldInCloseCombatUser2);
+            specialFieldInCloseCombatUser2 = null;
+        }
+        commonCardsInDiscardUser2.addAll(rangedIsPlayedUser2);
+        rangedIsPlayedUser2.clear();
+        if (specialFieldInRangedUser2 != null) {
+            specialCardsDiscardUser2.add(specialFieldInRangedUser2);
+            specialFieldInRangedUser2 = null;
+        }
+        commonCardsInDiscardUser2.addAll(siegeIsPlayedUser2);
+        siegeIsPlayedUser2.clear();
+        if (specialFieldInSiegeUser2 != null) {
+            specialCardsDiscardUser2.add(specialFieldInSiegeUser2);
+            specialFieldInSiegeUser2 = null;
+        }
+        addWeatherCardsToDiscard();
+        updateBoard();
+
+        ImageView imageView = new ImageView(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/notif_round_start.png"))));
+        imageView.setFitHeight(180);
+        imageView.setFitWidth(250);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2 - 120);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2 - 25);
+        imageView.setOpacity(1.0);
+        Label label = new Label();
+        label.setText("Round start");
+        label.setLayoutX((pane.getWidth() - label.getWidth()) / 2 - 40);
+        label.setLayoutY((pane.getHeight() - label.getHeight()) / 2 - 40);
+        label.setOpacity(1.0);
+        label.setTextFill(Color.GOLD);
+        label.setFont(Font.font("Broadway", 40));
+
+        imageView.setBlendMode(BlendMode.SRC_OVER);
+        label.setBlendMode(BlendMode.SRC_OVER);
+
+        Pane newPane = new Pane(imageView, label);
+        parentPane.getChildren().add(newPane);
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+        pause.setOnFinished(event -> {
+            isTransitioning = false;
+            pane.setEffect(null);
+            parentPane.getChildren().remove(newPane);
+        });
+        pause.play();
+    }
+
+    private void endOfTheGame() {
+        ImageView imageView = new ImageView();
+        imageView.setFitHeight(240);
+        imageView.setFitWidth(360);
+        imageView.setLayoutX((parentPane.getWidth() - imageView.getFitWidth()) / 2);
+        imageView.setLayoutY((parentPane.getHeight() - imageView.getFitHeight()) / 2 - 100);
+
+        Label endLabel = new Label();
+        endLabel.setTextFill(Color.GOLD);
+        Font font = Font.font("Broadway", 40);
+        endLabel.setFont(font);
+        endLabel.setLayoutX((parentPane.getWidth() - endLabel.getWidth()) / 2 - 200);
+        endLabel.setLayoutY((parentPane.getHeight() - endLabel.getHeight()) / 2 + 50);
+
+        Pane newPane = new Pane();
+        newPane.getChildren().addAll(imageView, endLabel);
+        parentPane.getChildren().add(newPane);
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.8);
+        pane.setEffect(colorAdjust);
+
+        if (gameBattleField.getHealthUser1() == 0 && gameBattleField.getHealthUser2() == 0) {
+            imageView.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/end_draw.png"))));
+            endLabel.setText("The game equalised");
+        } else if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) {
+            imageView.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/end_win.png"))));
+            endLabel.setText(gameBattleField.getUser1().getUsername() + " won the game");
+        } else {
+            imageView.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/end_win.png"))));
+            endLabel.setText(gameBattleField.getUser2().getUsername() + " won the game");
+        }
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(2));
+        pause.setOnFinished(event -> {
+            isTransitioning = false;
+            pane.setEffect(null);
+            parentPane.getChildren().remove(newPane);
+            MainMenu mainMenu = new MainMenu();
+            try {
+                mainMenu.start(ApplicationController.getStage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         });
         pause.play();
     }
@@ -1449,7 +1614,13 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
-        if (selectedCommonCard == null || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
+            return;
+        }
+        if (selectedCommonCard == null || selectedCommonCard.equals(CommonCard.Decoy)
+                || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
             return;
         gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, false);
         updateBoard();
@@ -1464,6 +1635,8 @@ public class GameController {
             setAnimationForCloseCombat(moraleAnimation);
         } else if (selectedCommonCard.getAbility().contains("Commander's Horn")) {
             setAnimationForCloseCombat(hornAnimation);
+        } else if (selectedCommonCard.getAbility().equals("Scorch Close Combat")) {
+            scorchCloseCombatAbility();
         } else {
             unSelectCard();
             updateBoard();
@@ -1475,7 +1648,12 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
-        if (selectedCommonCard == null || (!selectedCommonCard.getPlayField().equals("Ranged") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
+        }
+        if (selectedCommonCard == null || selectedCommonCard.equals(CommonCard.Decoy)
+                || (!selectedCommonCard.getPlayField().equals("Ranged") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
             return;
         gameBattleFieldController.putCommonCardRanged(selectedCommonCard, false);
         updateBoard();
@@ -1490,6 +1668,10 @@ public class GameController {
             setAnimationForRanged(moraleAnimation);
         } else if (selectedCommonCard.getAbility().contains("Commander's Horn")) {
             setAnimationForRanged(hornAnimation);
+        } else if (selectedCommonCard.getAbility().equals("Scorch")) {
+            scorchAbility();
+        } else if (selectedCommonCard.getAbility().equals("Scorch Ranged")) {
+            scorchRangedAbility();
         } else {
             unSelectCard();
             updateBoard();
@@ -1501,7 +1683,12 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
-        if (selectedCommonCard == null || !selectedCommonCard.getPlayField().equals("Siege") || selectedCommonCard.getAbility().contains("Spy"))
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
+        }
+        if (selectedCommonCard == null || selectedCommonCard.equals(CommonCard.Decoy)
+                || !selectedCommonCard.getPlayField().equals("Siege") || selectedCommonCard.getAbility().contains("Spy"))
             return;
         gameBattleFieldController.putCommonCardSiege(selectedCommonCard, false);
         updateBoard();
@@ -1516,6 +1703,8 @@ public class GameController {
             setAnimationForSiege(moraleAnimation);
         } else if (selectedCommonCard.getAbility().contains("Commander's Horn")) {
             setAnimationForSiege(hornAnimation);
+        } else if (selectedCommonCard.getAbility().equals("Scorch Siege")) {
+            scorchSiegeAbility();
         } else {
             unSelectCard();
             updateBoard();
@@ -1526,6 +1715,10 @@ public class GameController {
     public void putCardInCompetitorSiegeRow() {
         if (isTransitioning) {
             return;
+        }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
         }
         if (selectedCommonCard != null && selectedCommonCard.getAbility().contains("Spy") && selectedCommonCard.getPlayField().equals("Close Combat")) {
             StackPane stackPane;
@@ -1573,6 +1766,10 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
+        }
         if (selectedCommonCard != null && selectedCommonCard.getAbility().contains("Spy") && selectedCommonCard.getPlayField().equals("Close Combat")) {
             StackPane stackPane;
             gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, true);
@@ -1619,6 +1816,10 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
+        }
         if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.CommandersHorn) && ((ImageView) mySiegeSpecialCard.getChildren().getFirst()).getImage() == null) {
             gameBattleFieldController.putSpecialCardInSpecialFieldSiege(selectedSpecialCard);
             StackPane stackPane = mySiegeSpecialCard;
@@ -1651,6 +1852,10 @@ public class GameController {
         if (isTransitioning) {
             return;
         }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
+        }
         if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.CommandersHorn) && ((ImageView) myRangedSpecialCard.getChildren().getFirst()).getImage() == null) {
             gameBattleFieldController.putSpecialCardInSpecialFieldRanged(selectedSpecialCard);
             StackPane stackPane = myRangedSpecialCard;
@@ -1682,6 +1887,10 @@ public class GameController {
     public void putSpecialCardInCloseCombatRow() {
         if (isTransitioning) {
             return;
+        }
+        if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.Scorch)) {
+            isTransitioning = true;
+            scorchAbility();
         }
         if (selectedSpecialCard != null && selectedSpecialCard.equals(SpecialCard.CommandersHorn) && ((ImageView) myCloseCombatSpecialCard.getChildren().getFirst()).getImage() == null) {
             gameBattleFieldController.putSpecialCardInSpecialFieldCloseCombat(selectedSpecialCard);
@@ -1846,6 +2055,46 @@ public class GameController {
         timeline.play();
     }
 
+    public void addWeatherCardsToDiscard() {
+        for (int i = pane.getChildren().size() - 12; i < pane.getChildren().size(); i++) {
+            Node node = pane.getChildren().get(i);
+            if (node instanceof ImageView && node.getId() == null) {
+                pane.getChildren().remove(node);
+                i -= 1;
+            }
+        }
+
+        Collections.shuffle(gameBattleField.getWeatherCards());
+        int totalCards = gameBattleField.getWeatherCards().size();
+        if (totalCards == 1) {
+            if (whichUserIsNotTurn().equals(gameBattleField.getUser1())) {
+                gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getWeatherCards().getFirst());
+            } else {
+                gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getWeatherCards().getFirst());
+            }
+        } else if (totalCards == 2) {
+            if (whichUserIsNotTurn().equals(gameBattleField.getUser1())) {
+                gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getWeatherCards().getFirst());
+                gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getWeatherCards().get(1));
+            } else {
+                gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getWeatherCards().getFirst());
+                gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getWeatherCards().get(1));
+            }
+        } else if (totalCards == 3) {
+            if (whichUserIsNotTurn().equals(gameBattleField.getUser1())) {
+                gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getWeatherCards().getFirst());
+                gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getWeatherCards().get(1));
+                gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getWeatherCards().get(2));
+            } else {
+                gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getWeatherCards().getFirst());
+                gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getWeatherCards().get(1));
+                gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getWeatherCards().get(2));
+            }
+        }
+
+        gameBattleField.getWeatherCards().clear();
+    }
+
     public void putWeatherCard() {
         if (isTransitioning) {
             return;
@@ -1993,5 +2242,248 @@ public class GameController {
             updateBoard();
             changeTurn();
         }
+    }
+
+    public void focusOnTheLeaderCard() {
+        if (isTransitioning) {
+            return;
+        }
+        focusOnLeadersImages(gameBattleField.getWhichUserTurn(), true, gameBattleField.getWhichUserTurn());
+    }
+
+    public void focusOnTheLeaderCardCompetitor() {
+        if (isTransitioning) {
+            return;
+        }
+        focusOnLeadersImages(whichUserIsNotTurn(), false, whichUserIsNotTurn());
+    }
+
+    private void focusOnLeadersImages(User whichUserIsNotTurn, boolean isMyLeader, User whichUserIsNotTurn1) {
+        Pane paneClick = new Pane();
+        paneClick.setPrefWidth(1280);
+        paneClick.setPrefHeight(720);
+
+        ImageView imageView = new ImageView(whichUserIsNotTurn.getFactionLeader().getImage());
+        imageView.setFitWidth(200);
+        imageView.setFitHeight(380);
+        imageView.setX((pane.getWidth() - imageView.getFitWidth()) / 2);
+        imageView.setY((pane.getHeight() - imageView.getFitHeight()) / 2 - 50);
+        imageView.setOnMouseClicked(e -> performAbility(isMyLeader));
+
+        Rectangle rectangle = new Rectangle(400, 100, Color.BLACK);
+        rectangle.setStroke(Color.BLACK);
+        rectangle.setStrokeWidth(2);
+        rectangle.setX((pane.getWidth() - rectangle.getWidth()) / 2);
+        rectangle.setY((pane.getHeight() - rectangle.getHeight()) / 2 + 200);
+        rectangle.setStroke(Color.WHITE);
+        rectangle.setStrokeWidth(1);
+
+        Label label = new Label(whichUserIsNotTurn1.getFactionLeader().getAbility());
+        label.setWrapText(true);
+        label.setTextFill(Color.BEIGE);
+        label.setFont(new Font("Arial", 14));
+        label.setAlignment(Pos.CENTER);
+        label.setTextAlignment(CENTER);
+        label.setPadding(new Insets(0, 20, 0, 20));
+
+        StackPane stackPane = new StackPane(rectangle, label);
+        stackPane.setMaxWidth(rectangle.getWidth());
+        stackPane.setMaxHeight(rectangle.getHeight());
+        stackPane.setLayoutX((pane.getWidth() - rectangle.getWidth()) / 2);
+        stackPane.setLayoutY((pane.getHeight() - rectangle.getHeight()) / 2 + 200);
+
+        paneClick.getChildren().addAll(imageView, stackPane);
+        parentPane.getChildren().add(paneClick);
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(-0.8);
+        pane.setEffect(colorAdjust);
+
+        paneClick.setOnMouseClicked(e -> {
+            pane.setEffect(null);
+            parentPane.getChildren().remove(paneClick);
+        });
+    }
+
+    private void performAbility(boolean isMyLeader) {
+        if (isTransitioning) {
+            return;
+        }
+        if (!isMyLeader) return;
+        if ((gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1()) && !gameBattleField.isExistAbilityUser1())
+                || (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2()) && !gameBattleField.isExistAbilityUser2())) {
+            return;
+        }
+        Leader leader;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            gameBattleField.setExistAbilityUser1(false);
+            leader = gameBattleField.getUser1().getFactionLeader();
+        } else {
+            gameBattleField.setExistAbilityUser2(false);
+            leader = gameBattleField.getUser2().getFactionLeader();
+        }
+        switch (leader) {
+            case Leader.SiegeMaster -> putWeatherCardAbility(SpecialCard.ImpenetrableFog);
+            case Leader.SteelForged -> {
+                addWeatherCardsToDiscard();
+                updateBoard();
+                changeTurn();
+            }
+            case Leader.WhiteFlame -> putWeatherCardAbility(SpecialCard.TorrentialRain);
+            case Leader.PurebloodElf -> putWeatherCardAbility(SpecialCard.BitingFrost);
+            case Leader.KingOfTemeria -> kingOfTemeriaAbility();
+            case Leader.BringerOfDeath -> BringerOfDeathAbility();
+            case Leader.TheBeautiful -> TheBeautifulAbility();
+        }
+    }
+
+    private void TheBeautifulAbility() {
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (gameBattleField.getSpecialFieldInRangedUser1() == null) {
+                selectedSpecialCard = SpecialCard.CommandersHorn;
+                putSpecialCardInRangedRow();
+                return;
+            }
+        } else {
+            if (gameBattleField.getSpecialFieldInRangedUser2() == null) {
+                selectedSpecialCard = SpecialCard.CommandersHorn;
+                putSpecialCardInRangedRow();
+                return;
+            }
+        }
+        updateBoard();
+        changeTurn();
+    }
+
+    private void BringerOfDeathAbility() {
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (gameBattleField.getSpecialFieldInCloseCombatUser1() == null) {
+                selectedSpecialCard = SpecialCard.CommandersHorn;
+                putSpecialCardInCloseCombatRow();
+                return;
+            }
+        } else {
+            if (gameBattleField.getSpecialFieldInCloseCombatUser2() == null) {
+                selectedSpecialCard = SpecialCard.CommandersHorn;
+                putSpecialCardInCloseCombatRow();
+                return;
+            }
+        }
+        updateBoard();
+        changeTurn();
+    }
+
+    private void kingOfTemeriaAbility() {
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (gameBattleField.getSpecialFieldInSiegeUser1() == null) {
+                selectedSpecialCard = SpecialCard.CommandersHorn;
+                putSpecialCardInSiegeRow();
+                return;
+            }
+        } else {
+            if (gameBattleField.getSpecialFieldInSiegeUser2() == null) {
+                selectedSpecialCard = SpecialCard.CommandersHorn;
+                putSpecialCardInSiegeRow();
+                return;
+            }
+        }
+        updateBoard();
+        changeTurn();
+    }
+
+    private void putWeatherCardAbility(SpecialCard impenetrableFog) {
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            for (SpecialCard specialCard : gameBattleField.getSpecialCardsBattleFieldUser1()) {
+                if (specialCard.equals(impenetrableFog)) {
+                    selectedSpecialCard = impenetrableFog;
+                    putWeatherCard();
+                    return;
+                }
+            }
+        } else {
+            for (SpecialCard specialCard : gameBattleField.getSpecialCardsBattleFieldUser2()) {
+                if (specialCard.equals(impenetrableFog)) {
+                    selectedSpecialCard = impenetrableFog;
+                    putWeatherCard();
+                    return;
+                }
+            }
+        }
+        updateBoard();
+        changeTurn();
+    }
+
+    private void scorchAbility() {
+        int maxScore = 0;
+        ArrayList<CommonCard> allCommonCardsPlayed = new ArrayList<>();
+        allCommonCardsPlayed.addAll(gameBattleField.getSiegeIsPlayedUser1());
+        allCommonCardsPlayed.addAll(gameBattleField.getSiegeIsPlayedUser2());
+        allCommonCardsPlayed.addAll(gameBattleField.getCloseCombatIsPlayedUser1());
+        allCommonCardsPlayed.addAll(gameBattleField.getCloseCombatIsPlayedUser2());
+        allCommonCardsPlayed.addAll(gameBattleField.getRangedIsPlayedUser1());
+        allCommonCardsPlayed.addAll(gameBattleField.getRangedIsPlayedUser2());
+        for (CommonCard commonCard : allCommonCardsPlayed) {
+            if (commonCard.getScore() > maxScore && !commonCard.isHero()) maxScore = commonCard.getScore();
+        }
+        if (maxScore != 0) {
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
+                if (gameBattleField.getCloseCombatIsPlayedUser1().get(i).getScore() == maxScore && !gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) {
+                    gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
+                    gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
+                    i -= 1;
+                }
+            }
+            for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
+                if (gameBattleField.getCloseCombatIsPlayedUser2().get(i).getScore() == maxScore && !gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) {
+                    gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
+                    gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
+                    i -= 1;
+                }
+            }
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
+                if (gameBattleField.getRangedIsPlayedUser1().get(i).getScore() == maxScore && !gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) {
+                    gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
+                    gameBattleField.getRangedIsPlayedUser1().remove(i);
+                    i -= 1;
+                }
+            }
+            for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
+                if (gameBattleField.getRangedIsPlayedUser2().get(i).getScore() == maxScore && !gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) {
+                    gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
+                    gameBattleField.getRangedIsPlayedUser2().remove(i);
+                    i -= 1;
+                }
+            }
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
+                if (gameBattleField.getSiegeIsPlayedUser1().get(i).getScore() == maxScore && !gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) {
+                    gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
+                    gameBattleField.getSiegeIsPlayedUser1().remove(i);
+                    i -= 1;
+                }
+            }
+            for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
+                if (gameBattleField.getSiegeIsPlayedUser2().get(i).getScore() == maxScore && !gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) {
+                    gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
+                    gameBattleField.getSiegeIsPlayedUser2().remove(i);
+                    i -= 1;
+                }
+            }
+        }
+        isTransitioning = false;
+        unSelectCard();
+        updateBoard();
+        changeTurn();
+    }
+
+    private void scorchCloseCombatAbility() {
+
+    }
+
+    private void scorchRangedAbility() {
+
+    }
+
+    private void scorchSiegeAbility() {
+
     }
 }

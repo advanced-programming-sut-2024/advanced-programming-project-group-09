@@ -24,7 +24,7 @@ public class MainController {
     }
 
     public void startNewGame() throws Exception {
-//        if (ServerUser.getUserLoginIn().getCommonCardsInDeck().size() < 22 || ServerUser.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
+//        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
 //            Alert alert = new Alert(Alert.AlertType.WARNING);
 //            alert.setTitle("Unacceptable deck");
 //            alert.setHeaderText("Change your deck via the deck menu");
@@ -56,11 +56,6 @@ public class MainController {
         }
         ProfileMenu profileMenu = new ProfileMenu();
         profileMenu.start(ApplicationController.getStage());
-    }
-
-    public void setMouseImage() {
-        Image cursor = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/cursor.png")));
-        username.getScene().setCursor(new ImageCursor(cursor));
     }
 
     public void goToLeaderMenu() throws Exception {
