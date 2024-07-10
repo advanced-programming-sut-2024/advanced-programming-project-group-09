@@ -1,8 +1,8 @@
 package Sample;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class LinkByEmail {
@@ -29,8 +29,7 @@ public class LinkByEmail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
             message.setSubject("Authentication Link");
 
-            // This URL should be accessible from the recipient's side
-            String link = "http://localhost:8080/authenticate?token=" + token;
+            String link = "http://localhost:1000/authenticate?token=" + token;
             message.setText("Click the following link to authenticate: " + link);
 
             Transport.send(message);
