@@ -4,25 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="Continue game controller and set labels and images">
+    <list default="true" id="896b1c89-a18b-4dd6-bf20-8b586df38dff" name="Changes" comment="create network for game">
+      <change afterPath="$PROJECT_DIR$/Client/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/CommonCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/Leader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/SpecialCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/CardEnums/SpecialCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameBattleFieldController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameBattleFieldController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Controller/StartNewGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/GameBattleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/GameBattleField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/Model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardMonsterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardMonsterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNilfGaardianTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNilfGaardianTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNorthernRealmsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Sample/View/ChooseCard/ChooseCardNorthernRealmsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseCard/ChooseCardMonster.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/ChooseCard/ChooseCardMonster.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/FXML/Game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_ability_scorch.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_ability_scorch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_weather_storm.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Sample/View/Images/Icons/card_weather_storm.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/users.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +16,12 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,20 +51,33 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.ChooseCardMonsterTest.executor": "Run",
     "Application.ChooseCardTest.executor": "Run",
+    "Application.Client.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MainMenu.executor": "Run",
     "Application.Run.executor": "Run",
+    "Application.Sample.Server.executor": "Run",
+    "Application.Server.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "newerfan",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/erfan/OneDrive/Desktop/Reflection",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "last_opened_file_path": "C:/Users/mohamadreza/java/proj/apporj222222new/approj1/Server",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\mohamadreza\java\proj\apporj222222new\approj1\Server" />
+      <recent name="C:\Users\mohamadreza\java\proj\apporj222222new\approj1\Client" />
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\FXML" />
       <recent name="C:\Users\erfan\OneDrive\Desktop\approj1\src\main\resources\Sample\View\Images" />
     </key>
@@ -90,14 +90,48 @@
       <recent name="Sample.View" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Run" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Sample.Main" />
-      <module name="approj1" />
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="wsl" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Run">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Sample.Client" />
+      <module name="Server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Sample.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Run" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="Sample.Main" />
+      <module name="Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <module name="Server" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Run" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Client" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -114,6 +148,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719477010843</updated>
+      <workItem from="1720514371711" duration="2163000" />
+      <workItem from="1720517831261" duration="66000" />
+      <workItem from="1720581383399" duration="8246000" />
     </task>
     <task id="LOCAL-00001" summary="StartNewGameWithALittleChangeInFactionAndLeader">
       <option name="closed" value="true" />
@@ -195,8 +232,19 @@
       <option name="project" value="LOCAL" />
       <updated>1719984740282</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="create network for game">
+      <option name="closed" value="true" />
+      <created>1720611472135</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1720611472135</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -234,6 +282,12 @@
     <MESSAGE value="Modify the address of all images" />
     <MESSAGE value="fix gameControllerbattleFiled using" />
     <MESSAGE value="create game battlfiled controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="create game battlfiled controller" />
+    <MESSAGE value="create network for game" />
+    <option name="LAST_COMMIT_MESSAGE" value="create network for game" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/apporj2new$Main.ic" NAME="Main Coverage Results" MODIFIED="1720583865057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Sample.*</FILTER>
+    </SUITE>
   </component>
 </project>
