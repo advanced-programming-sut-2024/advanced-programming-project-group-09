@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.StartNewGameController">
+    <center>
+        <VBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0" spacing="5" xmlns="http://javafx.com/javafx/17.0.2-ea">
+            <Label text="competitor's username:" />
+            <TextField fx:id="usernameInput" prefHeight="35.0" prefWidth="360.0" promptText="Please enter the competitor's name" />
+         <Label prefHeight="0.0" prefWidth="0.0" />
+         <HBox prefHeight="36.0" prefWidth="300.0" spacing="40">
+            <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#startNewGameWithUsername" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: GREEN;" text="Start New Game" />
+               <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#backToMainMenu" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: RED;" text="Back" />
+            </children>
+         </HBox>
+        </VBox>
+    </center>
+   <left>
+      <Label prefHeight="26.0" prefWidth="220.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Label prefHeight="26.0" prefWidth="220.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
