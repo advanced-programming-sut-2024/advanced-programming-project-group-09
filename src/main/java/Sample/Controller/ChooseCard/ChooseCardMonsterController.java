@@ -1910,6 +1910,8 @@ public class ChooseCardMonsterController {
                 return CommonCard.ZerrikanianFireScorpion;
             case "realms_ballista":
                 return CommonCard.Ballista;
+            case "realms_kaedwen_siege":
+                return CommonCard.KaedweniSiegeExpert;
             case "realms_banner_nubrse":
                 return CommonCard.DunBannerMedic;
             case "realms_blue_stripes":
