@@ -1,6 +1,7 @@
 package Sample.View;
 
 import Sample.Controller.ApplicationController;
+import Sample.Controller.FriendsController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

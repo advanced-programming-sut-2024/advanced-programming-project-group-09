@@ -1,7 +1,6 @@
 package Sample;
 
 import Sample.CardEnums.SpecialCard;
-import Sample.Controller.NetworkController;
 import Sample.Controller.RegisterController;
 import Sample.Model.User;
 import com.google.gson.Gson;
@@ -15,7 +14,8 @@ import java.util.HashMap;
 
 
 public class Server {
-    public ArrayList<String> messageToSendClientsInQueue = new ArrayList<>(); // commands[1] is the destination username
+    // commands[1] = destination username | commands[2] = origin username
+    public ArrayList<String> messageToSendClientsInQueue = new ArrayList<>();
     public static ArrayList<String> allUsersInJson = new ArrayList<>();
     private static Server instance;
     public static ArrayList<Client> clients = new ArrayList<>();
@@ -32,10 +32,11 @@ public class Server {
     private static RegisterController registerController;
 
     public static void main(String[] args) {
-        User user = new User("alex", "123", "", "");
+        User user = new User("alex", "123", "", "alexa021");
+        User user2 = new User("ali", "123", "", "ali90");
         allUsersInJson.add(new Gson().toJson(user));
+        allUsersInJson.add(new Gson().toJson(user2));
         registerController = RegisterController.getInstance();
-        allUsersInJson.add(new Gson().toJson(new User("ali", "123", "a@gmail.com", "reza")));
         allUsersInJson.add(new Gson().toJson(new User("mmd", "Ali123!", "a@gmail.com", "reza")));
         int port = Client.port; // Port number the server will listen on
         try (ServerSocket serverSocket = new ServerSocket(port)) {
@@ -58,7 +59,7 @@ public class Server {
         String[] commands = cmd.split("~");
         // notice : commands[0] command kari ke bayad anjam she ro moshakhas mikone az 1 be bad parametr.
 // handel two duplicate connection
-        System.out.println(commands[0]);
+        System.out.println("commands[0]: " + commands[0]);
         switch (commands[0]) {
             case "getAllClientsJson": {
                 return new Gson().toJson(clients);
@@ -70,6 +71,7 @@ public class Server {
                 ArrayList<Client> clients1 = new Gson().fromJson(commands[1], type);
                 clients.clear();
                 clients.addAll(clients1);
+                return "done";
             }
             case "getAllUsersJson": {
                 System.out.println("getAllUsersJson called");
@@ -80,7 +82,7 @@ public class Server {
             case "addNewUser": {
                 System.out.println("addNewUser called");
                 allUsersInJson.add(commands[1]);
-                return "";
+                return "done";
             }
             case "UpdateUsersInServer": {
                 System.out.println("UpdateUsersInServer called");
@@ -88,28 +90,44 @@ public class Server {
                 Type type = new TypeToken<ArrayList<String>>() {
                 }.getType();
                 allUsersInJson = new Gson().fromJson(commands[1], type);
-                return "";
+                return "done";
             }
             case "sendArrayListCard": {
                 Type type = new TypeToken<ArrayList<SpecialCard>>() {
                 }.getType();
                 ArrayList<SpecialCard> specialCards = new Gson().fromJson(commands[1], type);
+                return "done";
             }
-            case "sendFriendReq": {
-                NetworkController.updateUsersFromServer();
-                User originUser = User.getUserByUsername(commands[1]);
-                User destinationUser = User.getUserByUsername(commands[2]);
-                assert destinationUser != null;
-                assert originUser != null;
-                sendFreindReq(originUser, destinationUser);
-
+            case "sendFriendReq": { // i wanne be friend with cr7| so cr7= commands[1] and me=commands[2]
+                User cr7 = User.getUserByUsername(commands[2]);
+                User me = User.getUserByUsername(commands[1]);
+                assert me != null;
+                assert cr7 != null;
+                sendFreindReq(cr7, me);
+                return "done";
+            }
+            case "updateLastFriendReqFromServerForMe": {
+                String userWhoWantsNewUpdateOfFriendReqsName = commands[1];
+                for (String s : messageToSendClientsInQueue) {
+                    String[] datas = s.split("~");
+                    for (String data : datas) {
+                        System.out.println("data: " + data);
+                    }
+                    if (datas[1].equals(userWhoWantsNewUpdateOfFriendReqsName)) {
+                        String nameOfTheUserThatSentFriendReq = datas[2];
+                        messageToSendClientsInQueue.remove(s);
+                        System.out.println(s + " deleted");
+                        return nameOfTheUserThatSentFriendReq;
+                    }
+                }
+                return "No new Friend Req!";
             }
         }
-        return null;
+        return "";
     }
 
-    private void sendFreindReq(User originUser, User destinationUser) {
-        String message = "FriendReq~" + destinationUser.getUsername() + "~" + originUser.getUsername();
+    private void sendFreindReq(User me, User cr7) {
+        String message = "sendFriendReq~" + cr7.getUsername() + "~" + me.getUsername();
         messageToSendClientsInQueue.add(message);
 
     }

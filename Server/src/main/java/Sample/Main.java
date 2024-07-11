@@ -23,6 +23,7 @@ public class Main {
 
         if (User.getUsers().isEmpty()) {
             User user = new User("tom", "123", "", "");
+            User user2 = new User("ali", "123", "", "ali90");
             user.setFactionSelected(Faction.Monsters);
             user.setFactionLeader(Leader.BringerOfDeath);
             user.getCommonCardsInDeck().add(CommonCard.Botchling);
@@ -52,7 +53,7 @@ public class Main {
             user.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
             user.getSpecialCardsInDeck().add(SpecialCard.CommandersHorn);
 
-            User user2 = new User("alex", "123", "", "");
+            User user3 = new User("alex", "123", "", "");
             user2.setFactionSelected(Faction.Monsters);
             user2.setFactionLeader(Leader.DestroyerOfWorlds);
             user2.getCommonCardsInDeck().add(CommonCard.Ghoul);

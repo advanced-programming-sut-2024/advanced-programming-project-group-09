@@ -392,6 +392,9 @@ public class User {
 
     public void addFriend(User user) {
         System.out.println("is Online called");
+        friends.add(user);
+
+
     }
 
     public void removeFriend(User user) {
