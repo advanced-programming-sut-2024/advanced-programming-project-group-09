@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.ScoreBoardController">
+   <VBox alignment="CENTER" layoutX="208.0" layoutY="80.0" spacing="20">
+      <Label fx:id="maxScore" layoutX="288.0" layoutY="32.0" text="max score" />
+      <Label fx:id="maxrangedScore" layoutX="288.0" layoutY="78.0" text="max ranged Score" />
+      <Label fx:id="maxsiegeScore" layoutX="288.0" layoutY="124.0" text="max siege Score" />
+      <Label fx:id="maxcloseCombatScore" layoutX="288.0" layoutY="124.0" text="max closeCombat Score" />
+   </VBox>
+</AnchorPane>

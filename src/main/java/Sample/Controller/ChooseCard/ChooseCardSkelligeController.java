@@ -1537,7 +1537,7 @@ public class ChooseCardSkelligeController {
     }
 
     private boolean checkEnoughSelection() {
-        return !check10SelectionOfSpecialCardValidation() || !check22SelectionOfCommonCardValidation();
+        return check10SelectionOfSpecialCardValidation() || check22SelectionOfCommonCardValidation();
     }
 
     private void printDeck(User user) {
@@ -1571,7 +1571,7 @@ public class ChooseCardSkelligeController {
         String regex = "Special Cards: (?<specialCards>\\d+)/10";
         Matcher matcher = getCommandMatcher(regex, specialCards);
         int numOfSpecialCards = Integer.parseInt(matcher.group("specialCards"));
-        return numOfSpecialCards >= 10;
+        return numOfSpecialCards > 10;
     }
 
     private Matcher getCommandMatcher(String regex, Text text) {

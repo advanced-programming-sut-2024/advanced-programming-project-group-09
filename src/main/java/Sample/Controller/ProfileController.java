@@ -3,6 +3,8 @@ package Sample.Controller;
 import Sample.Enum.Commands;
 import Sample.Model.User;
 import Sample.View.MainMenu;
+import Sample.View.RegisterMenu;
+import Sample.View.ScoreBoardMenu;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -262,5 +264,14 @@ public class ProfileController {
     }
 
     public void showGameHistory5(ActionEvent event) {
+    }
+
+    public void goToScoreboard(MouseEvent mouseEvent) {
+        ScoreBoardMenu scoreboardMenu = new ScoreBoardMenu();
+        try {
+            scoreboardMenu.start(ApplicationController.getStage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

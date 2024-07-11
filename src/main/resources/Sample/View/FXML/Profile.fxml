@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import java.lang.String?>
-<?import javafx.scene.text.TextFlow?>
-<BorderPane fx:id="profile" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="profile" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Sample.Controller.ProfileController">
     <center>
         <VBox fx:id="vbox" alignment="CENTER" spacing="10">
-            <Button onMouseClicked="#goToMainMenu" text="Go To Main Menu" style="-fx-background-color: Gold"/>
-            <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" text="show my data"
-                    style="-fx-background-color: Purple"/>
-            <Button mnemonicParsing="false" text="game history" style="-fx-background-color: Blue"/>
-            <MenuButton prefHeight="26.0" prefWidth="178.0" text="show last nth game history"
-                        style="-fx-background-color: Red">
+            <Button onMouseClicked="#goToScoreboard"  mnemonicParsing="false" prefHeight="36.0" prefWidth="126.0" text="score board"/>
+            <Button onMouseClicked="#goToMainMenu" style="-fx-background-color: Brown" text="Go To Main Menu"/>
+            <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" style="-fx-background-color: Purple" text="show my data"/>
+            <Button mnemonicParsing="false" style="-fx-background-color: Blue" text="game history"/>
+            <MenuButton prefHeight="34.0" prefWidth="248.0" style="-fx-background-color: Gray" text="show last nth game history">
                 <items>
                     <MenuItem onAction="#showGameHistory1" text="1"/>
                     <MenuItem onAction="#showGameHistory2" text="2"/>

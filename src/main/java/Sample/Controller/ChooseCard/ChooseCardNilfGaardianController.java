@@ -1257,7 +1257,7 @@ public class ChooseCardNilfGaardianController {
 
     public void done(MouseEvent mouseEvent) throws Exception {
         User user = User.getUserForTest();  // TODO : change this to current user
-        if (!checkEnoughSelection()) {
+        if (checkEnoughSelection()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             LoginController.showAlert("Not enough selection", "You should select at most 10 special cards and at least 22 common cards", "");
             return;
@@ -1308,7 +1308,7 @@ public class ChooseCardNilfGaardianController {
     }
 
     private boolean checkEnoughSelection() {
-        return check10SelectionOfSpecialCard() && check22SelectionOfCommonCard();
+        return check10SelectionOfSpecialCard() || check22SelectionOfCommonCard();
     }
 
     private void printDeck(User user) {
@@ -1344,7 +1344,7 @@ public class ChooseCardNilfGaardianController {
         String regex = "Special Cards: (?<specialCards>\\d+)/10";
         Matcher matcher = getCommandMatcher(regex, specialCards);
         int numOfSpecialCards = Integer.parseInt(matcher.group("specialCards"));
-        return numOfSpecialCards < 10;
+        return numOfSpecialCards > 10;
     }
 
     private Matcher getCommandMatcher(String regex, Text text) {
