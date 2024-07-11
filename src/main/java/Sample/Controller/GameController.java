@@ -1234,10 +1234,12 @@ public class GameController {
         String winner;
 
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
-            if (scoreFirstPlayer > scoreSecondPlayer) {
+            if (scoreFirstPlayer > scoreSecondPlayer && gameBattleField.getUser1().getFactionSelected().equals(Faction.NorthernRealms)) {
+                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
                 gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
                 winner = gameBattleField.getUser1().getUsername();
-            } else if (scoreFirstPlayer < scoreSecondPlayer) {
+            } else if (scoreFirstPlayer < scoreSecondPlayer && gameBattleField.getUser2().getFactionSelected().equals(Faction.NorthernRealms)) {
+                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
                 gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
                 winner = gameBattleField.getUser2().getUsername();
             } else {
@@ -1260,10 +1262,12 @@ public class GameController {
                 }
             }
         } else {
-            if (scoreFirstPlayer > scoreSecondPlayer) {
+            if (scoreFirstPlayer > scoreSecondPlayer && gameBattleField.getUser2().getFactionSelected().equals(Faction.NorthernRealms)) {
+                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
                 gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
                 winner = gameBattleField.getUser2().getUsername();
-            } else if (scoreFirstPlayer < scoreSecondPlayer) {
+            } else if (scoreFirstPlayer < scoreSecondPlayer && gameBattleField.getUser1().getFactionSelected().equals(Faction.NorthernRealms)) {
+                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
                 gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
                 winner = gameBattleField.getUser1().getUsername();
             } else {
@@ -1456,6 +1460,62 @@ public class GameController {
         if (gameBattleField.getSpecialFieldInSiegeUser2() != null) {
             specialCardsDiscardUser2.add(gameBattleField.getSpecialFieldInSiegeUser2());
             gameBattleField.setSpecialFieldInSiegeUser2(null);
+        }
+        Random random = new Random();
+        int index;
+        if (gameBattleField.getRound() == 3) {
+            if (gameBattleField.getUser1().getFactionSelected().equals(Faction.Skellige)) {
+                for (int i = 0; i < 2; i++) {
+                    index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser1().size());
+                    CommonCard commonCard = gameBattleField.getCommonCardsInDiscardUser1().get(index);
+                    switch (commonCard.getPlayField()) {
+                        case "Close Combat" -> closeCombatPlayedUser1.add(commonCard);
+                        case "Ranged" -> rangedIsPlayedUser1.add(commonCard);
+                        case "Siege" -> siegeIsPlayedUser1.add(commonCard);
+                        default -> i -= 1;
+                    }
+                    gameBattleField.getCommonCardsInDiscardUser1().remove(commonCard);
+                }
+            }
+            if (gameBattleField.getUser2().getFactionSelected().equals(Faction.Skellige)) {
+                for (int i = 0; i < 2; i++) {
+                    index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser2().size());
+                    CommonCard commonCard = gameBattleField.getCommonCardsInDiscardUser2().get(index);
+                    switch (commonCard.getPlayField()) {
+                        case "Close Combat" -> closeCombatPlayedUser2.add(commonCard);
+                        case "Ranged" -> rangedIsPlayedUser2.add(commonCard);
+                        case "Siege" -> siegeIsPlayedUser2.add(commonCard);
+                        default -> i -= 1;
+                    }
+                    gameBattleField.getCommonCardsInDiscardUser2().remove(commonCard);
+                }
+            }
+        }
+        if (gameBattleField.getUser1().getFactionSelected().equals(Faction.Monsters)) {
+            for (int i = 0; i < 1; i++) {
+                index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser1().size());
+                CommonCard commonCard = gameBattleField.getCommonCardsInDiscardUser1().get(index);
+                switch (commonCard.getPlayField()) {
+                    case "Close Combat" -> closeCombatPlayedUser1.add(commonCard);
+                    case "Ranged" -> rangedIsPlayedUser1.add(commonCard);
+                    case "Siege" -> siegeIsPlayedUser1.add(commonCard);
+                    default -> i -= 1;
+                }
+                gameBattleField.getCommonCardsInDiscardUser1().remove(commonCard);
+            }
+        }
+        if (gameBattleField.getUser2().getFactionSelected().equals(Faction.Monsters)) {
+            for (int i = 0; i < 1; i++) {
+                index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser2().size());
+                CommonCard commonCard = gameBattleField.getCommonCardsInDiscardUser2().get(index);
+                switch (commonCard.getPlayField()) {
+                    case "Close Combat" -> closeCombatPlayedUser2.add(commonCard);
+                    case "Ranged" -> rangedIsPlayedUser2.add(commonCard);
+                    case "Siege" -> siegeIsPlayedUser2.add(commonCard);
+                    default -> i -= 1;
+                }
+                gameBattleField.getCommonCardsInDiscardUser2().remove(commonCard);
+            }
         }
         addWeatherCardsToDiscard();
         updateBoard();
