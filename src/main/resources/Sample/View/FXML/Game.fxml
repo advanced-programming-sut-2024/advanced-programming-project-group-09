@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 
 <StackPane fx:id="parentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unSelectCardWithMouseClick" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.GameController">
-   <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unSelectCardWithMouseClick" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#unSelectCardWithMouseClick" onKeyPressed="#cheatCodes" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
       <ImageView fitHeight="720" fitWidth="1280" layoutX="-1.0">
          <Image url="@../Images/Board.jpg">
          </Image>
@@ -740,38 +740,38 @@
                <Insets left="19.0" />
             </StackPane.margin></ImageView>
       </StackPane>
-      <Label fx:id="competitorSiegeRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="27.0" prefHeight="45.0" prefWidth="26.0" text="00">
+      <Label fx:id="competitorSiegeRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="27.0" prefHeight="45.0" prefWidth="26.0" text="00">
          <font>
-            <Font name="Bauhaus 93" size="24.0" />
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="competitorRangedRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="115.0" prefHeight="45.0" prefWidth="26.0" text="00">
+      <Label fx:id="competitorRangedRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="114.0" prefHeight="45.0" prefWidth="26.0" text="00">
          <font>
-            <Font name="Bauhaus 93" size="24.0" />
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="competitorCloseCombatRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="206.0" prefHeight="45.0" prefWidth="26.0" text="00">
+      <Label fx:id="competitorCloseCombatRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="207.0" prefHeight="45.0" prefWidth="26.0" text="00">
          <font>
-            <Font name="Bauhaus 93" size="24.0" />
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="myCloseCombatRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="305.0" prefHeight="45.0" prefWidth="26.0" text="00">
+      <Label fx:id="myCloseCombatRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="305.0" prefHeight="45.0" prefWidth="26.0" text="00">
          <font>
-            <Font name="Bauhaus 93" size="24.0" />
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="myRangedRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="395.0" prefHeight="45.0" prefWidth="26.0" text="00">
+      <Label fx:id="myRangedRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="394.0" prefHeight="45.0" prefWidth="26.0" text="00">
          <font>
-            <Font name="Bauhaus 93" size="24.0" />
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="mySiegeRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="486.0" prefHeight="45.0" prefWidth="26.0" text="00">
+      <Label fx:id="mySiegeRowScore" alignment="CENTER" contentDisplay="CENTER" layoutX="344.0" layoutY="486.0" prefHeight="45.0" prefWidth="26.0" text="00">
          <font>
-            <Font name="Bauhaus 93" size="24.0" />
+            <Font name="Bauhaus 93" size="15.0" />
          </font>
       </Label>
       <ImageView fx:id="bigCardShow" fitHeight="360.0" fitWidth="200.0" layoutX="1027.0" layoutY="166.0" pickOnBounds="true" />
-      <StackPane fx:id="myLastDiscard" layoutX="1033.0" layoutY="558.0" prefHeight="86.0" prefWidth="63.0">
+      <StackPane fx:id="myLastDiscard" layoutX="1033.0" layoutY="558.0" onMouseClicked="#showMyDiscardCards" prefHeight="86.0" prefWidth="63.0">
          <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
          <Label alignment="CENTER" prefHeight="22.0" prefWidth="22.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />
@@ -781,7 +781,7 @@
                <Insets left="8.0" />
             </StackPane.margin></ImageView>
       </StackPane>
-      <StackPane fx:id="competitorLastDiscard" layoutX="1033.0" layoutY="54.0" prefHeight="86.0" prefWidth="63.0">
+      <StackPane fx:id="competitorLastDiscard" layoutX="1033.0" layoutY="54.0" onMouseClicked="#showCompetitorDiscardCards" prefHeight="86.0" prefWidth="63.0">
          <ImageView fitHeight="86.0" fitWidth="63.0" pickOnBounds="true" />
          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" StackPane.alignment="TOP_LEFT" />
          <Label alignment="CENTER" prefHeight="22.0" prefWidth="22.0" text="0" visible="false" StackPane.alignment="TOP_LEFT" />

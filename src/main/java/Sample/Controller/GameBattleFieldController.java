@@ -100,15 +100,13 @@ public class GameBattleFieldController {
             if (gameBattleField.getSpecialCardsDeckUser1().get(randomIndex) == SpecialCard.Decoy) {
                 gameBattleField.getCommonCardInBattleFieldUser1().add(CommonCard.Decoy);
                 System.out.println(20);
-            }
-            else {
+            } else {
                 gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDeckUser1().get(randomIndex));
             }
             if (gameBattleField.getSpecialCardsDeckUser2().get(randomIndex2) == SpecialCard.Decoy) {
                 gameBattleField.getCommonCardInBattleFieldUser2().add(CommonCard.Decoy);
                 System.out.println(10);
-            }
-            else {
+            } else {
                 gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDeckUser2().get(randomIndex2));
             }
             gameBattleField.getSpecialCardsDeckUser1().remove(randomIndex);
@@ -422,6 +420,87 @@ public class GameBattleFieldController {
     }
 
     public void sortCommonByScoreThenName(ArrayList<CommonCard> commonCards) {
-        commonCards.sort(Comparator.comparing(CommonCard::getScore).thenComparing(Comparator.comparing(CommonCard::getCardName)));
+        commonCards.sort(Comparator.comparing(CommonCard::getScore).thenComparing(CommonCard::getCardName));
+    }
+
+    public void medicAbility() {
+        Random random = new Random();
+        int index;
+        boolean isSpecial;
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            int number = 0;
+            for (CommonCard commonCard : gameBattleField.getCommonCardsInDiscardUser1()) {
+                if (!commonCard.isHero()) number += 1;
+            }
+            number += gameBattleField.getSpecialCardsDiscardUser1().size();
+            if (number == 0) return;
+            isSpecial = random.nextBoolean();
+            if (!isSpecial) {
+                if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser1().size());
+                    if (gameBattleField.getCommonCardsInDiscardUser1().get(index).isHero()) {
+                        medicAbility();
+                        return;
+                    }
+                    gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardsInDiscardUser1().get(index));
+                    gameBattleField.getCommonCardsInDiscardUser1().remove(index);
+                } else if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getSpecialCardsDiscardUser1().size());
+                    gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDiscardUser1().get(index));
+                    gameBattleField.getSpecialCardsDiscardUser1().remove(index);
+                }
+            } else {
+                if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getSpecialCardsDiscardUser1().size());
+                    gameBattleField.getSpecialCardsBattleFieldUser1().add(gameBattleField.getSpecialCardsDiscardUser1().get(index));
+                    gameBattleField.getSpecialCardsDiscardUser1().remove(index);
+                } else if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser1().size());
+                    if (gameBattleField.getCommonCardsInDiscardUser1().get(index).isHero()) {
+                        medicAbility();
+                        return;
+                    }
+                    gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardsInDiscardUser1().get(index));
+                    gameBattleField.getCommonCardsInDiscardUser1().remove(index);
+                }
+            }
+        } else {
+            int number = 0;
+            for (CommonCard commonCard : gameBattleField.getCommonCardsInDiscardUser2()) {
+                if (!commonCard.isHero()) number += 1;
+            }
+            number += gameBattleField.getSpecialCardsDiscardUser2().size();
+            if (number == 0) return;
+            isSpecial = random.nextBoolean();
+            if (!isSpecial) {
+                if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser2().size());
+                    if (gameBattleField.getCommonCardsInDiscardUser2().get(index).isHero()) {
+                        medicAbility();
+                        return;
+                    }
+                    gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardsInDiscardUser2().get(index));
+                    gameBattleField.getCommonCardsInDiscardUser2().remove(index);
+                } else if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getSpecialCardsDiscardUser2().size());
+                    gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDiscardUser2().get(index));
+                    gameBattleField.getSpecialCardsDiscardUser2().remove(index);
+                }
+            } else {
+                if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getSpecialCardsDiscardUser2().size());
+                    gameBattleField.getSpecialCardsBattleFieldUser2().add(gameBattleField.getSpecialCardsDiscardUser2().get(index));
+                    gameBattleField.getSpecialCardsDiscardUser2().remove(index);
+                } else if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty()) {
+                    index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser2().size());
+                    if (gameBattleField.getCommonCardsInDiscardUser2().get(index).isHero()) {
+                        medicAbility();
+                        return;
+                    }
+                    gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardsInDiscardUser2().get(index));
+                    gameBattleField.getCommonCardsInDiscardUser2().remove(index);
+                }
+            }
+        }
     }
 }

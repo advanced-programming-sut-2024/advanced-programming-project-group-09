@@ -21,9 +21,12 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.ClosePath;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -196,6 +199,12 @@ public class GameController {
     private GameBattleFieldController gameBattleFieldController;
 
     public void initialize() {
+        Timeline timeline = new Timeline();
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), event -> passIfDonNotHaveAnyCard());
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
         gameBattleFieldController = new GameBattleFieldController(gameBattleField);
         gameBattleFieldController.cloneChosenDeckForUsingInGame();
         gameBattleFieldController.giveRandomInitialCards();
@@ -235,8 +244,21 @@ public class GameController {
         updateBoard();
     }
 
+    private void passIfDonNotHaveAnyCard() {
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (gameBattleField.getSpecialCardsBattleFieldUser1().isEmpty() && gameBattleField.getCommonCardInBattleFieldUser1().isEmpty()) {
+                pass();
+            }
+        }
+        else {
+            if (gameBattleField.getSpecialCardsBattleFieldUser2().isEmpty() && gameBattleField.getCommonCardInBattleFieldUser2().isEmpty()) {
+                pass();
+            }
+        }
+    }
+
     private void changeTwoCardsOfDeck() {
-        GaussianBlur gaussianBlur = new GaussianBlur(10);
+        GaussianBlur gaussianBlur = new GaussianBlur(20);
         pane.setEffect(gaussianBlur);
 
         allCards = new HBox(1050);
@@ -419,6 +441,40 @@ public class GameController {
             else competitorLeader.setEffect(colorAdjust);
         }
 
+        if (specialFieldInCloseCombatUser1 != null && specialFieldInCloseCombatUser1.equals(SpecialCard.Mardroeme)) {
+            for (int i = 0; i < closeCombatPlayedUser1.size(); i++) {
+                if (closeCombatPlayedUser1.get(i).equals(CommonCard.Berserker)) {
+                    closeCombatPlayedUser1.add(i + 1, CommonCard.TransformedVildkaarl);
+                    closeCombatPlayedUser1.remove(CommonCard.Berserker);
+                }
+            }
+        }
+        if (specialFieldInRangedUser1 != null && specialFieldInRangedUser1.equals(SpecialCard.Mardroeme) || rangedIsPlayedUser1.contains(CommonCard.Ermion)) {
+            for (int i = 0; i < rangedIsPlayedUser1.size(); i++) {
+                if (rangedIsPlayedUser1.get(i).equals(CommonCard.YoungBerserker)) {
+                    rangedIsPlayedUser1.add(i + 1, CommonCard.TransformedYoungVildkaarl);
+                    rangedIsPlayedUser1.remove(CommonCard.YoungBerserker);
+                }
+            }
+        }
+
+        if (specialFieldInCloseCombatUser2 != null && specialFieldInCloseCombatUser2.equals(SpecialCard.Mardroeme)) {
+            for (int i = 0; i < closeCombatPlayedUser2.size(); i++) {
+                if (closeCombatPlayedUser2.get(i).equals(CommonCard.Berserker)) {
+                    closeCombatPlayedUser2.add(i + 1, CommonCard.TransformedVildkaarl);
+                    closeCombatPlayedUser2.remove(CommonCard.Berserker);
+                }
+            }
+        }
+        if (specialFieldInRangedUser2 != null && specialFieldInRangedUser2.equals(SpecialCard.Mardroeme) || rangedIsPlayedUser2.contains(CommonCard.Ermion)) {
+            for (int i = 0; i < rangedIsPlayedUser2.size(); i++) {
+                if (rangedIsPlayedUser2.get(i).equals(CommonCard.YoungBerserker)) {
+                    rangedIsPlayedUser2.add(i + 1, CommonCard.TransformedYoungVildkaarl);
+                    rangedIsPlayedUser2.remove(CommonCard.YoungBerserker);
+                }
+            }
+        }
+
         putCardsInBoard();
 
         int firstPlayerScoreInGame;
@@ -561,8 +617,6 @@ public class GameController {
             String ability = gameBattleField.getLast().getAbility();
             if (ability.contains("Transform"))
                 ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityAvenger);
-            else if (ability.contains("Mardroeme"))
-                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMardroeme);
             else if (ability.contains("Muster"))
                 ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMuster);
             else if (ability.contains("Commander's Horn"))
@@ -573,6 +627,8 @@ public class GameController {
                 ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityBond);
             else if (ability.contains("Increase Score By Mardroeme"))
                 ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityBerserker);
+            else if (ability.contains("Mardroeme"))
+                ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityMardroeme);
             else if (ability.contains("Scorch")) {
                 ((ImageView) myLastDiscard.getChildren().get(4)).setImage(cardAbilityScorch);
             } else if (ability.contains("Spy"))
@@ -704,8 +760,6 @@ public class GameController {
             String ability = commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getAbility();
             if (ability.contains("Transform"))
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityAvenger);
-            else if (ability.contains("Mardroeme"))
-                ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityMardroeme);
             else if (ability.contains("Muster"))
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityMuster);
             else if (ability.contains("Commander's Horn"))
@@ -716,6 +770,8 @@ public class GameController {
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityBond);
             else if (ability.contains("Increase Score By Mardroeme"))
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityBerserker);
+            else if (ability.contains("Mardroeme"))
+                ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityMardroeme);
             else if (ability.contains("Scorch")) {
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityScorch);
             } else if (ability.contains("Spy")) ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilitySpy);
@@ -814,8 +870,9 @@ public class GameController {
             }
 
             String ability = closeCombatPlayedUser1.get(i).getAbility();
-            if (ability.contains("Transform"))
+            if (ability.contains("Transform")) {
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityAvenger);
+            }
             else if (ability.contains("Muster"))
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityMuster);
             else if (ability.contains("Commander's Horn"))
@@ -858,7 +915,6 @@ public class GameController {
                 else score = (score - 1) / 2;
             }
         }
-
         if (commonCard.getAbility().contains("Tight Bond")) {
             int number = 0;
             for (CommonCard card : commonCards) {
@@ -868,8 +924,10 @@ public class GameController {
             }
             score *= number;
         }
-        for (CommonCard card : commonCards) {
-            if (card.getAbility().contains("Morale")) score += 1;
+        if (!commonCard.getAbility().contains("Morale")) {
+            for (CommonCard card : commonCards) {
+                if (card.getAbility().contains("Morale")) score += 1;
+            }
         }
         if (commonCards == closeCombatPlayedUser1 && ((specialFieldInCloseCombatUser1 != null && specialFieldInCloseCombatUser1.equals(SpecialCard.CommandersHorn)) || closeCombatPlayedUser1.contains(CommonCard.Dandelion))) {
             score *= 2;
@@ -1284,8 +1342,22 @@ public class GameController {
     }
 
     private void addCardsToDiscard() {
-        commonCardsInDiscardUser1.addAll(closeCombatPlayedUser1);
-        closeCombatPlayedUser1.clear();
+        for (int i = 0; i < closeCombatPlayedUser1.size(); i++) {
+            if (!closeCombatPlayedUser1.get(i).equals(CommonCard.Kambi)) {
+                commonCardsInDiscardUser1.add(closeCombatPlayedUser1.get(i));
+                closeCombatPlayedUser1.remove(i);
+                i -= 1;
+            }
+        }
+        if (gameBattleField.getRound() == 3) {
+            for (int i = 0; i < closeCombatPlayedUser1.size(); i++) {
+                if (closeCombatPlayedUser1.get(i).equals(CommonCard.Kambi)) {
+                    closeCombatPlayedUser1.remove(i);
+                    closeCombatPlayedUser1.add(CommonCard.Hemdall);
+                    i -= 1;
+                }
+            }
+        }
         if (gameBattleField.getSpecialFieldInCloseCombatUser1() != null) {
             specialCardsDiscardUser1.add(gameBattleField.getSpecialFieldInCloseCombatUser1());
             gameBattleField.setSpecialFieldInCloseCombatUser1(null);
@@ -1302,11 +1374,25 @@ public class GameController {
             specialCardsDiscardUser1.add(gameBattleField.getSpecialFieldInSiegeUser1());
             gameBattleField.setSpecialFieldInSiegeUser1(null);
         }
-        commonCardsInDiscardUser2.addAll(closeCombatPlayedUser2);
-        closeCombatPlayedUser2.clear();
+        for (int i = 0; i < closeCombatPlayedUser2.size(); i++) {
+            if (!closeCombatPlayedUser2.get(i).equals(CommonCard.Kambi)) {
+                commonCardsInDiscardUser2.add(closeCombatPlayedUser2.get(i));
+                closeCombatPlayedUser2.remove(i);
+                i -= 1;
+            }
+        }
         if (gameBattleField.getSpecialFieldInCloseCombatUser2() != null) {
             specialCardsDiscardUser2.add(gameBattleField.getSpecialFieldInCloseCombatUser2());
             gameBattleField.setSpecialFieldInCloseCombatUser2(null);
+        }
+        if (gameBattleField.getRound() == 3) {
+            for (int i = 0; i < closeCombatPlayedUser2.size(); i++) {
+                if (closeCombatPlayedUser2.get(i).equals(CommonCard.Kambi)) {
+                    closeCombatPlayedUser2.remove(i);
+                    closeCombatPlayedUser2.add(CommonCard.Hemdall);
+                    i -= 1;
+                }
+            }
         }
         commonCardsInDiscardUser2.addAll(rangedIsPlayedUser2);
         rangedIsPlayedUser2.clear();
@@ -1568,6 +1654,7 @@ public class GameController {
         }
     }
 
+    //    @Override
     private static int getNumberOfCardSelected(MouseEvent mouseEvent) {
         StackPane stackPane = (StackPane) mouseEvent.getSource();
         String id = stackPane.getId();
@@ -1693,6 +1780,7 @@ public class GameController {
         gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
+            gameBattleFieldController.medicAbility();
             setAnimationForCloseCombat(medicAnimation);
         } else if (selectedCommonCard.getAbility().contains("Tight Bond")) {
             setAnimationForCloseCombat(bondAnimation);
@@ -1726,6 +1814,7 @@ public class GameController {
         gameBattleFieldController.putCommonCardRanged(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
+            gameBattleFieldController.medicAbility();
             setAnimationForRanged(medicAnimation);
         } else if (selectedCommonCard.getAbility().contains("Tight Bond")) {
             setAnimationForRanged(bondAnimation);
@@ -1759,6 +1848,7 @@ public class GameController {
         gameBattleFieldController.putCommonCardSiege(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
+            gameBattleFieldController.medicAbility();
             setAnimationForSiege(medicAnimation);
         } else if (selectedCommonCard.getAbility().contains("Tight Bond")) {
             setAnimationForSiege(bondAnimation);
@@ -2436,7 +2526,7 @@ public class GameController {
 
     private void putARandomWeatherCard() {
         Random random = new Random();
-        int weatherNumber = random.nextInt(1,6);
+        int weatherNumber = random.nextInt(1, 6);
         if (weatherNumber == 1) {
             selectedSpecialCard = SpecialCard.BitingFrost;
         } else if (weatherNumber == 2) {
@@ -2476,8 +2566,7 @@ public class GameController {
                         index = random.nextInt(gameBattleField.getCommonCardInBattleFieldUser1().size());
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCommonCardInBattleFieldUser1().get(index));
                         gameBattleField.getCommonCardInBattleFieldUser1().remove(index);
-                    }
-                    else {
+                    } else {
                         index = random.nextInt(gameBattleField.getSpecialCardsBattleFieldUser1().size());
                         gameBattleField.getSpecialCardsDiscardUser1().add(gameBattleField.getSpecialCardsBattleFieldUser1().get(index));
                         gameBattleField.getSpecialCardsBattleFieldUser1().remove(index);
@@ -2508,8 +2597,7 @@ public class GameController {
                         index = random.nextInt(gameBattleField.getCommonCardInBattleFieldUser2().size());
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCommonCardInBattleFieldUser2().get(index));
                         gameBattleField.getCommonCardInBattleFieldUser2().remove(index);
-                    }
-                    else {
+                    } else {
                         index = random.nextInt(gameBattleField.getSpecialCardsBattleFieldUser2().size());
                         gameBattleField.getSpecialCardsDiscardUser2().add(gameBattleField.getSpecialCardsBattleFieldUser2().get(index));
                         gameBattleField.getSpecialCardsBattleFieldUser2().remove(index);
@@ -2525,7 +2613,7 @@ public class GameController {
     }
 
     private void theKingOfTheWildHuntAbility() {
-        GaussianBlur gaussianBlur = new GaussianBlur(10);
+        GaussianBlur gaussianBlur = new GaussianBlur(20);
         Platform.runLater(() -> pane.setEffect(gaussianBlur));
 
         allCards = new HBox(1050);
@@ -2618,7 +2706,7 @@ public class GameController {
     }
 
     private void theRelentlessAbility() {
-        GaussianBlur gaussianBlur = new GaussianBlur(10);
+        GaussianBlur gaussianBlur = new GaussianBlur(20);
         Platform.runLater(() -> pane.setEffect(gaussianBlur));
 
         allCards = new HBox(1050);
@@ -2715,6 +2803,10 @@ public class GameController {
         int index;
         if (!gameBattleField.getCommonCardsInDiscardUser1().isEmpty()) {
             index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser1().size());
+            if (gameBattleField.getCommonCardsInDiscardUser1().get(index).isHero()) {
+                invaderOfTheNorthAbility();
+                return;
+            }
             gameBattleField.getCommonCardInBattleFieldUser1().add(gameBattleField.getCommonCardsInDiscardUser1().get(index));
             gameBattleField.getCommonCardsInDiscardUser1().remove(index);
         } else if (!gameBattleField.getSpecialCardsDiscardUser1().isEmpty()) {
@@ -2724,6 +2816,10 @@ public class GameController {
         }
         if (!gameBattleField.getCommonCardsInDiscardUser2().isEmpty()) {
             index = random.nextInt(gameBattleField.getCommonCardsInDiscardUser2().size());
+            if (gameBattleField.getCommonCardsInDiscardUser2().get(index).isHero()) {
+                invaderOfTheNorthAbility();
+                return;
+            }
             gameBattleField.getCommonCardInBattleFieldUser2().add(gameBattleField.getCommonCardsInDiscardUser2().get(index));
             gameBattleField.getCommonCardsInDiscardUser2().remove(index);
         } else if (!gameBattleField.getSpecialCardsDiscardUser2().isEmpty()) {
@@ -2742,7 +2838,7 @@ public class GameController {
         int index;
         ArrayList<Integer> indexes = new ArrayList<>();
 
-        GaussianBlur gaussianBlur = new GaussianBlur(10);
+        GaussianBlur gaussianBlur = new GaussianBlur(20);
         Platform.runLater(() -> pane.setEffect(gaussianBlur));
 
         allCards = new HBox(340);
@@ -3340,5 +3436,243 @@ public class GameController {
         }
         if (sum < 10) return 0;
         return maxScore;
+    }
+
+    public void showCompetitorDiscardCards() {
+        GaussianBlur gaussianBlur = new GaussianBlur(20);
+        Platform.runLater(() -> pane.setEffect(gaussianBlur));
+
+        allCards = new HBox(1050);
+        allCards.setLayoutX(90);
+        allCards.setLayoutY(200);
+        allCards.setSpacing(10);
+        allCards.setAlignment(Pos.CENTER);
+        allCards.setEffect(new GaussianBlur(0));
+
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            allCards.getChildren().clear();
+            if (gameBattleField.getSpecialCardsDiscardUser2().size() + gameBattleField.getCommonCardsInDiscardUser2().size() == 0) {
+                Platform.runLater(() -> pane.setEffect(null));
+                return;
+            }
+            for (int i = 0; i < gameBattleField.getSpecialCardsDiscardUser2().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getSpecialCardsDiscardUser2().get(i).getImage(), i);
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardsInDiscardUser2().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getCommonCardsInDiscardUser2().get(i).getImage(), i + gameBattleField.getSpecialCardsDiscardUser2().size());
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+        } else {
+            allCards.getChildren().clear();
+            if (gameBattleField.getSpecialCardsDiscardUser1().size() + gameBattleField.getCommonCardsInDiscardUser1().size() == 0) {
+                Platform.runLater(() -> pane.setEffect(null));
+                return;
+            }
+            for (int i = 0; i < gameBattleField.getSpecialCardsDiscardUser1().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getSpecialCardsDiscardUser1().get(i).getImage(), i);
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardsInDiscardUser1().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getCommonCardsInDiscardUser1().get(i).getImage(), i + gameBattleField.getSpecialCardsDiscardUser1().size());
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+        }
+
+        Pane overlayPane = new Pane();
+        overlayPane.getChildren().addAll(allCards);
+        overlayPane.setOnMouseClicked(e -> {
+            Platform.runLater(() -> pane.setEffect(null));
+            parentPane.getChildren().remove(overlayPane);
+        });
+
+        parentPane.getChildren().add(overlayPane);
+    }
+
+    public void showMyDiscardCards() {
+        GaussianBlur gaussianBlur = new GaussianBlur(20);
+        Platform.runLater(() -> pane.setEffect(gaussianBlur));
+
+        allCards = new HBox(1050);
+        allCards.setLayoutX(90);
+        allCards.setLayoutY(200);
+        allCards.setSpacing(10);
+        allCards.setAlignment(Pos.CENTER);
+        allCards.setEffect(new GaussianBlur(0));
+
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            allCards.getChildren().clear();
+            if (gameBattleField.getSpecialCardsDiscardUser1().size() + gameBattleField.getCommonCardsInDiscardUser1().size() == 0) {
+                Platform.runLater(() -> pane.setEffect(null));
+                return;
+            }
+            for (int i = 0; i < gameBattleField.getSpecialCardsDiscardUser1().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getSpecialCardsDiscardUser1().get(i).getImage(), i);
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardsInDiscardUser1().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getCommonCardsInDiscardUser1().get(i).getImage(), i + gameBattleField.getSpecialCardsDiscardUser1().size());
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+        } else {
+            allCards.getChildren().clear();
+            if (gameBattleField.getSpecialCardsDiscardUser2().size() + gameBattleField.getCommonCardsInDiscardUser2().size() == 0) {
+                Platform.runLater(() -> pane.setEffect(null));
+                return;
+            }
+            for (int i = 0; i < gameBattleField.getSpecialCardsDiscardUser2().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getSpecialCardsDiscardUser2().get(i).getImage(), i);
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+            for (int i = 0; i < gameBattleField.getCommonCardsInDiscardUser2().size(); i++) {
+                ImageView imageView = getImageView(gameBattleField.getCommonCardsInDiscardUser2().get(i).getImage(), i + gameBattleField.getSpecialCardsDiscardUser2().size());
+                imageView.setFitWidth(110);
+                imageView.setOnMouseClicked(null);
+                imageView.setId(null);
+                allCards.getChildren().add(imageView);
+            }
+        }
+
+        Pane overlayPane = new Pane();
+        overlayPane.getChildren().addAll(allCards);
+        overlayPane.setOnMouseClicked(e -> {
+            Platform.runLater(() -> pane.setEffect(null));
+            parentPane.getChildren().remove(overlayPane);
+        });
+
+        parentPane.getChildren().add(overlayPane);
+    }
+
+    public void cheatCodes(KeyEvent keyEvent) {
+        KeyCode keyCode = keyEvent.getCode();
+        if (keyCode == KeyCode.C) {
+            gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
+            gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
+        } else if (keyCode == KeyCode.S) {
+            gameBattleFieldController.giveOneRandomSpecialCardToUserPlayed(gameBattleField.getUser1());
+            gameBattleFieldController.giveOneRandomSpecialCardToUserPlayed(gameBattleField.getUser2());
+        } else if (keyCode == KeyCode.H) {
+            gameBattleField.setRound(1);
+            gameBattleField.setHealthUser1(2);
+            gameBattleField.setHealthUser2(2);
+        } else if (keyCode == KeyCode.L) {
+            gameBattleField.setExistAbilityUser1(true);
+            gameBattleField.setExistAbilityUser2(true);
+        } else if (keyCode == KeyCode.M) {
+            gameBattleField.getCommonCardInBattleFieldUser1().add(CommonCard.Berserker);
+            gameBattleField.getSpecialCardsBattleFieldUser1().add(SpecialCard.Mardroeme);
+            gameBattleField.getCommonCardInBattleFieldUser2().add(CommonCard.YoungBerserker);
+            gameBattleField.getCommonCardInBattleFieldUser2().add(CommonCard.YoungBerserker);
+            gameBattleField.getSpecialCardsBattleFieldUser2().add(SpecialCard.Mardroeme);
+        } else if (keyCode == KeyCode.D) {
+            gameBattleField.getSpecialCardsBattleFieldUser1().add(SpecialCard.Scorch);
+            gameBattleField.getSpecialCardsBattleFieldUser2().add(SpecialCard.Scorch);
+        } else if (keyCode == KeyCode.W) {
+            Random random = new Random();
+            int weatherNumber1 = random.nextInt(1, 6);
+            int weatherNumber2 = random.nextInt(1, 6);
+            cheatWeatherCard(weatherNumber1, gameBattleField.getSpecialCardsBattleFieldUser1());
+            cheatWeatherCard(weatherNumber2, gameBattleField.getSpecialCardsBattleFieldUser2());
+        } else if (keyCode == KeyCode.J) {
+            gameBattleField.getCommonCardInBattleFieldUser1().add(CommonCard.MysteriousElf);
+            gameBattleField.getCommonCardInBattleFieldUser2().add(CommonCard.MysteriousElf);
+        } else if (keyCode == KeyCode.F) {
+            Random random = new Random();
+            int leaderNumber1 = random.nextInt(1, 20);
+            int leaderNumber2 = random.nextInt(1, 20);
+            cheatChangeLeader(leaderNumber1, gameBattleField.getUser1());
+            cheatChangeLeader(leaderNumber2, gameBattleField.getUser2());
+        }
+        updateBoard();
+    }
+
+    private void cheatChangeLeader(int leaderNumber1, User gameBattleField) {
+        if (leaderNumber1 == 1) {
+            gameBattleField.setFactionSelected(Faction.NorthernRealms);
+            gameBattleField.setFactionLeader(Leader.SiegeMaster);
+        } else if (leaderNumber1 == 2) {
+            gameBattleField.setFactionSelected(Faction.NorthernRealms);
+            gameBattleField.setFactionLeader(Leader.SteelForged);
+        } else if (leaderNumber1 == 3) {
+            gameBattleField.setFactionSelected(Faction.NorthernRealms);
+            gameBattleField.setFactionLeader(Leader.KingOfTemeria);
+        } else if (leaderNumber1 == 4) {
+            gameBattleField.setFactionSelected(Faction.NorthernRealms);
+            gameBattleField.setFactionLeader(Leader.LordCommanderOfTheNorth);
+        } else if (leaderNumber1 == 5) {
+            gameBattleField.setFactionSelected(Faction.NorthernRealms);
+            gameBattleField.setFactionLeader(Leader.SonOfMedell);
+        } else if (leaderNumber1 == 6) {
+            gameBattleField.setFactionSelected(Faction.Nilfgaard);
+            gameBattleField.setFactionLeader(Leader.WhiteFlame);
+        } else if (leaderNumber1 == 7) {
+            gameBattleField.setFactionSelected(Faction.Nilfgaard);
+            gameBattleField.setFactionLeader(Leader.HisImperialMajesty);
+        } else if (leaderNumber1 == 8) {
+            gameBattleField.setFactionSelected(Faction.Nilfgaard);
+            gameBattleField.setFactionLeader(Leader.TheRelentless);
+        } else if (leaderNumber1 == 9) {
+            gameBattleField.setFactionSelected(Faction.Nilfgaard);
+            gameBattleField.setFactionLeader(Leader.InvaderOfTheNorth);
+        } else if (leaderNumber1 == 10) {
+            gameBattleField.setFactionSelected(Faction.Monsters);
+            gameBattleField.setFactionLeader(Leader.BringerOfDeath);
+        } else if (leaderNumber1 == 11) {
+            gameBattleField.setFactionSelected(Faction.Monsters);
+            gameBattleField.setFactionLeader(Leader.KingOfTheWildHunt);
+        } else if (leaderNumber1 == 12) {
+            gameBattleField.setFactionSelected(Faction.Monsters);
+            gameBattleField.setFactionLeader(Leader.TheTreacherous);
+        } else if (leaderNumber1 == 13) {
+            gameBattleField.setFactionSelected(Faction.Scoiatael);
+            gameBattleField.setFactionLeader(Leader.QueenOfDolBlathanna);
+        } else if (leaderNumber1 == 14) {
+            gameBattleField.setFactionSelected(Faction.Scoiatael);
+            gameBattleField.setFactionLeader(Leader.TheBeautiful);
+        } else if (leaderNumber1 == 15) {
+            gameBattleField.setFactionSelected(Faction.Scoiatael);
+            gameBattleField.setFactionLeader(Leader.PurebloodElf);
+        } else if (leaderNumber1 == 16) {
+            gameBattleField.setFactionSelected(Faction.Skellige);
+            gameBattleField.setFactionLeader(Leader.KingBran);
+        } else if (leaderNumber1 == 17) {
+            gameBattleField.setFactionSelected(Faction.Skellige);
+            gameBattleField.setFactionLeader(Leader.CrachAnCraite);
+        }
+    }
+
+    private void cheatWeatherCard(int weatherNumber1, ArrayList<SpecialCard> gameBattleField) {
+        if (weatherNumber1 == 1) {
+            gameBattleField.add(SpecialCard.BitingFrost);
+        } else if (weatherNumber1 == 2) {
+            gameBattleField.add(SpecialCard.ImpenetrableFog);
+        } else if (weatherNumber1 == 3) {
+            gameBattleField.add(SpecialCard.TorrentialRain);
+        } else if (weatherNumber1 == 4) {
+            gameBattleField.add(SpecialCard.SkelligeStorm);
+        } else if (weatherNumber1 == 5) {
+            gameBattleField.add(SpecialCard.ClearWeather);
+        }
     }
 }
