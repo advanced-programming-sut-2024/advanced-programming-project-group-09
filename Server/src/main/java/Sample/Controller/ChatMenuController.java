@@ -2,6 +2,8 @@ package Sample.Controller;
 
 import Sample.Model.Chat;
 import Sample.Model.Message;
+import Sample.View.ProfileMenu;
+import Sample.View.RegisterMenu;
 import Sample.database.ChatManager;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -10,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -133,6 +136,15 @@ public class ChatMenuController {
             emojiLabel.setStyle("-fx-font-size: 24px;");
             emojiLabel.setOnMouseClicked(event -> addEmoji(emoji));
             emojiBox.getChildren().add(emojiLabel);
+        }
+    }
+
+    public void backToProfileMenu(MouseEvent mouseEvent) {
+        ProfileMenu registerMenu = new ProfileMenu();
+        try {
+            registerMenu.start(ApplicationController.getStage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }
