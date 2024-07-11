@@ -24,14 +24,14 @@ public class MainController {
     }
 
     public void startNewGame() throws Exception {
-//        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
-//            Alert alert = new Alert(Alert.AlertType.WARNING);
-//            alert.setTitle("Unacceptable deck");
-//            alert.setHeaderText("Change your deck via the deck menu");
-//            alert.setContentText("This deck is unacceptable for entry into the game");
-//            alert.showAndWait();
-//            return;
-//        }
+        if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unacceptable deck");
+            alert.setHeaderText("Change your deck via the deck menu");
+            alert.setContentText("This deck is unacceptable for entry into the game");
+            alert.showAndWait();
+            return;
+        }
         StartNewGameMenu startNewGameMenu = new StartNewGameMenu();
         startNewGameMenu.start(ApplicationController.getStage());
     }

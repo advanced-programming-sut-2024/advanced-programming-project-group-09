@@ -247,7 +247,7 @@
             <Button fx:id="uploadDeckButton" text="Upload Deck" />
             <Button fx:id="changeFactionButton" text="Change Faction" />
             <Button fx:id="downloadDeckButton" text="Download Deck" />
-            <Button fx:id="startGameButton" text="Start game" />
+            <Button fx:id="startGameButton" text="Start game" onMouseClicked="#startGame" />
             <Button fx:id="backToLeaderMenu" onMouseClicked="#done" text="Done and back" />
             <Text fx:id="numberOfAllCards" fill="RED" styleClass="label" text="Number of Unit Cards: 0/22" />
             <Text fx:id="specialCards" fill="RED" styleClass="label" text="Special Cards: 0/10" />
