@@ -245,6 +245,10 @@ public class ChooseCardNorthRealmsController {
     public VBox realms_kaedwen_siegeVboxInDeck;
     public ImageView realms_kaedwen_siegeInDeck;
     public Label realms_kaedwen_siegeRemainderInDeck;
+    public Label realms_catapult_1RemainderInCardCollection;
+    public Label realms_catapult_1RemainderInDeck;
+    public Label realms_crinfridRemainderInDeck;
+    public Label realms_crinfridRemainderInCardCollection;
     ArrayList<VBox> imageViewsVboxesCardCollection = new ArrayList<>();
     ArrayList<VBox> imageViewsVboxesCardInDeck = new ArrayList<>();
     ArrayList<VBox> specialCardVboxesInDeck = new ArrayList<>();
@@ -1112,6 +1116,114 @@ public class ChooseCardNorthRealmsController {
         realms_kaedwen_siegeRemainderInCardCollection.setText(remainingInCardSelection + "X");
     }
 
+    public void realms_catapult_1Unselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(realms_catapult_1RemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int realms_catapult_1InDeck = Integer.parseInt(realms_catapult_1RemainderInDeck.getText().substring(0, 1));
+            if (realms_catapult_1InDeck == 1) {
+                realms_catapult_1VboxInDeck.setVisible(false);
+            }
+            realms_catapult_1InDeck--;
+            realms_catapult_1RemainderInDeck.setText(realms_catapult_1InDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int realms_catapult_1InCardCollection = Integer.parseInt(realms_catapult_1RemainderInCardCollection.getText().substring(0, 1));
+            if (realms_catapult_1InCardCollection == 0) {
+                realms_catapult_1VboxInCardCollection.setVisible(true);
+            }
+            realms_catapult_1InCardCollection++;
+            realms_catapult_1RemainderInCardCollection.setText(realms_catapult_1InCardCollection + "X");
+        }
+        realms_catapult_1RemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void realms_catapult_1Selected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(realms_catapult_1RemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int realms_catapult_1InCardCollection = Integer.parseInt(realms_catapult_1RemainderInCardCollection.getText().substring(0, 1));
+            if (realms_catapult_1InCardCollection == 1) {
+                realms_catapult_1VboxInCardCollection.setVisible(false);
+            }
+            realms_catapult_1InCardCollection--;
+            realms_catapult_1RemainderInCardCollection.setText(realms_catapult_1InCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int realms_catapult_1InDeck = Integer.parseInt(realms_catapult_1RemainderInDeck.getText().substring(0, 1));
+            if (realms_catapult_1InDeck == 0) {
+                realms_catapult_1VboxInDeck.setVisible(true);
+            }
+            realms_catapult_1InDeck++;
+            realms_catapult_1RemainderInDeck.setText(realms_catapult_1InDeck + "X");
+        }
+        realms_catapult_1RemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
+    public void realms_crinfridUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(realms_crinfridRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int realms_crinfridInDeck = Integer.parseInt(realms_crinfridRemainderInDeck.getText().substring(0, 1));
+            if (realms_crinfridInDeck == 1) {
+                realms_crinfridVboxInDeck.setVisible(false);
+            }
+            realms_crinfridInDeck--;
+            realms_crinfridRemainderInDeck.setText(realms_crinfridInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int realms_crinfridInCardCollection = Integer.parseInt(realms_crinfridRemainderInCardCollection.getText().substring(0, 1));
+            if (realms_crinfridInCardCollection == 0) {
+                realms_crinfridVboxInCardCollection.setVisible(true);
+            }
+            realms_crinfridInCardCollection++;
+            realms_crinfridRemainderInCardCollection.setText(realms_crinfridInCardCollection + "X");
+        }
+        realms_crinfridRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void realms_crinfridSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(realms_crinfridRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int realms_crinfridInCardCollection = Integer.parseInt(realms_crinfridRemainderInCardCollection.getText().substring(0, 1));
+            if (realms_crinfridInCardCollection == 1) {
+                realms_crinfridVboxInCardCollection.setVisible(false);
+            }
+            realms_crinfridInCardCollection--;
+            realms_crinfridRemainderInCardCollection.setText(realms_crinfridInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int realms_crinfridInDeck = Integer.parseInt(realms_crinfridRemainderInDeck.getText().substring(0, 1));
+            if (realms_crinfridInDeck == 0) {
+                realms_crinfridVboxInDeck.setVisible(true);
+            }
+            realms_crinfridInDeck++;
+            realms_crinfridRemainderInDeck.setText(realms_crinfridInDeck + "X");
+        }
+        realms_crinfridRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
     public void neutral_ciriUnselected(MouseEvent mouseEvent) {
         neutral_ciriVboxInCardCollection.setVisible(true);
         neutral_ciriVboxInDeck.setVisible(false);
@@ -1418,16 +1530,7 @@ public class ChooseCardNorthRealmsController {
         realms_dethmoldVboxInDeck.setVisible(true);
     }
 
-    public void realms_catapult_1Unselected(MouseEvent mouseEvent) {
-        realms_catapult_1VboxInCardCollection.setVisible(true);
-        realms_catapult_1VboxInDeck.setVisible(false);
-    }
 
-
-    public void realms_catapult_1Selected(MouseEvent mouseEvent) {
-        realms_catapult_1VboxInCardCollection.setVisible(false);
-        realms_catapult_1VboxInDeck.setVisible(true);
-    }
 
     public void realms_banner_nurseUnselected(MouseEvent mouseEvent) {
         realms_banner_nurseVboxInCardCollection.setVisible(true);
@@ -1440,16 +1543,16 @@ public class ChooseCardNorthRealmsController {
         realms_banner_nurseVboxInDeck.setVisible(true);
     }
 
-    public void realms_crinfridUnselected(MouseEvent mouseEvent) {
-        realms_crinfridVboxInCardCollection.setVisible(true);
-        realms_crinfridVboxInDeck.setVisible(false);
-    }
-
-
-    public void realms_crinfridSelected(MouseEvent mouseEvent) {
-        realms_crinfridVboxInCardCollection.setVisible(false);
-        realms_crinfridVboxInDeck.setVisible(true);
-    }
+//    public void realms_crinfridUnselected(MouseEvent mouseEvent) {
+//        realms_crinfridVboxInCardCollection.setVisible(true);
+//        realms_crinfridVboxInDeck.setVisible(false);
+//    }
+//
+//
+//    public void realms_crinfridSelected(MouseEvent mouseEvent) {
+//        realms_crinfridVboxInCardCollection.setVisible(false);
+//        realms_crinfridVboxInDeck.setVisible(true);
+//    }
 
     public void realms_ballistaUnselected(MouseEvent mouseEvent) {
         realms_ballistaVboxInCardCollection.setVisible(true);

@@ -1,6 +1,7 @@
 package Sample.Controller;
 
 import Sample.Enum.Commands;
+import Sample.Model.GameBattleField;
 import Sample.Model.User;
 import Sample.View.MainMenu;
 import Sample.View.RegisterMenu;
@@ -251,19 +252,147 @@ public class ProfileController {
 
     }
 
+    public static void showAlert(String title, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
+
     public void showGameHistory1(ActionEvent event) {
+        StringBuilder massage = new StringBuilder();
+        User user = User.getUserLoginIn();
+        GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
+        boolean isWinner = false;
+        if (gameBattleField.getUser1().getUsername().equals(user.getUsername())) {
+            if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) isWinner = true;
+            if (gameBattleField.getHealthUser2() < 0) isWinner = true;
+            String Health = String.valueOf(gameBattleField.getHealthUser1());
+            String isWinnerString = "WON";
+            if (!isWinner) isWinnerString = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+        } else {
+            if (gameBattleField.getHealthUser2() > gameBattleField.getHealthUser1()) isWinner = true;
+            if (gameBattleField.getHealthUser1() < 0) isWinner = true;
+            String Health = String.valueOf(gameBattleField.getHealthUser2());
+            String isWinnerString = "WON";
+            if (!isWinner) isWinnerString = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+
+        }
+        showAlert("history", "game history info", massage.toString());
     }
 
     public void showGameHistory2(ActionEvent event) {
+
+        StringBuilder massage = new StringBuilder();
+        User user = User.getUserLoginIn();
+
+
+        GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
+        boolean isWinner = false;
+        if (gameBattleField.getUser1().getUsername().equals(user.getUsername())) {
+            if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) isWinner = true;
+            if (gameBattleField.getHealthUser2() < 0) isWinner = true;
+            String Health = String.valueOf(gameBattleField.getHealthUser1());
+            String isWinnerString = "WON";
+            if (!isWinner) isWinnerString = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+        } else {
+            if (gameBattleField.getHealthUser2() > gameBattleField.getHealthUser1()) isWinner = true;
+            if (gameBattleField.getHealthUser1() < 0) isWinner = true;
+            String Health = String.valueOf(gameBattleField.getHealthUser2());
+            String isWinnerString = "WON";
+            if (!isWinner) isWinnerString = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+        }
+        GameBattleField gameBattleField2 = user.getAllGameBattleField().get(0);
+        boolean isWinner2 = false;
+        if (gameBattleField2.getUser1().getUsername().equals(user.getUsername())) {
+            if (gameBattleField2.getHealthUser1() > gameBattleField2.getHealthUser2()) isWinner2 = true;
+            if (gameBattleField2.getHealthUser2() < 0) isWinner2 = true;
+            String Health = String.valueOf(gameBattleField2.getHealthUser1());
+            String isWinner2String = "WON";
+            if (!isWinner2) isWinner2String = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+        } else {
+            if (gameBattleField2.getHealthUser2() > gameBattleField2.getHealthUser1()) isWinner2 = true;
+            if (gameBattleField2.getHealthUser1() < 0) isWinner2 = true;
+            String Health = String.valueOf(gameBattleField2.getHealthUser2());
+            String isWinner2String = "WON";
+            if (!isWinner2) isWinner2String = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+        }
+        showAlert("history", "game history info", massage.toString());
+
     }
 
     public void showGameHistory3(ActionEvent event) {
+        StringBuilder massage = new StringBuilder();
+        User user = User.getUserLoginIn();
+
+
+        GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
+        boolean isWinner = false;
+        if (gameBattleField.getUser1().getUsername().equals(user.getUsername())) {
+            if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) isWinner = true;
+            if (gameBattleField.getHealthUser2() < 0) isWinner = true;
+            String Health = String.valueOf(gameBattleField.getHealthUser1());
+            String isWinnerString = "WON";
+            if (!isWinner) isWinnerString = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+        } else {
+            if (gameBattleField.getHealthUser2() > gameBattleField.getHealthUser1()) isWinner = true;
+            if (gameBattleField.getHealthUser1() < 0) isWinner = true;
+            String Health = String.valueOf(gameBattleField.getHealthUser2());
+            String isWinnerString = "WON";
+            if (!isWinner) isWinnerString = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+        }
+        GameBattleField gameBattleField2 = user.getAllGameBattleField().get(0);
+        boolean isWinner2 = false;
+        if (gameBattleField2.getUser1().getUsername().equals(user.getUsername())) {
+            if (gameBattleField2.getHealthUser1() > gameBattleField2.getHealthUser2()) isWinner2 = true;
+            if (gameBattleField2.getHealthUser2() < 0) isWinner2 = true;
+            String Health = String.valueOf(gameBattleField2.getHealthUser1());
+            String isWinner2String = "WON";
+            if (!isWinner2) isWinner2String = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+        } else {
+            if (gameBattleField2.getHealthUser2() > gameBattleField2.getHealthUser1()) isWinner2 = true;
+            if (gameBattleField2.getHealthUser1() < 0) isWinner2 = true;
+            String Health = String.valueOf(gameBattleField2.getHealthUser2());
+            String isWinner2String = "WON";
+            if (!isWinner2) isWinner2String = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+        }
+        GameBattleField gameBattleField3 = user.getAllGameBattleField().get(0);
+        boolean isWinner3 = false;
+        if (gameBattleField3.getUser1().getUsername().equals(user.getUsername())) {
+            if (gameBattleField3.getHealthUser1() > gameBattleField3.getHealthUser2()) isWinner3 = true;
+            if (gameBattleField3.getHealthUser2() < 0) isWinner3 = true;
+            String Health = String.valueOf(gameBattleField3.getHealthUser1());
+            String isWinner3String = "WON";
+            if (!isWinner3) isWinner3String = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinner3String + " the game number " + 1 + "with health: " + Health + "\n");
+        } else {
+            if (gameBattleField3.getHealthUser2() > gameBattleField3.getHealthUser1()) isWinner3 = true;
+            if (gameBattleField3.getHealthUser1() < 0) isWinner3 = true;
+            String Health = String.valueOf(gameBattleField3.getHealthUser2());
+            String isWinner3String = "WON";
+            if (!isWinner3) isWinner3String = "Lost";
+            massage.append("user with name: " + user.getUsername() + " " + isWinner3String + " the game number " + 1 + "with health: " + Health + "\n");
+        }
+        showAlert("history", "game history info", massage.toString());
     }
 
     public void showGameHistory4(ActionEvent event) {
+        showGameHistory3(null);
     }
 
     public void showGameHistory5(ActionEvent event) {
+        showGameHistory3(null);
     }
 
     public void goToScoreboard(MouseEvent mouseEvent) {

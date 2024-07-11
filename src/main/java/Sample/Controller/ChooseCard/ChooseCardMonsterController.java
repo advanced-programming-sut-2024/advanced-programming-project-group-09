@@ -2047,6 +2047,8 @@ public class ChooseCardMonsterController {
                 return CommonCard.Udalryk;
             case "skellige_vildkaarl", "skellige_young_vildkaarl":
                 return CommonCard.TransformedVildkaarl;
+            case "realms_catapult_1":
+                return CommonCard.Catapult;
 
             default:
                 try {
