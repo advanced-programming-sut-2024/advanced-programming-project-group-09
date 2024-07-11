@@ -5,6 +5,7 @@ import Sample.CardEnums.SpecialCard;
 import Sample.Controller.ApplicationController;
 import Sample.Controller.LoginController;
 import Sample.Model.User;
+import Sample.View.GameMenu;
 import Sample.View.LoginMenu;
 import Sample.View.MainMenu;
 import javafx.animation.KeyFrame;
@@ -2153,6 +2154,11 @@ public class ChooseCardMonsterController {
         Matcher matcher = pattern.matcher(text.getText());
         if (matcher.matches()) return matcher;
         return null;
+    }
+
+    public void startGame(MouseEvent mouseEvent) throws Exception {
+        GameMenu gameMenu = new GameMenu();
+        gameMenu.start(ApplicationController.getStage());
     }
 }
 

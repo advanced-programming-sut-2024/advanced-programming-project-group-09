@@ -26,7 +26,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ClosePath;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
@@ -1293,26 +1292,26 @@ public class GameController {
                 gameBattleField.getUser1().setMaxScore(Integer.parseInt(firstPlayerScore.getText()));
             }
             if (gameBattleField.getUser1().getMaxSiegeScore() < Integer.parseInt(mySiegeRowScore.getText())) {
-                gameBattleField.getUser1().setMaxScore(Integer.parseInt(mySiegeRowScore.getText()));
+                gameBattleField.getUser1().setMaxSiegeScore(Integer.parseInt(mySiegeRowScore.getText()));
             }
             if (gameBattleField.getUser1().getMaxCloseCombatScore() < Integer.parseInt(myCloseCombatRowScore.getText())) {
-                gameBattleField.getUser1().setMaxScore(Integer.parseInt(myCloseCombatRowScore.getText()));
+                gameBattleField.getUser1().setMaxCloseCombatScore(Integer.parseInt(myCloseCombatRowScore.getText()));
             }
             if (gameBattleField.getUser1().getMaxRangedScore() < Integer.parseInt(myRangedRowScore.getText())) {
-                gameBattleField.getUser1().setMaxScore(Integer.parseInt(myRangedRowScore.getText()));
+                gameBattleField.getUser1().setMaxRangedScore(Integer.parseInt(myRangedRowScore.getText()));
             }
 
             if (gameBattleField.getUser2().getMaxScore() < Integer.parseInt(secondPlayerScore.getText())) {
                 gameBattleField.getUser2().setMaxScore(Integer.parseInt(secondPlayerScore.getText()));
             }
             if (gameBattleField.getUser2().getMaxSiegeScore() < Integer.parseInt(competitorSiegeRowScore.getText())) {
-                gameBattleField.getUser2().setMaxScore(Integer.parseInt(competitorSiegeRowScore.getText()));
+                gameBattleField.getUser2().setMaxSiegeScore(Integer.parseInt(competitorSiegeRowScore.getText()));
             }
             if (gameBattleField.getUser2().getMaxCloseCombatScore() < Integer.parseInt(competitorCloseCombatRowScore.getText())) {
-                gameBattleField.getUser2().setMaxScore(Integer.parseInt(competitorCloseCombatRowScore.getText()));
+                gameBattleField.getUser2().setMaxCloseCombatScore(Integer.parseInt(competitorCloseCombatRowScore.getText()));
             }
             if (gameBattleField.getUser2().getMaxRangedScore() < Integer.parseInt(competitorRangedRowScore.getText())) {
-                gameBattleField.getUser2().setMaxScore(Integer.parseInt(competitorRangedRowScore.getText()));
+                gameBattleField.getUser2().setMaxRangedScore(Integer.parseInt(competitorRangedRowScore.getText()));
             }
         }
         else {
@@ -1320,26 +1319,26 @@ public class GameController {
                 gameBattleField.getUser2().setMaxScore(Integer.parseInt(firstPlayerScore.getText()));
             }
             if (gameBattleField.getUser2().getMaxSiegeScore() < Integer.parseInt(mySiegeRowScore.getText())) {
-                gameBattleField.getUser2().setMaxScore(Integer.parseInt(mySiegeRowScore.getText()));
+                gameBattleField.getUser2().setMaxSiegeScore(Integer.parseInt(mySiegeRowScore.getText()));
             }
             if (gameBattleField.getUser2().getMaxCloseCombatScore() < Integer.parseInt(myCloseCombatRowScore.getText())) {
-                gameBattleField.getUser2().setMaxScore(Integer.parseInt(myCloseCombatRowScore.getText()));
+                gameBattleField.getUser2().setMaxCloseCombatScore(Integer.parseInt(myCloseCombatRowScore.getText()));
             }
             if (gameBattleField.getUser2().getMaxRangedScore() < Integer.parseInt(myRangedRowScore.getText())) {
-                gameBattleField.getUser2().setMaxScore(Integer.parseInt(myRangedRowScore.getText()));
+                gameBattleField.getUser2().setMaxRangedScore(Integer.parseInt(myRangedRowScore.getText()));
             }
 
             if (gameBattleField.getUser1().getMaxScore() < Integer.parseInt(secondPlayerScore.getText())) {
                 gameBattleField.getUser1().setMaxScore(Integer.parseInt(secondPlayerScore.getText()));
             }
             if (gameBattleField.getUser1().getMaxSiegeScore() < Integer.parseInt(competitorSiegeRowScore.getText())) {
-                gameBattleField.getUser1().setMaxScore(Integer.parseInt(competitorSiegeRowScore.getText()));
+                gameBattleField.getUser1().setMaxSiegeScore(Integer.parseInt(competitorSiegeRowScore.getText()));
             }
             if (gameBattleField.getUser1().getMaxCloseCombatScore() < Integer.parseInt(competitorCloseCombatRowScore.getText())) {
-                gameBattleField.getUser1().setMaxScore(Integer.parseInt(competitorCloseCombatRowScore.getText()));
+                gameBattleField.getUser1().setMaxCloseCombatScore(Integer.parseInt(competitorCloseCombatRowScore.getText()));
             }
             if (gameBattleField.getUser1().getMaxRangedScore() < Integer.parseInt(competitorRangedRowScore.getText())) {
-                gameBattleField.getUser1().setMaxScore(Integer.parseInt(competitorRangedRowScore.getText()));
+                gameBattleField.getUser1().setMaxRangedScore(Integer.parseInt(competitorRangedRowScore.getText()));
             }
         }
         ImageView imageView = new ImageView();
