@@ -28,6 +28,9 @@ public class User {
     private int draws;
     private int loses;
     private double maxScore;
+    private double maxSiegeScore;
+    private double maxCloseCombatScore;
+    private double maxRangedScore;
     private User competitor;
     private GameBattleField lastGameBattleField;
     private final ArrayList<GameBattleField> allGameBattleField = new ArrayList<>();
@@ -214,6 +217,30 @@ public class User {
     public void setWins(int wins) {
         this.wins = wins;
         saveUsers();
+    }
+
+    public double getMaxSiegeScore() {
+        return maxSiegeScore;
+    }
+
+    public void setMaxSiegeScore(double maxSiegeScore) {
+        this.maxSiegeScore = maxSiegeScore;
+    }
+
+    public double getMaxCloseCombatScore() {
+        return maxCloseCombatScore;
+    }
+
+    public void setMaxCloseCombatScore(double maxCloseCombatScore) {
+        this.maxCloseCombatScore = maxCloseCombatScore;
+    }
+
+    public double getMaxRangedScore() {
+        return maxRangedScore;
+    }
+
+    public void setMaxRangedScore(double maxRangedScore) {
+        this.maxRangedScore = maxRangedScore;
     }
 
     public int getGamesPlayed() {

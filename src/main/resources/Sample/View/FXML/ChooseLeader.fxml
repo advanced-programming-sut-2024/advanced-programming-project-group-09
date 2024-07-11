@@ -3,10 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/Button.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.LeaderController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" layoutX="74.0" layoutY="447.0" stroke="BLACK" strokeType="INSIDE" width="650.0" />
       <Label fx:id="faction" alignment="CENTER" layoutX="270.0" layoutY="4.0" prefHeight="50.0" prefWidth="260.0" text="northen" textFill="#00ff0e">
          <font>
             <Font name="Bodoni MT Condensed" size="35.0" />

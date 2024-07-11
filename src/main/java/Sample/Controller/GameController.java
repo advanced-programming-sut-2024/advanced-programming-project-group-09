@@ -249,8 +249,7 @@ public class GameController {
             if (gameBattleField.getSpecialCardsBattleFieldUser1().isEmpty() && gameBattleField.getCommonCardInBattleFieldUser1().isEmpty()) {
                 pass();
             }
-        }
-        else {
+        } else {
             if (gameBattleField.getSpecialCardsBattleFieldUser2().isEmpty() && gameBattleField.getCommonCardInBattleFieldUser2().isEmpty()) {
                 pass();
             }
@@ -872,8 +871,7 @@ public class GameController {
             String ability = closeCombatPlayedUser1.get(i).getAbility();
             if (ability.contains("Transform")) {
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityAvenger);
-            }
-            else if (ability.contains("Muster"))
+            } else if (ability.contains("Muster"))
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityMuster);
             else if (ability.contains("Commander's Horn"))
                 ((ImageView) stackPane.getChildren().get(4)).setImage(cardAbilityHorn);
@@ -1290,6 +1288,60 @@ public class GameController {
             }
         }
         updateBoard();
+        if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+            if (gameBattleField.getUser1().getMaxScore() < Integer.parseInt(firstPlayerScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(firstPlayerScore.getText()));
+            }
+            if (gameBattleField.getUser1().getMaxSiegeScore() < Integer.parseInt(mySiegeRowScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(mySiegeRowScore.getText()));
+            }
+            if (gameBattleField.getUser1().getMaxCloseCombatScore() < Integer.parseInt(myCloseCombatRowScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(myCloseCombatRowScore.getText()));
+            }
+            if (gameBattleField.getUser1().getMaxRangedScore() < Integer.parseInt(myRangedRowScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(myRangedRowScore.getText()));
+            }
+
+            if (gameBattleField.getUser2().getMaxScore() < Integer.parseInt(secondPlayerScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(secondPlayerScore.getText()));
+            }
+            if (gameBattleField.getUser2().getMaxSiegeScore() < Integer.parseInt(competitorSiegeRowScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(competitorSiegeRowScore.getText()));
+            }
+            if (gameBattleField.getUser2().getMaxCloseCombatScore() < Integer.parseInt(competitorCloseCombatRowScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(competitorCloseCombatRowScore.getText()));
+            }
+            if (gameBattleField.getUser2().getMaxRangedScore() < Integer.parseInt(competitorRangedRowScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(competitorRangedRowScore.getText()));
+            }
+        }
+        else {
+            if (gameBattleField.getUser2().getMaxScore() < Integer.parseInt(firstPlayerScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(firstPlayerScore.getText()));
+            }
+            if (gameBattleField.getUser2().getMaxSiegeScore() < Integer.parseInt(mySiegeRowScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(mySiegeRowScore.getText()));
+            }
+            if (gameBattleField.getUser2().getMaxCloseCombatScore() < Integer.parseInt(myCloseCombatRowScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(myCloseCombatRowScore.getText()));
+            }
+            if (gameBattleField.getUser2().getMaxRangedScore() < Integer.parseInt(myRangedRowScore.getText())) {
+                gameBattleField.getUser2().setMaxScore(Integer.parseInt(myRangedRowScore.getText()));
+            }
+
+            if (gameBattleField.getUser1().getMaxScore() < Integer.parseInt(secondPlayerScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(secondPlayerScore.getText()));
+            }
+            if (gameBattleField.getUser1().getMaxSiegeScore() < Integer.parseInt(competitorSiegeRowScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(competitorSiegeRowScore.getText()));
+            }
+            if (gameBattleField.getUser1().getMaxCloseCombatScore() < Integer.parseInt(competitorCloseCombatRowScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(competitorCloseCombatRowScore.getText()));
+            }
+            if (gameBattleField.getUser1().getMaxRangedScore() < Integer.parseInt(competitorRangedRowScore.getText())) {
+                gameBattleField.getUser1().setMaxScore(Integer.parseInt(competitorRangedRowScore.getText()));
+            }
+        }
         ImageView imageView = new ImageView();
         imageView.setImage(profilePng);
         imageView.setFitHeight(120);
