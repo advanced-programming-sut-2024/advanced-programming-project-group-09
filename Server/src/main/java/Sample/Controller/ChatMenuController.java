@@ -2,6 +2,7 @@ package Sample.Controller;
 
 import Sample.Model.Chat;
 import Sample.Model.Message;
+import Sample.Model.User;
 import Sample.View.ProfileMenu;
 import Sample.View.RegisterMenu;
 import Sample.database.ChatManager;
@@ -67,7 +68,7 @@ public class ChatMenuController {
     }
 
     public void processSendMessage() throws IOException {
-        String content = text.getText();
+        String content = User.getUserLoginIn().getUsername() + " said: " + text.getText();
         text.clear();
         long timestamp = System.currentTimeMillis();
         Message msg = new Message(controller.getCurrentUsername(), content, timestamp);
