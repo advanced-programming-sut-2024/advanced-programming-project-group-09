@@ -1885,9 +1885,57 @@ public class GameController {
             scorchAbility();
             return;
         }
-        if (selectedCommonCard == null || selectedCommonCard.equals(CommonCard.Decoy)
-                || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
+        if (selectedCommonCard == null
+                || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy")) {
             return;
+        }
+        if (selectedCommonCard.equals(CommonCard.Decoy)) {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                if (gameBattleField.getCloseCombatIsPlayedUser1().isEmpty()) return;
+                boolean existNonHero = false;
+                for (CommonCard commonCard : gameBattleField.getCloseCombatIsPlayedUser1()) {
+                    if (!commonCard.isHero()) {
+                        existNonHero = true;
+                        break;
+                    }
+                }
+                if (!existNonHero) return;
+                CommonCard commonCardShouldReplaceWithDecoy = null;
+                for (int i = gameBattleField.getCloseCombatIsPlayedUser1().size() - 1; i >= 0; i--) {
+                    if (!gameBattleField.getCloseCombatIsPlayedUser1().get(i).isHero()) {
+                        commonCardShouldReplaceWithDecoy = gameBattleField.getCloseCombatIsPlayedUser1().get(i);
+                        break;
+                    }
+                }
+                if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCloseCombatIsPlayedUser1().remove(commonCardShouldReplaceWithDecoy);
+                    gameBattleField.getCloseCombatIsPlayedUser1().add(CommonCard.Decoy);
+                }
+            }
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2())) {
+                if (gameBattleField.getCloseCombatIsPlayedUser2().isEmpty()) return;
+                boolean existNonHero = false;
+                for (CommonCard commonCard : gameBattleField.getCloseCombatIsPlayedUser2()) {
+                    if (!commonCard.isHero()) {
+                        existNonHero = true;
+                        break;
+                    }
+                }
+                if (!existNonHero) return;
+                CommonCard commonCardShouldReplaceWithDecoy = null;
+                for (int i = gameBattleField.getCloseCombatIsPlayedUser2().size() - 1; i >= 0; i--) {
+                    if (!gameBattleField.getCloseCombatIsPlayedUser2().get(i).isHero()) {
+                        commonCardShouldReplaceWithDecoy = gameBattleField.getCloseCombatIsPlayedUser2().get(i);
+                        break;
+                    }
+                }
+                if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCloseCombatIsPlayedUser2().remove(commonCardShouldReplaceWithDecoy);
+                    gameBattleField.getCloseCombatIsPlayedUser2().add(CommonCard.Decoy);
+                }
+            }
+            return;
+        }
         gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
@@ -1919,9 +1967,56 @@ public class GameController {
             isTransitioning = true;
             scorchAbility();
         }
-        if (selectedCommonCard == null || selectedCommonCard.equals(CommonCard.Decoy)
+        if (selectedCommonCard == null
                 || (!selectedCommonCard.getPlayField().equals("Ranged") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
             return;
+        if (selectedCommonCard.equals(CommonCard.Decoy)) {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                if (gameBattleField.getRangedIsPlayedUser1().isEmpty()) return;
+                boolean existNonHero = false;
+                for (CommonCard commonCard : gameBattleField.getRangedIsPlayedUser1()) {
+                    if (!commonCard.isHero()) {
+                        existNonHero = true;
+                        break;
+                    }
+                }
+                if (!existNonHero) return;
+                CommonCard commonCardShouldReplaceWithDecoy = null;
+                for (int i = gameBattleField.getRangedIsPlayedUser1().size() - 1; i >= 0; i--) {
+                    if (!gameBattleField.getRangedIsPlayedUser1().get(i).isHero()) {
+                        commonCardShouldReplaceWithDecoy = gameBattleField.getRangedIsPlayedUser1().get(i);
+                        break;
+                    }
+                }
+                if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getRangedIsPlayedUser1().remove(commonCardShouldReplaceWithDecoy);
+                    gameBattleField.getRangedIsPlayedUser1().add(CommonCard.Decoy);
+                }
+            }
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2())) {
+                if (gameBattleField.getRangedIsPlayedUser2().isEmpty()) return;
+                boolean existNonHero = false;
+                for (CommonCard commonCard : gameBattleField.getRangedIsPlayedUser2()) {
+                    if (!commonCard.isHero()) {
+                        existNonHero = true;
+                        break;
+                    }
+                }
+                if (!existNonHero) return;
+                CommonCard commonCardShouldReplaceWithDecoy = null;
+                for (int i = gameBattleField.getRangedIsPlayedUser2().size() - 1; i >= 0; i--) {
+                    if (!gameBattleField.getRangedIsPlayedUser2().get(i).isHero()) {
+                        commonCardShouldReplaceWithDecoy = gameBattleField.getRangedIsPlayedUser2().get(i);
+                        break;
+                    }
+                }
+                if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getRangedIsPlayedUser2().remove(commonCardShouldReplaceWithDecoy);
+                    gameBattleField.getRangedIsPlayedUser2().add(CommonCard.Decoy);
+                }
+            }
+            return;
+        }
         gameBattleFieldController.putCommonCardRanged(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
@@ -1953,9 +2048,56 @@ public class GameController {
             isTransitioning = true;
             scorchAbility();
         }
-        if (selectedCommonCard == null || selectedCommonCard.equals(CommonCard.Decoy)
+        if (selectedCommonCard == null
                 || !selectedCommonCard.getPlayField().equals("Siege") || selectedCommonCard.getAbility().contains("Spy"))
             return;
+        if (selectedCommonCard.equals(CommonCard.Decoy)) {
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
+                if (gameBattleField.getSiegeIsPlayedUser1().isEmpty()) return;
+                boolean existNonHero = false;
+                for (CommonCard commonCard : gameBattleField.getSiegeIsPlayedUser1()) {
+                    if (!commonCard.isHero()) {
+                        existNonHero = true;
+                        break;
+                    }
+                }
+                if (!existNonHero) return;
+                CommonCard commonCardShouldReplaceWithDecoy = null;
+                for (int i = gameBattleField.getSiegeIsPlayedUser1().size() - 1; i >= 0; i--) {
+                    if (!gameBattleField.getSiegeIsPlayedUser1().get(i).isHero()) {
+                        commonCardShouldReplaceWithDecoy = gameBattleField.getSiegeIsPlayedUser1().get(i);
+                        break;
+                    }
+                }
+                if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getSiegeIsPlayedUser1().remove(commonCardShouldReplaceWithDecoy);
+                    gameBattleField.getSiegeIsPlayedUser1().add(CommonCard.Decoy);
+                }
+            }
+            if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser2())) {
+                if (gameBattleField.getSiegeIsPlayedUser2().isEmpty()) return;
+                boolean existNonHero = false;
+                for (CommonCard commonCard : gameBattleField.getSiegeIsPlayedUser2()) {
+                    if (!commonCard.isHero()) {
+                        existNonHero = true;
+                        break;
+                    }
+                }
+                if (!existNonHero) return;
+                CommonCard commonCardShouldReplaceWithDecoy = null;
+                for (int i = gameBattleField.getSiegeIsPlayedUser2().size() - 1; i >= 0; i--) {
+                    if (!gameBattleField.getSiegeIsPlayedUser2().get(i).isHero()) {
+                        commonCardShouldReplaceWithDecoy = gameBattleField.getSiegeIsPlayedUser2().get(i);
+                        break;
+                    }
+                }
+                if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getSiegeIsPlayedUser2().remove(commonCardShouldReplaceWithDecoy);
+                    gameBattleField.getSiegeIsPlayedUser2().add(CommonCard.Decoy);
+                }
+            }
+            return;
+        }
         gameBattleFieldController.putCommonCardSiege(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
