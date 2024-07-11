@@ -1,6 +1,7 @@
 package Sample.View.ChooseCard;
 
 import Sample.Controller.ApplicationController;
+import Sample.Server;
 import Sample.View.LoginMenu;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,7 @@ public class ChooseCardMonsterTest extends Application {
 //        if (LeaderMenu.getMediaPlayer() == null) {
 //            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("Media/LoginAndRegisterMenuMedia.mp3")).toExternalForm());
 //            mediaPlayer = new MediaPlayer(media);
+//            mediaPlayer.setOnEndOfMedia(() -> {
 //            mediaPlayer.setOnEndOfMedia(() -> {
 //                mediaPlayer.seek(Duration.ZERO);
 //                mediaPlayer.play();

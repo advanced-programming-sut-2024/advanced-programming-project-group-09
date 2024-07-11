@@ -1,6 +1,7 @@
 package Sample.Controller;
 
 import Sample.Client;
+import Sample.CodeByEmail;
 import Sample.Model.User;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
@@ -10,8 +11,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import Sample.View.MainMenu;
 import Sample.View.RegisterMenu;
+import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LoginController {
     @FXML
@@ -45,7 +48,7 @@ public class LoginController {
                 return;
             }
         }
-        loginInServer(userWhoLogin);
+        loginInServer(username.getText());
 
 
         User.setUserLoginIn(userWhoLogin);
@@ -53,8 +56,9 @@ public class LoginController {
         mainMenu.start(ApplicationController.getStage());
     }
 
-    private void loginInServer(User userWhoLogin) {
+    private void loginInServer(String userWhoLoginName) {
         NetworkController.updateUsersFromServer();
+        User userWhoLogin = User.getUserByUsername(userWhoLoginName);
 //        NetworkController.timeline.pause();
         userWhoLogin.setIsOnline(true);
         System.out.println("user who login:" + userWhoLogin.getUsername());
@@ -65,7 +69,8 @@ public class LoginController {
             System.out.println(new Gson().toJson(user));
             System.out.println(user.getIsOnline());
         }
-        new Client().tryToConnectToServer("UpdateUsersInServer~" + new Gson().toJson(allUserInJson));
+        Client client = Client.createClient(userWhoLogin.getUsername().hashCode());
+        client.tryToConnectToServer("UpdateUsersInServer~" + new Gson().toJson(allUserInJson));
 //        NetworkController.timeline.play();
         System.out.println(userWhoLogin.getIsOnline());
     }
@@ -91,4 +96,6 @@ public class LoginController {
         RegisterMenu registerMenu = new RegisterMenu();
         registerMenu.start(ApplicationController.getStage());
     }
+
+
 }

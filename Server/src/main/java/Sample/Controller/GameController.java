@@ -2,9 +2,11 @@ package Sample.Controller;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
+import Sample.Client;
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
+import com.google.gson.Gson;
 import javafx.animation.KeyFrame;
 import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
@@ -567,6 +569,7 @@ public class GameController {
 
             stackPane.getChildren().get(2).setVisible(false);
         }
+
         for (int i = specialCardsBattleFieldUser1.size(); i < specialCardsBattleFieldUser1.size() + commonCardInBattleFieldUser1.size(); i++) {
             String playField = commonCardInBattleFieldUser1.get(i - specialCardsBattleFieldUser1.size()).getPlayField();
             StackPane stackPane = (StackPane) myHandCards.getChildren().get(i);

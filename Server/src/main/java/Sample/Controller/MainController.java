@@ -1,18 +1,22 @@
 package Sample.Controller;
 
 import Sample.CardEnums.Faction;
+import Sample.Client;
 import Sample.Model.User;
+import Sample.Server;
 import Sample.View.ChooseCard.*;
 import Sample.View.LeaderMenu;
 import Sample.View.LoginMenu;
 import Sample.View.ProfileMenu;
 import Sample.View.StartNewGameMenu;
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.ImageCursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainController {
@@ -40,9 +44,27 @@ public class MainController {
         if (User.getUserLoginIn().getUsername().equals("Guest")) {
             User.getUsers().remove(User.getUserLoginIn());
         }
+
+        Server.clients.remove(Client.getInstance());
+
+
+        NetworkController.updateUsersFromServer();
+        User.getUserByUsername(User.getUserLoginIn().getUsername()).setIsOnline(false);
+
+        ArrayList<String> allUserInJson = new ArrayList<>();
+        for (User user : User.getUsers()) {
+            System.out.println("1 " + user.getIsOnline());
+            allUserInJson.add(new Gson().toJson(user));
+            System.out.println("12 " + new Gson().toJson(user));
+            System.out.println("123 " + user.getIsOnline());
+        }
+        new Client().tryToConnectToServer("UpdateUsersInServer~" + new Gson().toJson(allUserInJson));
+
+
         User.setUserLoginIn(null);
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.start(ApplicationController.getStage());
+
     }
 
     public void goToProfileMenu() throws Exception {

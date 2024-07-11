@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -322,7 +323,7 @@ public class ChooseCardMonsterController {
     }
 
 
-    public void initialize() {
+    public void initialize() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
 
         createHeroCardList();
         createSpecialCardList();
@@ -334,6 +335,16 @@ public class ChooseCardMonsterController {
 
 
         createTimelineForUpdating();
+        loadCards();
+    }
+
+    public void loadCards() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        User currentUser = User.getUserLoginIn();
+        for (CommonCard commonCard : currentUser.getCommonCardsInDeck()) {
+            String cardName = commonCard.getCardName();
+            Object value = getClass().getDeclaredMethod(cardName + "Selected").invoke(new ChooseCardMonsterController());
+        }
+
     }
 
     private void setAllCardImages() {
@@ -1163,6 +1174,7 @@ public class ChooseCardMonsterController {
         }
         torrentialRainRemainderInCardCollection.setText(remainingInCardSelection + "X");
     }
+
     public void monsters_arachasUnselected(MouseEvent mouseEvent) {
         int remainingInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
         if (remainingInDeck == 0) return;
@@ -1526,7 +1538,6 @@ public class ChooseCardMonsterController {
         monsters_werewolfVboxInCardCollection.setVisible(true);
         monsters_werewolfVboxInDeck.setVisible(false);
     }
-
 
 
     public void monsters_arachas_1Selected(MouseEvent mouseEvent) {

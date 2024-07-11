@@ -2,11 +2,16 @@ package Sample;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerThread extends Thread {
 
+    public String username;
     private Socket socket;
     private Server server;
+    PrintWriter writer;
+    InputStream input;
+    OutputStream output;
 
     public ServerThread(Socket socket) {
         this.socket = socket;
@@ -14,18 +19,24 @@ public class ServerThread extends Thread {
     }
 
     public void run() {
-        try (InputStream input = socket.getInputStream(); BufferedReader reader = new BufferedReader(new InputStreamReader(input)); OutputStream output = socket.getOutputStream(); PrintWriter writer = new PrintWriter(output, true)) {
-            String inputFromClient;
-            while ((inputFromClient = reader.readLine()) != null) {
-                server.handleCommand(inputFromClient);
-                System.out.println("Server Received: " + inputFromClient);
-                writer.println(server.handleCommand(inputFromClient));
+        while (true) {
+            try {
+                input = socket.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                output = socket.getOutputStream();
+                writer = new PrintWriter(output, true);
+                String inputFromClient;
+                while ((inputFromClient = reader.readLine()) != null) {
+                    server.handleCommand(inputFromClient);
+                    System.out.println("Server Received: " + inputFromClient);
+                    writer.println(server.handleCommand(inputFromClient));
+                }
+            } catch (IOException ex) {
+                System.out.println("Server exception: " + ex.getMessage());
+                ex.printStackTrace();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException ex) {
-            System.out.println("Server exception: " + ex.getMessage());
-            ex.printStackTrace();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 }

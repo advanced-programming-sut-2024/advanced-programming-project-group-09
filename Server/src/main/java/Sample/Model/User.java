@@ -32,6 +32,10 @@ public class User {
     private double maxScore;
     private User competitor;
     private GameBattleField lastGameBattleField;
+
+    private ArrayList<User> friends = new ArrayList<>();
+
+
     private final ArrayList<GameBattleField> allGameBattleField = new ArrayList<>();
     private static final ArrayList<User> allUsers = new ArrayList<>();
     private static User userLoginIn;
@@ -70,7 +74,13 @@ public class User {
         isOnline = online;
     }
 
+    public ArrayList<User> getFriends() {
+        return friends;
+    }
 
+    public void setFriends(ArrayList<User> friends) {
+        this.friends = friends;
+    }
 
     public static ArrayList<User> getUsers() {
         return allUsers;

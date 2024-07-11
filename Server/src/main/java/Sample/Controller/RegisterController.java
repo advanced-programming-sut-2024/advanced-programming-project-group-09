@@ -1,8 +1,9 @@
 package Sample.Controller;
 
 import Sample.Client;
+import Sample.CodeByEmail;
 import Sample.Enum.Commands;
-import Sample.Main;
+import Sample.LinkByEmail;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
 import com.google.gson.Gson;
@@ -13,6 +14,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 
 import java.security.SecureRandom;
@@ -36,10 +38,10 @@ public class RegisterController {
     @FXML
     private TextField email;
     private static RegisterController registerController;
+    private boolean paused = false;
 
     public static RegisterController getInstance() {
-        if (registerController == null)
-            registerController = new RegisterController();
+        if (registerController == null) registerController = new RegisterController();
         return registerController;
     }
 
@@ -65,47 +67,46 @@ public class RegisterController {
 
     public void register() throws Exception {
         NetworkController.updateUsersFromServer();
-//        handlePasswordField();
-//        StringBuilder stringBuilderToSend = new StringBuilder();
-//        stringBuilderToSend.append("register" +
-//                "~" + username.getText() +
-//                "~" + showPassword.getText() +
-//                "~" + password.getText() +
-//                "~" + passwordConfirmation.getText() +
-//                "~" + nickname.getText() +
-//                "~" + email.getText());
-//        String response = client.tryToConnectToServer(stringBuilderToSend.toString());
-//        System.out.println(response + ": received in register controller");
+        if (checkForRegisterError()) return;
+        sendVerificationCode(null);
+        showAlert("verify", "code", "verification code sent. please import it.");
+    }
+
+    private boolean checkForRegisterError() {
         if (Commands.UserName.getMatcher(username.getText()) == null) {
             showAlert("Invalid username", "Check Your username", "Please enter a valid username");
-            return;
+            return true;
         }
         if (!showPassword.getText().isEmpty()) password.setText(showPassword.getText());
         if (Commands.Password.getMatcher(password.getText()) == null) {
             showPasswordErrors(password.getText());
-            return;
+            return true;
         }
         if (Commands.Nickname.getMatcher(nickname.getText()) == null) {
             showAlert("Unacceptable nickname", "Check Your nickname", "Please enter a valid nickname");
-            return;
+            return true;
         }
         if (Commands.EMAIL.getMatcher(email.getText()) == null) {
             showAlert("Unacceptable email", "Check Your email", "Please enter a valid email");
-            return;
+            return true;
         }
         if (!password.getText().equals(passwordConfirmation.getText())) {
             showAlert("Error password", "Check Your confirmation password", "Your password does not match with confirmation password");
             password.setText("");
             showPassword.setText("");
             passwordConfirmation.setText("");
-            return;
+            return true;
         }
         if (User.getUserByUsername(username.getText()) != null) {
             showAlert("Duplicate username", "This username is already registered", "Back to login Menu or set new username");
             changeUsername(username.getText());
-            return;
+            return true;
         }
+        return false;
+    }
 
+    private void checkingCodeVerificationToRegister() throws Exception {
+        if (!isVerified) return;
         User newUser = new User(username.getText(), password.getText(), email.getText(), nickname.getText());
 
         User.saveUsers();
@@ -210,5 +211,44 @@ public class RegisterController {
     public void backToLoginMenu() throws Exception {
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.start(ApplicationController.getStage());
+    }
+
+    public String verificationCode;
+    public TextField codeVerificationTextField;
+    public boolean isVerified = false;
+
+    public static String generateRandomString(int length) {
+        String CHAR_POOL = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(CHAR_POOL.length());
+            sb.append(CHAR_POOL.charAt(index));
+        }
+        return sb.toString();
+    }
+
+    public void sendVerificationCode(MouseEvent mouseEvent) {
+        verificationCode = generateRandomString(new Random().nextInt(5, 10));
+        CodeByEmail.sendVerificationEmail(email.getText(), verificationCode);
+//        System.out.println(CodeByEmail);
+    }
+
+
+    public void verifyCode(MouseEvent mouseEvent) throws Exception {
+        if (checkForRegisterError()) return;
+        if (!codeVerificationTextField.getText().equals(verificationCode)) {
+            showAlert("invalid verifying", "wrong code register", "please enter the code correctly!");
+            isVerified = false;
+            return;
+        }
+        isVerified = true;
+        checkingCodeVerificationToRegister();
+
+    }
+
+    public void sendVerificationLink(MouseEvent mouseEvent) {
+        LinkByEmail.sendAuthenticationEmail("m.r.izady.1383@gmail.com", generateRandomString(7));
     }
 }

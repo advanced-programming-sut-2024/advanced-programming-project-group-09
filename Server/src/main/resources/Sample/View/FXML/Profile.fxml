@@ -11,12 +11,13 @@
             fx:controller="Sample.Controller.ProfileController">
     <center>
         <VBox fx:id="vbox" alignment="CENTER" spacing="10">
-            <Button onMouseClicked="#goToMainMenu" text="Go To Main Menu" style="-fx-background-color: Gold"/>
+            <Button mnemonicParsing="false" onMouseClicked="#goToMainMenu" text="Go To Main Menu" style="-fx-background-color: Gray"/>
+            <Button onMouseClicked="#goToFriendMenu" text="Friends" style="-fx-background-color: Brown"/>
             <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" text="show my data"
                     style="-fx-background-color: Purple"/>
             <Button mnemonicParsing="false" text="game history" style="-fx-background-color: Blue"/>
-            <MenuButton prefHeight="26.0" prefWidth="178.0" text="show last nth game history"
-                        style="-fx-background-color: Red">
+            <MenuButton prefHeight="26.0" prefWidth="178.0" text="game history"
+                        style="-fx-background-color: Green">
                 <items>
                     <MenuItem onAction="#showGameHistory1" text="1"/>
                     <MenuItem onAction="#showGameHistory2" text="2"/>

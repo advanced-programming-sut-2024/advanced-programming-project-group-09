@@ -12,9 +12,10 @@ public enum Commands {
     PasswordNumberUsed("(?=.*\\d).+"),
     PasswordSpecialCharacterUsed("(?=.*[!@#$%^&]).+"),
     Nickname("[a-zA-Z0-9-]{3,20}"),
-    EMAIL("^[^\\.\\s][\\w\\-]+(\\.[\\w\\-]+)*@([\\w-]+\\.)+[\\w-]{2,}$"),
+    EMAIL(".+"),
     ;
     private final String pattern;
+
     Commands(String pattern) {
         this.pattern = pattern;
     }

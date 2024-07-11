@@ -2,6 +2,7 @@ package Sample.Controller;
 
 import Sample.Enum.Commands;
 import Sample.Model.User;
+import Sample.View.FriendMenu;
 import Sample.View.MainMenu;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -262,5 +263,9 @@ public class ProfileController {
     }
 
     public void showGameHistory5(ActionEvent event) {
+    }
+
+    public void goToFriendMenu(MouseEvent mouseEvent) throws Exception {
+        new FriendMenu().start(ApplicationController.getStage());
     }
 }

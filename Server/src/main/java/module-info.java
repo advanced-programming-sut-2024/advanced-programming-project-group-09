@@ -5,6 +5,7 @@ module approj1 {
     requires javafx.controls;
     requires java.base;
     requires com.google.gson;
+    requires javax.mail.api;
 //    requires javafx.Controls;
 //    requires javafx.fxml;
 //    requires javafx.media;
