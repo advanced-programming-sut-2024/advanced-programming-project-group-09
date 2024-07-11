@@ -1913,7 +1913,7 @@ public class ChooseCardMonsterController {
                 return CommonCard.Ballista;
             case "realms_kaedwen_siege":
                 return CommonCard.KaedweniSiegeExpert;
-            case "realms_banner_nubrse":
+            case "realms_banner_nurse":
                 return CommonCard.DunBannerMedic;
             case "realms_blue_stripes":
                 return CommonCard.BlueStripesCommando;
