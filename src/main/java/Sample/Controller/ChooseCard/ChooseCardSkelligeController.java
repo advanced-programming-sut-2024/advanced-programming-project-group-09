@@ -1485,7 +1485,7 @@ public class ChooseCardSkelligeController {
     }
 
     public void done(MouseEvent mouseEvent) throws Exception {
-        User user = User.getUserForTest();  // TODO : change this to current user
+        User user = User.getUserLoginIn();  // TODO : change this to current user
         if (checkEnoughSelection()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             LoginController.showAlert("Not enough selection", "You should select at most 10 special cards and at least 22 common cards", "");

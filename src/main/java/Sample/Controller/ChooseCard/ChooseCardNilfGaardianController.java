@@ -1256,7 +1256,7 @@ public class ChooseCardNilfGaardianController {
     }
 
     public void done(MouseEvent mouseEvent) throws Exception {
-        User user = User.getUserForTest();  // TODO : change this to current user
+        User user = User.getUserLoginIn();  // TODO : change this to current user
         if (checkEnoughSelection()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             LoginController.showAlert("Not enough selection", "You should select at most 10 special cards and at least 22 common cards", "");
@@ -1312,6 +1312,7 @@ public class ChooseCardNilfGaardianController {
     }
 
     private void printDeck(User user) {
+        System.out.println("userrrr:" + User.getUserLoginIn());
         System.out.println("First common cards: siuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu!!");
         for (CommonCard commonCard : user.getCommonCardsInDeck()) {
             System.out.println("common card in deck:" + commonCard.getCardName());

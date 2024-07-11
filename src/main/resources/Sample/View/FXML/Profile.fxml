@@ -11,6 +11,7 @@
             <Button onMouseClicked="#goToMainMenu" style="-fx-background-color: Brown" text="Go To Main Menu"/>
             <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" style="-fx-background-color: Purple" text="show my data"/>
             <Button mnemonicParsing="false" style="-fx-background-color: Blue" text="game history"/>
+            <Button onMouseClicked="#ranking" mnemonicParsing="false" style="-fx-background-color: Blue" text="ranking"/>
             <MenuButton prefHeight="34.0" prefWidth="248.0" style="-fx-background-color: Gray" text="show last nth game history">
                 <items>
                     <MenuItem onAction="#showGameHistory1" text="1"/>

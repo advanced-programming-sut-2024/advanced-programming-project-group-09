@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import java.util.Comparator;
 import java.util.Random;
 
 public class ProfileController {
@@ -402,5 +403,14 @@ public class ProfileController {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void ranking(MouseEvent mouseEvent) {
+        StringBuilder stringBuilder = new StringBuilder();
+        User.getUsers().sort(Comparator.comparing(User::getMaxScore));
+        for (User user : User.getUsers()) {
+            stringBuilder.append(user.getUsername() + "with score : " + user.getMaxScore());
+        }
+        showAlert("rank", "ranking", stringBuilder.toString());
     }
 }
