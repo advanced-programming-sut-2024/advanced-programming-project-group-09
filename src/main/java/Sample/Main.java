@@ -13,8 +13,8 @@ public class Main {
 
         if (User.getUsers().isEmpty()) {
             User user = new User("tom", "123", "", "");
-            user.setFactionSelected(Faction.Monsters);
-            user.setFactionLeader(Leader.TheBeautiful);
+            user.setFactionSelected(Faction.Skellige);
+            user.setFactionLeader(Leader.KingBran);
             user.getCommonCardsInDeck().add(CommonCard.Botchling);
             user.getCommonCardsInDeck().add(CommonCard.Draug);
             user.getCommonCardsInDeck().add(CommonCard.Leshen);
@@ -44,7 +44,7 @@ public class Main {
 
             User user2 = new User("alex", "123", "", "");
             user2.setFactionSelected(Faction.Monsters);
-            user2.setFactionLeader(Leader.SiegeMaster);
+            user2.setFactionLeader(Leader.DestroyerOfWorlds);
             user2.getCommonCardsInDeck().add(CommonCard.Ghoul);
             user2.getCommonCardsInDeck().add(CommonCard.Imlerith);
             user2.getCommonCardsInDeck().add(CommonCard.Harpy);

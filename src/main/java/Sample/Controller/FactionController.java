@@ -226,6 +226,8 @@ public class FactionController {
                 if (confirmation()) return;
                 user.setFactionSelected(Faction.Monsters);
                 user.setFactionLeader(Leader.BringerOfDeath);
+                user.getCommonCardsInDeck().clear();
+                user.getSpecialCardsInDeck().clear();
             }
             case "image2" -> {
                 if (factionSelected.equals(Faction.Nilfgaard)) {
@@ -235,6 +237,8 @@ public class FactionController {
                 if (confirmation()) return;
                 user.setFactionSelected(Faction.Nilfgaard);
                 user.setFactionLeader(Leader.WhiteFlame);
+                user.getCommonCardsInDeck().clear();
+                user.getSpecialCardsInDeck().clear();
             }
             case "image3" -> {
                 if (factionSelected.equals(Faction.NorthernRealms)) {
@@ -244,6 +248,8 @@ public class FactionController {
                 if (confirmation()) return;
                 user.setFactionSelected(Faction.NorthernRealms);
                 user.setFactionLeader(Leader.KingOfTemeria);
+                user.getCommonCardsInDeck().clear();
+                user.getSpecialCardsInDeck().clear();
             }
             case "image4" -> {
                 if (factionSelected.equals(Faction.Scoiatael)) {
@@ -253,6 +259,8 @@ public class FactionController {
                 if (confirmation()) return;
                 user.setFactionSelected(Faction.Scoiatael);
                 user.setFactionLeader(Leader.QueenOfDolBlathanna);
+                user.getCommonCardsInDeck().clear();
+                user.getSpecialCardsInDeck().clear();
             }
             case "image5" -> {
                 if (factionSelected.equals(Faction.Skellige)) {
@@ -262,6 +270,8 @@ public class FactionController {
                 if (confirmation()) return;
                 user.setFactionSelected(Faction.Skellige);
                 user.setFactionLeader(Leader.CrachAnCraite);
+                user.getCommonCardsInDeck().clear();
+                user.getSpecialCardsInDeck().clear();
             }
         }
         backToLeaderMenu();

@@ -2,11 +2,15 @@ package Sample.Controller.ChooseCard;
 
 import Sample.CardEnums.CommonCard;
 import Sample.CardEnums.SpecialCard;
+import Sample.Controller.ApplicationController;
+import Sample.Controller.LoginController;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
+import Sample.View.MainMenu;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -323,7 +327,8 @@ public class ChooseCardMonsterController {
 
 
     public void initialize() {
-
+        User.getUserLoginIn().getCommonCardsInDeck().clear();
+        User.getUserLoginIn().getSpecialCardsInDeck().clear();
         createHeroCardList();
         createSpecialCardList();
         setImagesForCardCollection();
@@ -2049,10 +2054,11 @@ public class ChooseCardMonsterController {
         }
     }
 
-    public void done(MouseEvent mouseEvent) {
+    public void done(MouseEvent mouseEvent) throws Exception {
         User user = User.getUserForTest();  // TODO : change this to current user
         if (!checkEnoughSelection()) {
-            System.out.println("not enough selection");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            LoginController.showAlert("Not enough selection", "You should select at most 10 special cards and at least 22 common cards", "");
             return;
         }
 
@@ -2096,6 +2102,8 @@ public class ChooseCardMonsterController {
             }
         }
         printDeck(user);
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.start(ApplicationController.getStage());
     }
 
     private boolean checkEnoughSelection() {
@@ -2124,7 +2132,11 @@ public class ChooseCardMonsterController {
         String regex = "Number of Unit Cards: (?<allCards>\\d+)/22";
         Matcher matcher = getCommandMatcher(regex, numberOfAllCards);
         int allCards = Integer.parseInt(matcher.group("allCards"));
-        return allCards < 22;
+        String regex2 = "Special Cards: (?<specialCards>\\d+)/10";
+        Matcher matcher2 = getCommandMatcher(regex2, specialCards);
+        int numOfSpecialCards = Integer.parseInt(matcher2.group("specialCards"));
+        int commonCards = allCards - numOfSpecialCards;
+        return commonCards < 22;
     }
 
     public boolean check10SelectionOfSpecialCard() {

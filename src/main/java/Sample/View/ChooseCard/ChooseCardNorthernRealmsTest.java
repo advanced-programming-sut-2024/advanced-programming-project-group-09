@@ -20,7 +20,7 @@ public class ChooseCardNorthernRealmsTest extends Application {
     public void start(Stage stage) throws Exception {
         ApplicationController.setStage(stage);
         stage.centerOnScreen();
-        URL url = LoginMenu.class.getResource("FXMl/ChooseCardNorthernRealms.fxml");
+        URL url = LoginMenu.class.getResource("FXMl/ChooseCard/ChooseCardNorthernRealms.fxml");
         assert url != null;
         VBox root = FXMLLoader.load(url);
         BackgroundImage backgroundImage = new BackgroundImage(
@@ -42,7 +42,7 @@ public class ChooseCardNorthernRealmsTest extends Application {
 //            });
 //            mediaPlayer.play();
 //        }
-        Scene scene = new Scene(root, 950, 700);
+        Scene scene = new Scene(root, 890, 700);
         stage.setScene(scene);
         Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icon.jpg")));
         stage.getIcons().add(icon);

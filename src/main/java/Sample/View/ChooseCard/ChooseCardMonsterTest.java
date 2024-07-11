@@ -43,7 +43,7 @@ public class ChooseCardMonsterTest extends Application {
 //            });
 //            mediaPlayer.play();
 //        }
-        Scene scene = new Scene(root, 950, 700);
+        Scene scene = new Scene(root, 890, 700);
         stage.setScene(scene);
         Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icon.jpg")));
         stage.getIcons().add(icon);

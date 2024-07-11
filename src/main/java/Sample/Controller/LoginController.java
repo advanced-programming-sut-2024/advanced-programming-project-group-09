@@ -40,7 +40,7 @@ public class LoginController {
         mainMenu.start(ApplicationController.getStage());
     }
 
-    private void showAlert(String title, String headerText, String contentText) {
+    public static void showAlert(String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
