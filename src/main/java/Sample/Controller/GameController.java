@@ -1885,11 +1885,7 @@ public class GameController {
             scorchAbility();
             return;
         }
-        if (selectedCommonCard == null
-                || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy")) {
-            return;
-        }
-        if (selectedCommonCard.equals(CommonCard.Decoy)) {
+        if (selectedCommonCard != null && selectedCommonCard.equals(CommonCard.Decoy)) {
             if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
                 if (gameBattleField.getCloseCombatIsPlayedUser1().isEmpty()) return;
                 boolean existNonHero = false;
@@ -1908,6 +1904,7 @@ public class GameController {
                     }
                 }
                 if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCommonCardInBattleFieldUser1().add(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getCloseCombatIsPlayedUser1().remove(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getCloseCombatIsPlayedUser1().add(CommonCard.Decoy);
                 }
@@ -1930,10 +1927,18 @@ public class GameController {
                     }
                 }
                 if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCommonCardInBattleFieldUser2().add(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getCloseCombatIsPlayedUser2().remove(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getCloseCombatIsPlayedUser2().add(CommonCard.Decoy);
                 }
             }
+            unSelectCard();
+            updateBoard();
+            changeTurn();
+            return;
+        }
+        if (selectedCommonCard == null
+                || (!selectedCommonCard.getPlayField().equals("Close Combat") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy")) {
             return;
         }
         gameBattleFieldController.putCommonCardCloseCombat(selectedCommonCard, false);
@@ -1967,10 +1972,7 @@ public class GameController {
             isTransitioning = true;
             scorchAbility();
         }
-        if (selectedCommonCard == null
-                || (!selectedCommonCard.getPlayField().equals("Ranged") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
-            return;
-        if (selectedCommonCard.equals(CommonCard.Decoy)) {
+        if (selectedCommonCard != null && selectedCommonCard.equals(CommonCard.Decoy)) {
             if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
                 if (gameBattleField.getRangedIsPlayedUser1().isEmpty()) return;
                 boolean existNonHero = false;
@@ -1989,6 +1991,7 @@ public class GameController {
                     }
                 }
                 if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCommonCardInBattleFieldUser1().add(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getRangedIsPlayedUser1().remove(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getRangedIsPlayedUser1().add(CommonCard.Decoy);
                 }
@@ -2011,12 +2014,19 @@ public class GameController {
                     }
                 }
                 if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCommonCardInBattleFieldUser2().add(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getRangedIsPlayedUser2().remove(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getRangedIsPlayedUser2().add(CommonCard.Decoy);
                 }
             }
+            unSelectCard();
+            updateBoard();
+            changeTurn();
             return;
         }
+        if (selectedCommonCard == null
+                || (!selectedCommonCard.getPlayField().equals("Ranged") && !selectedCommonCard.getPlayField().equals("Agile")) || selectedCommonCard.getAbility().contains("Spy"))
+            return;
         gameBattleFieldController.putCommonCardRanged(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {
@@ -2048,10 +2058,7 @@ public class GameController {
             isTransitioning = true;
             scorchAbility();
         }
-        if (selectedCommonCard == null
-                || !selectedCommonCard.getPlayField().equals("Siege") || selectedCommonCard.getAbility().contains("Spy"))
-            return;
-        if (selectedCommonCard.equals(CommonCard.Decoy)) {
+        if (selectedCommonCard != null && selectedCommonCard.equals(CommonCard.Decoy)) {
             if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
                 if (gameBattleField.getSiegeIsPlayedUser1().isEmpty()) return;
                 boolean existNonHero = false;
@@ -2070,6 +2077,7 @@ public class GameController {
                     }
                 }
                 if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCommonCardInBattleFieldUser1().add(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getSiegeIsPlayedUser1().remove(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getSiegeIsPlayedUser1().add(CommonCard.Decoy);
                 }
@@ -2092,12 +2100,19 @@ public class GameController {
                     }
                 }
                 if (commonCardShouldReplaceWithDecoy != null) {
+                    gameBattleField.getCommonCardInBattleFieldUser2().add(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getSiegeIsPlayedUser2().remove(commonCardShouldReplaceWithDecoy);
                     gameBattleField.getSiegeIsPlayedUser2().add(CommonCard.Decoy);
                 }
             }
+            unSelectCard();
+            updateBoard();
+            changeTurn();
             return;
         }
+        if (selectedCommonCard == null
+                || !selectedCommonCard.getPlayField().equals("Siege") || selectedCommonCard.getAbility().contains("Spy"))
+            return;
         gameBattleFieldController.putCommonCardSiege(selectedCommonCard, false);
         updateBoard();
         if (selectedCommonCard.getAbility().contains("Medic")) {

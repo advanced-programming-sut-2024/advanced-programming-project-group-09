@@ -1837,6 +1837,52 @@ public class ChooseCardScoiaTaelController {
     }
 
     public void startGame(MouseEvent mouseEvent) throws Exception {
+        User user = User.getUserLoginIn();  // TODO : change this to current user
+        if (checkEnoughSelection()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            LoginController.showAlert("Not enough selection", "You should select at most 10 special cards and at least 22 common cards", "");
+            return;
+        }
+
+        for (VBox child : imageViewsVboxesCardInDeck) {
+            if (child.isVisible()) {
+                if (!(child.getChildren().getFirst() instanceof StackPane)) {
+                    if (child.getChildren().getFirst().getId() == null || getCommonCardByIdAddress(child.getChildren().getFirst().getId()) == null) {
+                        System.out.println("Debug address1: " + child);
+                        System.out.println("id:" + child.getId());
+                        return;
+                    }
+                    user.getCommonCardsInDeck().add(getCommonCardByIdAddress(child.getChildren().getFirst().getId()));
+
+                } else {
+                    if (specialCardVboxesInDeck.contains(child)) continue;
+                    StackPane stackPane = (StackPane) child.getChildren().getFirst();
+                    if (stackPane.getChildren().getFirst().getId() == null || getCommonCardByIdAddress(stackPane.getChildren().getFirst().getId()) == null) {
+                        System.out.println("Debug address2: " + child);
+                        System.out.println("id:" + child.getId());
+                        return;
+                    }
+                    Label label = (Label) stackPane.getChildren().get(1);
+                    for (int i = 0; i < Integer.parseInt(label.getText().substring(0, 1)); i++) {
+                        user.getCommonCardsInDeck().add(getCommonCardByIdAddress(stackPane.getChildren().getFirst().getId()));
+                    }
+                }
+            }
+        }
+        for (VBox child : specialCardVboxesInDeck) {
+            if (child.isVisible()) {
+                StackPane stackPane = (StackPane) child.getChildren().getFirst();
+                if (stackPane.getChildren().getFirst().getId() == null || getSpecialCardByIdAddress(stackPane.getChildren().getFirst().getId()) == null) {
+                    System.out.println("DEBUG the address: " + stackPane.getChildren().getFirst().getId());
+                    return;
+                }
+                Label label = (Label) stackPane.getChildren().get(1);
+                for (int i = 0; i < Integer.parseInt(label.getText().substring(0, 1)); i++) {
+
+                    user.getSpecialCardsInDeck().add(getSpecialCardByIdAddress(stackPane.getChildren().getFirst().getId()));
+                }
+            }
+        }
         GameMenu gameMenu = new GameMenu();
         gameMenu.start(ApplicationController.getStage());
     }

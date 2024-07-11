@@ -358,7 +358,7 @@ public class GameBattleFieldController {
             for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser1().size(); i++) {
                 CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser1().get(i);
                 String playField = commonCard.getPlayField();
-                if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+                if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 3).equals(cardPut.getCardName().substring(0, 3)))
                         && commonCard.getAbility().contains("Muster")) {
                     switch (playField) {
                         case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser1().add(commonCard);
@@ -372,7 +372,7 @@ public class GameBattleFieldController {
             for (int i = 0; i < gameBattleField.getCommonCardInDeckUser1().size(); i++) {
                 CommonCard commonCard = gameBattleField.getCommonCardInDeckUser1().get(i);
                 String playField = commonCard.getPlayField();
-                if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+                if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 3).equals(cardPut.getCardName().substring(0, 3)))
                         && commonCard.getAbility().contains("Muster")) {
                     switch (playField) {
                         case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser1().add(commonCard);
@@ -388,7 +388,7 @@ public class GameBattleFieldController {
         for (int i = 0; i < gameBattleField.getCommonCardInBattleFieldUser2().size(); i++) {
             CommonCard commonCard = gameBattleField.getCommonCardInBattleFieldUser2().get(i);
             String playField = commonCard.getPlayField();
-            if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+            if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 3).equals(cardPut.getCardName().substring(0, 3)))
                     && commonCard.getAbility().contains("Muster")) {
                 switch (playField) {
                     case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser2().add(commonCard);
@@ -402,7 +402,7 @@ public class GameBattleFieldController {
         for (int i = 0; i < gameBattleField.getCommonCardInDeckUser2().size(); i++) {
             CommonCard commonCard = gameBattleField.getCommonCardInDeckUser2().get(i);
             String playField = commonCard.getPlayField();
-            if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 4).equals(cardPut.getCardName().substring(0, 4)))
+            if ((commonCard.getCardName().equals(cardPut.getCardName()) || commonCard.getCardName().substring(0, 3).equals(cardPut.getCardName().substring(0, 3)))
                     && commonCard.getAbility().contains("Muster")) {
                 switch (playField) {
                     case "Close Combat" -> gameBattleField.getCloseCombatIsPlayedUser2().add(commonCard);
