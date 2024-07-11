@@ -27,6 +27,7 @@
                 </items>
             </MenuButton>
             <Button onMouseClicked="#changeUserPass" text="change data"/>
+            <Button onMouseClicked="#goToChatMenu" text="Go To Chat Menu" style="-fx-background-color: BLack"/>
             <TextField fx:id="newUsernameTextField" promptText="new Username" visible="false"/>
             <TextField fx:id="newPasswordTextField" promptText="new password" visible="false"/>
             <TextField fx:id="newPasswordConfirmationTextField" promptText="confirmation new password" visible="false"/>

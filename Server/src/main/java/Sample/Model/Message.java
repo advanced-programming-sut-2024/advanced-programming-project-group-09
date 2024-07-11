@@ -10,27 +10,21 @@ public class Message {
 
     private final String senderUsername;
     private String text;
-    private final int hour;
-    private final int minute;
+    private final long timestamp;
     private boolean seenStatus = false;
     private final ArrayList<String> invisibleFor;
     private final HashMap<String, Reaction> reactions;
 
-    public Message(String senderUsername, String text, int hour, int minute) {
+    public Message(String senderUsername, String text, long timestamp) {
         this.senderUsername = senderUsername;
         this.text = text;
-        this.hour = hour;
-        this.minute = minute;
-        reactions = new HashMap<>();
-        invisibleFor = new ArrayList<>();
+        this.timestamp = timestamp;
+        this.reactions = new HashMap<>();
+        this.invisibleFor = new ArrayList<>();
     }
 
-    public int getHour() {
-        return hour;
-    }
-
-    public int getMinute() {
-        return minute;
+    public long getTimestamp() {
+        return timestamp;
     }
 
     public String getSenderUsername() {
@@ -45,11 +39,31 @@ public class Message {
         this.seenStatus = seenStatus;
     }
 
+    public boolean isSeenStatus() {
+        return seenStatus;
+    }
+
     public void setText(String text) {
         this.text = text;
     }
 
     public void addReaction(String username, Reaction reaction) {
         reactions.put(username, reaction);
+    }
+
+    public HashMap<String, Reaction> getReactions() {
+        return reactions;
+    }
+
+    public boolean isVisibleForUser(String username) {
+        return !invisibleFor.contains(username);
+    }
+
+    public void addInvisibleFor(String username) {
+        invisibleFor.add(username);
+    }
+
+    public ArrayList<String> getInvisibleFor() {
+        return invisibleFor;
     }
 }

@@ -2,9 +2,11 @@ package Sample.Controller;
 
 import Sample.Enum.Commands;
 import Sample.Model.User;
+import Sample.View.ChatMenu;
 import Sample.View.FriendMenu;
 import Sample.View.MainMenu;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -70,6 +72,15 @@ public class ProfileController {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void goToChatMenu(MouseEvent mouseEvent) {
+        ChatMenu chatMenu = new ChatMenu();
+        try {
+            chatMenu.start(ApplicationController.getStage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void showData(MouseEvent mouseEvent) {

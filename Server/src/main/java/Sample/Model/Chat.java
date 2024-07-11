@@ -3,32 +3,20 @@ package Sample.Model;
 import java.util.ArrayList;
 
 public class Chat {
-    public enum ChatMode{
-        GLOBAL, PRIVATE, ROOM
-    }
     private final String chatId;
     private final ArrayList<String> users;
     private final ArrayList<Message> messages;
-    private final ChatMode chatMode;
     private final String owner;
-    public Chat(ArrayList<String> users, ChatMode chatMode, String id, String owner){
+
+    public Chat(String chatId, ArrayList<String> users, String owner) {
+        this.chatId = chatId;
         this.users = users;
-        this.chatMode = chatMode;
-        messages = new ArrayList<>();
-        chatId = chatMode.name().toLowerCase() + id;
+        this.messages = new ArrayList<>();
         this.owner = owner;
     }
 
-    public Chat(ArrayList<String> users){
-        this.users = users;
-        this.chatMode = ChatMode.GLOBAL;
-        messages = new ArrayList<>();
-        chatId = chatMode.name().toLowerCase() + "Chat";
-        this.owner = "";
-    }
-
-    public void addMessage(Message msg){
-     messages.add(msg);
+    public void addMessage(Message msg) {
+        messages.add(msg);
     }
 
     public String getChatId() {
@@ -37,10 +25,6 @@ public class Chat {
 
     public ArrayList<Message> getMessages() {
         return messages;
-    }
-
-    public ChatMode getChatMode() {
-        return chatMode;
     }
 
     public ArrayList<String> getUsers() {
