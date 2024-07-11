@@ -20,6 +20,7 @@ public class ProfileController {
     public TextField newEmailTextField;
     public Button doneButton;
     public TextField newPasswordConfirmationTextField;
+    public TextField searcherTextField;
 
     public static ProfileController getInstance() {
         if (controller == null) {
@@ -267,5 +268,34 @@ public class ProfileController {
 
     public void goToFriendMenu(MouseEvent mouseEvent) throws Exception {
         new FriendMenu().start(ApplicationController.getStage());
+    }
+
+    public void search(MouseEvent mouseEvent) {
+        User user = User.getUserByUsername(searcherTextField.getText());
+        if (user == null) {
+            showAlert("username", "invalid name", "no such user");
+            return;
+        }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        String message = "";
+        message += "username : " + user.getUsername();
+        message += "\nnickname : " + user.getNickname();
+        message += "\nmaxScore : " + user.getMaxScore();
+        message += "\nrank : " + user.getRank();
+        message += "\ngames Played : " + user.getGamesPlayed();
+        message += "\nwins : " + user.getLoses();
+        message += "\nloses : " + user.getWins();
+        message += "\ndraws : " + user.getDraws();
+        alert.setTitle("user info");
+        alert.setContentText(message);
+        alert.show();
+    }
+
+    private void showAlert(String title, String headerText, String contentText) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
     }
 }
