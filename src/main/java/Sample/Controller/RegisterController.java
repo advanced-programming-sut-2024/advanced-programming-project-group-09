@@ -3,6 +3,7 @@ package Sample.Controller;
 import Sample.Enum.Commands;
 import Sample.Model.User;
 import Sample.View.LoginMenu;
+import Sample.View.SecurityMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -89,8 +90,8 @@ public class RegisterController {
 
         showAlert("Create account", "Account successfully created", "");
 
-        LoginMenu loginMenu = new LoginMenu();
-        loginMenu.start(ApplicationController.getStage());
+        SecurityMenu securityMenu = new SecurityMenu();
+        securityMenu.start(ApplicationController.getStage());
     }
 
     private void showAlert(String title, String headerText, String contentText) {
