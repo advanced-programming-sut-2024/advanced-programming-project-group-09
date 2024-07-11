@@ -8,10 +8,10 @@ public class Chat {
     private final ArrayList<Message> messages;
     private final String owner;
 
-    public Chat(String chatId, ArrayList<String> users, String owner) {
-        this.chatId = chatId;
+    public Chat(String id, ArrayList<String> users, String owner) {
         this.users = users;
         this.messages = new ArrayList<>();
+        this.chatId = "chat_" + id;
         this.owner = owner;
     }
 

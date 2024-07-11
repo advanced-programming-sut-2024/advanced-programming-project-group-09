@@ -1,7 +1,10 @@
 package Sample.Model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class Message {
     public enum Reaction {
@@ -65,5 +68,22 @@ public class Message {
 
     public ArrayList<String> getInvisibleFor() {
         return invisibleFor;
+    }
+
+    public int getHour() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp);
+        return calendar.get(Calendar.HOUR_OF_DAY);
+    }
+
+    public int getMinute() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp);
+        return calendar.get(Calendar.MINUTE);
+    }
+
+    public String getFormattedTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        return sdf.format(timestamp);
     }
 }

@@ -3,6 +3,7 @@ package Sample.Controller;
 import Sample.Model.Chat;
 import Sample.Model.Message;
 import Sample.ChatNetworkHandler;
+import Sample.Model.User;
 import Sample.database.ChatManager;
 
 public class ChatController {
@@ -22,7 +23,7 @@ public class ChatController {
     }
 
     public void sendMessage(String text) {
-        Message message = new Message("username", text, System.currentTimeMillis());
+        Message message = new Message(getCurrentUsername(), text, System.currentTimeMillis());
         networkHandler.sendMessage(currentChat.getChatId(), message);
     }
 
@@ -35,5 +36,9 @@ public class ChatController {
 
     public void close() {
         networkHandler.closeConnection();
+    }
+
+    public String getCurrentUsername() {
+        return User.getUserLoginIn().getUsername();
     }
 }

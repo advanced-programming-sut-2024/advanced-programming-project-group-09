@@ -7,18 +7,19 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import java.io.*;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class ChatManager {
+
     public static void load() {
         initializeChatFolder();
     }
 
     public static void initializeChatFolder() {
         File resourceDir = new File(Settings.CHAT_PATH);
-        if (!resourceDir.exists()) resourceDir.mkdir();
+        if (!resourceDir.exists())
+            resourceDir.mkdir();
         resourceDir = new File(Settings.GLOBAL_CHAT_PATH);
         if (!resourceDir.exists()) {
             try {
@@ -60,7 +61,8 @@ public class ChatManager {
         }
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-        if (jsonObject == null) return null;
+        if (jsonObject == null)
+            return null;
         return gson.fromJson(jsonObject, Chat.class);
     }
 
@@ -71,17 +73,5 @@ public class ChatManager {
             chatParticipants.add(user.getUsername());
         }
         return new Chat("global", chatParticipants, "");
-    }
-
-    public static void notifyAllMembers(Chat chat) throws IOException {
-        for (User user : Database.getInstance().getOnlineUsers()) {
-            if (chat.getUsers().contains(user.getUsername())) {
-                Socket socket = user.getSocket();
-                OutputStream outputStream = socket.getOutputStream();
-                DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
-                String output = new Gson().toJson(chat);
-                dataOutputStream.writeUTF("chat_updated:" + output);
-            }
-        }
     }
 }

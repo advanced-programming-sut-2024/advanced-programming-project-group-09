@@ -16,8 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ChatMenuController {
     @FXML
@@ -34,33 +32,42 @@ public class ChatMenuController {
     private ChatController controller;
     private Stage stage;
 
-    public void initialize(Stage stage) {
-        this.stage = stage;
+    public void initialize() {
         controller = new ChatController();
         Chat globalChat = ChatManager.loadChat("global");
         controller.setCurrentChat(globalChat);
         loadChat(globalChat);
-        initializeEmojis();
         sendWithEnterHandler();
     }
 
     private void sendWithEnterHandler() {
-        stage.getScene().setOnKeyPressed(keyEvent -> {
-            if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-                try {
-                    processSendMessage();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+        if (stage != null && stage.getScene() != null) {
+            stage.getScene().setOnKeyPressed(keyEvent -> {
+                if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+                    try {
+                        processSendMessage();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
-            }
-        });
+            });
+        }
+    }
+
+    @FXML
+    public void handleSend() {
+        try {
+            processSendMessage();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void processSendMessage() throws IOException {
         String content = text.getText();
         text.clear();
         long timestamp = System.currentTimeMillis();
-        Message msg = new Message("username", content, timestamp);
+        Message msg = new Message(controller.getCurrentUsername(), content, timestamp);
         sendMessage(msg);
         controller.sendMessage(content);
     }
@@ -81,7 +88,7 @@ public class ChatMenuController {
     }
 
     public void addMessage(Message msg) {
-        if (msg.getSenderUsername().equals("username")) { // Replace "username" with actual current username logic
+        if (msg.getSenderUsername().equals(controller.getCurrentUsername())) {
             sendMessage(msg);
         } else {
             receiveMessage(msg);
@@ -102,8 +109,7 @@ public class ChatMenuController {
 
     private void processMessageBox(Message msg, AnchorPane anchorPane) {
         Label messageLabel = new Label(msg.getText());
-        String time = new SimpleDateFormat("HH:mm").format(new Date(msg.getTimestamp()));
-        Label timeLabel = new Label(time);
+        Label timeLabel = new Label(msg.getFormattedTime());
 
         messageLabel.setWrapText(true);
         messageLabel.setStyle("-fx-background-color: lightgray; -fx-padding: 10px; -fx-background-radius: 5px;");
@@ -120,6 +126,7 @@ public class ChatMenuController {
     }
 
     public void initializeEmojis() {
+        // Add emojis to the emoji box
         String[] emojis = {"😀", "😂", "😍", "😎", "😢"};
         for (String emoji : emojis) {
             Label emojiLabel = new Label(emoji);
