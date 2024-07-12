@@ -3,13 +3,11 @@ package Sample.Controller;
 import Sample.CardEnums.Faction;
 import Sample.Model.GameBattleField;
 import Sample.Model.User;
-import Sample.View.GameMenu;
-import Sample.View.LeaderMenu;
+import Sample.View.LeaderMenuForCompetitor;
 import Sample.View.MainMenu;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.util.Random;
 
@@ -41,44 +39,43 @@ public class StartNewGameController {
         assert competitor != null;
         competitor.setCompetitor(User.getUserLoginIn());
         User.setUserLoginIn(competitor);
-        User user2 = competitor;
 
         Random random = new Random();
         GameBattleField gameBattleField;
-        if (user1.getFactionSelected().equals(Faction.Scoiatael) && user2.getFactionSelected().equals(Faction.Scoiatael)) {
+        if (user1.getFactionSelected().equals(Faction.Scoiatael) && competitor.getFactionSelected().equals(Faction.Scoiatael)) {
             boolean isFirst = random.nextBoolean();
             if (isFirst) {
-                gameBattleField = new GameBattleField(user1, user2);
+                gameBattleField = new GameBattleField(user1, competitor);
             }
             else {
-                gameBattleField = new GameBattleField(user2, user1);
+                gameBattleField = new GameBattleField(competitor, user1);
             }
             user1.setLastGameBattleField(gameBattleField);
-            user2.setLastGameBattleField(gameBattleField);
+            competitor.setLastGameBattleField(gameBattleField);
         } else if (user1.getFactionSelected().equals(Faction.Scoiatael)) {
-            gameBattleField = new GameBattleField(user1, user2);
+            gameBattleField = new GameBattleField(user1, competitor);
             user1.setLastGameBattleField(gameBattleField);
-            user2.setLastGameBattleField(gameBattleField);
-        } else if (user2.getFactionSelected().equals(Faction.Scoiatael)) {
-            gameBattleField = new GameBattleField(user2, user1);
+            competitor.setLastGameBattleField(gameBattleField);
+        } else if (competitor.getFactionSelected().equals(Faction.Scoiatael)) {
+            gameBattleField = new GameBattleField(competitor, user1);
             user1.setLastGameBattleField(gameBattleField);
-            user2.setLastGameBattleField(gameBattleField);
+            competitor.setLastGameBattleField(gameBattleField);
         } else {
             boolean isFirst = random.nextBoolean();
             if (isFirst) {
-                gameBattleField = new GameBattleField(user1, user2);
+                gameBattleField = new GameBattleField(user1, competitor);
             }
             else {
-                gameBattleField = new GameBattleField(user2, user1);
+                gameBattleField = new GameBattleField(competitor, user1);
             }
             user1.setLastGameBattleField(gameBattleField);
-            user2.setLastGameBattleField(gameBattleField);
+            competitor.setLastGameBattleField(gameBattleField);
         }
         user1.getAllGameBattleField().add(gameBattleField);
-        user2.getAllGameBattleField().add(gameBattleField);
+        competitor.getAllGameBattleField().add(gameBattleField);
 
-        LeaderMenu leaderMenu = new LeaderMenu();
-        leaderMenu.start(ApplicationController.getStage());
+        LeaderMenuForCompetitor leaderMenuForCompetitor = new LeaderMenuForCompetitor();
+        leaderMenuForCompetitor.start(ApplicationController.getStage());
     }
 
     public void backToMainMenu() throws Exception {

@@ -927,18 +927,22 @@ public class GameController {
             }
         }
         if (commonCards == closeCombatPlayedUser1 && ((specialFieldInCloseCombatUser1 != null && specialFieldInCloseCombatUser1.equals(SpecialCard.CommandersHorn)) || closeCombatPlayedUser1.contains(CommonCard.Dandelion))) {
-            score *= 2;
+            if (commonCard != CommonCard.Dandelion)
+                score *= 2;
         } else if (commonCards == rangedIsPlayedUser1 && specialFieldInRangedUser1 != null && specialFieldInRangedUser1.equals(SpecialCard.CommandersHorn)) {
             score *= 2;
         } else if (commonCards == siegeIsPlayedUser1 && ((specialFieldInSiegeUser1 != null && specialFieldInSiegeUser1.equals(SpecialCard.CommandersHorn)) || siegeIsPlayedUser1.contains(CommonCard.DraigBonDhu))) {
-            score *= 2;
+            if (commonCard != CommonCard.DraigBonDhu)
+                score *= 2;
         }
         if (commonCards == closeCombatPlayedUser2 && ((specialFieldInCloseCombatUser2 != null && specialFieldInCloseCombatUser2.equals(SpecialCard.CommandersHorn)) || closeCombatPlayedUser2.contains(CommonCard.Dandelion))) {
-            score *= 2;
+            if (commonCard != CommonCard.Dandelion)
+                score *= 2;
         } else if (commonCards == rangedIsPlayedUser2 && specialFieldInRangedUser2 != null && specialFieldInRangedUser2.equals(SpecialCard.CommandersHorn)) {
             score *= 2;
         } else if (commonCards == siegeIsPlayedUser2 && ((specialFieldInSiegeUser2 != null && specialFieldInSiegeUser2.equals(SpecialCard.CommandersHorn)) || siegeIsPlayedUser2.contains(CommonCard.DraigBonDhu))) {
-            score *= 2;
+            if (commonCard != CommonCard.DraigBonDhu)
+                score *= 2;
         }
         if (commonCard.getAbility().contains("Spy") && cross2Spy) score *= 2;
         return String.valueOf(score);
@@ -1234,12 +1238,14 @@ public class GameController {
         String winner;
 
         if (gameBattleField.getWhichUserTurn().equals(gameBattleField.getUser1())) {
-            if (scoreFirstPlayer > scoreSecondPlayer && gameBattleField.getUser1().getFactionSelected().equals(Faction.NorthernRealms)) {
-                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
+            if (scoreFirstPlayer > scoreSecondPlayer) {
+                if (gameBattleField.getUser1().getFactionSelected().equals(Faction.NorthernRealms))
+                    gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
                 gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
                 winner = gameBattleField.getUser1().getUsername();
-            } else if (scoreFirstPlayer < scoreSecondPlayer && gameBattleField.getUser2().getFactionSelected().equals(Faction.NorthernRealms)) {
-                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
+            } else if (scoreFirstPlayer < scoreSecondPlayer) {
+                if (gameBattleField.getUser2().getFactionSelected().equals(Faction.NorthernRealms))
+                    gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
                 gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
                 winner = gameBattleField.getUser2().getUsername();
             } else {
@@ -1262,12 +1268,14 @@ public class GameController {
                 }
             }
         } else {
-            if (scoreFirstPlayer > scoreSecondPlayer && gameBattleField.getUser2().getFactionSelected().equals(Faction.NorthernRealms)) {
-                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
+            if (scoreFirstPlayer > scoreSecondPlayer) {
+                if (gameBattleField.getUser2().getFactionSelected().equals(Faction.NorthernRealms))
+                    gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser2());
                 gameBattleField.setHealthUser1(gameBattleField.getHealthUser1() - 1);
                 winner = gameBattleField.getUser2().getUsername();
-            } else if (scoreFirstPlayer < scoreSecondPlayer && gameBattleField.getUser1().getFactionSelected().equals(Faction.NorthernRealms)) {
-                gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
+            } else if (scoreFirstPlayer < scoreSecondPlayer) {
+                if (gameBattleField.getUser1().getFactionSelected().equals(Faction.NorthernRealms))
+                    gameBattleFieldController.giveOneRandomCommonCardToUserPlayed(gameBattleField.getUser1());
                 gameBattleField.setHealthUser2(gameBattleField.getHealthUser2() - 1);
                 winner = gameBattleField.getUser1().getUsername();
             } else {
@@ -2144,7 +2152,7 @@ public class GameController {
             isTransitioning = true;
             scorchAbility();
         }
-        if (selectedCommonCard != null && selectedCommonCard.getAbility().contains("Spy") && selectedCommonCard.getPlayField().equals("Close Combat")) {
+        if (selectedCommonCard != null && selectedCommonCard.getAbility().contains("Spy") && selectedCommonCard.getPlayField().equals("Siege")) {
             StackPane stackPane;
             gameBattleFieldController.putCommonCardSiege(selectedCommonCard, true);
             updateBoard();
@@ -3302,7 +3310,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
                         gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
@@ -3313,7 +3320,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
                         gameBattleField.getRangedIsPlayedUser1().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
@@ -3324,7 +3330,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
                         gameBattleField.getSiegeIsPlayedUser1().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser2().size(); i++) {
@@ -3335,7 +3340,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
                         gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
@@ -3346,7 +3350,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
                         gameBattleField.getRangedIsPlayedUser2().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
@@ -3357,7 +3360,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
                         gameBattleField.getSiegeIsPlayedUser2().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 gameBattleField.getSpecialCardsDiscardUser1().add(selectedSpecialCard);
@@ -3372,7 +3374,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getCloseCombatIsPlayedUser2().get(i));
                         gameBattleField.getCloseCombatIsPlayedUser2().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getRangedIsPlayedUser2().size(); i++) {
@@ -3384,7 +3385,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getRangedIsPlayedUser2().get(i));
                         gameBattleField.getRangedIsPlayedUser2().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser2().size(); i++) {
@@ -3396,7 +3396,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser2().add(gameBattleField.getSiegeIsPlayedUser2().get(i));
                         gameBattleField.getSiegeIsPlayedUser2().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getCloseCombatIsPlayedUser1().size(); i++) {
@@ -3408,7 +3407,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getCloseCombatIsPlayedUser1().get(i));
                         gameBattleField.getCloseCombatIsPlayedUser1().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getRangedIsPlayedUser1().size(); i++) {
@@ -3420,7 +3418,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getRangedIsPlayedUser1().get(i));
                         gameBattleField.getRangedIsPlayedUser1().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 for (int i = 0; i < gameBattleField.getSiegeIsPlayedUser1().size(); i++) {
@@ -3432,7 +3429,6 @@ public class GameController {
                         gameBattleField.getCommonCardsInDiscardUser1().add(gameBattleField.getSiegeIsPlayedUser1().get(i));
                         gameBattleField.getSiegeIsPlayedUser1().remove(i);
                         i -= 1;
-                        updateBoard();
                     }
                 }
                 gameBattleField.getSpecialCardsDiscardUser2().add(selectedSpecialCard);

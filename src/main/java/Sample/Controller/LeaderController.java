@@ -494,7 +494,7 @@ public class LeaderController {
 
     }
 
-    public void goToGame(MouseEvent mouseEvent) throws Exception {
+    public void goToGame() throws Exception {
         if (User.getUserLoginIn().getCommonCardsInDeck().size() < 22 || User.getUserLoginIn().getSpecialCardsInDeck().size() > 10) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Unacceptable deck");
@@ -503,13 +503,6 @@ public class LeaderController {
             alert.showAndWait();
             return;
         }
-        User user1 = User.getUserLoginIn().getCompetitor();
-        User user2 = User.getUserLoginIn();
-        GameBattleField gameBattleField = new GameBattleField(user1, user2);
-        user1.addToAllGameBattleField(gameBattleField);
-        user2.addToAllGameBattleField(gameBattleField);
-        user1.setLastGameBattleField(gameBattleField);
-        user2.setLastGameBattleField(gameBattleField);
         GameMenu gameMenu = new GameMenu();
         gameMenu.start(ApplicationController.getStage());
     }

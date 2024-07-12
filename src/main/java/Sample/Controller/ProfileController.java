@@ -264,7 +264,7 @@ public class ProfileController {
     public void showGameHistory1(ActionEvent event) {
         StringBuilder massage = new StringBuilder();
         User user = User.getUserLoginIn();
-        GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
+        GameBattleField gameBattleField = user.getAllGameBattleField().getFirst();
         boolean isWinner = false;
         if (gameBattleField.getUser1().getUsername().equals(user.getUsername())) {
             if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) isWinner = true;
@@ -272,14 +272,14 @@ public class ProfileController {
             String Health = String.valueOf(gameBattleField.getHealthUser1());
             String isWinnerString = "WON";
             if (!isWinner) isWinnerString = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinnerString).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         } else {
             if (gameBattleField.getHealthUser2() > gameBattleField.getHealthUser1()) isWinner = true;
             if (gameBattleField.getHealthUser1() < 0) isWinner = true;
             String Health = String.valueOf(gameBattleField.getHealthUser2());
             String isWinnerString = "WON";
             if (!isWinner) isWinnerString = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinnerString).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
 
         }
         showAlert("history", "game history info", massage.toString());
@@ -291,7 +291,7 @@ public class ProfileController {
         User user = User.getUserLoginIn();
 
 
-        GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
+        GameBattleField gameBattleField = user.getAllGameBattleField().getFirst();
         boolean isWinner = false;
         if (gameBattleField.getUser1().getUsername().equals(user.getUsername())) {
             if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) isWinner = true;
@@ -299,16 +299,16 @@ public class ProfileController {
             String Health = String.valueOf(gameBattleField.getHealthUser1());
             String isWinnerString = "WON";
             if (!isWinner) isWinnerString = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinnerString).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         } else {
             if (gameBattleField.getHealthUser2() > gameBattleField.getHealthUser1()) isWinner = true;
             if (gameBattleField.getHealthUser1() < 0) isWinner = true;
             String Health = String.valueOf(gameBattleField.getHealthUser2());
             String isWinnerString = "WON";
             if (!isWinner) isWinnerString = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinnerString).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         }
-        GameBattleField gameBattleField2 = user.getAllGameBattleField().get(0);
+        GameBattleField gameBattleField2 = user.getAllGameBattleField().getFirst();
         boolean isWinner2 = false;
         if (gameBattleField2.getUser1().getUsername().equals(user.getUsername())) {
             if (gameBattleField2.getHealthUser1() > gameBattleField2.getHealthUser2()) isWinner2 = true;
@@ -316,14 +316,14 @@ public class ProfileController {
             String Health = String.valueOf(gameBattleField2.getHealthUser1());
             String isWinner2String = "WON";
             if (!isWinner2) isWinner2String = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinner2String).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         } else {
             if (gameBattleField2.getHealthUser2() > gameBattleField2.getHealthUser1()) isWinner2 = true;
             if (gameBattleField2.getHealthUser1() < 0) isWinner2 = true;
             String Health = String.valueOf(gameBattleField2.getHealthUser2());
             String isWinner2String = "WON";
             if (!isWinner2) isWinner2String = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinner2String).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         }
         showAlert("history", "game history info", massage.toString());
 
@@ -334,7 +334,7 @@ public class ProfileController {
         User user = User.getUserLoginIn();
 
 
-        GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
+        GameBattleField gameBattleField = user.getAllGameBattleField().getFirst();
         boolean isWinner = false;
         if (gameBattleField.getUser1().getUsername().equals(user.getUsername())) {
             if (gameBattleField.getHealthUser1() > gameBattleField.getHealthUser2()) isWinner = true;
@@ -342,16 +342,16 @@ public class ProfileController {
             String Health = String.valueOf(gameBattleField.getHealthUser1());
             String isWinnerString = "WON";
             if (!isWinner) isWinnerString = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinnerString).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         } else {
             if (gameBattleField.getHealthUser2() > gameBattleField.getHealthUser1()) isWinner = true;
             if (gameBattleField.getHealthUser1() < 0) isWinner = true;
             String Health = String.valueOf(gameBattleField.getHealthUser2());
             String isWinnerString = "WON";
             if (!isWinner) isWinnerString = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinnerString + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinnerString).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         }
-        GameBattleField gameBattleField2 = user.getAllGameBattleField().get(0);
+        GameBattleField gameBattleField2 = user.getAllGameBattleField().getFirst();
         boolean isWinner2 = false;
         if (gameBattleField2.getUser1().getUsername().equals(user.getUsername())) {
             if (gameBattleField2.getHealthUser1() > gameBattleField2.getHealthUser2()) isWinner2 = true;
@@ -359,14 +359,14 @@ public class ProfileController {
             String Health = String.valueOf(gameBattleField2.getHealthUser1());
             String isWinner2String = "WON";
             if (!isWinner2) isWinner2String = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinner2String).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         } else {
             if (gameBattleField2.getHealthUser2() > gameBattleField2.getHealthUser1()) isWinner2 = true;
             if (gameBattleField2.getHealthUser1() < 0) isWinner2 = true;
             String Health = String.valueOf(gameBattleField2.getHealthUser2());
             String isWinner2String = "WON";
             if (!isWinner2) isWinner2String = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinner2String + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinner2String).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         }
         GameBattleField gameBattleField3 = user.getAllGameBattleField().get(0);
         boolean isWinner3 = false;
@@ -376,14 +376,14 @@ public class ProfileController {
             String Health = String.valueOf(gameBattleField3.getHealthUser1());
             String isWinner3String = "WON";
             if (!isWinner3) isWinner3String = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinner3String + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinner3String).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         } else {
             if (gameBattleField3.getHealthUser2() > gameBattleField3.getHealthUser1()) isWinner3 = true;
             if (gameBattleField3.getHealthUser1() < 0) isWinner3 = true;
             String Health = String.valueOf(gameBattleField3.getHealthUser2());
             String isWinner3String = "WON";
             if (!isWinner3) isWinner3String = "Lost";
-            massage.append("user with name: " + user.getUsername() + " " + isWinner3String + " the game number " + 1 + "with health: " + Health + "\n");
+            massage.append("user with name: ").append(user.getUsername()).append(" ").append(isWinner3String).append(" the game number ").append(1).append("with health: ").append(Health).append("\n");
         }
         showAlert("history", "game history info", massage.toString());
     }
@@ -409,7 +409,7 @@ public class ProfileController {
         StringBuilder stringBuilder = new StringBuilder();
         User.getUsers().sort(Comparator.comparing(User::getMaxScore));
         for (User user : User.getUsers()) {
-            stringBuilder.append(user.getUsername() + "with score : " + user.getMaxScore());
+            stringBuilder.append(user.getUsername()).append("with score : ").append(user.getMaxScore());
         }
         showAlert("rank", "ranking", stringBuilder.toString());
     }
