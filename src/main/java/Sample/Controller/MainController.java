@@ -20,7 +20,7 @@ public class MainController {
     private Label username;
 
     public void initialize() {
-        username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!");
+        username.setText("Hello, " + User.getUserLoginIn().getUsername() + "!" + "\nnickname: " + User.getUserLoginIn().getNickname() + "\n" + "email: " + User.getUserLoginIn().getEmail());
     }
 
     public void startNewGame() throws Exception {

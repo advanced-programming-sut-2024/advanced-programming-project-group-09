@@ -253,12 +253,7 @@ public class User {
     }
 
     public int getRank() {
-        allUsers.sort(new Comparator<User>() {
-            @Override
-            public int compare(User o1, User o2) {
-                return o2.getRank() - o1.getRank();
-            }
-        });
+        allUsers.sort(Comparator.comparing(User::getMaxScore));
         return allUsers.indexOf(this);
     }
 

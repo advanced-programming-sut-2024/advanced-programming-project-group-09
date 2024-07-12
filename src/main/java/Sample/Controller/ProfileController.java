@@ -408,9 +408,9 @@ public class ProfileController {
 
     public void ranking(MouseEvent mouseEvent) {
         StringBuilder stringBuilder = new StringBuilder();
-        User.getUsers().sort(Comparator.comparing(User::getMaxScore));
+        User.getUsers().sort(Comparator.comparing(User::getMaxScore).reversed());
         for (User user : User.getUsers()) {
-            stringBuilder.append(user.getUsername()).append("with score : ").append(user.getMaxScore());
+            stringBuilder.append(user.getUsername()).append("\n with score : \n").append(user.getMaxScore() + "\n");
         }
         showAlert("rank", "ranking", stringBuilder.toString());
     }

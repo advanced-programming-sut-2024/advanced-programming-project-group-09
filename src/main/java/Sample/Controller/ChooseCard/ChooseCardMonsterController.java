@@ -505,7 +505,6 @@ public class ChooseCardMonsterController {
         monsters_ghoul_2InDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_ghoul_2.jpg"))));
         monsters_gravehagInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_gravehag.jpg"))));
         monsters_harpyInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_harpy.jpg"))));
-        monsters_inheritsInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_imlerith.jpg"))));
         monsters_katakanInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_katakan.jpg"))));
         monsters_kayranInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_kayran.jpg"))));
         monsters_leshenInDeck.setImage(new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/CardImages/monsters_leshen.jpg"))));
