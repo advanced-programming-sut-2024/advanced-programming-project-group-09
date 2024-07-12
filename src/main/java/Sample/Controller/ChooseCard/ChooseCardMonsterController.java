@@ -1169,6 +1169,60 @@ public class ChooseCardMonsterController {
         torrentialRainRemainderInCardCollection.setText(remainingInCardSelection + "X");
     }
 
+    public void monsters_arachasUnselected(MouseEvent mouseEvent) {
+        int remainingInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
+        if (remainingInDeck == 0) return;
+        remainingInDeck--;
+        if (remainingInDeck == 0)
+//            deleteOneDecoyFromDeck();
+        {
+            int monsters_arachasInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
+            if (monsters_arachasInDeck == 1) {
+                monsters_arachasVboxInDeck.setVisible(false);
+            }
+            monsters_arachasInDeck--;
+            monsters_arachasRemainderInDeck.setText(monsters_arachasInDeck + "X");
+
+        }
+//        addOneDecoyToCardCollection();
+        {
+            int monsters_arachasInCardCollection = Integer.parseInt(monsters_arachasRemainderInCardCollection.getText().substring(0, 1));
+            if (monsters_arachasInCardCollection == 0) {
+                monsters_arachasVboxInCardCollection.setVisible(true);
+            }
+            monsters_arachasInCardCollection++;
+            monsters_arachasRemainderInCardCollection.setText(monsters_arachasInCardCollection + "X");
+        }
+        monsters_arachasRemainderInDeck.setText(remainingInDeck + "X");
+    }
+
+
+    public void monsters_arachasSelected(MouseEvent mouseEvent) {
+        int remainingInCardSelection = Integer.parseInt(monsters_arachasRemainderInCardCollection.getText().substring(0, 1));
+        if (remainingInCardSelection == 0) return;
+        remainingInCardSelection--;
+        if (remainingInCardSelection == 0) {
+//            deleteOneDecoyFromCardCollection();
+            int monsters_arachasInCardCollection = Integer.parseInt(monsters_arachasRemainderInCardCollection.getText().substring(0, 1));
+            if (monsters_arachasInCardCollection == 1) {
+                monsters_arachasVboxInCardCollection.setVisible(false);
+            }
+            monsters_arachasInCardCollection--;
+            monsters_arachasRemainderInCardCollection.setText(monsters_arachasInCardCollection + "X");
+
+        }
+//        addOneDecoyToDeck();
+        {
+            int monsters_arachasInDeck = Integer.parseInt(monsters_arachasRemainderInDeck.getText().substring(0, 1));
+            if (monsters_arachasInDeck == 0) {
+                monsters_arachasVboxInDeck.setVisible(true);
+            }
+            monsters_arachasInDeck++;
+            monsters_arachasRemainderInDeck.setText(monsters_arachasInDeck + "X");
+        }
+        monsters_arachasRemainderInCardCollection.setText(remainingInCardSelection + "X");
+    }
+
     public void neutral_ciriUnselected(MouseEvent mouseEvent) {
         neutral_ciriVboxInCardCollection.setVisible(true);
         neutral_ciriVboxInDeck.setVisible(false);
@@ -1479,15 +1533,7 @@ public class ChooseCardMonsterController {
         monsters_werewolfVboxInDeck.setVisible(false);
     }
 
-    public void monsters_arachasSelected(MouseEvent mouseEvent) {
-        monsters_arachasVboxInCardCollection.setVisible(false);
-        monsters_arachasVboxInDeck.setVisible(true);
-    }
 
-    public void monsters_arachasUnselected(MouseEvent mouseEvent) {
-        monsters_arachasVboxInCardCollection.setVisible(true);
-        monsters_arachasVboxInDeck.setVisible(false);
-    }
 
     public void monsters_arachas_1Selected(MouseEvent mouseEvent) {
         monsters_arachas_1VboxInCardCollection.setVisible(false);

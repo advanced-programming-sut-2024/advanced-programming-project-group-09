@@ -262,6 +262,7 @@ public class ProfileController {
     }
 
     public void showGameHistory1(ActionEvent event) {
+        System.out.println("salam");
         StringBuilder massage = new StringBuilder();
         User user = User.getUserLoginIn();
         GameBattleField gameBattleField = user.getAllGameBattleField().get(0);
