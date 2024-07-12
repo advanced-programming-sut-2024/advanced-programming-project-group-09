@@ -34,15 +34,15 @@ public class RegisterMenu extends Application {
         Background background = new Background(backgroundImage);
         new BackgroundSize(1.0, 1.0, true, true, false, false);
         root.setBackground(background);
-        if (RegisterMenu.getMediaPlayer() == null) {
-            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("Media/LoginAndRegisterMenuMedia.mp3")).toExternalForm());
-            mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setOnEndOfMedia(() -> {
-                mediaPlayer.seek(Duration.ZERO);
-                mediaPlayer.play();
-            });
-            mediaPlayer.play();
-        }
+//        if (RegisterMenu.getMediaPlayer() == null) {
+//            Media media = new Media(Objects.requireNonNull(LoginMenu.class.getResource("Media/LoginAndRegisterMenuMedia.mp3")).toExternalForm());
+//            mediaPlayer = new MediaPlayer(media);
+//            mediaPlayer.setOnEndOfMedia(() -> {
+//                mediaPlayer.seek(Duration.ZERO);
+//                mediaPlayer.play();
+//            });
+//            mediaPlayer.play();
+//        }
         Scene scene = new Scene(root, 800, 600);
         stage.setScene(scene);
         Image icon = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icon.jpg")));

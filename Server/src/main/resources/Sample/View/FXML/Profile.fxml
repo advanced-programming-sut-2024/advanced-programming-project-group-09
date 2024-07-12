@@ -3,31 +3,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="profile" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sample.Controller.ProfileController">
-   <top>
+<BorderPane fx:id="profile" prefHeight="1000.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Sample.Controller.ProfileController">
+    <top>
         <VBox fx:id="vbox" alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
-         <TextField fx:id="searcherTextField" promptText="search to get profile" />
-         <Button onMouseClicked="#search" mnemonicParsing="false" text="search" />
-            <Button mnemonicParsing="false" onMouseClicked="#goToMainMenu" style="-fx-background-color: Gray" text="Go To Main Menu" />
-            <Button onMouseClicked="#goToFriendMenu" style="-fx-background-color: Brown" text="Friends" />
-            <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" style="-fx-background-color: Purple" text="show my data" />
-            <Button mnemonicParsing="false" style="-fx-background-color: Blue" text="game history" />
+            <TextField fx:id="searcherTextField" promptText="search to get profile"/>
+            <Button mnemonicParsing="false" onMouseClicked="#search" text="search"/>
+            <Button mnemonicParsing="false" onMouseClicked="#goToMainMenu" style="-fx-background-color: Gray" text="Go To Main Menu"/>
+            <Button onMouseClicked="#goToFriendMenu" style="-fx-background-color: Brown" text="Friends"/>
+            <Button onMouseClicked="#showData" prefHeight="36.0" prefWidth="156.0" style="-fx-background-color: Purple" text="show my data"/>
+            <Button mnemonicParsing="false" style="-fx-background-color: Blue" text="game history"/>
             <MenuButton prefHeight="26.0" prefWidth="178.0" style="-fx-background-color: Green" text="game history">
                 <items>
-                    <MenuItem onAction="#showGameHistory1" text="1" />
-                    <MenuItem onAction="#showGameHistory2" text="2" />
-                    <MenuItem onAction="#showGameHistory3" text="3" />
-                    <MenuItem onAction="#showGameHistory4" text="4" />
-                    <MenuItem onAction="#showGameHistory5" text="5" />
+                    <MenuItem onAction="#showGameHistory1" text="1"/>
+                    <MenuItem onAction="#showGameHistory2" text="2"/>
+                    <MenuItem onAction="#showGameHistory3" text="3"/>
+                    <MenuItem onAction="#showGameHistory4" text="4"/>
+                    <MenuItem onAction="#showGameHistory5" text="5"/>
                 </items>
             </MenuButton>
-            <Button onMouseClicked="#changeUserPass" text="change data" />
-            <TextField fx:id="newUsernameTextField" promptText="new Username" visible="false" />
-            <TextField fx:id="newPasswordTextField" promptText="new password" visible="false" />
-            <TextField fx:id="newPasswordConfirmationTextField" promptText="confirmation new password" visible="false" />
-            <TextField fx:id="newNicknameTextField" promptText="new nickname" visible="false" />
-            <TextField fx:id="newEmailTextField" promptText="new gmail" visible="false" />
-            <Button fx:id="doneButton" onMouseClicked="#confirmChangingData" text="Done!" visible="false" />
+            <Button onMouseClicked="#gotoChatMenu" mnemonicParsing="false" text="chat menu" style="-fx-background-color: Black"/>
+            <Button onMouseClicked="#changeUserPass" text="change data"/>
+            <TextField fx:id="newUsernameTextField" promptText="new Username" visible="false"/>
+            <TextField fx:id="newPasswordTextField" promptText="new password" visible="false"/>
+            <TextField fx:id="newPasswordConfirmationTextField" promptText="confirmation new password" visible="false"/>
+            <TextField fx:id="newNicknameTextField" promptText="new nickname" visible="false"/>
+            <TextField fx:id="newEmailTextField" promptText="new gmail" visible="false"/>
+            <Button fx:id="doneButton" onMouseClicked="#confirmChangingData" text="Done!" visible="false"/>
         </VBox>
-   </top>
+    </top>
 </BorderPane>

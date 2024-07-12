@@ -8,7 +8,6 @@ import java.util.Properties;
 public class CodeByEmail {
     public static void main(String[] args) {
         CodeByEmail.sendVerificationEmail("m.r.izady.1383@gmail.com", "abc123");
-
     }
 
     private static final String USERNAME = "parhamfaizolahi@gmail.com";

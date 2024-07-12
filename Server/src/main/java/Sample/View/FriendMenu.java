@@ -15,8 +15,8 @@ import java.util.Objects;
 public class FriendMenu extends Application {
     public void start(Stage stage) throws Exception {
         ApplicationController.setStage(stage);
-        stage.setResizable(false);
-        stage.centerOnScreen();
+//        stage.setResizable(false);
+//        stage.centerOnScreen();
         URL url = LoginMenu.class.getResource("FXMl/Friend.fxml");
         assert url != null;
         BorderPane root = FXMLLoader.load(url);
@@ -49,6 +49,7 @@ public class FriendMenu extends Application {
 //        Image cursor = new Image(Objects.requireNonNull(LoginMenu.class.getResourceAsStream("Images/Icons/cursor.png")));
 //        scene.setCursor(new ImageCursor(cursor));
         stage.getIcons().add(icon);
+        FriendsController.getInstance().createTimeLineForUpdateUsers();
         stage.show();
     }
 }

@@ -6,21 +6,23 @@ import Sample.Model.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.*;
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.net.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class Server {
     // commands[1] = destination username | commands[2] = origin username
-    public ArrayList<String> messageToSendClientsInQueue = new ArrayList<>();
+    public ArrayList<String> messageToSendClientsInQueueForFriendReq = new ArrayList<>();
     public static ArrayList<String> allUsersInJson = new ArrayList<>();
     private static Server instance;
     public static ArrayList<Client> clients = new ArrayList<>();
 
     public static HashMap<ServerThread, String> serverThreadStringHashMap = new HashMap<>();
+    private ArrayList<String> messageToSendClientsInQueueForChat = new ArrayList<>();
 
 
     public static Server getInstance() {
@@ -32,8 +34,8 @@ public class Server {
     private static RegisterController registerController;
 
     public static void main(String[] args) {
-        User user = new User("alex", "123", "", "alexa021");
-        User user2 = new User("ali", "123", "", "ali90");
+        User user = new User("alex", "123", "m.r.izady.1383@gmail.com", "alexa021");
+        User user2 = new User("ali", "123", "m.r.izady.1383@gmail.com", "ali90");
         allUsersInJson.add(new Gson().toJson(user));
         allUsersInJson.add(new Gson().toJson(user2));
         registerController = RegisterController.getInstance();
@@ -106,21 +108,47 @@ public class Server {
                 sendFreindReq(cr7, me);
                 return "done";
             }
+            case "sendChat": { // i wanne be friend with cr7| so cr7= commands[1] and me=commands[2]
+                User cr7 = User.getUserByUsername(commands[2]);
+                User me = User.getUserByUsername(commands[1]);
+                assert me != null;
+                assert cr7 != null;
+                sendChat(cr7, me, commands[3]);
+                return "done";
+            }
             case "updateLastFriendReqFromServerForMe": {
                 String userWhoWantsNewUpdateOfFriendReqsName = commands[1];
-                for (String s : messageToSendClientsInQueue) {
+                for (String s : messageToSendClientsInQueueForFriendReq) {
                     String[] datas = s.split("~");
                     for (String data : datas) {
                         System.out.println("data: " + data);
                     }
                     if (datas[1].equals(userWhoWantsNewUpdateOfFriendReqsName)) {
                         String nameOfTheUserThatSentFriendReq = datas[2];
-                        messageToSendClientsInQueue.remove(s);
+                        messageToSendClientsInQueueForFriendReq.remove(s);
                         System.out.println(s + " deleted");
                         return nameOfTheUserThatSentFriendReq;
                     }
                 }
                 return "No new Friend Req!";
+            }
+            case "updateLastChatFromServerForMe": {
+                String userWhoWantsNewUpdateOfChatName = commands[1];
+                for (String s : messageToSendClientsInQueueForChat) {
+                    String[] datas = s.split("~");
+                    for (String data : datas) {
+                        System.out.println("data: " + data);
+                    }
+                    if (datas[1].equals(userWhoWantsNewUpdateOfChatName)) {
+                        messageToSendClientsInQueueForChat.remove(s);
+                        System.out.println(s + " deleted");
+                        return datas[2] + "~" + datas[3];
+                    }
+                }
+                return "No new update!";
+            }
+            case "updateLastChatsFromServerForMe": {
+
             }
         }
         return "";
@@ -128,7 +156,11 @@ public class Server {
 
     private void sendFreindReq(User me, User cr7) {
         String message = "sendFriendReq~" + cr7.getUsername() + "~" + me.getUsername();
-        messageToSendClientsInQueue.add(message);
+        messageToSendClientsInQueueForFriendReq.add(message);
+    }
 
+    private void sendChat(User me, User cr7, String massage) {
+        String message = "sendChat~" + cr7.getUsername() + "~" + me.getUsername() + "~" + massage;
+        messageToSendClientsInQueueForChat.add(message);
     }
 }

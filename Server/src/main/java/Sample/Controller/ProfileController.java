@@ -2,8 +2,10 @@ package Sample.Controller;
 
 import Sample.Enum.Commands;
 import Sample.Model.User;
+import Sample.View.ChatMenu;
 import Sample.View.FriendMenu;
 import Sample.View.MainMenu;
+import Sample.View.ProfileMenu;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -90,12 +92,6 @@ public class ProfileController {
         alert.show();
     }
 
-    public void goToAvatarMenu(MouseEvent mouseEvent) {
-    }
-
-
-    public void goToHelloMenu(MouseEvent mouseEvent) {
-    }
 
     public void changeUserPass(MouseEvent mouseEvent) {
         emptyChangerFields();
@@ -297,5 +293,15 @@ public class ProfileController {
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
         alert.showAndWait();
+    }
+
+    public void gotoChatMenu(MouseEvent mouseEvent) {
+
+        ChatMenu profileMenu = new ChatMenu();
+        try {
+            profileMenu.start(ApplicationController.getStage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

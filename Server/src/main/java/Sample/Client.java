@@ -1,7 +1,8 @@
 package Sample;
 
 import java.io.*;
-import java.net.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Client {
     private static Client instance;
@@ -52,7 +53,7 @@ public class Client {
                 writer.println(cmd);
 
                 response = reader.readLine();
-                System.out.println(response);
+                System.out.println("response: " + response);
 //            handleResponseForClient(response);
             } catch (UnknownHostException ex) {
                 System.out.println("Server not found: " + ex.getMessage());

@@ -2,11 +2,9 @@ package Sample.Controller;
 
 import Sample.Client;
 import Sample.Model.User;
-import Sample.View.FriendMenu;
-import Sample.View.LoginMenu;
+import Sample.View.ChatMenu;
 import Sample.View.ProfileMenu;
 import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.scene.Node;
@@ -25,6 +23,12 @@ public class FriendsController {
     Timeline timeline = null;
 
     public ArrayList<Button> friends = new ArrayList<>();
+    private static FriendsController instance;
+
+    public static FriendsController getInstance() {
+        if (instance == null) instance = new FriendsController();
+        return instance;
+    }
 
     public void createTimeLineForUpdateUsers() {
         timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> {
@@ -32,7 +36,6 @@ public class FriendsController {
             System.out.println("updater");
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
         timeline.play();
     }
 
@@ -130,7 +133,7 @@ public class FriendsController {
     }
 
     public void showFriendsList(MouseEvent mouseEvent) {
-        if (timeline == null) createTimeLineForUpdateUsers();
+//        if (timeline == null) createTimeLineForUpdateUsers();
         updateFriendsList();
         System.out.println("friends vbox : " + friends.size());
         System.out.println("current user friends vbox : " + User.getUserByUsername(User.getUserLoginIn().getUsername()).getFriends().size());
@@ -147,11 +150,24 @@ public class FriendsController {
         friendsListVbox.getChildren().addAll(nodes);
         for (Button friendButton : friends) {
             friendsListVbox.getChildren().add(friendButton);
+            friendButton.setOnMouseClicked(mouseEvent1 -> {
+                new ChatMenuController(User.getUserByUsername(User.getUserLoginIn().getUsername())).createTimeLineForUpdateUsers();
+                ChatMenu chatMenu = new ChatMenu();
+                try {
+                    chatMenu.start(ApplicationController.getStage());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+            });
         }
     }
 
     public void back(MouseEvent mouseEvent) throws Exception {
-        if (timeline != null) timeline.stop();
+        if (timeline != null) {
+            timeline.stop();
+            timeline = null;
+        }
         ProfileMenu profilemenu = new ProfileMenu();
         profilemenu.start(ApplicationController.getStage());
     }

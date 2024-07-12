@@ -136,7 +136,7 @@
                         textFill="#262845"/>
             </HBox>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#sendVerificationCode" style="-fx-background-color: DarkMagenta;" text="Send verification code"/>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#sendVerificationLink" style="-fx-background-color: DarkMagenta;" text="Send verification code"/>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#sendVerificationLink" style="-fx-background-color: DarkMagenta;" text="Send verification link"/>
             <TextField fx:id="codeVerificationTextField" alignment="CENTER" promptText="type the code you received on your email">
                 <font>
                     <Font name="Harrington" size="12.0"/>

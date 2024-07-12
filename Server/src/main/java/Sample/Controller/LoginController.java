@@ -1,7 +1,6 @@
 package Sample.Controller;
 
 import Sample.Client;
-import Sample.CodeByEmail;
 import Sample.Model.User;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
@@ -11,10 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import Sample.View.MainMenu;
 import Sample.View.RegisterMenu;
-import javafx.scene.input.MouseEvent;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class LoginController {
     @FXML

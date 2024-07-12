@@ -1,7 +1,6 @@
 package Sample.View.ChooseCard;
 
 import Sample.Controller.ApplicationController;
-import Sample.Server;
 import Sample.View.LoginMenu;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -18,7 +18,7 @@ public class ProfileMenu extends Application {
     public void start(Stage primaryStage) throws Exception {
         URL url = getClass().getResource("FXML/Profile.fxml");
         BorderPane root = FXMLLoader.load(url);
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 800, 800);
         ApplicationController.getStage().centerOnScreen();
         ApplicationController.getStage().setTitle("Profile Menu");
         ApplicationController.getStage().setScene(scene);
